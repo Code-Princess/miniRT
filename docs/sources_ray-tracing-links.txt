@@ -1,0 +1,23 @@
+ray-tracing-links:
+
+article: What is Path Tracing and Ray Tracing? And Why do They Improve Graphics?
+https://www.online-tech-tips.com/what-is-path-tracing-and-ray-tracing-and-why-do-they-improve-graphics/
+
+RAY TRACING IN ONE WEEKEND
+https://drive.google.com/file/d/1r7IEMgbdvrNxEYNiu4-iAEp2PVxSBYvF/view?usp=drive_link
+
+RAY TRACING THE NEXT WEEK
+https://drive.google.com/file/d/1FHlpMVKfJ2bMfcTzIblwH5v6vK9f25VP/view?usp=drive_link
+
+RAY TRAICING THE REST OF YOUR LIFE
+https://drive.google.com/file/d/15IS6jV1mtW_lOQOPEOOQWmYPXSO-nHR-/view?usp=drive_link
+
+Raytracing WIKI english
+https://drive.google.com/file/d/1nqgbd74IMeAz77LPOoDZqHQ7Oo79S7eh/view?usp=drive_link
+
+Raytracing WIKI german
+https://drive.google.com/file/d/1Ekoke2oD1MNA-smjSJ0g4M1XlX5Tthmy/view?usp=drive_link
+
+the Graphics Codex
+https://graphicscodex.com/app/app.html
+
