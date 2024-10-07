@@ -1,7 +1,7 @@
 ray-tracing-links:
 
 article: What is Path Tracing and Ray Tracing? And Why do They Improve Graphics?
-https://www.online-tech-tips.com/what-is-path-tracing-and-ray-tracing-and-why-do-they-improve-graphics/
+https://drive.google.com/file/d/1vuvpz7NeyNCvOc1zI9Ze_DkYzkc8nwQj/view?usp=drive_link
 
 RAY TRACING IN ONE WEEKEND
 https://drive.google.com/file/d/1r7IEMgbdvrNxEYNiu4-iAEp2PVxSBYvF/view?usp=drive_link
