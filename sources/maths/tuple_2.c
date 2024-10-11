@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:53:23 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/10 20:25:16 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/11 12:08:44 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_tuple	tuple_normalize(t_tuple a)
 	c.x = a.x / tuple_magni(a);
 	c.y = a.y / tuple_magni(a);
 	c.z = a.z / tuple_magni(a);
+	c.w = 0;
 	return (c);
 }
 
