@@ -6,26 +6,30 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/10/10 20:24:33 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/10/11 17:43:35 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= miniRT
-CFLAGS		:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
-LIBMLXDOTA	:= ./MLX42/build/libmlx42.a
+NAME			:= miniRT
+CFLAGS			:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+LIBMLXDOTA		:= ./MLX42/build/libmlx42.a
 
-LIBMLX42	:= ./MLX42/build/libmlx42.a -ldl -lglfw -lm
-# LIBMLX42	:= ./MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
-MLX42_URL	:= https://github.com/codam-coding-college/MLX42.git
-INCL		:= -I ./MLX42/include
+# LIBMLX42		:= ./MLX42/build/libmlx42.a -ldl -lglfw -lm
+LIBMLX42		:= ./MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
+MLX42_URL		:= https://github.com/codam-coding-college/MLX42.git
+MLX42_VERSION	:= v2.3.4
 
-LIBFTDOTA	:= libft/libft.a
-SRCS		:= 	miniRT.c \
-				sources/maths/tuple_1.c \
-				sources/maths/tuple_2.c \
-				sources/maths/tuple_3.c
+INCL			:= -I ./MLX42/include
 
-OBJS		:=	${SRCS:.c=.o}
+LIBFTDOTA		:= libft/libft.a
+SRCS			:= 	miniRT.c \
+					sources/canvas/canvas.c \
+					sources/maths/tuple_1.c \
+					sources/maths/tuple_2.c \
+					sources/maths/tuple_3.c
+
+OBJS			:=	${SRCS:.c=.o}
+
 $(NAME): $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
 	@echo "Compiling miniRT ..."
 	cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
@@ -39,7 +43,7 @@ all: $(LIBMLXDOTA) $(NAME)
 
 $(LIBMLXDOTA):
 	@echo "Making MLX42..."
-	git clone $(MLX42_URL)
+	git clone $(MLX42_URL) && cd ./MLX42 && git checkout tags/$(MLX42_VERSION)
 	cmake ./MLX42 -B ./MLX42/build && make -C ./MLX42/build -j4
 
 $(LIBFTDOTA):
