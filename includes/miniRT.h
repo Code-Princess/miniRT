@@ -6,20 +6,20 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/11 18:04:50 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/13 21:00:52 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-#include "maths.h"
-#include "../MLX42/include/MLX42/MLX42.h"
+# include "maths.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 
 typedef struct s_ray
 {
-	t_tuple	E;
-	t_tuple d;
+	t_tuple	eye_point;
+	t_tuple	direction_vec;
 }		t_ray;
 
 typedef union u_color
@@ -30,10 +30,10 @@ typedef union u_color
 
 enum e_colors
 {
-	RED,
-	GREEN,
+	OPAC,
 	BLUE,
-	OPAC
+	GREEN,
+	RED
 };
 
 t_ray	create_ray(t_tuple E, t_tuple d);

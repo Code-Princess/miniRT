@@ -6,7 +6,7 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/10/11 17:43:35 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/10/13 18:03:59 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ MLX42_URL		:= https://github.com/codam-coding-college/MLX42.git
 MLX42_VERSION	:= v2.3.4
 
 INCL			:= -I ./MLX42/include
+DEPENDENCIES	:= ./include/maths.h ./include/miniRT.h
 
 LIBFTDOTA		:= libft/libft.a
 SRCS			:= 	miniRT.c \
@@ -35,9 +36,8 @@ $(NAME): $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
 	cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
 	# cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /users/llacsivy/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
 
-%.o: %.c
-	cc $(CFLAGS) -c $< -o $@ $(INCL)
-
+%.o: %.c $(DEPENDENCIES)
+	cc $(CFLAGS) -c $< -o $@
 
 all: $(LIBMLXDOTA) $(NAME)
 
