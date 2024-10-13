@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/13 21:01:11 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/13 21:12:49 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,11 @@ typedef enum e_obj_name
 	CYLINDER
 }	t_obj_name;
 
-typedef struct s_coordinate
-{
-	float	x;
-	float	y;
-	float	z;
-}	t_coordinate;
-
 typedef struct s_object
 {
 	t_obj_name		obj_name;
 	t_identifier	identifier;
-	t_coordinate	coordinate;
+	t_tuple			coordinate;
 	t_spec_membs	spec_membs;
 }	t_object;
 
@@ -60,9 +53,9 @@ typedef union u_spec_membs
 
 typedef struct s_camera
 {
-	t_tuple	normal_vec;
-	float	angle;
-	// floats for image plane
+	t_tuple		normal_vec;
+	float		angle;
+	t_img_plane	img_plane;
 }		t_camera;
 
 typedef struct s_amb_light
@@ -96,3 +89,12 @@ typedef struct s_cylinder
 	float	diameter;
 	float	height;
 }		t_cylinder;
+
+typedef struct s_img_plane
+{
+	t_tuple origin;
+	t_tuple delta_x_vec;
+	t_tuple delta_y_vec;
+	int		pixel_x_count;
+	int		pixel_y_count;
+}		t_img_plane;
