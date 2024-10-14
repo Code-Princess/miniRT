@@ -6,12 +6,13 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/14 11:38:09 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/14 13:05:18 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "maths.h"
 #include "miniRT.h"
+#include "color.h"
 
 typedef enum e_identifier
 {
@@ -33,23 +34,12 @@ typedef enum e_obj_name
 	CYLINDER
 }	t_obj_name;
 
-typedef struct s_object
+typedef struct s_img_plane
 {
-	t_obj_name		obj_name;
-	t_identifier	identifier;
-	t_tuple			coordinate;
-	t_spec_membs	spec_membs;
-}	t_object;
-
-typedef union u_spec_membs
-{
-	t_amb_light	amb_light;
-	t_camera	camera;
-	t_light		light;
-	t_sphere	sphere;
-	t_plane		plane;
-	t_cylinder	cylinder;
-}	t_spec_membs;
+	t_tuple origin;
+	t_tuple delta_x_vec;
+	t_tuple delta_y_vec;
+}		t_img_plane;
 
 typedef struct s_camera
 {
@@ -90,11 +80,20 @@ typedef struct s_cylinder
 	float	height;
 }		t_cylinder;
 
-typedef struct s_img_plane
+typedef union u_spec_membs
 {
-	t_tuple origin;
-	t_tuple delta_x_vec;
-	t_tuple delta_y_vec;
-	int		pixel_x_count;
-	int		pixel_y_count;
-}		t_img_plane;
+	t_amb_light	amb_light;
+	t_camera	camera;
+	t_light		light;
+	t_sphere	sphere;
+	t_plane		plane;
+	t_cylinder	cylinder;
+}	t_spec_membs;
+
+typedef struct s_object
+{
+	t_obj_name		obj_name;
+	t_identifier	identifier;
+	t_tuple			position;
+	t_spec_membs	spec_membs;
+}	t_object;

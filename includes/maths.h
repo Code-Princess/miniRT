@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:41:11 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/10 20:22:24 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/14 12:49:28 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ float	tuple_dot(t_tuple a, t_tuple b);
 t_tuple	tuple_cross(t_tuple a, t_tuple b);
 float	distance(t_tuple a, t_tuple b);
 t_tuple	direction(t_tuple a, t_tuple b);
+
+float	deg_to_rad (float angle_deg);
 
 #endif
