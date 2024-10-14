@@ -6,7 +6,7 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/14 17:30:10 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/14 22:10:01 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	init_camera(t_data *data);
 void	calc_image_plane(t_object *camera);
 t_tuple	calc_origin(t_object *camera);
 
-t_ray	create_ray(t_tuple E, t_tuple d);
-void	fill_canvas(int width, int height, mlx_image_t *image);
+t_ray	create_ray(t_tuple E, t_tuple P);
+void	fill_canvas(int width, int height, t_data *data);
 
 void	init_plane(t_data *data);
 

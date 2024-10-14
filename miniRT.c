@@ -6,7 +6,7 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:15 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/14 16:51:11 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/14 21:51:13 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main (void)
 		return (EXIT_FAILURE);
 	if (mlx_image_to_window(data.mlx, data.image, 0, 0) == -1)
 		return (EXIT_FAILURE);
-	fill_canvas(WIDTH, HEIGHT, data.image);
+	fill_canvas(WIDTH, HEIGHT, &data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:48:46 by linda             #+#    #+#             */
-/*   Updated: 2024/10/14 17:44:58 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/14 20:34:44 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ void	init_plane(t_data *data)
 	plane.spec_membs.plane.color.colors[GREEN] = 0;
 	plane.spec_membs.plane.color.colors[BLUE] = 255;
 	plane.spec_membs.plane.color.colors[OPAC] = 255;
-	plane.spec_membs.plane.normal_vec.x = 0;
-	plane.spec_membs.plane.normal_vec.y = 0;
-	plane.spec_membs.plane.normal_vec.z = 1;
-	plane.spec_membs.plane.normal_vec.w = VEC;
+	plane.spec_membs.plane.normal_vec = tuple_normalize((t_tuple){0, 0, 1, VEC});
 	data->objects[2] = plane;
 	
 	plane.obj_name = PLANE;
@@ -47,9 +44,6 @@ void	init_plane(t_data *data)
 	plane.spec_membs.plane.color.colors[GREEN] = 150;
 	plane.spec_membs.plane.color.colors[BLUE] = 0;
 	plane.spec_membs.plane.color.colors[OPAC] = 255;
-	plane.spec_membs.plane.normal_vec.x = -1 / sqrt(2);
-	plane.spec_membs.plane.normal_vec.y = 0;
-	plane.spec_membs.plane.normal_vec.z = -1 / sqrt(2);
-	plane.spec_membs.plane.normal_vec.w = VEC;
+	plane.spec_membs.plane.normal_vec = tuple_normalize((t_tuple){-1, 0, -1, VEC});
 	data->objects[3] = plane;
 }
