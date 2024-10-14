@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maths.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:41:11 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/14 12:49:28 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:24:09 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ typedef struct s_tuple
 	float	z;
 	int		w; // w=0 for vector, w=1 for point
 }		t_tuple;
+
+typedef enum e_tuple_type
+{
+	VEC,
+	PT
+}		t_tuple_type;
 
 t_tuple	tuple_add(t_tuple a, t_tuple b);
 t_tuple	tuple_subtr(t_tuple a, t_tuple b);

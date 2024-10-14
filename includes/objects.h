@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/14 13:05:18 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:06:31 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef OBJECTS_H
+# define OBJECTS_H
+
 #include "maths.h"
-#include "miniRT.h"
+// #include "miniRT.h"
 #include "color.h"
 
 typedef enum e_identifier
@@ -97,3 +100,5 @@ typedef struct s_object
 	t_tuple			position;
 	t_spec_membs	spec_membs;
 }	t_object;
+
+#endif

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
+#    By: linda <linda@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/10/14 12:48:35 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/10/14 16:53:00 by linda            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ DEPENDENCIES	:= ./include/maths.h ./include/miniRT.h
 LIBFTDOTA		:= libft/libft.a
 SRCS			:= 	miniRT.c \
 					sources/canvas/canvas.c \
+					sources/shapes/camera.c \
+					sources/shapes/plane.c \
 					sources/maths/angle_utils.c \
 					sources/maths/tuple_1.c \
 					sources/maths/tuple_2.c \

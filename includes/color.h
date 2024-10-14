@@ -6,14 +6,22 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:04:01 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/14 16:35:16 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/14 17:30:20 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOR_H
-#define COLOR_H
+# define COLOR_H
 
-# include "../MLX42/include/MLX42/MLX42.h"
+# include <stdint.h>
+
+typedef enum e_colors
+{
+	OPAC,
+	BLUE,
+	GREEN,
+	RED
+}	t_colors;
 
 typedef union u_color
 {

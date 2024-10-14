@@ -6,7 +6,7 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/14 16:32:07 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/14 17:30:10 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 
 typedef struct s_data
 {
+	mlx_t		*mlx;
+	mlx_image_t	*image;
 	t_object	*objects;
 }		t_data;
 
@@ -34,20 +36,6 @@ typedef struct s_ray
 	t_tuple	eye_point;
 	t_tuple	direction_vec;
 }		t_ray;
-
-// typedef union u_color
-// {
-// 	uint32_t	pixel_color;
-// 	uint8_t		colors[4];
-// }				t_color;
-
-enum e_colors
-{
-	OPAC,
-	BLUE,
-	GREEN,
-	RED
-};
 
 void	init_data(t_data *data);
 void	init_camera(t_data *data);
