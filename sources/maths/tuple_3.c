@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tuple_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 20:07:41 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/10 20:29:13 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/14 16:38:20 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ float	tuple_dot(t_tuple a, t_tuple b)
 	if (a.w == 1 || b.w == 1)
 	{
 		printf("tried to calculate the dot product of a point");
-		return (nan(NULL));
+		return (nan(""));
 	}
 	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }

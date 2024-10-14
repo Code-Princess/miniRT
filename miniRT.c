@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:15 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/14 12:45:25 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/14 16:38:53 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,16 @@ void	init_data(t_data *data)
 	data->objects = ft_calloc(10, sizeof(t_object)); // magic number used for num of array entries
 	// error handling for malloc!
 	init_camera(data);
+	// init_plane(data);
 }
 void	calc_image_plane(t_object *camera)
 {
+	float	pixel_len;
+
+	pixel_len = CANVAS_WIDTH / WIDTH;
 	camera->spec_membs.camera.img_plane.origin = calc_origin(camera);
-	camera->spec_membs.camera.img_plane.delta_x_vec = (t_tuple){CANVAS_WIDTH / WIDTH, 0, 0, 0,};
-	camera->spec_membs.camera.img_plane.delta_y_vec = (t_tuple){0, CANVAS_WIDTH / WIDTH, 0, 0,};
+	camera->spec_membs.camera.img_plane.delta_x_vec = tuple_scale(pixel_len, (t_tuple){1, 0, 0, 0,});
+	camera->spec_membs.camera.img_plane.delta_y_vec = tuple_scale(pixel_len, (t_tuple){0, 1, 0, 0,});
 }
 
 t_tuple	calc_origin(t_object *camera)

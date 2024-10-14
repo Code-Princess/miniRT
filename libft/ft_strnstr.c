@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 21:46:53 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/03/14 10:56:20 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/14 16:34:03 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ static int		ft_strncmp_help(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	needle_len;
-	size_t	haystack_len;
 
 	needle_len = ft_strlen_help(needle);
-	haystack_len = ft_strlen_help(haystack);
 	if (*needle == '\0')
 		return ((char *)haystack);
 	while (*haystack != '\0' && needle_len <= len)
