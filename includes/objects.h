@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/13 21:15:18 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/14 11:38:09 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ typedef struct s_cylinder
 	float	height;
 }		t_cylinder;
 
-typedef struct 
+typedef struct s_img_plane
 {
 	t_tuple origin;
 	t_tuple delta_x_vec;
