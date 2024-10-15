@@ -6,7 +6,7 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:15 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/14 21:51:13 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/15 13:17:16 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void	init_data(t_data *data)
 	data->objects = ft_calloc(10, sizeof(t_object)); // magic number used for num of array entries
 	// error handling for malloc!
 	init_camera(data);
-	// init_plane(data);
+	init_plane(data);
 }

@@ -6,7 +6,7 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/14 22:10:01 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/15 13:18:53 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ t_ray	create_ray(t_tuple E, t_tuple P);
 void	fill_canvas(int width, int height, t_data *data);
 
 void	init_plane(t_data *data);
+
+float	find_hit_pt(t_object *objects, t_ray *ray);
 
 
 #endif

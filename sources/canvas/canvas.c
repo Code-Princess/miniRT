@@ -6,7 +6,7 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/14 22:15:53 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/15 13:21:21 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,10 @@ void	fill_canvas(int width, int height, t_data *data)
 		}
 		y_pixel++;
 	}
+}
+
+float	find_hit_pt(t_object *objects, t_ray *ray)
+{
+	// content = objects[2].spec_membs
+	
 }
