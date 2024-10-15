@@ -6,17 +6,19 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/15 13:18:53 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/15 17:46:39 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
+# include "../MLX42/include/MLX42/MLX42.h"
+
 # include "maths.h"
 # include "objects.h"
 # include "color.h"
-# include "../MLX42/include/MLX42/MLX42.h"
+# include "ray.h"
 
 # define WIDTH 1280
 # define HEIGHT 720
@@ -31,18 +33,11 @@ typedef struct s_data
 	t_object	*objects;
 }		t_data;
 
-typedef struct s_ray
-{
-	t_tuple	eye_point;
-	t_tuple	direction_vec;
-}		t_ray;
-
 void	init_data(t_data *data);
 void	init_camera(t_data *data);
 void	calc_image_plane(t_object *camera);
 t_tuple	calc_origin(t_object *camera);
 
-t_ray	create_ray(t_tuple E, t_tuple P);
 void	fill_canvas(int width, int height, t_data *data);
 
 void	init_plane(t_data *data);
