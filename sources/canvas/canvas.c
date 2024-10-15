@@ -6,9 +6,11 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/15 17:58:14 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/15 19:46:19 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
 
 #include "../../MLX42/include/MLX42/MLX42.h"
 #include "../../includes/miniRT.h"
@@ -35,17 +37,18 @@ void	fill_canvas(int width, int height, t_data *data)
 			// pixel_pos = tuple_add(pixel_pos, tuple_scale(y_pixel, img_plane.delta_y_vec));
 			// ray = create_ray(data->objects[CAMERA].position, pixel_pos);
 			ray = create_ray(data, x_pixel, y_pixel);
-
+// printf("t for x:%zu , y:%zu : %f\n",x_pixel, y_pixel, find_plane_hitpt(data->objects[2], ray));
 			// TODO: 	implement function to test for hitpoints of ray with plane
 			//			test for all proper objects
 			//			select correct hitpoint
 			//			get color
 
-			color.colors[RED] = 255 * (1.0 * x_pixel / width);
+			// color.colors[RED] = 255 * (1.0 * x_pixel / width);
+			color.colors[RED] = 255 * find_plane_hitpt(data->objects[3], ray) / 12;
 			// color.colors[RED] = 0;
 			color.colors[GREEN] = 0;
-			// color.colors[BLUE] = 0;
-			color.colors[BLUE] = 255 * (1.0 * y_pixel / height);
+			color.colors[BLUE] = 0;
+			// color.colors[BLUE] = 255 * (1.0 * y_pixel / height);
 			color.colors[OPAC] = 255;
 			mlx_put_pixel(data->image, x_pixel, y_pixel, color.pixel_color);
 			x_pixel++;
@@ -53,9 +56,10 @@ void	fill_canvas(int width, int height, t_data *data)
 		y_pixel++;
 	}
 }
-
-float	find_hit_pt(t_object *objects, t_ray *ray)
-{
-	// content = objects[2].spec_membs
-	
-}
+//
+// float	find_hit_pt(t_object *objects, t_ray *ray)
+// {
+// 	// content = objects[2].spec_membs
+// 	find_plane_hitpt(objects, ray);
+// 	return (0);			// change!
+// }

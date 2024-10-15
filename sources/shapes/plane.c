@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:48:46 by linda             #+#    #+#             */
-/*   Updated: 2024/10/15 18:48:21 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/15 20:22:41 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <math.h>
 
 #include "../../includes/miniRT.h"
@@ -33,6 +34,7 @@ void	init_plane(t_data *data)
 	plane.s_plane.color.colors[OPAC] = 255;
 	plane.s_plane.normal_vec = tuple_normalize((t_tuple){0, 0, 1, VEC});
 	data->objects[2] = plane;
+print_tuple(plane.s_plane.normal_vec);
 	
 	plane.obj_name = PLANE;
 	plane.identifier = PL;
@@ -46,4 +48,21 @@ void	init_plane(t_data *data)
 	plane.s_plane.color.colors[OPAC] = 255;
 	plane.s_plane.normal_vec = tuple_normalize((t_tuple){-1, 0, -1, VEC});
 	data->objects[3] = plane;
+// print_tuple(plane.s_plane.normal_vec);
+// print_tuple((t_tuple){-1, 0, -1, VEC});
+// print_tuple((t_tuple){-1, 0, -1, 0});
+}
+
+float	find_plane_hitpt(t_object plane, t_ray ray)
+{
+	float	t_enumerator;
+	float	t_denominator;
+
+print_tuple(plane.s_plane.normal_vec);
+print_tuple(tuple_subtr(plane.position, ray.eye_point));
+
+	t_enumerator = tuple_dot(plane.s_plane.normal_vec, tuple_subtr(plane.position, ray.eye_point));
+	t_denominator = tuple_dot(plane.s_plane.normal_vec, ray.direction_vec);
+// printf("t_denominator: %f\n", t_denominator);
+	return (t_enumerator / t_denominator);
 }

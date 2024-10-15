@@ -6,7 +6,7 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/15 17:46:39 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/15 19:22:38 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,5 +157,8 @@ typedef struct s_object
 		}		s_cylinder;
 	};
 }	t_object;
+
+float	find_hit_pt(t_object *objects, t_ray *ray);
+float	find_plane_hitpt(t_object plane, t_ray ray);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 20:07:41 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/14 16:38:20 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/15 19:26:36 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 float	tuple_dot(t_tuple a, t_tuple b)
 {
-	if (a.w == 1 || b.w == 1)
+	if (a.w == 1 && b.w == 1)
 	{
 		printf("tried to calculate the dot product of a point");
 		return (nan(""));

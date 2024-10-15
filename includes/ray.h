@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:16:05 by daspring          #+#    #+#             */
-/*   Updated: 2024/10/15 18:49:18 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/15 19:03:14 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stddef.h>
 
-// # include "miniRT.h"
+# include "miniRT.h"
 # include "maths.h"
 
 typedef struct s_data t_data;

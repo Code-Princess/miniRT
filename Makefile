@@ -6,7 +6,7 @@
 #    By: linda <linda@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/10/14 22:10:50 by linda            ###   ########.fr        #
+#    Updated: 2024/10/15 19:39:37 by daspring         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRCS			:= 	miniRT.c \
 					sources/maths/angle_utils.c \
 					sources/maths/tuple_1.c \
 					sources/maths/tuple_2.c \
-					sources/maths/tuple_3.c
+					sources/maths/tuple_3.c \
+					sources/dev_print_tuple.c
 
 OBJS			:=	${SRCS:.c=.o}
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/15 17:46:39 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/15 20:18:45 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@
 # include "color.h"
 # include "ray.h"
 
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 2
+# define HEIGHT 3
 # define TITLE "miniRT"
 
 # define CANVAS_WIDTH 10
+
+typedef struct s_object t_object;
+typedef struct s_ray t_ray;
 
 typedef struct s_data
 {
@@ -44,5 +47,7 @@ void	init_plane(t_data *data);
 
 float	find_hit_pt(t_object *objects, t_ray *ray);
 
+
+void	print_tuple(t_tuple tuple);
 
 #endif
