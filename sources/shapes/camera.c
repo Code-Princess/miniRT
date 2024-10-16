@@ -6,11 +6,13 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:51:15 by linda             #+#    #+#             */
-/*   Updated: 2024/10/15 18:04:41 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:00:01 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
+
+#include <stdio.h>
 
 #include "../../includes/objects.h"
 #include "../../includes/miniRT.h"
@@ -21,8 +23,10 @@ void	calc_image_plane(t_object *camera)
 
 	pixel_len = CANVAS_WIDTH / WIDTH;
 	camera->s_camera.s_img_plane.origin = calc_origin(camera);
-	camera->s_camera.s_img_plane.delta_x_vec = tuple_scale(pixel_len, (t_tuple){1, 0, 0, 0,});
-	camera->s_camera.s_img_plane.delta_y_vec = tuple_scale(pixel_len, (t_tuple){0, 1, 0, 0,});
+	camera->s_camera.s_img_plane.delta_x_vec = *tuple_scale(pixel_len, &(t_tuple){1, 0, 0, 0,});
+	camera->s_camera.s_img_plane.delta_y_vec = *tuple_scale(pixel_len, &(t_tuple){0, 1, 0, 0,});
+printf("pixel_len: %f\n", pixel_len);
+print_tuple(*tuple_scale(pixel_len, &(t_tuple){1, 0, 0, 0,}));
 }
 
 t_tuple	calc_origin(t_object *camera)

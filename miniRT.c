@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:15 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/15 20:23:05 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:44:17 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,23 @@
 
 int	main (void)
 {
-	t_data		data;
-
-	init_data(&data);
-	data.mlx = NULL;
-	data.image = NULL;
-	data.mlx = mlx_init(WIDTH, HEIGHT, TITLE, true);
-	if (data.mlx == NULL)
+	t_data		*data;
+	
+	data = get_data();
+	init_data(data);
+	data->mlx = NULL;
+	data->image = NULL;
+	data->mlx = mlx_init(WIDTH, HEIGHT, TITLE, true);
+	if (data->mlx == NULL)
 		return (EXIT_FAILURE);
-	data.image = mlx_new_image(data.mlx, WIDTH, HEIGHT);
-	if (data.image == NULL)
+	data->image = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	if (data->image == NULL)
 		return (EXIT_FAILURE);
-	if (mlx_image_to_window(data.mlx, data.image, 0, 0) == -1)
+	if (mlx_image_to_window(data->mlx, data->image, 0, 0) == -1)
 		return (EXIT_FAILURE);
-	fill_canvas(WIDTH, HEIGHT, &data);
-	mlx_loop(data.mlx);
-	mlx_terminate(data.mlx);
+	fill_canvas(WIDTH, HEIGHT);
+	mlx_loop(data->mlx);
+	mlx_terminate(data->mlx);
 	return (0);
 }
 
@@ -46,4 +47,11 @@ void	init_data(t_data *data)
 	// error handling for malloc!
 	init_camera(data);
 	init_plane(data);
+}
+
+t_data	*get_data(void)
+{
+	static t_data data;
+
+	return (&data);
 }
