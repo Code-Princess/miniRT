@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: linda <linda@student.42.fr>                +#+  +:+       +#+         #
+#    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/10/15 19:39:37 by daspring         ###   ########.fr        #
+#    Updated: 2024/10/17 14:25:59 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,11 @@ MLX42_URL		:= https://github.com/codam-coding-college/MLX42.git
 MLX42_VERSION	:= v2.3.4
 
 INCL			:= -I ./MLX42/include
-DEPENDENCIES	:= ./include/maths.h ./include/miniRT.h
+DEPENDENCIES	:= 	./includes/color.h \
+					./includes/maths.h \
+					./includes/miniRT.h \
+					./includes/objects.h \
+					./includes/ray.h
 
 LIBFTDOTA		:= libft/libft.a
 SRCS			:= 	miniRT.c \
