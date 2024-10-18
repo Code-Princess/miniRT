@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:15 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/18 18:28:48 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/18 20:50:19 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,22 @@ int	main(void)
 // void	init_data(t_data *data)
 void	init_data(void)
 {
-	t_data *data = get_data();
+	int			object_count;
+	t_data 		*data;
 
-	data->objects = ft_calloc(10, sizeof(t_object)); // magic number used for num of array entries
+	data  = get_data();
+	object_count = 10;
+	data->objects = ft_calloc(object_count, sizeof(t_object *)); // magic number used for num of array entries
+	// while (object_count > 0)
+	// {
+
+	// 	data->objects[object_count - 1] = NULL;
+	// 	object_count--;
+	// }
+
 	// error handling for malloc!
 	init_camera(data);
+printf("still alive!\n");
 	init_plane(data);
 }
 

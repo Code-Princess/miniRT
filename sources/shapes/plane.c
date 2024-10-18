@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:48:46 by linda             #+#    #+#             */
-/*   Updated: 2024/10/18 18:35:04 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/18 20:49:41 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	init_plane(t_data *data)
 	plane->s_plane.color.colors[BLUE] = 255;
 	plane->s_plane.color.colors[OPAC] = 255;
 	plane->s_plane.normal_vec = *tuple_normalize(&(t_tuple){0.0, 0.0, 1.0, VEC});
-	data->objects[2] = *plane;
+	data->objects[2] = plane;
 // print_tuple(plane->s_plane.normal_vec);
 	
 	plane = malloc(1 * sizeof(t_object));
@@ -49,8 +49,8 @@ void	init_plane(t_data *data)
 	plane->s_plane.color.colors[GREEN] = 150;
 	plane->s_plane.color.colors[BLUE] = 0;
 	plane->s_plane.color.colors[OPAC] = 255;
-	plane->s_plane.normal_vec = *tuple_normalize(&(t_tuple){-1.0, 0.0, -3.0, VEC});
-	data->objects[3] = *plane;
+	plane->s_plane.normal_vec = *tuple_normalize(&(t_tuple){-1.0, 2.0, -3.0, VEC});
+	data->objects[3] = plane;
 // print_tuple(plane->s_plane.normal_vec);
 // print_tuple(data->objects[3].s_plane.normal_vec);
 // print_tuple((t_tuple){-1, 0, -1, VEC});

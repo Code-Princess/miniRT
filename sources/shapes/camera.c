@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:51:15 by linda             #+#    #+#             */
-/*   Updated: 2024/10/18 13:17:46 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/18 20:48:47 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,24 @@ t_tuple	calc_origin(t_object *camera)
 
 void	init_camera(t_data *data)
 {
-	t_object	camera;
+	t_object	*camera;
 
+	camera = malloc(1 * sizeof(t_object));
 	// camera = data->objects[CAMERA];
-	camera.obj_name = CAMERA;
-	camera.identifier = C;
-	camera.position.x = 0;
-	camera.position.y = 0;
-	camera.position.z = 0;
-	camera.position.w = 1;
-	camera.s_camera.angle = 90;
-	camera.s_camera.normal_vec.x = 0;
-	camera.s_camera.normal_vec.y = 0;
-	camera.s_camera.normal_vec.z = 1;
-	camera.s_camera.normal_vec.w = 0;
+	camera->obj_name = CAMERA;
+	camera->identifier = C;
+	camera->position.x = 0;
+	camera->position.y = 0;
+	camera->position.z = 0;
+	camera->position.w = 1;
+	camera->s_camera.angle = 90;
+	camera->s_camera.normal_vec.x = 0;
+	camera->s_camera.normal_vec.y = 0;
+	camera->s_camera.normal_vec.z = 1;
+	camera->s_camera.normal_vec.w = 0;
 	// camera.s_camera.img_plane = NULL;
-	calc_image_plane(&camera);
+	calc_image_plane(camera);
 // print_tuple(camera.s_camera.s_img_plane.delta_x_vec);
 	data->objects[CAMERA] = camera;
+	printf("still alive!\n");
 }

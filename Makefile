@@ -6,7 +6,7 @@
 #    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/10/18 14:43:16 by daspring         ###   ########.fr        #
+#    Updated: 2024/10/18 20:27:02 by daspring         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,9 +46,13 @@ $(NAME): $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
 	@echo "Compiling miniRT ..."
 	cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
 	# cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /users/llacsivy/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
-
+	
+debug: $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
+	@echo "Compiling miniRT ..."
+	cc -g $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o debug
+	
 %.o: %.c $(DEPENDENCIES)
-	cc $(CFLAGS) -c $< -o $@
+	cc -g $(CFLAGS) -c $< -o $@
 
 all: $(LIBMLXDOTA) $(NAME)
 

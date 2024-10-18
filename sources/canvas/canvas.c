@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/18 18:34:10 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/18 20:53:48 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ void	fill_canvas(size_t width, size_t height)
 // 			//			select correct hitpoint
 // 			//			get color
 
-			find_hit_pt(data->objects, ray);
+			// find_hit_pt(data->objects, ray);
 			color = malloc(1 * sizeof(t_color));
-			// color->colors[RED] = 255 * (1.0 * x_pixel / width);
-			color->colors[RED] = 255 * (find_plane_hitpt(&data->objects[2], ray) - 15.0) / 8.0;
+			color->colors[RED] = 255 * (1.0 * x_pixel / width);
+			// color->colors[RED] = 255 * (find_plane_hitpt(&data->objects[2], ray) - 15.0) / 8.0;
 // printf("red: %d\n", color->colors[RED]);
 			// color->colors[RED] = 0;
 			color->colors[GREEN] = 0;
@@ -73,16 +73,25 @@ void	fill_canvas(size_t width, size_t height)
 
 uint32_t	find_hit_pt(t_object *objects, t_ray *ray)
 {
-	float	hitpt1;
-	float	hitpt2;
+	float	hit_pt;
+	float	hit_pt_min[2];
+	int		object_idx;
 
-	// content = objects[2].spec_membs
-	hitpt1 = find_plane_hitpt(objects + 2, ray);
-	hitpt2 = find_plane_hitpt(objects + 3, ray);
+	object_idx = 2;
+	hit_pt_min[0] = 9999.9;
+	hit_pt_min[1] =  -1.0;
+	// while (objects + object_idx != 0)
+printf("still alive!\n");
+	while (&objects[object_idx] != NULL)
+	{
+		hit_pt = find_plane_hitpt(&objects[object_idx], ray);
+		if (hit_pt < hit_pt_min[0])
+		{
+			hit_pt_min[0] = hit_pt;
+			hit_pt_min[1] = object_idx;
+		}
+		object_idx++;
+	}
 // printf("hitpt1: %f, hitpt2: %f\n", hitpt1, hitpt2);
-	if (hitpt1 < hitpt2)
-		return (objects[2].s_plane.color.pixel_color);
-	else
-		return (objects[3].s_plane.color.pixel_color);
-	return (0);			// change!
+	return (objects[object_idx].s_plane.color.pixel_color);			// change!
 }

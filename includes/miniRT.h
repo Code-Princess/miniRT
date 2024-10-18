@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/18 18:32:00 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/18 20:49:17 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "color.h"
 # include "ray.h"
 
-# define WIDTH 100
-# define HEIGHT 100
+# define WIDTH 1000
+# define HEIGHT 1000
 # define TITLE "miniRT"
 
 # define CANVAS_WIDTH 10.0
@@ -33,7 +33,7 @@ typedef struct s_data
 {
 	mlx_t		*mlx;
 	mlx_image_t	*image;
-	t_object	*objects;
+	t_object	**objects;
 	int			magic_number;
 }		t_data;
 
