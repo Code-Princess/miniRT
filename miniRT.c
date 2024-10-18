@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:15 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/16 12:44:17 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/18 13:28:24 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 int	main (void)
 {
 	t_data		*data;
-	
+
 	data = get_data();
 	init_data(data);
 	data->mlx = NULL;
@@ -37,6 +37,7 @@ int	main (void)
 		return (EXIT_FAILURE);
 	fill_canvas(WIDTH, HEIGHT);
 	mlx_loop(data->mlx);
+printf("still alive!\n");
 	mlx_terminate(data->mlx);
 	return (0);
 }

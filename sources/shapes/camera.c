@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:51:15 by linda             #+#    #+#             */
-/*   Updated: 2024/10/16 13:00:01 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/18 13:17:46 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ void	calc_image_plane(t_object *camera)
 	camera->s_camera.s_img_plane.origin = calc_origin(camera);
 	camera->s_camera.s_img_plane.delta_x_vec = *tuple_scale(pixel_len, &(t_tuple){1, 0, 0, 0,});
 	camera->s_camera.s_img_plane.delta_y_vec = *tuple_scale(pixel_len, &(t_tuple){0, 1, 0, 0,});
-printf("pixel_len: %f\n", pixel_len);
-print_tuple(*tuple_scale(pixel_len, &(t_tuple){1, 0, 0, 0,}));
+// printf("pixel_len: %f\n", pixel_len);
+// print_tuple(*tuple_scale(pixel_len, &(t_tuple){1, 0, 0, 0,}));
+// print_tuple(camera->s_camera.s_img_plane.delta_x_vec);
 }
 
 t_tuple	calc_origin(t_object *camera)
@@ -50,7 +51,7 @@ void	init_camera(t_data *data)
 {
 	t_object	camera;
 
-	camera = data->objects[CAMERA];
+	// camera = data->objects[CAMERA];
 	camera.obj_name = CAMERA;
 	camera.identifier = C;
 	camera.position.x = 0;
@@ -64,5 +65,6 @@ void	init_camera(t_data *data)
 	camera.s_camera.normal_vec.w = 0;
 	// camera.s_camera.img_plane = NULL;
 	calc_image_plane(&camera);
-	
+// print_tuple(camera.s_camera.s_img_plane.delta_x_vec);
+	data->objects[CAMERA] = camera;
 }

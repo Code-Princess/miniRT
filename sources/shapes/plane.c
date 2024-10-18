@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:48:46 by linda             #+#    #+#             */
-/*   Updated: 2024/10/16 12:51:52 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/18 13:24:18 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,30 @@ void	init_plane(t_data *data)
 	plane = malloc(1 * sizeof(t_object));
 	plane->obj_name = PLANE;
 	plane->identifier = PL;
-	plane->position.x = 0;
-	plane->position.y = 0;
-	plane->position.z = 50;
+	plane->position.x = 0.0;
+	plane->position.y = 0.0;
+	plane->position.z = 50.0;
 	plane->position.w = PT;
 	plane->s_plane.color.colors[RED] = 0;
 	plane->s_plane.color.colors[GREEN] = 0;
 	plane->s_plane.color.colors[BLUE] = 255;
 	plane->s_plane.color.colors[OPAC] = 255;
-	plane->s_plane.normal_vec = *tuple_normalize(&(t_tuple){0, 0, 1, VEC});
+	plane->s_plane.normal_vec = *tuple_normalize(&(t_tuple){0.0, 0.0, 1.0, VEC});
 	data->objects[2] = *plane;
 // print_tuple(plane->s_plane.normal_vec);
 	
 	plane = malloc(1 * sizeof(t_object));
 	plane->obj_name = PLANE;
 	plane->identifier = PL;
-	plane->position.x = 0;
-	plane->position.y = 0;
-	plane->position.z = 50;
+	plane->position.x = 0.0;
+	plane->position.y = 0.0;
+	plane->position.z = 50.0;
 	plane->position.w = PT;
 	plane->s_plane.color.colors[RED] = 0;
 	plane->s_plane.color.colors[GREEN] = 150;
 	plane->s_plane.color.colors[BLUE] = 0;
 	plane->s_plane.color.colors[OPAC] = 255;
-	plane->s_plane.normal_vec = *tuple_normalize(&(t_tuple){-1, 0, -1, VEC});
+	plane->s_plane.normal_vec = *tuple_normalize(&(t_tuple){-1.0, 0.0, -3.0, VEC});
 	data->objects[3] = *plane;
 // print_tuple(plane->s_plane.normal_vec);
 // print_tuple(data->objects[3].s_plane.normal_vec);
