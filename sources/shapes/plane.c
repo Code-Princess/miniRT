@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:48:46 by linda             #+#    #+#             */
-/*   Updated: 2024/10/18 13:24:18 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/18 18:35:04 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_plane(t_data *data)
 	plane = malloc(1 * sizeof(t_object));
 	plane->obj_name = PLANE;
 	plane->identifier = PL;
-	plane->position.x = 0.0;
+	plane->position.x = 10.0;
 	plane->position.y = 0.0;
 	plane->position.z = 50.0;
 	plane->position.w = PT;
@@ -41,7 +41,7 @@ void	init_plane(t_data *data)
 	plane = malloc(1 * sizeof(t_object));
 	plane->obj_name = PLANE;
 	plane->identifier = PL;
-	plane->position.x = 0.0;
+	plane->position.x = 10.0;
 	plane->position.y = 0.0;
 	plane->position.z = 50.0;
 	plane->position.w = PT;

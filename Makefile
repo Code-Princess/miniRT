@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
+#    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/10/17 14:25:59 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/10/18 14:43:16 by daspring         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ LIBMLXDOTA		:= ./MLX42/build/libmlx42.a
 # LIBMLX42		:= ./MLX42/build/libmlx42.a -ldl -lglfw -lm
 LIBMLX42		:= ./MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
 MLX42_URL		:= https://github.com/codam-coding-college/MLX42.git
-MLX42_VERSION	:= v2.3.4
+# MLX42_VERSION	:= v2.4.0
+# MLX42_VERSION	:= v2.3.4
+MLX42_VERSION	:= v2.3.3
 
 INCL			:= -I ./MLX42/include
 DEPENDENCIES	:= 	./includes/color.h \

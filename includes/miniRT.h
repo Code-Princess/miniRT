@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/18 13:26:57 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/18 18:32:00 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,22 @@ typedef struct s_data
 	mlx_t		*mlx;
 	mlx_image_t	*image;
 	t_object	*objects;
+	int			magic_number;
 }		t_data;
 
 t_data	*get_data(void);
 
-void	init_data(t_data *data);
+// void	init_data(t_data *data);
+void	init_data(void);
 void	init_camera(t_data *data);
 void	calc_image_plane(t_object *camera);
 t_tuple	calc_origin(t_object *camera);
 
-void	fill_canvas(int width, int height);
+void	fill_canvas(size_t width, size_t height);
 
 void	init_plane(t_data *data);
 
-float	find_hit_pt(t_object *objects, t_ray *ray);
+uint32_t	find_hit_pt(t_object *objects, t_ray *ray);
 
 
 void	print_tuple(t_tuple tuple);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/16 12:22:10 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/18 18:33:12 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef struct s_object
 	};
 }	t_object;
 
-float	find_hit_pt(t_object *objects, t_ray *ray);
+// float	find_hit_pt(t_object *objects, t_ray *ray);
 float	find_plane_hitpt(t_object *plane, t_ray *ray);
 
 #endif
