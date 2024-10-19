@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:48:46 by linda             #+#    #+#             */
-/*   Updated: 2024/10/18 20:49:41 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/19 14:01:28 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ float	find_plane_hitpt(t_object *plane, t_ray *ray)
 
 // print_tuple(plane->s_plane.normal_vec);
 // print_tuple(ray->direction_vec);
-// print_tuple(*tuple_subtr(&plane->position, &ray->eye_point));
+// print_tuple(*tuple_subtr(&plane->position, &ray->origin_pt));
 
-	t_enumerator = tuple_dot(&plane->s_plane.normal_vec, tuple_subtr(&plane->position, &ray->eye_point));
+	t_enumerator = tuple_dot(&plane->s_plane.normal_vec, tuple_subtr(&plane->position, &ray->origin_pt));
 	t_denominator = tuple_dot(&plane->s_plane.normal_vec, &ray->direction_vec);
 // printf("t_denominator: %f\n", t_denominator);
 	return (t_enumerator / t_denominator);

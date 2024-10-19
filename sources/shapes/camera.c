@@ -6,11 +6,12 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:51:15 by linda             #+#    #+#             */
-/*   Updated: 2024/10/18 20:48:47 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/19 14:03:17 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
+#include <stdlib.h>
 
 #include <stdio.h>
 
@@ -40,10 +41,15 @@ t_tuple	calc_origin(t_object *camera)
 	canvas_height = (CANVAS_WIDTH / WIDTH) * HEIGHT;
 	angle_rad = deg_to_rad(camera->s_camera.angle/2);
 	dist = CANVAS_WIDTH / 2 / tan(angle_rad);
-	origin.x = camera->position.x - CANVAS_WIDTH / 2;
-	origin.y = camera->position.y - canvas_height / 2;
-	origin.z = camera->position.z + dist;
-	origin.w = 1;
+	set_tuple(&origin, \
+				camera->position.x - CANVAS_WIDTH / 2, \
+				camera->position.y - canvas_height / 2, \
+				camera->position.z + dist, \
+				1);
+	// origin.x = camera->position.x - CANVAS_WIDTH / 2;
+	// origin.y = camera->position.y - canvas_height / 2;
+	// origin.z = camera->position.z + dist;
+	// origin.w = 1;
 	return (origin);
 }
 
@@ -55,18 +61,21 @@ void	init_camera(t_data *data)
 	// camera = data->objects[CAMERA];
 	camera->obj_name = CAMERA;
 	camera->identifier = C;
-	camera->position.x = 0;
-	camera->position.y = 0;
-	camera->position.z = 0;
-	camera->position.w = 1;
+	set_tuple(&camera->position, 0, 0, 0, 1);
+	// camera->position.x = 0;
+	// camera->position.y = 0;
+	// camera->position.z = 0;
+	// camera->position.w = 1;
 	camera->s_camera.angle = 90;
-	camera->s_camera.normal_vec.x = 0;
-	camera->s_camera.normal_vec.y = 0;
-	camera->s_camera.normal_vec.z = 1;
-	camera->s_camera.normal_vec.w = 0;
+	set_tuple(&camera->s_camera.normal_vec, 0, 0, 1, 0);
+	// camera->s_camera.normal_vec.x = 0;
+	// camera->s_camera.normal_vec.y = 0;
+	// camera->s_camera.normal_vec.z = 1;
+	// camera->s_camera.normal_vec.w = 0;
 	// camera.s_camera.img_plane = NULL;
 	calc_image_plane(camera);
 // print_tuple(camera.s_camera.s_img_plane.delta_x_vec);
 	data->objects[CAMERA] = camera;
-	printf("still alive!\n");
+	data->objects[0] = camera;
+	printf("still alive in init_camera!\n");
 }

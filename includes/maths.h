@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maths.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:41:11 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/16 12:20:34 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/19 13:44:28 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef enum e_tuple_type
 	PT
 }		t_tuple_type;
 
+void	set_tuple(t_tuple *tuple, float x, float y, float z, int w);
 t_tuple	*tuple_add(t_tuple *a, t_tuple *b);
 t_tuple	*tuple_subtr(t_tuple *a, t_tuple *b);
 t_tuple	*tuple_neg(t_tuple *a);

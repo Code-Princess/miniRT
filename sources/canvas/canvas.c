@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/18 20:53:48 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/19 14:17:25 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	fill_canvas(size_t width, size_t height)
 	}
 }
 
-uint32_t	find_hit_pt(t_object *objects, t_ray *ray)
+uint32_t	find_hit_pt(t_object **objects, t_ray *ray)
 {
 	float	hit_pt;
 	float	hit_pt_min[2];
@@ -81,10 +81,11 @@ uint32_t	find_hit_pt(t_object *objects, t_ray *ray)
 	hit_pt_min[0] = 9999.9;
 	hit_pt_min[1] =  -1.0;
 	// while (objects + object_idx != 0)
-printf("still alive!\n");
-	while (&objects[object_idx] != NULL)
+	while (objects[object_idx] != NULL)
 	{
-		hit_pt = find_plane_hitpt(&objects[object_idx], ray);
+// printf("still alive in find_hit_pt!\n");
+		hit_pt = find_plane_hitpt(objects[object_idx], ray);
+printf("hit_pt for plane %d: %f\n", object_idx, hit_pt);
 		if (hit_pt < hit_pt_min[0])
 		{
 			hit_pt_min[0] = hit_pt;
@@ -93,5 +94,5 @@ printf("still alive!\n");
 		object_idx++;
 	}
 // printf("hitpt1: %f, hitpt2: %f\n", hitpt1, hitpt2);
-	return (objects[object_idx].s_plane.color.pixel_color);			// change!
+	return (objects[(int)hit_pt_min[1]]->s_plane.color.pixel_color);			// change!
 }

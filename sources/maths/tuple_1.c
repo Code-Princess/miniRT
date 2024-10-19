@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tuple_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:40:45 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/16 11:58:45 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/19 13:44:00 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,12 @@ t_tuple	*tuple_scale(float k, t_tuple *a)
 	c->z = k * a->z;
 	c->w = a->w;
 	return (c);
+}
+
+void	set_tuple(t_tuple *tuple, float x, float y, float z, int w)
+{
+	tuple->x = x;
+	tuple->y = y;
+	tuple->z = z;
+	tuple->w = w;
 }

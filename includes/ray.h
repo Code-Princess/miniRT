@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:16:05 by daspring          #+#    #+#             */
-/*   Updated: 2024/10/16 12:15:33 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/19 14:01:28 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_data t_data;
 
 typedef struct s_ray
 {
-	t_tuple	eye_point;
+	t_tuple	origin_pt;
 	t_tuple	direction_vec;
 }		t_ray;
 
