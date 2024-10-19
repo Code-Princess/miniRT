@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:41:11 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/19 13:44:28 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/19 15:01:01 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ typedef struct s_tuple
 	float	x;
 	float	y;
 	float	z;
-	int		w; // w=0 for vector, w=1 for point
+	int		w;
 }		t_tuple;
 
 typedef enum e_tuple_type
@@ -27,7 +27,7 @@ typedef enum e_tuple_type
 	PT
 }		t_tuple_type;
 
-void	set_tuple(t_tuple *tuple, float x, float y, float z, int w);
+t_tuple	set_tuple(float x, float y, float z, int w);
 t_tuple	*tuple_add(t_tuple *a, t_tuple *b);
 t_tuple	*tuple_subtr(t_tuple *a, t_tuple *b);
 t_tuple	*tuple_neg(t_tuple *a);
@@ -39,6 +39,6 @@ t_tuple	*tuple_cross(t_tuple *a, t_tuple *b);
 float	distance(t_tuple *a, t_tuple *b);
 t_tuple	*direction(t_tuple *a, t_tuple *b);
 
-float	deg_to_rad (float angle_deg);
+float	deg_to_rad(float angle_deg);
 
 #endif

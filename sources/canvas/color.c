@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 13:04:01 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/19 15:01:24 by daspring         ###   ########.fr       */
+/*   Created: 2024/10/19 14:42:09 by daspring          #+#    #+#             */
+/*   Updated: 2024/10/19 14:43:51 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include "../../includes/color.h"
 
-# include <stdint.h>
-
-typedef enum e_colors
+t_color	set_color(int r, int g, int b, int opac)
 {
-	OPAC,
-	BLUE,
-	GREEN,
-	RED
-}	t_colors;
+	t_color	color;
 
-typedef union u_color
-{
-	uint32_t	pixel_color;
-	uint8_t		colors[4];
-}	t_color;
-
-t_color	set_color(int r, int g, int b, int opac);
-
-#endif
+	color.colors[RED] = r;
+	color.colors[GREEN] = g;
+	color.colors[BLUE] = b;
+	color.colors[OPAC] = opac;
+	return (color);
+}

@@ -6,7 +6,7 @@
 #    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/10/18 20:27:02 by daspring         ###   ########.fr        #
+#    Updated: 2024/10/19 14:44:17 by daspring         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ LIBFTDOTA		:= libft/libft.a
 SRCS			:= 	miniRT.c \
 					sources/ray/ray.c \
 					sources/canvas/canvas.c \
+					sources/canvas/color.c \
 					sources/shapes/camera.c \
 					sources/shapes/plane.c \
 					sources/maths/angle_utils.c \

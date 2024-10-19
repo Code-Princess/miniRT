@@ -6,16 +6,16 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/18 18:33:12 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/19 14:34:07 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECTS_H
 # define OBJECTS_H
 
-#include "maths.h"
-#include "ray.h"
-#include "color.h"
+# include "maths.h"
+# include "ray.h"
+# include "color.h"
 
 typedef enum e_identifier
 {
@@ -44,43 +44,36 @@ typedef struct s_object
 	t_tuple			position;
 	union
 	{
-
 		struct
 		{
 			t_tuple		normal_vec;
 			float		angle;
 			struct
 			{
-				t_tuple origin;
-				t_tuple delta_x_vec;
-				t_tuple delta_y_vec;
+				t_tuple	origin;
+				t_tuple	delta_x_vec;
+				t_tuple	delta_y_vec;
 			}		s_img_plane;
 		}		s_camera;
-
 		struct
 		{
 			t_color	color;
 			float	brightness;
 		}		s_amb_light;
-
 		struct
 		{
-			// t_color	color; unused in mandatory
 			float	brightness;
 		}		s_light;
-
 		struct
 		{
 			t_color	color;
 			float	diameter;
 		}		s_sphere;
-
 		struct
 		{
 			t_color	color;
 			t_tuple	normal_vec;
 		}		s_plane;
-
 		struct
 		{
 			t_color	color;
@@ -91,7 +84,6 @@ typedef struct s_object
 	};
 }	t_object;
 
-// float	find_hit_pt(t_object *objects, t_ray *ray);
 float	find_plane_hitpt(t_object *plane, t_ray *ray);
 
 #endif
