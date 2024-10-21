@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/21 18:02:38 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/21 20:32:18 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_sphere(t_data *data)
 	sphere->identifier = SP;
 	sphere->position = set_tuple(0, 0, 20, PT);
 	sphere->s_sphere.color = set_color(200, 100, 100, 255);
-	sphere->s_sphere.diameter = 100.0;
+	sphere->s_sphere.diameter = 5.0;
 	data->objects[2] = sphere;
 
 }
@@ -44,8 +44,14 @@ float	find_sphere_hitpt(t_object *sphere, t_ray *ray)
 // printf("still alive\n");
 	l_dot_d = tuple_dot(&ray_origin_to_sphere_pos, &ray->direction_vec);
 	l_dot_l = tuple_dot(&ray_origin_to_sphere_pos, &ray_origin_to_sphere_pos);
+printf("ray_origin_to_sphere_pos: ");
+print_tuple(ray_origin_to_sphere_pos);
+printf("ray_direction_vec: ");
+print_tuple(ray->direction_vec);
+printf("l_dot_d: %f\n\n\n", l_dot_d);
 
 	discriminant = l_dot_d * l_dot_d - l_dot_l + sphere->s_sphere.diameter * sphere->s_sphere.diameter / 4;
+// printf("discriminant: %f\n", discriminant);
 
 	if (discriminant < 0)
 		return (-1);

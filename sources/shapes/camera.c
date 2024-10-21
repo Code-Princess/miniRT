@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:51:15 by linda             #+#    #+#             */
-/*   Updated: 2024/10/19 15:00:16 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/21 19:48:37 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,15 @@ t_tuple	calc_origin(t_object *camera)
 					camera->position.y - canvas_height / 2, \
 					camera->position.z + dist, \
 					1);
+print_tuple(origin);
+// printf("camera->position.y: %f\n", camera->position.y);
+// printf("canvas_height / 2: %f\n", canvas_height / 2);
+// printf("camera->position.y - canvas_height / 2: %f\n", camera->position.y - canvas_height / 2);
 	return (origin);
 }
-
+/*
+		ERROR: initialized normal_vec twice and position not at all ...
+*/
 void	init_camera(t_data *data)
 {
 	t_object	*camera;
@@ -54,11 +60,12 @@ void	init_camera(t_data *data)
 	camera = malloc(1 * sizeof(t_object));
 	camera->obj_name = CAMERA;
 	camera->identifier = C;
-	camera->s_camera.normal_vec = set_tuple(0, 0, 0, 1);
+	camera->position = set_tuple(0, 0, 0, 1);
+	// camera->s_camera.normal_vec = set_tuple(0, 0, 0, 1);
 	camera->s_camera.angle = 90;
 	camera->s_camera.normal_vec = set_tuple(0, 0, 1, 0);
 	calc_image_plane(camera);
 	data->objects[CAMERA] = camera;
 	data->objects[0] = camera;
-	printf("still alive in init_camera!\n");
+	// printf("still alive in init_camera!\n");
 }
