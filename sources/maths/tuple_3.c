@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tuple_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 20:07:41 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/16 12:24:39 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/21 17:48:56 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ float	tuple_dot(t_tuple *a, t_tuple *b)
 {
 	if (a->w == 1 && b->w == 1)
 	{
-		printf("tried to calculate the dot product of a point");
+		printf("tried to calculate the dot product of a point\n");
 		return (nan(""));
 	}
 	return (a->x * b->x + a->y * b->y + a->z * b->z);
@@ -36,7 +36,7 @@ t_tuple	*tuple_cross(t_tuple *a, t_tuple *b)
 	c = malloc(1 * sizeof(t_tuple));
 	if (a->w == 1 || b->w == 1)
 	{
-		printf("tried to calculate the cross product of a point");
+		printf("tried to calculate the cross product of a point\n");
 		return (&(t_tuple){0, 0, 0, 0});
 	}
 	c->x = a->y * b->z - a->z * b->y;

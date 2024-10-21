@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/10/19 14:44:17 by daspring         ###   ########.fr        #
+#    Updated: 2024/10/21 17:40:43 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS			:= 	miniRT.c \
 					sources/canvas/color.c \
 					sources/shapes/camera.c \
 					sources/shapes/plane.c \
+					sources/shapes/sphere.c \
 					sources/maths/angle_utils.c \
 					sources/maths/tuple_1.c \
 					sources/maths/tuple_2.c \

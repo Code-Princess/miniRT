@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/19 15:00:33 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:08:24 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,28 @@ uint32_t	find_hit_pt(t_object **objects, t_ray *ray)
 
 	object_idx = 2;
 	hit_pt_min[0] = 9999.9;
-	hit_pt_min[1] = -1.0;
-	while (objects[object_idx] != NULL)
-	{
-		hit_pt = find_plane_hitpt(objects[object_idx], ray);
-// printf("hit_pt for plane %d: %f\n", object_idx, hit_pt);
-		if (hit_pt < hit_pt_min[0] && hit_pt > 0)
-		{
-			hit_pt_min[0] = hit_pt;
-			hit_pt_min[1] = object_idx;
-		}
-		object_idx++;
-	}
-	return (objects[(int)hit_pt_min[1]]->s_plane.color.pixel_color);
+	hit_pt_min[1] = 2.0;
+
+	hit_pt = find_sphere_hitpt(objects[object_idx], ray);
+// printf("hit_pt: %f\n", hit_pt);
+// print_tuple(ray->direction_vec);
+// 	while (objects[object_idx] != NULL)
+// 	{
+// 		// if (objects[object_idx]->identifier == PL)
+// 			// hit_pt = find_plane_hitpt(objects[object_idx], ray);
+// 		// else if (objects[object_idx]->identifier == SP)
+// 		// 	hit_pt = find_sphere_hitpt(objects[object_idx], ray);
+// // printf("hit_pt for plane %d: %f\n", object_idx, hit_pt);
+// 		if (hit_pt < hit_pt_min[0] && hit_pt > 0)
+// 		{
+// 			hit_pt_min[0] = hit_pt;
+// 			hit_pt_min[1] = object_idx;
+// 		}
+// 		object_idx++;
+// 	}
+	if (hit_pt > 1)
+		return (objects[(int)hit_pt_min[1]]->s_sphere.color.pixel_color);
+	else
+		return (0);
+	// return(objects[object_idx]->s_sphere.color.pixel_color);
 }

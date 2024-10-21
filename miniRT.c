@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:15 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/19 15:01:55 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:59:30 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void	init_data(t_data *data)
 	// error handling for malloc!
 	init_camera(data);
 // printf("still alive in init_data!\n");
-	init_plane(data);
+	// init_plane(data);
+	init_sphere(data);
 }
 
 t_data	*get_data(void)

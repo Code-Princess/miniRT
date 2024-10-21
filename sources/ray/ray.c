@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:48:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/19 15:06:55 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:09:10 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_ray	*create_ray(size_t x_pixel, size_t y_pixel)
 				pixel_coords, \
 				tuple_scale(y_pixel, \
 					&data->objects[CAMERA]->s_camera.s_img_plane.delta_y_vec));
+print_tuple(*pixel_coords);
 	r->origin_pt = data->objects[CAMERA]->position;
 	r->direction_vec = *direction(&r->origin_pt, pixel_coords);
 	return (r);
