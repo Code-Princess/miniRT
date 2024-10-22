@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/21 19:52:00 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:08:14 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "color.h"
 # include "ray.h"
 
-# define WIDTH 100
-# define HEIGHT 100
+# define WIDTH_IN_PIXEL 100
+# define HEIGHT_IN_PIXEL 100
 # define TITLE "miniRT"
 
 # define CANVAS_WIDTH 10.0
@@ -40,7 +40,6 @@ typedef struct s_data
 t_data		*get_data(void);
 void		init_data(t_data *data);
 void		fill_canvas(size_t width, size_t height);
-
 
 void		print_tuple(t_tuple tuple);
 

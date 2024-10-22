@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:48:46 by linda             #+#    #+#             */
-/*   Updated: 2024/10/19 14:59:41 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:18:33 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	init_plane(t_data *data)
 	data->objects[3] = plane;
 	plane = malloc(1 * sizeof(t_object));
 	plane->obj_name = PLANE;
+	plane->identifier = PL;
 	plane->position = set_tuple(10.0, 0.0, 50.0, PT);
 	plane->s_plane.color = set_color(200, 100, 0, 255);
 	plane->s_plane.normal_vec = *tuple_normalize(&(t_tuple){-1.0, 7.0, -3.0, \

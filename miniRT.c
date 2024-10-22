@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:15 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/21 17:59:30 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:15:46 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@ int	main(void)
 	data = get_data();
 	init_data(data);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
-	data->mlx = mlx_init(WIDTH, HEIGHT, TITLE, true);
+	data->mlx = mlx_init(WIDTH_IN_PIXEL, HEIGHT_IN_PIXEL, TITLE, true);
 	if (data->mlx == NULL)
 		return (EXIT_FAILURE);
-	data->image = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	data->image = mlx_new_image(data->mlx, WIDTH_IN_PIXEL, HEIGHT_IN_PIXEL);
 	if (data->image == NULL)
 		return (EXIT_FAILURE);
 	if (mlx_image_to_window(data->mlx, data->image, 0, 0) == -1)
 		return (EXIT_FAILURE);
 // printf("still alive in main!\n");
-	fill_canvas(WIDTH, HEIGHT);
+	fill_canvas(WIDTH_IN_PIXEL, HEIGHT_IN_PIXEL);
 	mlx_loop(data->mlx);
 	mlx_terminate(data->mlx);
 	return (0);
@@ -50,7 +50,7 @@ void	init_data(t_data *data)
 	// error handling for malloc!
 	init_camera(data);
 // printf("still alive in init_data!\n");
-	// init_plane(data);
+	init_plane(data);
 	init_sphere(data);
 }
 
