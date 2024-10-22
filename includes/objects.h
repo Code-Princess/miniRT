@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/22 12:51:58 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:33:01 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef enum e_identifier
 	L,
 	SP,
 	PL,
-	CY
+	CY,
 }	t_identifier;
 
 typedef enum e_obj_name
@@ -34,7 +34,8 @@ typedef enum e_obj_name
 	LIGHT,
 	SPHERE,
 	PLANE,
-	CYLINDER
+	CYLINDER,
+	OBJECT_COUNT,
 }	t_obj_name;
 
 typedef struct s_object
