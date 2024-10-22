@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/22 13:23:13 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:47:52 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,12 @@ uint32_t	find_hit_pt(t_object **objects, t_ray *ray)
 	hit_pt_min[1] = 2.0;
 	while (objects[object_idx] != NULL)
 	{
-		if (objects[object_idx]->identifier == PL)
-			hit_pt = find_plane_hitpt(objects[object_idx], ray);
-		else if (objects[object_idx]->identifier == SP)
-			hit_pt = find_sphere_hitpt(objects[object_idx], ray);
+		if (objects[object_idx]->obj_name <= LIGHT)
+		{
+			object_idx++;
+			continue ;
+		}
+		hit_pt = get_hit_pt_ft()[objects[object_idx]->obj_name](objects[object_idx], ray);
 		if (hit_pt < hit_pt_min[0] && hit_pt > 0)
 		{
 			hit_pt_min[0] = hit_pt;
@@ -68,4 +70,13 @@ uint32_t	find_hit_pt(t_object **objects, t_ray *ray)
 		return (0);
 }
 
+hit_pt_ft	*get_hit_pt_ft(void)
+{
+	static const hit_pt_ft	hit_pt_func[OBJECT_COUNT] = {
+		[PLANE] = &find_plane_hitpt,
+		[SPHERE] = &find_sphere_hitpt,
+	};
+
+	return (hit_pt_ft *)(hit_pt_func);
+}
 

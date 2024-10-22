@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/22 13:33:01 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:09:28 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,20 +78,24 @@ typedef struct s_object
 		struct
 		{
 			t_color	color;
-			t_tuple	normal_vec;
+			t_tuple	axis_vec;
 			float	diameter;
 			float	height;
 		}		s_cylinder;
 	};
 }	t_object;
 
+typedef float (*hit_pt_ft)(t_object *object, t_ray *ray);
+
 void		init_camera(t_data *data);
 void		calc_image_plane(t_object *camera);
 t_tuple		calc_origin(t_object *camera);
 void		init_plane(t_data *data);
 void		init_sphere(t_data *data);
+void		init_cylinder(t_data *data);
 
 uint32_t	find_hit_pt(t_object **objects, t_ray *ray);
+hit_pt_ft	*get_hit_pt_ft(void);
 float		find_sphere_hitpt(t_object *sphere, t_ray *ray);
 float		find_plane_hitpt(t_object *plane, t_ray *ray);
 
