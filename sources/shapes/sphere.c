@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/21 20:32:18 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/22 12:37:50 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <math.h>
 
 #include <stdio.h>
 
@@ -30,37 +31,25 @@ void	init_sphere(t_data *data)
 
 }
 
-
 float	find_sphere_hitpt(t_object *sphere, t_ray *ray)
 {
-	float 		discriminant;
-	float		l_dot_l;
-	float		l_dot_d;
-	t_tuple		ray_origin_to_sphere_pos;
-	float		t_1;
-	float		t_2;
+	float	discriminant;
+	t_tuple *c_q_vec = direction(&ray->origin_pt, &sphere->position);
+	float	a = tuple_dot(&ray->direction_vec, &ray->direction_vec);
+	float	b = -2 * tuple_dot(&ray->direction_vec, c_q_vec);
+	float	c = tuple_dot(c_q_vec, c_q_vec) - pow(sphere->s_sphere.diameter / 2, 2);
 
-	ray_origin_to_sphere_pos = *direction(&ray->origin_pt, &sphere->position);
-// printf("still alive\n");
-	l_dot_d = tuple_dot(&ray_origin_to_sphere_pos, &ray->direction_vec);
-	l_dot_l = tuple_dot(&ray_origin_to_sphere_pos, &ray_origin_to_sphere_pos);
-printf("ray_origin_to_sphere_pos: ");
-print_tuple(ray_origin_to_sphere_pos);
-printf("ray_direction_vec: ");
-print_tuple(ray->direction_vec);
-printf("l_dot_d: %f\n\n\n", l_dot_d);
-
-	discriminant = l_dot_d * l_dot_d - l_dot_l + sphere->s_sphere.diameter * sphere->s_sphere.diameter / 4;
+	discriminant = b * b - 4 * a * c;
 // printf("discriminant: %f\n", discriminant);
 
 	if (discriminant < 0)
 		return (-1);
 	else if (discriminant < 1E-9)
-		return (-l_dot_d);
+		return (-b / 2 / a);
 	else
 	{
-		t_1 = -l_dot_d + discriminant;
-		t_2 = -l_dot_d - discriminant;
+		float t_1 = (-b + sqrt(discriminant)) / 2 / a;
+		float t_2 = (-b - sqrt(discriminant)) / 2 / a;
 		if (t_2 > 1)
 			return (t_2);
 		else
