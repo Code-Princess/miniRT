@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/22 13:08:14 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:56:44 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "color.h"
 # include "ray.h"
 
-# define WIDTH_IN_PIXEL 100
-# define HEIGHT_IN_PIXEL 100
+# define WIDTH_IN_PIXEL 500
+# define HEIGHT_IN_PIXEL 500
 # define TITLE "miniRT"
 
 # define CANVAS_WIDTH 10.0
