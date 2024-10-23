@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/22 16:09:28 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:03:05 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,7 @@ uint32_t	find_hit_pt(t_object **objects, t_ray *ray);
 hit_pt_ft	*get_hit_pt_ft(void);
 float		find_sphere_hitpt(t_object *sphere, t_ray *ray);
 float		find_plane_hitpt(t_object *plane, t_ray *ray);
+float		find_cylinder_hitpt(t_object *cylinder, t_ray *ray);
+
 
 #endif

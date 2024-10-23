@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/22 13:09:42 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:49:26 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_sphere(t_data *data)
 	sphere = malloc(1 * sizeof(t_object));
 	sphere->obj_name = SPHERE;
 	sphere->identifier = SP;
-	sphere->position = set_tuple(0, 0, 20, PT);
+	sphere->position = set_tuple(0, 0, 25, PT);
 	sphere->s_sphere.color = set_color(0, 0, 200, 255);
 	sphere->s_sphere.diameter = 20.0;
 	data->objects[5] = sphere;

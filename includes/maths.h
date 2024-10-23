@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:41:11 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/19 15:01:01 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:32:14 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_tuple	*tuple_scale(float k, t_tuple *a);
 t_tuple	*tuple_normalize(t_tuple *a);
 float	tuple_magni(t_tuple *a);
 float	tuple_dot(t_tuple *a, t_tuple *b);
+float	tuple_dot_self(t_tuple *a);
 t_tuple	*tuple_cross(t_tuple *a, t_tuple *b);
 float	distance(t_tuple *a, t_tuple *b);
 t_tuple	*direction(t_tuple *a, t_tuple *b);

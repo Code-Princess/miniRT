@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tuple_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 20:07:41 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/21 17:48:56 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:55:39 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ float	tuple_dot(t_tuple *a, t_tuple *b)
 		return (nan(""));
 	}
 	return (a->x * b->x + a->y * b->y + a->z * b->z);
+}
+
+float	tuple_dot_self(t_tuple *a)
+{
+	return (tuple_dot(a, a));
 }
 
 /*
