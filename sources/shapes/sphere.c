@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/23 15:49:26 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:33:45 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	init_sphere(t_data *data)
 	sphere->identifier = SP;
 	sphere->position = set_tuple(0, 0, 25, PT);
 	sphere->s_sphere.color = set_color(0, 0, 200, 255);
-	sphere->s_sphere.diameter = 20.0;
+	sphere->s_sphere.diameter = 10.0;
 	data->objects[5] = sphere;
 }
 

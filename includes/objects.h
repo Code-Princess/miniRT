@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/24 13:28:01 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:59:50 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,25 @@ typedef struct s_object
 			t_tuple	axis_vec;
 			float	diameter;
 			float	height;
-		}		s_cylinder;
+			struct
+			{
+				float	discr;
+				float	a;
+				float	b;
+				float	c;
+				float	t_1;
+				float	t_2;
+				t_tuple	*v;
+				t_tuple	*v_a;
+				t_tuple	*delta_p;
+				t_tuple	*temp1;
+				t_tuple	*temp2;
+			};
+		}		s_cy;
 	};
 }	t_object;
 
-typedef float (*hit_pt_ft)(t_object *object, t_ray *ray);
+typedef float	(*t_hit_pt_ft)(t_object *object, t_ray *ray);
 
 void		init_camera(t_data *data);
 void		calc_image_plane(t_object *camera);
@@ -95,7 +109,7 @@ void		init_sphere(t_data *data);
 void		init_cylinder(t_data *data);
 
 uint32_t	find_hit_pt(t_object **objects, t_ray *ray);
-hit_pt_ft	*get_hit_pt_ft(void);
+t_hit_pt_ft	*get_hit_pt_ft(void);
 float		find_sphere_hitpt(t_object *sphere, t_ray *ray);
 float		find_plane_hitpt(t_object *plane, t_ray *ray);
 float		find_cylinder_hitpt(t_object *cylinder, t_ray *ray);

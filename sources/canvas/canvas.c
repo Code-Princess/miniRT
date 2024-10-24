@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/23 15:08:46 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:45:50 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,13 @@ uint32_t	find_hit_pt(t_object **objects, t_ray *ray)
 		return (0);
 }
 
-hit_pt_ft	*get_hit_pt_ft(void)
+t_hit_pt_ft	*get_hit_pt_ft(void)
 {
-	static const hit_pt_ft	hit_pt_func[OBJECT_COUNT] = {
-		[PLANE] = &find_plane_hitpt,
-		[SPHERE] = &find_sphere_hitpt,
+	static const t_hit_pt_ft	hit_pt_func[OBJECT_COUNT] = {\
+		[PLANE] = &find_plane_hitpt, \
+		[SPHERE] = &find_sphere_hitpt, \
 		[CYLINDER] = &find_cylinder_hitpt,
 	};
 
-	return (hit_pt_ft *)(hit_pt_func);
+	return ((t_hit_pt_ft *)(hit_pt_func));
 }
-
