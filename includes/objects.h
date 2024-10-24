@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/15 19:22:38 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:59:50 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECTS_H
 # define OBJECTS_H
 
-#include "maths.h"
-#include "ray.h"
-#include "color.h"
+# include "maths.h"
+# include "ray.h"
+# include "color.h"
 
 typedef enum e_identifier
 {
@@ -24,7 +24,7 @@ typedef enum e_identifier
 	L,
 	SP,
 	PL,
-	CY
+	CY,
 }	t_identifier;
 
 typedef enum e_obj_name
@@ -34,131 +34,84 @@ typedef enum e_obj_name
 	LIGHT,
 	SPHERE,
 	PLANE,
-	CYLINDER
+	CYLINDER,
+	OBJECT_COUNT,
 }	t_obj_name;
-
-// typedef struct s_img_plane
-// {
-// 	t_tuple origin;
-// 	t_tuple delta_x_vec;
-// 	t_tuple delta_y_vec;
-// }		t_img_plane;
-//
-// typedef struct s_camera
-// {
-// 	t_tuple		normal_vec;
-// 	float		angle;
-// 	t_img_plane	img_plane;
-// }		t_camera;
-//
-// typedef struct s_amb_light
-// {
-// 	t_color	color;
-// 	float	brightness;
-// }		t_amb_light;
-//
-// typedef struct s_light
-// {
-// 	// t_color	color; unused in mandatory
-// 	float	brightness;
-// }		t_light;
-//
-// typedef struct s_sphere
-// {
-// 	t_color	color;
-// 	float	diameter;
-// }		t_sphere;
-//
-// typedef struct s_plane
-// {
-// 	t_color	color;
-// 	t_tuple	normal_vec;
-// }		t_plane;
-//
-// typedef struct s_cylinder
-// {
-// 	t_color	color;
-// 	t_tuple	normal_vec;
-// 	float	diameter;
-// 	float	height;
-// }		t_cylinder;
-//
-// typedef union u_spec_membs
-// {
-// 	t_amb_light	amb_light;
-// 	t_camera	camera;
-// 	t_light		light;
-// 	t_sphere	sphere;
-// 	t_plane		plane;
-// 	t_cylinder	cylinder;
-// }	t_spec_membs;
-//
-// typedef struct s_object2
-// {
-// 	t_obj_name		obj_name;
-// 	t_identifier	identifier;
-// 	t_tuple			position;
-// 	t_spec_membs	spec_membs;
-// }	t_object2;
-
-
 
 typedef struct s_object
 {
 	t_obj_name		obj_name;
 	t_identifier	identifier;
 	t_tuple			position;
-	// t_spec_membs	spec_membs;
 	union
 	{
-
 		struct
 		{
 			t_tuple		normal_vec;
 			float		angle;
 			struct
 			{
-				t_tuple origin;
-				t_tuple delta_x_vec;
-				t_tuple delta_y_vec;
+				t_tuple	origin;
+				t_tuple	delta_x_vec;
+				t_tuple	delta_y_vec;
 			}		s_img_plane;
 		}		s_camera;
-
 		struct
 		{
 			t_color	color;
 			float	brightness;
 		}		s_amb_light;
-
 		struct
 		{
-			// t_color	color; unused in mandatory
 			float	brightness;
 		}		s_light;
-
 		struct
 		{
 			t_color	color;
 			float	diameter;
 		}		s_sphere;
-
 		struct
 		{
 			t_color	color;
 			t_tuple	normal_vec;
 		}		s_plane;
-
 		struct
 		{
 			t_color	color;
-			t_tuple	normal_vec;
+			t_tuple	axis_vec;
 			float	diameter;
 			float	height;
-		}		s_cylinder;
+			struct
+			{
+				float	discr;
+				float	a;
+				float	b;
+				float	c;
+				float	t_1;
+				float	t_2;
+				t_tuple	*v;
+				t_tuple	*v_a;
+				t_tuple	*delta_p;
+				t_tuple	*temp1;
+				t_tuple	*temp2;
+			};
+		}		s_cy;
 	};
 }	t_object;
 
-float	find_hit_pt(t_object *objects, t_ray *ray);
-float	find_plane_hitpt(t_object plane, t_ray ray);
+typedef float	(*t_hit_pt_ft)(t_object *object, t_ray *ray);
+
+void		init_camera(t_data *data);
+void		calc_image_plane(t_object *camera);
+t_tuple		calc_origin(t_object *camera);
+void		init_plane(t_data *data);
+void		init_sphere(t_data *data);
+void		init_cylinder(t_data *data);
+
+uint32_t	find_hit_pt(t_object **objects, t_ray *ray);
+t_hit_pt_ft	*get_hit_pt_ft(void);
+float		find_sphere_hitpt(t_object *sphere, t_ray *ray);
+float		find_plane_hitpt(t_object *plane, t_ray *ray);
+float		find_cylinder_hitpt(t_object *cylinder, t_ray *ray);
 
 #endif

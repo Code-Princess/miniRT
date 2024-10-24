@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:15 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/15 20:23:05 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/23 14:34:49 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +19,45 @@
 #include "./MLX42/include/MLX42/MLX42.h"
 #include "./libft/libft.h"
 
-int	main (void)
+int	main(void)
 {
-	t_data		data;
+	t_data		*data;
 
-	init_data(&data);
-	data.mlx = NULL;
-	data.image = NULL;
-	data.mlx = mlx_init(WIDTH, HEIGHT, TITLE, true);
-	if (data.mlx == NULL)
+	data = get_data();
+	init_data(data);
+	mlx_set_setting(MLX_STRETCH_IMAGE, true);
+	data->mlx = mlx_init(WIDTH_IN_PIXEL, HEIGHT_IN_PIXEL, TITLE, true);
+	if (data->mlx == NULL)
 		return (EXIT_FAILURE);
-	data.image = mlx_new_image(data.mlx, WIDTH, HEIGHT);
-	if (data.image == NULL)
+	data->image = mlx_new_image(data->mlx, WIDTH_IN_PIXEL, HEIGHT_IN_PIXEL);
+	if (data->image == NULL)
 		return (EXIT_FAILURE);
-	if (mlx_image_to_window(data.mlx, data.image, 0, 0) == -1)
+	if (mlx_image_to_window(data->mlx, data->image, 0, 0) == -1)
 		return (EXIT_FAILURE);
-	fill_canvas(WIDTH, HEIGHT, &data);
-	mlx_loop(data.mlx);
-	mlx_terminate(data.mlx);
+// printf("still alive in main!\n");
+	fill_canvas(WIDTH_IN_PIXEL, HEIGHT_IN_PIXEL);
+	mlx_loop(data->mlx);
+	mlx_terminate(data->mlx);
 	return (0);
 }
 
 void	init_data(t_data *data)
 {
-	data->objects = ft_calloc(10, sizeof(t_object)); // magic number used for num of array entries
+	int			object_count;
+
+	object_count = 10;
+	data->objects = ft_calloc(object_count, sizeof(t_object *));
 	// error handling for malloc!
 	init_camera(data);
+// printf("still alive in init_data!\n");
 	init_plane(data);
+	init_sphere(data);
+	init_cylinder(data);
+}
+
+t_data	*get_data(void)
+{
+	static t_data	data;
+
+	return (&data);
 }

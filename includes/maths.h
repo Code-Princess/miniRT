@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maths.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:41:11 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/14 17:24:09 by linda            ###   ########.fr       */
+/*   Updated: 2024/10/23 15:32:14 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ typedef struct s_tuple
 	float	x;
 	float	y;
 	float	z;
-	int		w; // w=0 for vector, w=1 for point
+	int		w;
 }		t_tuple;
 
 typedef enum e_tuple_type
@@ -27,17 +27,19 @@ typedef enum e_tuple_type
 	PT
 }		t_tuple_type;
 
-t_tuple	tuple_add(t_tuple a, t_tuple b);
-t_tuple	tuple_subtr(t_tuple a, t_tuple b);
-t_tuple	tuple_neg(t_tuple a);
-t_tuple	tuple_scale(float k, t_tuple a);
-t_tuple	tuple_normalize(t_tuple a);
-float	tuple_magni(t_tuple a);
-float	tuple_dot(t_tuple a, t_tuple b);
-t_tuple	tuple_cross(t_tuple a, t_tuple b);
-float	distance(t_tuple a, t_tuple b);
-t_tuple	direction(t_tuple a, t_tuple b);
+t_tuple	set_tuple(float x, float y, float z, int w);
+t_tuple	*tuple_add(t_tuple *a, t_tuple *b);
+t_tuple	*tuple_subtr(t_tuple *a, t_tuple *b);
+t_tuple	*tuple_neg(t_tuple *a);
+t_tuple	*tuple_scale(float k, t_tuple *a);
+t_tuple	*tuple_normalize(t_tuple *a);
+float	tuple_magni(t_tuple *a);
+float	tuple_dot(t_tuple *a, t_tuple *b);
+float	tuple_dot_self(t_tuple *a);
+t_tuple	*tuple_cross(t_tuple *a, t_tuple *b);
+float	distance(t_tuple *a, t_tuple *b);
+t_tuple	*direction(t_tuple *a, t_tuple *b);
 
-float	deg_to_rad (float angle_deg);
+float	deg_to_rad(float angle_deg);
 
 #endif

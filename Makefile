@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: linda <linda@student.42.fr>                +#+  +:+       +#+         #
+#    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/10/15 19:39:37 by daspring         ###   ########.fr        #
+#    Updated: 2024/10/23 15:03:50 by daspring         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,17 +17,26 @@ LIBMLXDOTA		:= ./MLX42/build/libmlx42.a
 # LIBMLX42		:= ./MLX42/build/libmlx42.a -ldl -lglfw -lm
 LIBMLX42		:= ./MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
 MLX42_URL		:= https://github.com/codam-coding-college/MLX42.git
-MLX42_VERSION	:= v2.3.4
+# MLX42_VERSION	:= v2.4.0
+# MLX42_VERSION	:= v2.3.4
+MLX42_VERSION	:= v2.3.3
 
 INCL			:= -I ./MLX42/include
-DEPENDENCIES	:= ./include/maths.h ./include/miniRT.h
+DEPENDENCIES	:= 	./includes/color.h \
+					./includes/maths.h \
+					./includes/miniRT.h \
+					./includes/objects.h \
+					./includes/ray.h
 
 LIBFTDOTA		:= libft/libft.a
 SRCS			:= 	miniRT.c \
 					sources/ray/ray.c \
 					sources/canvas/canvas.c \
+					sources/canvas/color.c \
 					sources/shapes/camera.c \
 					sources/shapes/plane.c \
+					sources/shapes/sphere.c \
+					sources/shapes/cylinder.c \
 					sources/maths/angle_utils.c \
 					sources/maths/tuple_1.c \
 					sources/maths/tuple_2.c \
@@ -40,9 +49,13 @@ $(NAME): $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
 	@echo "Compiling miniRT ..."
 	cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
 	# cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /users/llacsivy/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
-
+	
+debug: $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
+	@echo "Compiling miniRT ..."
+	cc -g $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o debug
+	
 %.o: %.c $(DEPENDENCIES)
-	cc $(CFLAGS) -c $< -o $@
+	cc -g $(CFLAGS) -c $< -o $@
 
 all: $(LIBMLXDOTA) $(NAME)
 
