@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/23 15:03:05 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:28:01 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,5 @@ hit_pt_ft	*get_hit_pt_ft(void);
 float		find_sphere_hitpt(t_object *sphere, t_ray *ray);
 float		find_plane_hitpt(t_object *plane, t_ray *ray);
 float		find_cylinder_hitpt(t_object *cylinder, t_ray *ray);
-
 
 #endif
