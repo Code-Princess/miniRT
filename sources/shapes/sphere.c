@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/24 15:33:45 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/28 13:53:22 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	init_sphere(t_data *data)
 	sphere->identifier = SP;
 	sphere->position = set_tuple(0, 0, 25, PT);
 	sphere->s_sphere.color = set_color(0, 0, 200, 255);
-	sphere->s_sphere.diameter = 10.0;
+	sphere->s_sphere.radius = 5.0;
 	data->objects[5] = sphere;
 }
 
@@ -68,7 +68,16 @@ static float	calc_discriminant(t_object *sphere, t_ray *ray, \
 	float	c;
 
 	c_q_vec = direction(&ray->origin_pt, &sphere->position);
-	c = tuple_dot(c_q_vec, c_q_vec) - pow(sphere->s_sphere.diameter / 2, 2);
+	c = tuple_dot(c_q_vec, c_q_vec) - pow(sphere->s_sphere.radius, 2);
 	discriminant = b * b - 4 * a * c;
 	return (discriminant);
+}
+t_tuple	*calc_sphere_normal_vec(t_hit_obj *hit_obj, t_ray *ray)
+{
+	t_tuple	*dir_vec;
+	t_tuple	*normal_vec;
+
+	dir_vec = direction(&hit_obj->obj->position, ray_at_t(*ray, hit_obj->pt));
+	normal_vec = tuple_scale(hit_obj->obj->s_sphere.radius, dir_vec);
+	return (normal_vec);
 }
