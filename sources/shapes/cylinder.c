@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:55:05 by daspring          #+#    #+#             */
-/*   Updated: 2024/10/28 17:03:33 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/28 21:42:20 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,19 @@ static int	pt_is_between_slabs(float t, t_ray *ray, t_object *cylinder)
 
 t_tuple			*calc_cylinder_normal_vec(t_hit_obj *hit_obj, t_ray *ray)
 {
-	t_tuple	*mock_normal_vec = malloc(1 * sizeof(t_tuple));
+	t_tuple	*normal_vec;
+	t_tuple *normalized_normal_vec;
+	t_tuple	*pos_q_dir_vec;
+	t_tuple	*q;
+	t_tuple	*subtrahend;
+	float	scale_dir;
 
-	*mock_normal_vec = set_tuple(1, 0, 0, 1);
-	return (mock_normal_vec);
+	
+	q = ray_at_t(*ray, hit_obj->pt);
+	pos_q_dir_vec = direction(&hit_obj->obj->position, q);
+	scale_dir = tuple_dot(&hit_obj->obj->s_cy.axis_vec, pos_q_dir_vec);
+	subtrahend = tuple_scale(scale_dir, &hit_obj->obj->s_cy.axis_vec);
+	normal_vec = direction(&hit_obj->obj->position, ray_at_t(*ray, hit_obj->pt));
+	normalized_normal_vec = tuple_normalize(normal_vec);
+	return (normalized_normal_vec);
 }
