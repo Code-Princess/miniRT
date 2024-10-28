@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:55:05 by daspring          #+#    #+#             */
-/*   Updated: 2024/10/24 17:38:35 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/28 17:03:33 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,12 @@ static int	pt_is_between_slabs(float t, t_ray *ray, t_object *cylinder)
 		return (1);
 	else
 		return (0);
+}
+
+t_tuple			*calc_cylinder_normal_vec(t_hit_obj *hit_obj, t_ray *ray)
+{
+	t_tuple	*mock_normal_vec = malloc(1 * sizeof(t_tuple));
+
+	*mock_normal_vec = set_tuple(1, 0, 0, 1);
+	return (mock_normal_vec);
 }

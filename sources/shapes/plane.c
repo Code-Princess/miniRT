@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:48:46 by linda             #+#    #+#             */
-/*   Updated: 2024/10/22 13:18:33 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/28 16:57:16 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,9 @@ float	find_plane_hitpt(t_object *plane, t_ray *ray)
 							tuple_subtr(&plane->position, &ray->origin_pt));
 	t_denominator = tuple_dot(&plane->s_plane.normal_vec, &ray->direction_vec);
 	return (t_enumerator / t_denominator);
+}
+
+t_tuple	*calc_plane_normal_vec(t_hit_obj *hit_obj, t_ray *ray)
+{
+	return (&hit_obj->obj->s_plane.normal_vec);
 }

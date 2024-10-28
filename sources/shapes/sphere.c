@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/28 13:53:22 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/28 17:31:32 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ t_tuple	*calc_sphere_normal_vec(t_hit_obj *hit_obj, t_ray *ray)
 	t_tuple	*dir_vec;
 	t_tuple	*normal_vec;
 
+// printf("still alive in calc_sphere_normal_vec\n\n");
 	dir_vec = direction(&hit_obj->obj->position, ray_at_t(*ray, hit_obj->pt));
-	normal_vec = tuple_scale(hit_obj->obj->s_sphere.radius, dir_vec);
+	normal_vec = tuple_scale(1 / hit_obj->obj->s_sphere.radius, dir_vec);
 	return (normal_vec);
 }
