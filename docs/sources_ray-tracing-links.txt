@@ -23,3 +23,6 @@ https://graphicscodex.com/app/app.html
 
 Ray tracing II Cylinder lecture 2
 https://drive.google.com/file/d/1tNbA806LqoVBORrRx8u2_IAM-lXTdHC7/view?usp=drive_link
+
+Cylinder normals
+https://drive.google.com/file/d/1SaQIrOHFfqTTAun1DoW9ZCIUI0butTfU/view?usp=drive_link
