@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tuple_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:53:23 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/19 15:02:14 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/28 13:46:58 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ float	distance(t_tuple *a, t_tuple *b)
 	return (tuple_magni(tuple_subtr(a, b)));
 }
 
-t_tuple	*direction(t_tuple *a, t_tuple *b)
+t_tuple	*direction(t_tuple *from, t_tuple *to)
 {
-	return (tuple_subtr(b, a));
+	return (tuple_subtr(to, from));
 }
