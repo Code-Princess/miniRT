@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:55:05 by daspring          #+#    #+#             */
-/*   Updated: 2024/10/29 22:55:31 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/29 23:06:36 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,22 @@ void	init_cylinder(t_data *data)
 	else if (data->objects[CAMERA]->position.y > cylinder->position.y)
 		cylinder->s_cy.pos_rel_to_camera = ABOVE;
 	data->objects[6] = cylinder;
+	cylinder = malloc(1 * sizeof(t_object));
+	cylinder->obj_name = CYLINDER;
+	cylinder->identifier = CY;
+	// cylinder->position = set_tuple(0, -5, 18, PT);
+	cylinder->position = set_tuple(6, -7, 10, PT);
+	cylinder->s_cy.color = set_color(100, 0, 150, 255);
+	cylinder->s_cy.axis_vec = set_tuple(0.0, 1.0, 0.0, VEC);
+	cylinder->s_cy.axis_vec = *tuple_normalize(&cylinder->s_cy.axis_vec);
+	cylinder->s_cy.radius = 2.0;
+	cylinder->s_cy.height = 5.0;
+	cylinder->s_cy.pos_rel_to_camera = BETWEEN;
+	if (data->objects[CAMERA]->position.y < cylinder->position.y)
+		cylinder->s_cy.pos_rel_to_camera = BELOW;
+	else if (data->objects[CAMERA]->position.y > cylinder->position.y)
+		cylinder->s_cy.pos_rel_to_camera = ABOVE;
+	data->objects[7] = cylinder;
 }
 
 float	find_cylinder_hitpt(t_object *cy, t_ray *ray)
@@ -133,20 +149,20 @@ t_tuple	*calc_cylinder_normal_vec(t_hit_obj *cy, t_ray *ray)
 
 // printf("cy->obj->s_cy.pos_rel_to_camera: %d\n", cy->obj->s_cy.pos_rel_to_camera);
 
-	// if (cy->obj->s_cy.pos_rel_to_camera == BELOW)
-	// {
-	// 	t_object	*bottom_plane;
-	// 	float		t;
+// 	if (cy->obj->s_cy.pos_rel_to_camera == BELOW)
+// 	{
+// 		t_object	*bottom_plane;
+// 		float		t;
 
-	// 	bottom_plane = create_plane(cy->obj->position, set_color(0,0,0,0), cy->obj->s_cy.axis_vec);
-	// 	t = find_plane_hitpt(bottom_plane, ray);
-	// 	if (t - cy->t < 1E-9)
-	// 	{
-	// 		return (tuple_neg(&cy->obj->s_cy.axis_vec));
-	// 	}
-	// }
-	// else if (cy->obj->s_cy.pos_rel_to_camera == ABOVE)
-	// {
+// 		bottom_plane = create_plane(cy->obj->position, set_color(0,0,0,0), cy->obj->s_cy.axis_vec);
+// 		t = find_plane_hitpt(bottom_plane, ray);
+// 		if (t - cy->t < 1E-9)
+// 		{
+// 			return (tuple_neg(&cy->obj->s_cy.axis_vec));
+// 		}
+// 	}
+// 	else if (cy->obj->s_cy.pos_rel_to_camera == ABOVE)
+// 	{
 // 		t_object	*top_plane;
 // 		t_tuple 	*p_top;
 // 		float		t;
@@ -162,7 +178,7 @@ t_tuple	*calc_cylinder_normal_vec(t_hit_obj *cy, t_ray *ray)
 // 			return (&cy->obj->s_cy.axis_vec);
 // 		}
 
-	// }
+// 	}
 // printf("alive in calc_cylinder_normal_vec\n");
 		pos_q_dir_vec = direction(&cy->obj->position, ray_at_t(*ray, cy->t));
 		scale_dir = tuple_dot(&cy->obj->s_cy.axis_vec, pos_q_dir_vec);
