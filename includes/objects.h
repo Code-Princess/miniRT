@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/28 16:59:06 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/29 17:28:56 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct s_object
 		{
 			t_color	color;
 			t_tuple	axis_vec;
-			float	diameter;
+			float	radius;
 			float	height;
 			struct
 			{
@@ -112,6 +112,7 @@ void			init_camera(t_data *data);
 void			calc_image_plane(t_object *camera);
 t_tuple			calc_origin(t_object *camera);
 void			init_plane(t_data *data);
+t_object		*create_plane(t_tuple position, t_color color, t_tuple normal_vec);
 void			init_sphere(t_data *data);
 void			init_cylinder(t_data *data);
 
@@ -122,6 +123,11 @@ t_get_normal_ft	*get_normal_vec_ft(void);
 float			find_sphere_hitpt(t_object *sphere, t_ray *ray);
 float			find_plane_hitpt(t_object *plane, t_ray *ray);
 float			find_cylinder_hitpt(t_object *cylinder, t_ray *ray);
+float			find_cylinder_lateral_hitpt(t_object *cy, t_ray *ray);
+float			find_cylinder_base_hitpt(t_object *cy, t_ray *ray);
+int				pt_is_between_slabs(float t, t_ray *ray, t_object *cylinder);
+int				pt_is_on_top(t_ray *ray, t_object *cylinder);
+int				pt_is_on_bottom(t_ray *ray, t_object *cylinder);
 
 t_tuple			*calc_sphere_normal_vec(t_hit_obj *hit_obj, t_ray *ray);
 t_tuple			*calc_plane_normal_vec(t_hit_obj *hit_obj, t_ray *ray);
