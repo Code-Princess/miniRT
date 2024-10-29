@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/28 17:31:32 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/29 21:13:12 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,13 @@ static float	calc_discriminant(t_object *sphere, t_ray *ray, \
 	discriminant = b * b - 4 * a * c;
 	return (discriminant);
 }
+
 t_tuple	*calc_sphere_normal_vec(t_hit_obj *hit_obj, t_ray *ray)
 {
 	t_tuple	*dir_vec;
 	t_tuple	*normal_vec;
 
-// printf("still alive in calc_sphere_normal_vec\n\n");
-	dir_vec = direction(&hit_obj->obj->position, ray_at_t(*ray, hit_obj->pt));
+	dir_vec = direction(&hit_obj->obj->position, ray_at_t(*ray, hit_obj->t));
 	normal_vec = tuple_scale(1 / hit_obj->obj->s_sphere.radius, dir_vec);
 	return (normal_vec);
 }

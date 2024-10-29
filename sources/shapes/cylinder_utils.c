@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 11:25:29 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/29 18:01:02 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/29 22:54:35 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

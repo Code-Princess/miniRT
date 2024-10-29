@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:04:01 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/28 16:39:51 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/29 21:05:52 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 // # include "./objects.h"
 
-typedef struct s_hit_obj t_hit_obj;
-typedef struct s_ray t_ray;
+typedef struct s_hit_obj	t_hit_obj;
+typedef struct s_ray		t_ray;
 
 typedef enum e_colors
 {
