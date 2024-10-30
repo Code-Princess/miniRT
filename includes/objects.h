@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/29 22:21:20 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/30 13:16:03 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ typedef enum e_obj_name
 	OBJECT_COUNT,
 }	t_obj_name;
 
-typedef enum e_rel_position
-{
-	ABOVE,
-	BETWEEN,
-	BELOW,
-}	t_rel_position;
+// typedef enum e_rel_position
+// {
+// 	ABOVE,
+// 	BETWEEN,
+// 	BELOW,
+// }	t_rel_position;
 
 typedef struct s_object
 {
@@ -88,7 +88,6 @@ typedef struct s_object
 			t_tuple	axis_vec;
 			float	radius;
 			float	height;
-			t_rel_position		pos_rel_to_camera;
 			struct
 			{
 				float	discr;
@@ -116,29 +115,33 @@ typedef struct s_hit_obj
 typedef float	(*t_hit_pt_ft_array)(t_object *object, t_ray *ray);
 typedef t_tuple	*(*t_get_normal_ft_array)(t_hit_obj *hit_obj, t_ray *ray);
 
-void			init_camera(t_data *data);
-void			calc_image_plane(t_object *camera);
-t_tuple			calc_origin(t_object *camera);
-void			init_plane(t_data *data);
-t_object		*create_plane(t_tuple position, t_color color, t_tuple normal_vec);
-void			init_sphere(t_data *data);
-void			init_cylinder(t_data *data);
+void					init_camera(t_data *data);
+void					calc_image_plane(t_object *camera);
+t_tuple					calc_origin(t_object *camera);
+void					init_plane(t_data *data);
+t_object				*create_plane(t_tuple position, t_color color, \
+										t_tuple normal_vec);
+void					init_sphere(t_data *data);
+void					init_cylinder(t_data *data);
 
-t_hit_obj		*find_hit_pt(t_object **objects, t_ray *ray);
-// uint32_t	find_hit_pt(t_object **objects, t_ray *ray);
+t_hit_obj				*find_hit_pt(t_object **objects, t_ray *ray);
 t_hit_pt_ft_array		*get_hit_pt_ft(void);
 t_get_normal_ft_array	*get_normal_vec_ft(void);
-float			find_sphere_hitpt(t_object *sphere, t_ray *ray);
-float			find_plane_hitpt(t_object *plane, t_ray *ray);
-float			find_cylinder_hitpt(t_object *cylinder, t_ray *ray);
-float			find_cylinder_lateral_hitpt(t_object *cy, t_ray *ray);
-float			find_cylinder_base_hitpt(t_object *cy, t_ray *ray);
-int				pt_is_between_slabs(float t, t_ray *ray, t_object *cylinder);
-int				pt_is_on_top(t_ray *ray, t_object *cylinder);
-int				pt_is_on_bottom(t_ray *ray, t_object *cylinder);
+float					find_sphere_hitpt(t_object *sphere, t_ray *ray);
+float					find_plane_hitpt(t_object *plane, t_ray *ray);
+float					find_cylinder_hitpt(t_object *cylinder, t_ray *ray);
+float					find_cylinder_lateral_hitpt(t_object *cy, t_ray *ray);
+float					find_cylinder_base_hitpt(t_object *cy, t_ray *ray);
+int						pt_is_between_slabs(float t, t_ray *ray, \
+											t_object *cylinder);
+float					pt_is_on_top(t_ray *ray, t_object *cylinder);
+float					pt_is_on_bottom(t_ray *ray, t_object *cylinder);
 
-t_tuple			*calc_sphere_normal_vec(t_hit_obj *hit_obj, t_ray *ray);
-t_tuple			*calc_plane_normal_vec(t_hit_obj *hit_obj, t_ray *ray);
-t_tuple			*calc_cylinder_normal_vec(t_hit_obj *hit_obj, t_ray *ray);
+t_tuple					*calc_sphere_normal_vec(t_hit_obj *hit_obj, t_ray *ray);
+t_tuple					*calc_plane_normal_vec(t_hit_obj *hit_obj, t_ray *ray);
+t_tuple					*calc_cylinder_normal_vec(t_hit_obj *hit_obj, \
+													t_ray *ray);
+t_tuple					*calc_cylinder_lateral_normal_vec(t_hit_obj *cy, \
+															t_ray *ray);
 
 #endif

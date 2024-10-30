@@ -6,7 +6,7 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/10/29 11:26:00 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/10/30 13:07:58 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS			:= 	miniRT.c \
 					sources/shapes/sphere.c \
 					sources/shapes/cylinder.c \
 					sources/shapes/cylinder_utils.c \
+					sources/shapes/cylinder_hitpoint.c \
 					sources/maths/angle_utils.c \
 					sources/maths/tuple_1.c \
 					sources/maths/tuple_2.c \

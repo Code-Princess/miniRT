@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/29 23:01:40 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/30 12:40:34 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "color.h"
 # include "ray.h"
 
-# define WIDTH_IN_PIXEL 500
-# define HEIGHT_IN_PIXEL 500
+# define WIDTH_IN_PIXEL 200
+# define HEIGHT_IN_PIXEL 200
 # define TITLE "miniRT"
 
 # define CANVAS_WIDTH 10.0
