@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:55:05 by daspring          #+#    #+#             */
-/*   Updated: 2024/10/30 13:09:08 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/30 18:22:22 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "../../includes/miniRT.h"
 #include "../../includes/objects.h"
 #include "../../includes/ray.h"
+#include "../../includes/color.h"
 
 void	init_cylinder(t_data *data)
 {
@@ -27,21 +28,23 @@ void	init_cylinder(t_data *data)
 	cylinder->obj_name = CYLINDER;
 	cylinder->identifier = CY;
 	cylinder->position = set_tuple(-7, 5, 15, PT);
-	cylinder->s_cy.color = set_color(100, 0, 150, 255);
+	cylinder->color = set_color(100, 0, 150, 255);
 	cylinder->s_cy.axis_vec = set_tuple(0.0, 1.0, 0.0, VEC);
 	cylinder->s_cy.axis_vec = *tuple_normalize(&cylinder->s_cy.axis_vec);
 	cylinder->s_cy.radius = 2.0;
 	cylinder->s_cy.height = 5.0;
+	cylinder->material = set_material(0.2, 0.7, 0.7, 50);
 	data->objects[6] = cylinder;
 	cylinder = malloc(1 * sizeof(t_object));
 	cylinder->obj_name = CYLINDER;
 	cylinder->identifier = CY;
 	cylinder->position = set_tuple(6, -7, 15, PT);
-	cylinder->s_cy.color = set_color(100, 0, 150, 255);
+	cylinder->color = set_color(100, 0, 150, 255);
 	cylinder->s_cy.axis_vec = set_tuple(0.0, 1.0, 0.0, VEC);
 	cylinder->s_cy.axis_vec = *tuple_normalize(&cylinder->s_cy.axis_vec);
 	cylinder->s_cy.radius = 2.0;
 	cylinder->s_cy.height = 5.0;
+	cylinder->material = set_material(0.2, 0.7, 0.7, 150);
 	data->objects[7] = cylinder;
 }
 

@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/29 21:13:12 by daspring         ###   ########.fr       */
+/*   Updated: 2024/10/30 18:22:15 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 
 #include "../../includes/objects.h"
+#include "../../includes/color.h"
 
 static float	calc_discriminant(t_object *sphere, t_ray *ray, \
 									float a, float b);
@@ -28,8 +29,9 @@ void	init_sphere(t_data *data)
 	sphere->obj_name = SPHERE;
 	sphere->identifier = SP;
 	sphere->position = set_tuple(0, 0, 25, PT);
-	sphere->s_sphere.color = set_color(0, 0, 200, 255);
+	sphere->color = set_color(0, 0, 200, 255);
 	sphere->s_sphere.radius = 5.0;
+	sphere->material = set_material(0.2, 0.7, 0.7, 100);
 	data->objects[5] = sphere;
 }
 

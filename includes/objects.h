@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/30 13:16:03 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/30 18:19:45 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "maths.h"
 # include "ray.h"
 # include "color.h"
+
+// typedef union u_color	t_color;
 
 typedef enum e_identifier
 {
@@ -38,18 +40,21 @@ typedef enum e_obj_name
 	OBJECT_COUNT,
 }	t_obj_name;
 
-// typedef enum e_rel_position
-// {
-// 	ABOVE,
-// 	BETWEEN,
-// 	BELOW,
-// }	t_rel_position;
+typedef struct s_material
+{
+	float	ambient;
+	float	diffuse;
+	float	specular;
+	int		shininess;
+}				t_material;
 
 typedef struct s_object
 {
 	t_obj_name		obj_name;
 	t_identifier	identifier;
 	t_tuple			position;
+	t_color			color;
+	t_material		material;
 	union
 	{
 		struct
@@ -65,7 +70,7 @@ typedef struct s_object
 		}		s_camera;
 		struct
 		{
-			t_color	color;
+			// t_color	color;
 			float	brightness;
 		}		s_amb_light;
 		struct
@@ -74,17 +79,17 @@ typedef struct s_object
 		}		s_light;
 		struct
 		{
-			t_color	color;
+			// t_color	color;
 			float	radius;
 		}		s_sphere;
 		struct
 		{
-			t_color	color;
+			// t_color	color;
 			t_tuple	normal_vec;
 		}		s_plane;
 		struct
 		{
-			t_color	color;
+			// t_color	color;
 			t_tuple	axis_vec;
 			float	radius;
 			float	height;
