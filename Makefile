@@ -6,7 +6,7 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/10/30 13:07:58 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/10/31 16:56:32 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,9 @@ SRCS			:= 	miniRT.c \
 					sources/ray/ray.c \
 					sources/canvas/canvas.c \
 					sources/canvas/color.c \
+					sources/canvas/lighting.c \
 					sources/shapes/camera.c \
+					sources/shapes/light.c \
 					sources/shapes/plane.c \
 					sources/shapes/sphere.c \
 					sources/shapes/cylinder.c \

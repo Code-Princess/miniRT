@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/30 13:15:01 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/31 17:13:22 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ void	fill_canvas(size_t width, size_t height)
 		{
 			ray = create_ray(x_pixel, y_pixel);
 			hit_obj = find_hit_pt(data->objects, ray);
+			// mlx_put_pixel(data->image, x_pixel, y_pixel, \
+			// 				calc_pixel_color(hit_obj, ray));
 			mlx_put_pixel(data->image, x_pixel, y_pixel, \
-							calc_pixel_color(hit_obj, ray));
+							calc_pixel_color(hit_obj, ray, data));
 			x_pixel++;
 		}
 		y_pixel++;
@@ -74,7 +76,20 @@ t_hit_obj	*find_hit_pt(t_object **objects, t_ray *ray)
 		// return (objects[(int)hit_pt_min[1]]->s_sphere.color.pixel_color);
 // printf("hit_obj->pt < 1\n");
 
-uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray)
+// uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray)
+// {
+// 	t_tuple	*normal_vec;
+// 	t_color	color;
+
+// 	if (hit_obj == NULL)
+// 		return (2345678);
+// 	normal_vec = get_normal_vec_ft()[hit_obj->obj->obj_name](hit_obj, ray);
+// 	color = set_color((normal_vec->x + 1) / 2 * 255, \
+// 			(normal_vec->y + 1) / 2 * 255, (normal_vec->z + 1) / 2 * 255, 255);
+// 	return (color.pixel_color);
+// }
+
+uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 {
 	t_tuple	*normal_vec;
 	t_color	color;
@@ -82,8 +97,9 @@ uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray)
 	if (hit_obj == NULL)
 		return (2345678);
 	normal_vec = get_normal_vec_ft()[hit_obj->obj->obj_name](hit_obj, ray);
-	color = set_color((normal_vec->x + 1) / 2 * 255, \
-			(normal_vec->y + 1) / 2 * 255, (normal_vec->z + 1) / 2 * 255, 255);
+	// color = set_color((normal_vec->x + 1) / 2 * 255, \
+	// 		(normal_vec->y + 1) / 2 * 255, (normal_vec->z + 1) / 2 * 255, 255);
+	color = lighting(*hit_obj, data->objects[8], *ray);
 	return (color.pixel_color);
 }
 
