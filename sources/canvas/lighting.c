@@ -6,7 +6,7 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:17:20 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/04 17:20:03 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/04 18:05:32 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,13 @@ t_color lighting(t_hit_obj *hit_obj, t_object *light, t_ray *ray)
 			specular_comp = color_scale(hit_obj->obj->material.specular * factor, light->s_light.intensity);
 		}
 	}
+	ambient_comp = set_color(0,0,0,255);
+	diffuse_comp = set_color(0,0,0,255);
+	// specular_comp = set_color(0,0,0,255);
 	result_color = color_add(ambient_comp, diffuse_comp);
 	result_color = color_add(result_color, specular_comp);
+	// result_color = color_add(set_color(0,0,0,255), diffuse_comp);
+	// result_color = color_add(result_color, set_color(0,0,0,255));
 	// result_color = set_color(ambient_comp, diffuse_comp, specular_comp, 255); //// How to make a color?
 	return (result_color);
 }
