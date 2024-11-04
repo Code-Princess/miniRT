@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 14:42:09 by daspring          #+#    #+#             */
-/*   Updated: 2024/10/30 18:00:17 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:51:56 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,48 @@ t_material	set_material(float ambient, float diffuse, float specular, int shinin
 	material.specular = specular;
 	material.specular = specular;
 	return (material);
+}
+
+t_color	color_mult(t_color a, t_color b)
+{
+	t_color result;
+
+	result.colors[RED] = a.colors[RED] * b.colors[RED] / 255;
+	result.colors[GREEN] = a.colors[GREEN] * b.colors[GREEN] / 255;
+	result.colors[BLUE] = a.colors[BLUE] * b.colors[BLUE] / 255;
+	result.colors[OPAC] = a.colors[OPAC] * b.colors[OPAC] / 255;
+	return (result);
+}
+
+t_color	color_add(t_color a, t_color b)
+{
+	t_color result;
+
+	result.colors[RED] = a.colors[RED] + b.colors[RED];
+	result.colors[GREEN] = a.colors[GREEN] + b.colors[GREEN];
+	result.colors[BLUE] = a.colors[BLUE] + b.colors[BLUE];
+	result.colors[OPAC] = a.colors[OPAC] + b.colors[OPAC];
+	return (result);
+}
+
+t_color	color_subtr(t_color minuend, t_color subtrahend)
+{
+	t_color result;
+
+	result.colors[RED] = minuend.colors[RED] - subtrahend.colors[RED];
+	result.colors[GREEN] = minuend.colors[GREEN] - subtrahend.colors[GREEN];
+	result.colors[BLUE] = minuend.colors[BLUE] - subtrahend.colors[BLUE];
+	result.colors[OPAC] = minuend.colors[OPAC] - subtrahend.colors[OPAC];
+	return (result);
+}
+
+t_color	color_scale(float k, t_color a)
+{
+	t_color result;
+
+	result.colors[RED] = a.colors[RED] * k;
+	result.colors[GREEN] = a.colors[GREEN] * k;
+	result.colors[BLUE] = a.colors[BLUE] * k;
+	result.colors[OPAC] = a.colors[OPAC] * k;
+	return (result);
 }

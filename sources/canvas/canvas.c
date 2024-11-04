@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/31 17:13:22 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:18:45 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 	normal_vec = get_normal_vec_ft()[hit_obj->obj->obj_name](hit_obj, ray);
 	// color = set_color((normal_vec->x + 1) / 2 * 255, \
 	// 		(normal_vec->y + 1) / 2 * 255, (normal_vec->z + 1) / 2 * 255, 255);
-	color = lighting(*hit_obj, data->objects[8], *ray);
+	color = lighting(hit_obj, data->objects[8], ray);
 	return (color.pixel_color);
 }
 

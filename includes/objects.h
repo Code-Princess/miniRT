@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/31 16:57:34 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:55:43 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct s_object
 		struct
 		{
 			float	brightness;
+			t_color intensity;
 		}		s_light;
 		struct
 		{

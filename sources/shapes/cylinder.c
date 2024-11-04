@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:55:05 by daspring          #+#    #+#             */
-/*   Updated: 2024/10/30 18:22:22 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:06:45 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_tuple	*calc_cylinder_lateral_normal_vec(t_hit_obj *cy, t_ray *ray)
 	t_tuple	*subtrahend;
 	float	scale_dir;
 
-	pos_q_dir_vec = direction(&cy->obj->position, ray_at_t(*ray, cy->t));
+	pos_q_dir_vec = direction(&cy->obj->position, ray_at_t(ray, cy->t));
 	scale_dir = tuple_dot(&cy->obj->s_cy.axis_vec, pos_q_dir_vec);
 	subtrahend = tuple_scale(scale_dir, &cy->obj->s_cy.axis_vec);
 	long_normal_vec = tuple_subtr(pos_q_dir_vec, subtrahend);

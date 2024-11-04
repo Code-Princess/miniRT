@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/31 16:50:54 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:06:38 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ t_tuple	*calc_sphere_normal_vec(t_hit_obj *hit_obj, t_ray *ray)
 	t_tuple	*dir_vec;
 	t_tuple	*normal_vec;
 
-	dir_vec = direction(&hit_obj->obj->position, ray_at_t(*ray, hit_obj->t));
+	dir_vec = direction(&hit_obj->obj->position, ray_at_t(ray, hit_obj->t));
 	normal_vec = tuple_scale(1 / hit_obj->obj->s_sphere.radius, dir_vec);
 	return (normal_vec);
 }
