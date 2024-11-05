@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:17:20 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/05 18:00:58 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/05 19:32:03 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_color	lighting_ambient(t_hit_obj *hit_obj, t_object *light, t_ray *ray)
 	return (ambient_comp);
 }
 
+// make hit_pt, normal_vec and (reflect_vec(maybe not, if we want to imlpement multiple lights) part of the hit_obj struct?
 t_color	lighting(t_hit_obj *hit_obj, t_object *light, t_ray *ray)
 {
 	t_color	ambient_comp;
@@ -65,11 +66,10 @@ t_color	lighting(t_hit_obj *hit_obj, t_object *light, t_ray *ray)
 		t_tuple	*dir_pt_light;
 		dir_pt_light = direction(ray_at_t(ray, hit_obj->t), &light->position);
 		reflect_vec = calc_reflect_vec(dir_pt_light, normal_vec);
-		reflect_vec = tuple_normalize(reflect_vec);
-		reflect_dot_eye = tuple_dot(reflect_vec, tuple_normalize(&ray->direction_vec));
-		if (hit_obj->obj->obj_name == SPHERE)
-		{
-		}
+		reflect_dot_eye = tuple_dot(tuple_normalize(reflect_vec), tuple_normalize(&ray->direction_vec));
+		// if (hit_obj->obj->obj_name == SPHERE)
+		// {
+		// }
 		if (reflect_dot_eye <= 0)
 		{
 			specular_comp = set_color(0, 0, 0, 1);
