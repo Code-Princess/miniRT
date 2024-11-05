@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/28 17:31:32 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:06:38 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 
 #include "../../includes/objects.h"
+#include "../../includes/color.h"
 
 static float	calc_discriminant(t_object *sphere, t_ray *ray, \
 									float a, float b);
@@ -28,8 +29,9 @@ void	init_sphere(t_data *data)
 	sphere->obj_name = SPHERE;
 	sphere->identifier = SP;
 	sphere->position = set_tuple(0, 0, 25, PT);
-	sphere->s_sphere.color = set_color(0, 0, 200, 255);
+	sphere->color = set_color(255, 0.2 * 255, 255, 255);
 	sphere->s_sphere.radius = 5.0;
+	sphere->material = set_material(0.2, 0.7, 0.7, 100);
 	data->objects[5] = sphere;
 }
 
@@ -72,13 +74,13 @@ static float	calc_discriminant(t_object *sphere, t_ray *ray, \
 	discriminant = b * b - 4 * a * c;
 	return (discriminant);
 }
+
 t_tuple	*calc_sphere_normal_vec(t_hit_obj *hit_obj, t_ray *ray)
 {
 	t_tuple	*dir_vec;
 	t_tuple	*normal_vec;
 
-// printf("still alive in calc_sphere_normal_vec\n\n");
-	dir_vec = direction(&hit_obj->obj->position, ray_at_t(*ray, hit_obj->pt));
+	dir_vec = direction(&hit_obj->obj->position, ray_at_t(ray, hit_obj->t));
 	normal_vec = tuple_scale(1 / hit_obj->obj->s_sphere.radius, dir_vec);
 	return (normal_vec);
 }

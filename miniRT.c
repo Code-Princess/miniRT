@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:15 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/28 16:55:21 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/10/31 16:57:57 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	init_data(t_data *data)
 	init_plane(data);
 	init_sphere(data);
 	init_cylinder(data);
+	init_light(data);
 }
 
 t_data	*get_data(void)

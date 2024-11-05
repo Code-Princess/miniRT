@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:48:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/22 13:20:53 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:07:16 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_ray	*create_ray(size_t x_pixel, size_t y_pixel)
 }
 
 // E + t * d
-t_tuple	*ray_at_t(t_ray ray, float t)
+t_tuple	*ray_at_t(t_ray *ray, float t)
 {
-	return (tuple_add(&ray.origin_pt, tuple_scale(t, &ray.direction_vec)));
+	return (tuple_add(&ray->origin_pt, tuple_scale(t, &ray->direction_vec)));
 }
