@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:55:05 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/05 14:44:03 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:52:42 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ void	init_cylinder(t_data *data)
 	cylinder = malloc(1 * sizeof(t_object));
 	cylinder->obj_name = CYLINDER;
 	cylinder->identifier = CY;
-	cylinder->position = set_tuple(0, 5, 15, PT);
+	cylinder->position = set_tuple(-7, -3, 15, PT);
 	cylinder->color = set_color(1, 1, 1, 1);
-	// cylinder->color = set_color(0.3, 0, 0.5, 1);
 	cylinder->s_cy.axis_vec = set_tuple(0.0, 1.0, 0.0, VEC);
 	cylinder->s_cy.axis_vec = *tuple_normalize(&cylinder->s_cy.axis_vec);
 	cylinder->s_cy.radius = 2.0;

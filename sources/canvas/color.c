@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 14:42:09 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/05 11:26:20 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/05 16:41:23 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_material	set_material(float ambient, float diffuse, float specular, \
 	material.ambient = ambient;
 	material.diffuse = diffuse;
 	material.specular = specular;
-	material.specular = specular;
+	material.shininess = shininess;
 	return (material);
 }
 
@@ -44,7 +44,7 @@ t_color	color_mult(t_color a, t_color b)
 	result.colors_float[GREEN] = a.colors_float[GREEN] * b.colors_float[GREEN];
 	result.colors_float[BLUE] = a.colors_float[BLUE] * b.colors_float[BLUE];
 	result.colors_float[OPAC] = a.colors_float[OPAC] * b.colors_float[OPAC];
-	result.colors_float[OPAC] = 1;
+	// result.colors_float[OPAC] = 1;
 	return (result);
 }
 
@@ -56,7 +56,7 @@ t_color	color_add(t_color a, t_color b)
 	result.colors_float[GREEN] = a.colors_float[GREEN] + b.colors_float[GREEN];
 	result.colors_float[BLUE] = a.colors_float[BLUE] + b.colors_float[BLUE];
 	result.colors_float[OPAC] = a.colors_float[OPAC] + b.colors_float[OPAC];
-	result.colors_float[OPAC] = 1;
+	// result.colors_float[OPAC] = 1;
 	return (result);
 }
 
@@ -72,7 +72,7 @@ t_color	color_subtr(t_color minuend, t_color subtrahend)
 								subtrahend.colors_float[BLUE];
 	result.colors_float[OPAC] = minuend.colors_float[OPAC] - \
 								subtrahend.colors_float[OPAC];
-	result.colors_float[OPAC] = 1;
+	// result.colors_float[OPAC] = 1;
 	return (result);
 }
 
@@ -84,7 +84,7 @@ t_color	color_scale(float k, t_color a)
 	result.colors_float[GREEN] = a.colors_float[GREEN] * k;
 	result.colors_float[BLUE] = a.colors_float[BLUE] * k;
 	result.colors_float[OPAC] = a.colors_float[OPAC] * k;
-	result.colors_float[OPAC] = 1;
+	// result.colors_float[OPAC] = 1;
 	return (result);
 }
 void	convert_pixel_colors(t_color *color)
