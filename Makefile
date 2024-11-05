@@ -6,7 +6,7 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/10/31 16:56:32 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/11/05 14:29:54 by daspring         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ SRCS			:= 	miniRT.c \
 					sources/maths/tuple_1.c \
 					sources/maths/tuple_2.c \
 					sources/maths/tuple_3.c \
-					sources/dev_print_tuple.c
+					sources/dev_print_tuple.c \
+					sources/dev_print_color.c
 
 OBJS			:=	${SRCS:.c=.o}
 

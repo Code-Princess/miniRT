@@ -6,9 +6,12 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:17:20 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/05 12:58:58 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/05 14:42:53 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
+
 
 #include <math.h>
 
@@ -31,20 +34,38 @@ t_color lighting(t_hit_obj *hit_obj, t_object *light, t_ray *ray)
 	t_color result_color;
 
 	effective_color = color_mult(hit_obj->obj->color, light->s_light.intensity);
+	if (hit_obj->obj->obj_name == CYLINDER)
+	{
+printf("effective_color ");
+print_color(effective_color);
+printf("effective_color ");
+print_color(effective_color);
+		// print_tuple(*normal_vec);
+	}
 	hit_pt = ray_at_t(ray, hit_obj->t);
 	light_vec = tuple_normalize(direction(hit_pt, &light->position));
 	ambient_comp = color_scale(hit_obj->obj->material.ambient, effective_color);
 	normal_vec = get_normal_vec_ft()[hit_obj->obj->obj_name](hit_obj, ray);
 	light_dot_normal = tuple_dot(light_vec, normal_vec);
 
+// printf("ich mach mich schwarz\n");
 	if (light_dot_normal < 0)
 	{
-		hit_obj->obj->material.diffuse = 0;
-		hit_obj->obj->material.specular = 0;
+		diffuse_comp = set_color(0, 0, 0, 1);
+		specular_comp = set_color(0, 0, 0, 1);
+		// hit_obj->obj->material.diffuse = 0;
+		// hit_obj->obj->material.specular = 0;
 	}
 	else
 	{
 		diffuse_comp = color_scale(hit_obj->obj->material.diffuse * light_dot_normal, effective_color);
+	if (hit_obj->obj->obj_name == CYLINDER)
+	{
+// printf("light_dot_normal: %f   ", light_dot_normal);
+// print_color(diffuse_comp);
+		// print_tuple(*normal_vec);
+		// diffuse_comp = effective_color;
+	}
 		t_tuple	*dir_pt_light;
 		dir_pt_light = direction(ray_at_t(ray, hit_obj->t), &light->position);
 		reflect_vec = calc_reflect_vec(dir_pt_light, normal_vec);
@@ -61,9 +82,9 @@ t_color lighting(t_hit_obj *hit_obj, t_object *light, t_ray *ray)
 			specular_comp = color_scale(hit_obj->obj->material.specular * factor, light->s_light.intensity);
 		}
 	}
-	// ambient_comp = set_color(0,0,0,1);
+	ambient_comp = set_color(0,0,0,1);
 	// diffuse_comp = set_color(0,0,0,1);
-	// specular_comp = set_color(0,0,0,1);
+	specular_comp = set_color(0,0,0,1);
 	result_color = color_add(ambient_comp, diffuse_comp);
 	result_color = color_add(result_color, specular_comp);
 	// result_color = color_add(set_color(0,0,0,1), diffuse_comp);

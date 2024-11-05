@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:15 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/31 16:57:57 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/05 13:54:52 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	init_data(t_data *data)
 {
 	int			object_count;
 
-	object_count = 10;
+	object_count = 20;
 	data->objects = ft_calloc(object_count, sizeof(t_object *));
 	// error handling for malloc!
 	init_camera(data);

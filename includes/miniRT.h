@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/05 10:54:03 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/05 14:43:30 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ void		init_data(t_data *data);
 void		fill_canvas(size_t width, size_t height);
 
 void		print_tuple(t_tuple tuple);
+void		print_color(t_color color);
 
 #endif
