@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/04 17:06:38 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/05 11:22:29 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	init_sphere(t_data *data)
 	sphere->obj_name = SPHERE;
 	sphere->identifier = SP;
 	sphere->position = set_tuple(0, 0, 25, PT);
-	sphere->color = set_color(255, 0.2 * 255, 255, 255);
+	sphere->color = set_color(1, 0.2, 1, 1);
 	sphere->s_sphere.radius = 5.0;
 	sphere->material = set_material(0.2, 0.7, 0.7, 100);
 	data->objects[5] = sphere;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:55:05 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/04 18:02:25 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/05 11:23:15 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_cylinder(t_data *data)
 	cylinder->obj_name = CYLINDER;
 	cylinder->identifier = CY;
 	cylinder->position = set_tuple(-7, 5, 15, PT);
-	cylinder->color = set_color(100, 0, 150, 255);
+	cylinder->color = set_color(0.3, 0, 0.5, 2515);
 	cylinder->s_cy.axis_vec = set_tuple(0.0, 1.0, 0.0, VEC);
 	cylinder->s_cy.axis_vec = *tuple_normalize(&cylinder->s_cy.axis_vec);
 	cylinder->s_cy.radius = 2.0;
@@ -39,7 +39,7 @@ void	init_cylinder(t_data *data)
 	cylinder->obj_name = CYLINDER;
 	cylinder->identifier = CY;
 	cylinder->position = set_tuple(6, -7, 15, PT);
-	cylinder->color = set_color(100, 0, 150, 255);
+	cylinder->color = set_color(1, 0.4, 0.5, 1);
 	cylinder->s_cy.axis_vec = set_tuple(0.0, 1.0, 0.0, VEC);
 	cylinder->s_cy.axis_vec = *tuple_normalize(&cylinder->s_cy.axis_vec);
 	cylinder->s_cy.radius = 2.0;

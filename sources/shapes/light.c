@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 16:51:48 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/04 18:02:55 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/05 11:28:55 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 #include "../../includes/objects.h"
 
@@ -20,7 +22,7 @@ void	init_light(t_data *data)
 	light->obj_name = LIGHT;
 	light->identifier = L;
 	light->position = set_tuple(0, 0, -10, PT);
-	light->color = set_color(255, 255, 255, 255);
+	light->color = set_color(1, 1, 1, 1);
 	light->s_light.brightness = 0.5;
 	light->s_light.intensity = color_scale(light->s_light.brightness, light->color);
 	data->objects[8] = light;

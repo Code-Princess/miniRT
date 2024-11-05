@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:04:01 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/04 17:19:47 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/05 12:54:09 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,33 @@ typedef enum e_colors
 	RED
 }	t_colors;
 
-typedef union u_color
+typedef struct	s_color
 {
-	uint32_t	pixel_color;
-	uint8_t		colors[4];
+	float	colors_float[4];
+	union
+	{
+		uint32_t	pixel_color;
+		uint8_t		colors_int[4];
+	};
 }	t_color;
 
-t_color		set_color(int r, int g, int b, int opac);
+// typedef union u_color
+// {
+// 	uint32_t	pixel_color;
+// 	uint8_t		colors[4];
+// }	t_color;
+
+t_color		set_color(float r, float g, float b, float opac);
+// t_color		set_color(int r, int g, int b, int opac);
 t_color		color_scale(float k, t_color a);
 t_color		color_subtr(t_color minuend, t_color subtrahend);
 t_color		color_add(t_color a, t_color b);
 t_color		color_mult(t_color a, t_color b);
-// uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray);
+void		convert_pixel_colors(t_color *color);
+uint32_t	calc_normal_color(t_hit_obj *hit_obj, t_ray *ray);
 uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data);
 t_material	set_material(float ambient, float diffuse, float specular, int shininess);
-t_tuple 	*calc_reflect_vec(t_hit_obj *hit_obj, t_ray *ray, t_tuple *normal_vec);
+t_tuple 	*calc_reflect_vec(t_tuple *incomming, t_tuple *normal_vec);
 t_color		lighting(t_hit_obj *hit_obj, t_object *light, t_ray *ray);
 
 #endif

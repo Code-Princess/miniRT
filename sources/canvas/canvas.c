@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/04 17:18:45 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/05 11:42:18 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	fill_canvas(size_t width, size_t height)
 		{
 			ray = create_ray(x_pixel, y_pixel);
 			hit_obj = find_hit_pt(data->objects, ray);
-			// mlx_put_pixel(data->image, x_pixel, y_pixel, \
-			// 				calc_pixel_color(hit_obj, ray));
+			mlx_put_pixel(data->image, x_pixel, y_pixel, \
+							calc_normal_color(hit_obj, ray));
 			mlx_put_pixel(data->image, x_pixel, y_pixel, \
 							calc_pixel_color(hit_obj, ray, data));
 			x_pixel++;
@@ -76,18 +76,19 @@ t_hit_obj	*find_hit_pt(t_object **objects, t_ray *ray)
 		// return (objects[(int)hit_pt_min[1]]->s_sphere.color.pixel_color);
 // printf("hit_obj->pt < 1\n");
 
-// uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray)
-// {
-// 	t_tuple	*normal_vec;
-// 	t_color	color;
+uint32_t	calc_normal_color(t_hit_obj *hit_obj, t_ray *ray)
+{
+	t_tuple	*normal_vec;
+	t_color	color;
 
-// 	if (hit_obj == NULL)
-// 		return (2345678);
-// 	normal_vec = get_normal_vec_ft()[hit_obj->obj->obj_name](hit_obj, ray);
-// 	color = set_color((normal_vec->x + 1) / 2 * 255, \
-// 			(normal_vec->y + 1) / 2 * 255, (normal_vec->z + 1) / 2 * 255, 255);
-// 	return (color.pixel_color);
-// }
+	if (hit_obj == NULL)
+		return (2345678);
+	normal_vec = get_normal_vec_ft()[hit_obj->obj->obj_name](hit_obj, ray);
+	color = set_color((normal_vec->x + 1) / 2, \
+			(normal_vec->y + 1) / 2, (normal_vec->z + 1) / 2, 1);
+	convert_pixel_colors(&color);
+	return (color.pixel_color);
+}
 
 uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 {
@@ -96,10 +97,11 @@ uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 
 	if (hit_obj == NULL)
 		return (2345678);
-	normal_vec = get_normal_vec_ft()[hit_obj->obj->obj_name](hit_obj, ray);
+	// normal_vec = get_normal_vec_ft()[hit_obj->obj->obj_name](hit_obj, ray);
 	// color = set_color((normal_vec->x + 1) / 2 * 255, \
 	// 		(normal_vec->y + 1) / 2 * 255, (normal_vec->z + 1) / 2 * 255, 255);
 	color = lighting(hit_obj, data->objects[8], ray);
+	convert_pixel_colors(&color);
 	return (color.pixel_color);
 }
 
