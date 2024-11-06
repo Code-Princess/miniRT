@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/05 19:39:34 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/06 17:38:36 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ void	init_sphere(t_data *data)
 	sphere = malloc(1 * sizeof(t_object));
 	sphere->obj_name = SPHERE;
 	sphere->identifier = SP;
-	sphere->position = set_tuple(-10, -10, 25, PT);
-	sphere->color = set_color(1, 0.2, 1, 1);
+	sphere->position = set_tuple(0, -10, 15, PT);
+	sphere->color = set_color(0.8, 0, 0.8, 1);
 	sphere->s_sphere.radius = 5.0;
 	sphere->material = set_material(0.2, 0.7, 0.7, 100);
-	data->objects[5] = sphere;
+	// data->objects[5] = sphere;
+	data->objects[2] = sphere;
 }
 
 float	find_sphere_hitpt(t_object *sphere, t_ray *ray)
@@ -84,3 +85,4 @@ t_tuple	*calc_sphere_normal_vec(t_hit_obj *hit_obj, t_ray *ray)
 	normal_vec = tuple_scale(1 / hit_obj->obj->s_sphere.radius, dir_vec);
 	return (normal_vec);
 }
+// printf("still alive!\n");

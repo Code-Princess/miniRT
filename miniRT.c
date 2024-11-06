@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:15 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/05 13:54:52 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/06 17:38:01 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	main(void)
 		return (EXIT_FAILURE);
 	if (mlx_image_to_window(data->mlx, data->image, 0, 0) == -1)
 		return (EXIT_FAILURE);
-// printf("still alive in main!\n");
 	fill_canvas(WIDTH_IN_PIXEL, HEIGHT_IN_PIXEL);
 	mlx_loop(data->mlx);
 	mlx_terminate(data->mlx);
@@ -49,12 +48,12 @@ void	init_data(t_data *data)
 	data->objects = ft_calloc(object_count, sizeof(t_object *));
 	// error handling for malloc!
 	init_camera(data);
-// printf("still alive in init_data!\n");
-	init_plane(data);
+	// init_plane(data);
 	init_sphere(data);
-	init_cylinder(data);
+	// init_cylinder(data);
 	init_light(data);
 }
+// printf("still alive in init_data!\n");
 
 t_data	*get_data(void)
 {
