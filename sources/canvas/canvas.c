@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/06 17:45:47 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/06 19:23:43 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,21 @@ void	fill_canvas(size_t width, size_t height)
 t_hit_obj	*find_hit_pt(t_object **objects, t_ray *ray)
 {
 	t_hit_obj	*hit_obj;
-	float		hit_pt;
+	float		hit_t;
 	int			object_idx;
 
-	object_idx = 0;
 	hit_obj = malloc(1 * sizeof(t_hit_obj));
-	hit_obj->t = 9999.0;
 	hit_obj->t = INT8_MAX;
+	object_idx = 0;
 	while (objects[object_idx++] != NULL)
 	{
 		if (objects[object_idx - 1]->obj_name <= LIGHT)
 			continue ;
-		hit_pt = get_hit_pt_ft()[objects[object_idx - 1]->obj_name] \
+		hit_t = get_hit_pt_ft()[objects[object_idx - 1]->obj_name] \
 								(objects[object_idx - 1], ray);
-		if (hit_pt < hit_obj->t && hit_pt >= 1)
+		if (hit_t < hit_obj->t && hit_t >= 1)
 		{
-			hit_obj->t = hit_pt;
+			hit_obj->t = hit_t;
 			hit_obj->obj = objects[object_idx - 1];
 		}
 	}
@@ -108,10 +107,13 @@ uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 		prepare_color_calc(hit_obj, data->objects[8], ray);
 		color = calc_ambient_color(hit_obj, data->objects[8], \
 									ray);
-		color = color_add(color, calc_diffuse_color(hit_obj, \
-									data->objects[8], ray));
-		color = color_add(color, calc_specular_color(hit_obj, \
-									data->objects[8], ray));
+		// if (hit_obj->not_in_shadow)
+		{
+			color = color_add(color, calc_diffuse_color(hit_obj, \
+										data->objects[8], ray));
+			color = color_add(color, calc_specular_color(hit_obj, \
+										data->objects[8], ray));
+		}
 	}
 	convert_pixel_colors(&color);
 	return (color.pixel_color);

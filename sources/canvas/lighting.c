@@ -6,13 +6,14 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:17:20 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/06 17:42:41 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/06 19:23:15 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
 #include <math.h>
+#include <stdlib.h>
 
 #include "../../includes/objects.h"
 #include "../../includes/color.h"
@@ -153,4 +154,48 @@ t_tuple	*calc_reflect_vec(t_tuple *incomming, t_tuple *normal_vec)
 	subtrahend = tuple_scale(2 * ray_dot_normal, normal_vec);
 	reflect_vec = tuple_subtr(incomming, subtrahend);
 	return (reflect_vec);
+}
+
+void	is_in_shadow(t_object *light, t_hit_obj *hit_obj)
+{
+	t_data	*data;
+	t_ray	light_ray;
+
+	data = get_data();
+	light_ray.direction_vec = *direction(&hit_obj->hit_pt, &light->position);
+	light_ray.origin_pt = hit_obj->hit_pt;
+	hit_obj = find_shadow_pt(data->objects, &light_ray);
+	if (hit_obj == NULL)
+		hit_obj->not_in_shadow = true;
+	else
+		hit_obj->not_in_shadow = false;
+}
+
+t_hit_obj	*find_shadow_pt(t_object **objects, t_ray *ray)
+{
+	t_hit_obj	*hit_obj;
+	float		hit_t;
+	int			object_idx;
+
+	hit_obj = malloc(1 * sizeof(t_hit_obj));
+	hit_obj->t = INT8_MAX;
+	object_idx = 0;
+	while (objects[object_idx++] != NULL)
+	{
+		if (objects[object_idx - 1]->obj_name <= LIGHT)
+			continue ;
+		hit_t = get_hit_pt_ft()[objects[object_idx - 1]->obj_name] \
+								(objects[object_idx - 1], ray);
+		// if (hit_t < hit_obj->t && hit_t >= 1)
+		// {
+		// 	hit_obj->t = hit_t;
+		// 	hit_obj->obj = objects[object_idx - 1];
+		// }
+		if (hit_t > 0 && hit_t < 1)
+		{
+			hit_obj->t = hit_t;
+			return (hit_obj);
+		}
+	}
+	return (NULL);
 }

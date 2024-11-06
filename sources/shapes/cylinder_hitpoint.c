@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 13:05:10 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/30 13:08:53 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/06 19:11:52 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ float	find_cylinder_hitpt(t_object *cy, t_ray *ray)
 
 	lateral_t = find_cylinder_lateral_hitpt(cy, ray);
 	base_t = find_cylinder_base_hitpt(cy, ray);
-	if (lateral_t < 1 && base_t < 1)
+	if (lateral_t < 0 && base_t < 0)
 		return (-1);
 	else if (lateral_t < 0)
 		return (base_t);
