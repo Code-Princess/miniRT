@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/30 12:40:34 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:15:58 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@
 # include "color.h"
 # include "ray.h"
 
-# define WIDTH_IN_PIXEL 200
-# define HEIGHT_IN_PIXEL 200
+# define WIDTH_IN_PIXEL 600
+# define HEIGHT_IN_PIXEL 600
 # define TITLE "miniRT"
 
 # define CANVAS_WIDTH 10.0
+
+# define INFINI_FLOAT 1E-05
 
 typedef struct s_object	t_object;
 typedef struct s_ray	t_ray;
@@ -42,5 +44,6 @@ void		init_data(t_data *data);
 void		fill_canvas(size_t width, size_t height);
 
 void		print_tuple(t_tuple tuple);
+void		print_color(t_color color);
 
 #endif

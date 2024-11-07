@@ -3,82 +3,71 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 14:42:09 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/04 17:55:07 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/07 14:53:06 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/color.h"
 #include "../../includes/objects.h"
 
-t_color	set_color(int r, int g, int b, int opac)
+t_color	set_color(float r, float g, float b, float opac)
 {
 	t_color	color;
 
-	color.colors[RED] = r;
-	color.colors[GREEN] = g;
-	color.colors[BLUE] = b;
-	color.colors[OPAC] = opac;
+	color.colors_float[RED] = r;
+	color.colors_float[GREEN] = g;
+	color.colors_float[BLUE] = b;
+	color.colors_float[OPAC] = opac;
 	return (color);
-}
-
-t_material	set_material(float ambient, float diffuse, float specular, int shininess)
-{
-	t_material	material;
-
-	material.ambient = ambient;
-	material.diffuse = diffuse;
-	material.specular = specular;
-	material.specular = specular;
-	return (material);
 }
 
 t_color	color_mult(t_color a, t_color b)
 {
-	t_color result;
+	t_color	result;
 
-	result.colors[RED] = a.colors[RED] * b.colors[RED] / 255;
-	result.colors[GREEN] = a.colors[GREEN] * b.colors[GREEN] / 255;
-	result.colors[BLUE] = a.colors[BLUE] * b.colors[BLUE] / 255;
-	result.colors[OPAC] = a.colors[OPAC] * b.colors[OPAC] / 255;
-	result.colors[OPAC] = 255;
+	result.colors_float[RED] = a.colors_float[RED] * b.colors_float[RED];
+	result.colors_float[GREEN] = a.colors_float[GREEN] * b.colors_float[GREEN];
+	result.colors_float[BLUE] = a.colors_float[BLUE] * b.colors_float[BLUE];
+	result.colors_float[OPAC] = a.colors_float[OPAC] * b.colors_float[OPAC];
 	return (result);
 }
 
 t_color	color_add(t_color a, t_color b)
 {
-	t_color result;
+	t_color	result;
 
-	result.colors[RED] = a.colors[RED] + b.colors[RED];
-	result.colors[GREEN] = a.colors[GREEN] + b.colors[GREEN];
-	result.colors[BLUE] = a.colors[BLUE] + b.colors[BLUE];
-	result.colors[OPAC] = a.colors[OPAC] + b.colors[OPAC];
-	result.colors[OPAC] = 255;
+	result.colors_float[RED] = a.colors_float[RED] + b.colors_float[RED];
+	result.colors_float[GREEN] = a.colors_float[GREEN] + b.colors_float[GREEN];
+	result.colors_float[BLUE] = a.colors_float[BLUE] + b.colors_float[BLUE];
+	result.colors_float[OPAC] = a.colors_float[OPAC] + b.colors_float[OPAC];
 	return (result);
 }
 
 t_color	color_subtr(t_color minuend, t_color subtrahend)
 {
-	t_color result;
+	t_color	result;
 
-	result.colors[RED] = minuend.colors[RED] - subtrahend.colors[RED];
-	result.colors[GREEN] = minuend.colors[GREEN] - subtrahend.colors[GREEN];
-	result.colors[BLUE] = minuend.colors[BLUE] - subtrahend.colors[BLUE];
-	result.colors[OPAC] = minuend.colors[OPAC] - subtrahend.colors[OPAC];
-	result.colors[OPAC] = 255;
+	result.colors_float[RED] = minuend.colors_float[RED] - \
+								subtrahend.colors_float[RED];
+	result.colors_float[GREEN] = minuend.colors_float[GREEN] - \
+								subtrahend.colors_float[GREEN];
+	result.colors_float[BLUE] = minuend.colors_float[BLUE] - \
+								subtrahend.colors_float[BLUE];
+	result.colors_float[OPAC] = minuend.colors_float[OPAC] - \
+								subtrahend.colors_float[OPAC];
 	return (result);
 }
 
 t_color	color_scale(float k, t_color a)
 {
-	t_color result;
+	t_color	result;
 
-	result.colors[RED] = a.colors[RED] * k;
-	result.colors[GREEN] = a.colors[GREEN] * k;
-	result.colors[BLUE] = a.colors[BLUE] * k;
-	result.colors[OPAC] = a.colors[OPAC] * k;
-	result.colors[OPAC] = 255;
+	result.colors_float[RED] = a.colors_float[RED] * k;
+	result.colors_float[GREEN] = a.colors_float[GREEN] * k;
+	result.colors_float[BLUE] = a.colors_float[BLUE] * k;
+	result.colors_float[OPAC] = a.colors_float[OPAC] * k;
 	return (result);
 }

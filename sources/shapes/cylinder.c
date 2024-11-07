@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:55:05 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/04 18:02:25 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/07 15:16:27 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,20 @@ void	init_cylinder(t_data *data)
 	cylinder = malloc(1 * sizeof(t_object));
 	cylinder->obj_name = CYLINDER;
 	cylinder->identifier = CY;
-	cylinder->position = set_tuple(-7, 5, 15, PT);
-	cylinder->color = set_color(100, 0, 150, 255);
+	cylinder->position = set_tuple(-7, -3, 15, PT);
+	cylinder->color = set_color(0, 1, 0.2, 1);
 	cylinder->s_cy.axis_vec = set_tuple(0.0, 1.0, 0.0, VEC);
 	cylinder->s_cy.axis_vec = *tuple_normalize(&cylinder->s_cy.axis_vec);
 	cylinder->s_cy.radius = 2.0;
 	cylinder->s_cy.height = 5.0;
-	cylinder->material = set_material(0.2, 0.7, 0.7, 50);
+	cylinder->material = set_material(0.2, 0.7, 0.7, 150);
 	data->objects[6] = cylinder;
 	cylinder = malloc(1 * sizeof(t_object));
 	cylinder->obj_name = CYLINDER;
 	cylinder->identifier = CY;
-	cylinder->position = set_tuple(6, -7, 15, PT);
-	cylinder->color = set_color(100, 0, 150, 255);
-	cylinder->s_cy.axis_vec = set_tuple(0.0, 1.0, 0.0, VEC);
+	cylinder->position = set_tuple(6, -4, 15, PT);
+	cylinder->color = set_color(0.1, 0.4, 0.9, 1);
+	cylinder->s_cy.axis_vec = set_tuple(1.0, 0, 0.0, VEC);
 	cylinder->s_cy.axis_vec = *tuple_normalize(&cylinder->s_cy.axis_vec);
 	cylinder->s_cy.radius = 2.0;
 	cylinder->s_cy.height = 5.0;
@@ -55,11 +55,11 @@ t_tuple	*calc_cylinder_normal_vec(t_hit_obj *cy, t_ray *ray)
 
 	top_t = pt_is_on_top(ray, cy->obj);
 	bottom_t = pt_is_on_bottom(ray, cy->obj);
-	if ((top_t - cy->t) < 1E-9 && top_t != -1)
+	if ((top_t - cy->t) < INFINI_FLOAT && top_t != -1)
 	{
 		return (&cy->obj->s_cy.axis_vec);
 	}
-	else if ((bottom_t - cy->t) < 1E-9 && bottom_t != -1)
+	else if ((bottom_t - cy->t) < INFINI_FLOAT && bottom_t != -1)
 	{
 		return (tuple_neg(&cy->obj->s_cy.axis_vec));
 	}

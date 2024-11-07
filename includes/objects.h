@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/04 16:55:43 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/06 19:22:24 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,11 @@ typedef struct s_object
 
 typedef struct s_hit_obj
 {
-	float		t;
 	t_object	*obj;
+	float		t;
+	t_tuple		hit_pt;
+	t_tuple		normal_vec;
+	bool		not_in_shadow;
 }				t_hit_obj;
 
 typedef float	(*t_hit_pt_ft_array)(t_object *object, t_ray *ray);

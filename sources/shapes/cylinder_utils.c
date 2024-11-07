@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 11:25:29 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/04 17:20:42 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/07 15:17:19 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ float	pt_is_on_bottom(t_ray *ray, t_object *cylinder)
 	va_dot_pos_q_dir = tuple_dot(&cylinder->s_cy.axis_vec, pos_q_dir);
 	dist_pos_q_squared = tuple_dot_self(pos_q_dir);
 	if (dist_pos_q_squared < pow(cylinder->s_cy.radius, 2) && \
-			va_dot_pos_q_dir < 1E-9)
+			va_dot_pos_q_dir < INFINI_FLOAT)
 		return (t);
 	else
 		return (-1);
@@ -70,7 +70,7 @@ float	pt_is_on_top(t_ray *ray, t_object *cylinder)
 	p_top_q_dir = direction(p_top, ray_at_t(ray, t));
 	va_dot_p_top_q_dir = tuple_dot(&cylinder->s_cy.axis_vec, p_top_q_dir);
 	if (tuple_dot_self(p_top_q_dir) < pow(cylinder->s_cy.radius, 2) && \
-		va_dot_p_top_q_dir < 1E-9)
+		va_dot_p_top_q_dir < INFINI_FLOAT)
 		return (t);
 	else
 		return (-1);

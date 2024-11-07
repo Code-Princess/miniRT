@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/04 17:06:38 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/07 14:49:15 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	init_sphere(t_data *data)
 	sphere = malloc(1 * sizeof(t_object));
 	sphere->obj_name = SPHERE;
 	sphere->identifier = SP;
-	sphere->position = set_tuple(0, 0, 25, PT);
-	sphere->color = set_color(255, 0.2 * 255, 255, 255);
+	sphere->position = set_tuple(0, -10, 15, PT);
+	sphere->color = set_color(0.8, 0, 0.8, 1);
 	sphere->s_sphere.radius = 5.0;
 	sphere->material = set_material(0.2, 0.7, 0.7, 100);
 	data->objects[5] = sphere;
@@ -55,7 +55,7 @@ float	find_sphere_hitpt(t_object *sphere, t_ray *ray)
 	{
 		t_1 = (-b + sqrt(discriminant)) / 2 / a;
 		t_2 = (-b - sqrt(discriminant)) / 2 / a;
-		if (t_2 > 1)
+		if (t_2 > 0)
 			return (t_2);
 		else
 			return (t_1);
@@ -84,3 +84,4 @@ t_tuple	*calc_sphere_normal_vec(t_hit_obj *hit_obj, t_ray *ray)
 	normal_vec = tuple_scale(1 / hit_obj->obj->s_sphere.radius, dir_vec);
 	return (normal_vec);
 }
+// printf("still alive!\n");

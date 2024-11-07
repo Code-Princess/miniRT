@@ -6,7 +6,7 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/10/31 16:56:32 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/11/07 14:59:40 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,11 @@ LIBFTDOTA		:= libft/libft.a
 SRCS			:= 	miniRT.c \
 					sources/ray/ray.c \
 					sources/canvas/canvas.c \
+					sources/canvas/canvas_utils.c \
 					sources/canvas/color.c \
 					sources/canvas/lighting.c \
+					sources/canvas/shadow.c \
+					sources/canvas/get_fcts.c \
 					sources/shapes/camera.c \
 					sources/shapes/light.c \
 					sources/shapes/plane.c \
@@ -45,7 +48,8 @@ SRCS			:= 	miniRT.c \
 					sources/maths/tuple_1.c \
 					sources/maths/tuple_2.c \
 					sources/maths/tuple_3.c \
-					sources/dev_print_tuple.c
+					sources/dev_print_tuple.c \
+					sources/dev_print_color.c
 
 OBJS			:=	${SRCS:.c=.o}
 
