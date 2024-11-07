@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:48:46 by linda             #+#    #+#             */
-/*   Updated: 2024/11/07 14:29:26 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:00:29 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	init_plane(t_data *data)
 													VEC});
 	plane->material = set_material(0.2, 0.7, 0.7, 50);
 	data->objects[4] = plane;
-
 	plane = malloc(1 * sizeof(t_object));
 	plane->obj_name = PLANE;
 	plane->identifier = PL;
@@ -60,7 +59,6 @@ void	init_plane(t_data *data)
 													VEC});
 	plane->material = set_material(0.2, 0.7, 0.7, 50);
 	data->objects[9] = plane;
-	// cylinder->position = set_tuple(6, -7, 15, PT);
 }
 
 float	find_plane_hitpt(t_object *plane, t_ray *ray)

@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/07 14:30:29 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/07 14:49:15 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	init_sphere(t_data *data)
 	sphere->s_sphere.radius = 5.0;
 	sphere->material = set_material(0.2, 0.7, 0.7, 100);
 	data->objects[5] = sphere;
-	// data->objects[2] = sphere;
 }
 
 float	find_sphere_hitpt(t_object *sphere, t_ray *ray)

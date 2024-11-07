@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/07 14:15:41 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/07 14:55:33 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,6 @@ t_hit_obj	*find_hit_pt(t_object **objects, t_ray *ray)
 	else
 		return (NULL);
 }
-// printf("hit_pt: %f\n", hit_pt);
-// printf("hit_obj->pt: %f\n", hit_obj->pt);
-// printf("hit_obj->pt: %f\n\n\n", hit_obj->pt);
-// printf("hit_obj->pt >= 1\n");
-		// return (objects[(int)hit_pt_min[1]]->s_sphere.color.pixel_color);
-// printf("hit_obj->pt < 1\n");
 
 uint32_t	calc_normal_color(t_hit_obj *hit_obj, t_ray *ray)
 {
@@ -106,8 +100,6 @@ uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 	}
 	else
 	{
-// printf("beginning calc_pixel_color, and hit_obj != NULL: hit_obj->hit_pt:\n");
-// print_tuple(hit_obj->hit_pt);
 		is_in_shadow(data->objects[8], hit_obj);
 		prepare_color_calc(hit_obj, data->objects[8], ray);
 		color = calc_ambient_color(hit_obj, data->objects[8], \
@@ -124,25 +116,3 @@ uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 	return (color.pixel_color);
 }
 // printf("didn't hit object\n");
-
-t_hit_pt_ft_array	*get_hit_pt_ft(void)
-{
-	static const t_hit_pt_ft_array	hit_pt_func_array[OBJECT_COUNT] = {\
-		[PLANE] = &find_plane_hitpt, \
-		[SPHERE] = &find_sphere_hitpt, \
-		[CYLINDER] = &find_cylinder_hitpt,
-	};
-
-	return ((t_hit_pt_ft_array *)(hit_pt_func_array));
-}
-
-t_get_normal_ft_array	*get_normal_vec_ft(void)
-{
-	static const t_get_normal_ft_array	normal_vec_func[OBJECT_COUNT] = {\
-		[PLANE] = &calc_plane_normal_vec, \
-		[SPHERE] = &calc_sphere_normal_vec, \
-		[CYLINDER] = &calc_cylinder_normal_vec,
-	};
-
-	return ((t_get_normal_ft_array *)(normal_vec_func));
-}
