@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:17:20 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/07 14:58:54 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:27:58 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "../../includes/objects.h"
 #include "../../includes/color.h"
 
-t_color	calc_ambient_color(t_hit_obj *hit_obj, t_object *light, t_ray *ray)
+t_color	calc_ambient_color(t_hit_obj *hit_obj, t_object *light)
 {
 	t_color	ambient_comp;
 	t_color	effective_color;
@@ -28,7 +28,7 @@ t_color	calc_ambient_color(t_hit_obj *hit_obj, t_object *light, t_ray *ray)
 	return (ambient_comp);
 }
 
-t_color	calc_diffuse_color(t_hit_obj *hit_obj, t_object *light, t_ray *ray)
+t_color	calc_diffuse_color(t_hit_obj *hit_obj, t_object *light)
 {
 	t_color	diffuse_color;
 	t_color	effective_color;
@@ -75,7 +75,7 @@ t_color	calc_specular_color(t_hit_obj *hit_obj, t_object *light, t_ray *ray)
 	}
 }
 
-void	prepare_color_calc(t_hit_obj *hit_obj, t_object *light, t_ray *ray)
+void	prepare_color_calc(t_hit_obj *hit_obj, t_ray *ray)
 {
 	hit_obj->hit_pt = *ray_at_t(ray, hit_obj->t);
 	hit_obj->normal_vec = *get_normal_vec_ft()[hit_obj->obj->obj_name] \

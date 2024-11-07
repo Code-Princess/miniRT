@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:04:01 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/06 19:20:58 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:28:49 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,16 @@ t_color		color_subtr(t_color minuend, t_color subtrahend);
 t_color		color_add(t_color a, t_color b);
 t_color		color_mult(t_color a, t_color b);
 void		convert_pixel_colors(t_color *color);
-void		prepare_color_calc(t_hit_obj *hit_obj, t_object *light, t_ray *ray);
+void		prepare_color_calc(t_hit_obj *hit_obj, t_ray *ray);
 uint32_t	calc_normal_color(t_hit_obj *hit_obj, t_ray *ray);
-t_color		calc_ambient_color(t_hit_obj *hit_obj, t_object *light, t_ray *ray);
-t_color		calc_diffuse_color(t_hit_obj *hit_obj, t_object *light, t_ray *ray);
-t_color		calc_specular_color(t_hit_obj *hit_obj, t_object *light, t_ray *ray);
+t_color		calc_ambient_color(t_hit_obj *hit_obj, t_object *light);
+t_color		calc_diffuse_color(t_hit_obj *hit_obj, t_object *light);
+t_color		calc_specular_color(t_hit_obj *hit_obj, t_object *light, \
+								t_ray *ray);
 uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data);
-t_material	set_material(float ambient, float diffuse, float specular, int shininess);
-t_tuple 	*calc_reflect_vec(t_tuple *incomming, t_tuple *normal_vec);
+t_material	set_material(float ambient, float diffuse, float specular, \
+						int shininess);
+t_tuple		*calc_reflect_vec(t_tuple *incomming, t_tuple *normal_vec);
 t_hit_obj	*find_shadow_pt(t_object **objects, t_ray *ray);
 void		is_in_shadow(t_object *light, t_hit_obj *hit_obj);
 // t_color		lighting(t_hit_obj *hit_obj, t_object *light, t_ray *ray);

@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/07 14:55:33 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:29:41 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ uint32_t	calc_normal_color(t_hit_obj *hit_obj, t_ray *ray)
 
 uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 {
-	t_tuple	*normal_vec;
 	t_color	color;
 
 	color = set_color(0, 0, 0, 1);
@@ -101,13 +100,12 @@ uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 	else
 	{
 		is_in_shadow(data->objects[8], hit_obj);
-		prepare_color_calc(hit_obj, data->objects[8], ray);
-		color = calc_ambient_color(hit_obj, data->objects[8], \
-									ray);
+		prepare_color_calc(hit_obj, ray);
+		color = calc_ambient_color(hit_obj, data->objects[8]);
 		if (hit_obj->not_in_shadow)
 		{
 			color = color_add(color, calc_diffuse_color(hit_obj, \
-										data->objects[8], ray));
+										data->objects[8]));
 			color = color_add(color, calc_specular_color(hit_obj, \
 										data->objects[8], ray));
 		}

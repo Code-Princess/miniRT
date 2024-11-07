@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:48:46 by linda             #+#    #+#             */
-/*   Updated: 2024/11/07 15:00:29 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:31:06 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ float	find_plane_hitpt(t_object *plane, t_ray *ray)
 
 t_tuple	*calc_plane_normal_vec(t_hit_obj *hit_obj, t_ray *ray)
 {
+	(void)ray;
 	return (&hit_obj->obj->s_plane.normal_vec);
 }
 

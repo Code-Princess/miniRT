@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 13:05:10 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/07 15:15:16 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:31:44 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,13 @@
 #include "../../includes/objects.h"
 #include "../../includes/ray.h"
 
-static void		calc_temp1(t_object *cy, t_ray *ray);
+static void		calc_temp1(t_object *cy);
 static void		calc_temp2(t_object *cy, t_ray *ray);
 
 float	find_cylinder_hitpt(t_object *cy, t_ray *ray)
 {
 	float		lateral_t;
 	float		base_t;
-	t_hit_obj	*hit_obj;
 
 	lateral_t = find_cylinder_lateral_hitpt(cy, ray);
 	base_t = find_cylinder_base_hitpt(cy, ray);
@@ -47,7 +46,7 @@ float	find_cylinder_lateral_hitpt(t_object *cy, t_ray *ray)
 	cy->s_cy.v = &ray->direction_vec;
 	cy->s_cy.v_a = &cy->s_cy.axis_vec;
 	cy->s_cy.delta_p = direction(&cy->position, &ray->origin_pt);
-	calc_temp1(cy, ray);
+	calc_temp1(cy);
 	calc_temp2(cy, ray);
 	cy->s_cy.a = tuple_dot_self(cy->s_cy.temp1);
 	cy->s_cy.b = 2 * tuple_dot(cy->s_cy.temp1, cy->s_cy.temp2);
@@ -70,7 +69,7 @@ float	find_cylinder_lateral_hitpt(t_object *cy, t_ray *ray)
 	return (-1);
 }
 
-static void	calc_temp1(t_object *cy, t_ray *ray)
+static void	calc_temp1(t_object *cy)
 {
 	cy->s_cy.temp1 = tuple_subtr(cy->s_cy.v, \
 		tuple_scale(tuple_dot(cy->s_cy.v, cy->s_cy.v_a), cy->s_cy.v_a));
