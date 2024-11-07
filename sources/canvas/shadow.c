@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:58:38 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/07 14:59:58 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:13:24 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_hit_obj	*find_shadow_pt(t_object **objects, t_ray *ray)
 			continue ;
 		hit_t = get_hit_pt_ft()[objects[object_idx - 1]->obj_name] \
 								(objects[object_idx - 1], ray);
-		if (hit_t > 0 + 1E-5 && hit_t < 1 - 1E-5)
+		if (hit_t > 0 + INFINI_FLOAT && hit_t < 1 - INFINI_FLOAT)
 		{
 			hit_obj->t = hit_t;
 			return (hit_obj);

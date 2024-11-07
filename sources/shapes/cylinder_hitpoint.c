@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 13:05:10 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/06 19:11:52 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:15:16 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ float	find_cylinder_base_hitpt(t_object *cy, t_ray *ray)
 
 	top_t = pt_is_on_top(ray, cy);
 	bottom_t = pt_is_on_bottom(ray, cy);
-	if (top_t < bottom_t && top_t >= 1)
+	if (top_t < bottom_t && top_t >= 0)
 		return (top_t);
-	else if (bottom_t >= 1)
+	else if (bottom_t >= 0)
 		return (bottom_t);
 	else
 		return (-1);

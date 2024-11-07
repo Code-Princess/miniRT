@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/05 14:59:31 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:15:58 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define TITLE "miniRT"
 
 # define CANVAS_WIDTH 10.0
+
+# define INFINI_FLOAT 1E-05
 
 typedef struct s_object	t_object;
 typedef struct s_ray	t_ray;
