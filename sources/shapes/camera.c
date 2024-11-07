@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:51:15 by linda             #+#    #+#             */
-/*   Updated: 2024/10/22 12:56:59 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/07 12:41:57 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,21 @@
 
 #include "../../includes/objects.h"
 #include "../../includes/miniRT.h"
+
+void	init_camera(t_data *data)
+{
+	t_object	*camera;
+
+	camera = malloc(1 * sizeof(t_object));
+	camera->obj_name = CAMERA;
+	camera->identifier = C;
+	camera->position = set_tuple(0, 0, -20, 1);
+	camera->s_camera.angle = 90;
+	camera->s_camera.normal_vec = set_tuple(0, 0, 1, 0);
+	calc_image_plane(camera);
+	data->objects[CAMERA] = camera;
+	data->objects[0] = camera;
+}
 
 void	calc_image_plane(t_object *camera)
 {
@@ -45,19 +60,4 @@ t_tuple	calc_origin(t_object *camera)
 					camera->position.z + dist, \
 					1);
 	return (origin);
-}
-
-void	init_camera(t_data *data)
-{
-	t_object	*camera;
-
-	camera = malloc(1 * sizeof(t_object));
-	camera->obj_name = CAMERA;
-	camera->identifier = C;
-	camera->position = set_tuple(0, 0, 0, 1);
-	camera->s_camera.angle = 90;
-	camera->s_camera.normal_vec = set_tuple(0, 0, 1, 0);
-	calc_image_plane(camera);
-	data->objects[CAMERA] = camera;
-	data->objects[0] = camera;
 }

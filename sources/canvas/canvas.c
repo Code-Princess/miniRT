@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/06 19:23:43 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/07 14:15:41 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ t_hit_obj	*find_hit_pt(t_object **objects, t_ray *ray)
 		{
 			hit_obj->t = hit_t;
 			hit_obj->obj = objects[object_idx - 1];
+			hit_obj->hit_pt = *ray_at_t(ray, hit_obj->t);
 		}
 	}
 	if (hit_obj->t >= 1 && hit_obj->t != INT8_MAX)
@@ -98,16 +99,20 @@ uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 	t_tuple	*normal_vec;
 	t_color	color;
 
+	color = set_color(0, 0, 0, 1);
 	if (hit_obj == NULL)
 	{
-		color = set_color(0, 0, 0, 1);
+		return (color.pixel_color);
 	}
 	else
 	{
+// printf("beginning calc_pixel_color, and hit_obj != NULL: hit_obj->hit_pt:\n");
+// print_tuple(hit_obj->hit_pt);
+		is_in_shadow(data->objects[8], hit_obj);
 		prepare_color_calc(hit_obj, data->objects[8], ray);
 		color = calc_ambient_color(hit_obj, data->objects[8], \
 									ray);
-		// if (hit_obj->not_in_shadow)
+		if (hit_obj->not_in_shadow)
 		{
 			color = color_add(color, calc_diffuse_color(hit_obj, \
 										data->objects[8], ray));
