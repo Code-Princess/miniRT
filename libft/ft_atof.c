@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.de  +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 23:25:33 by daspring          #+#    #+#             */
-/*   Updated: 2024/08/26 12:57:58 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/08 18:18:04 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lib/LIBFT/libft.h"
-#include "../include/fractol.h"
+#include "./libft.h"
+// #include "../include/fractol.h"
 
 static int		find_signum(char *s, int *signum);
 static double	get_number_part_greater_one(char *s, int *pos, double number);
@@ -28,7 +28,8 @@ double	ft_atof(char *s)
 	signum = 1;
 	pos = find_signum(s, &signum);
 	if (!ft_isdigit(s[pos]))
-		bad_input_termination();
+printf("bad input via atof\n");
+		// bad_input_termination();
 	number = get_number_part_greater_one(s, &pos, number);
 	if (s[pos] == '.')
 		pos++;
@@ -36,7 +37,8 @@ double	ft_atof(char *s)
 	while (is_whitespace(s[pos]))
 		pos++;
 	if (s[pos] != '\0')
-		bad_input_termination();
+printf("bad input via atof\n");
+		// bad_input_termination();
 	return (number * signum);
 }
 
@@ -63,7 +65,8 @@ static double	get_number_part_greater_one(char *s, int *pos, double number)
 		(*pos)++;
 	}
 	if (*pos > 2)
-		bad_input_termination();
+printf("bad input via atof\n");
+		// bad_input_termination();
 	return (number);
 }
 

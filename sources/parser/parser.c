@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/08 14:31:09 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/08 19:47:41 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	handle_input(t_data *data, int argc, char **argv)
 printf("wrong file extension\n");
 	}
 	determine_line_count(data, argv);
-	// populate_obj_array;
-	printf("line_count: %d\n", data->input.line_count);
-
+printf("line_count: %d\n", data->input.line_count);
+	data->objects = ft_calloc(data->input.line_count, sizeof(t_object *));
+	// init_data(data);
 	populate_objects_array(data, argv);
 }
 
@@ -46,6 +46,7 @@ void	determine_line_count(t_data *data, char **argv)
 
 	data->input.line_count = 0;
 	filedes = open("./scenes/simple_config.rt", O_RDONLY);
+	// filedes = open(argv[1], O_RDONLY);
 	line = get_next_line(filedes);
 	while (line != NULL)
 	{
@@ -55,6 +56,7 @@ void	determine_line_count(t_data *data, char **argv)
 // printf("first line from file:\n%s", get_next_line(filedes));
 	close(filedes);
 }
+
 bool	is_correct_file_type(char *filename)
 {
 	char	*extension;
@@ -76,15 +78,22 @@ void	populate_objects_array(t_data *data, char **argv)
 	char	*line;
 	char	**line_array;
 	int		obj_name;
+	int		idx;
 
 	filedes = open("./scenes/simple_config.rt", O_RDONLY);
+	// filedes = open(argv[1], O_RDONLY);
 	line = get_next_line(filedes);
+	idx = 0;
 	while (line != NULL)
 	{
 		line_array = ft_split(line, ' ');
+// check for NULL
+
 		obj_name = get_obj_name(line_array[0]);
-		// obj_name = AMB_LIGHT;
 		get_parse_ft()[obj_name](line_array);
+		// data->objects[idx] = get_parse_ft()[obj_name](line_array);
+		free(line_array);
+		idx++;
 		line = get_next_line(filedes);
 	}
 // printf("first line from file:\n%s", get_next_line(filedes));

@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:48:46 by linda             #+#    #+#             */
-/*   Updated: 2024/11/08 13:51:44 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/08 18:54:01 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	init_plane(t_data *data)
 													VEC});
 	plane->material = set_material(0.2, 0.7, 0.7, 100);
 	data->objects[2] = plane;
+	
+	
 	plane = malloc(1 * sizeof(t_object));
 	plane->obj_name = PLANE;
 	plane->identifier = PL;
@@ -42,6 +44,8 @@ void	init_plane(t_data *data)
 													VEC});
 	plane->material = set_material(0.2, 0.7, 0.7, 200);
 	data->objects[3] = plane;
+	
+	
 	plane = malloc(1 * sizeof(t_object));
 	plane->obj_name = PLANE;
 	plane->identifier = PL;
@@ -51,6 +55,8 @@ void	init_plane(t_data *data)
 													VEC});
 	plane->material = set_material(0.2, 0.7, 0.7, 50);
 	data->objects[4] = plane;
+	
+
 	plane = malloc(1 * sizeof(t_object));
 	plane->obj_name = PLANE;
 	plane->identifier = PL;

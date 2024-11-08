@@ -6,13 +6,13 @@
 #    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 10:54:01 by llacsivy          #+#    #+#              #
-#    Updated: 2024/11/08 12:52:35 by daspring         ###   ########.fr        #
+#    Updated: 2024/11/08 18:19:58 by daspring         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-CFLAGS = -Wall -Wextra -Werror
-SRCS =	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
+CFLAGS = -g -Wall -Wextra -Werror
+SRCS =	ft_atoi.c ft_atof.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 		ft_isdigit.c ft_isprint.c ft_memchr.c ft_memcmp.c ft_memcpy.c \
 		ft_memmove.c ft_memset.c ft_strchr.c ft_strdup.c ft_strlcat.c \
 		ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strcmp.c ft_strnstr.c ft_strrchr.c \

@@ -6,7 +6,7 @@
 #    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/11/08 13:55:30 by daspring         ###   ########.fr        #
+#    Updated: 2024/11/08 19:06:40 by daspring         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ LIBFTDOTA		:= libft/libft.a
 SRCS			:= 	miniRT.c \
 					sources/parser/parser.c \
 					sources/parser/parse_amb_light.c \
+					sources/parser/parse_camera.c \
 					sources/ray/ray.c \
 					sources/canvas/canvas.c \
 					sources/canvas/canvas_utils.c \

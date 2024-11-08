@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:15 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/08 12:07:15 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/08 19:42:12 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	main(int argc, char **argv)
 
 	data = get_data();
 handle_input(data, argc, argv);
-	init_data(data);
 
 
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);

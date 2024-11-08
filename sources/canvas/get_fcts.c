@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:55:22 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/08 14:22:00 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/08 19:48:40 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ t_get_normal_ft_array	*get_normal_vec_ft(void)
 t_get_parse_ft_array	*get_parse_ft(void)
 {
 	static const t_get_parse_ft_array	get_parse_ft_array[OBJECT_COUNT] = {\
-		[AMB_LIGHT] = &parse_amb_light_input, \
+		[AMB_LIGHT]	= &parse_amb_light_input, \
+		[CAMERA]	= &parse_camera_input,
 		// [PLANE] = &parse_plane_input, \
 		// [SPHERE] = &parse_sphere_input, \
 		// [CYLINDER] = &parse_cylinder_input,
