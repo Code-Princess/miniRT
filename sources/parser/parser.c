@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/08 12:57:15 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:31:09 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 
 #include "../../libft/libft.h"
 #include "../../includes/miniRT.h"
+#include "../../includes/parser.h"
 
 void	determine_line_count(t_data *data, char **argv);
 bool	is_correct_file_type(char *filename);
+int		get_obj_name(char *identifier);
 
 void	handle_input(t_data *data, int argc, char **argv)
 {
@@ -33,7 +35,8 @@ printf("wrong file extension\n");
 	determine_line_count(data, argv);
 	// populate_obj_array;
 	printf("line_count: %d\n", data->input.line_count);
-	
+
+	populate_objects_array(data, argv);
 }
 
 void	determine_line_count(t_data *data, char **argv)
@@ -65,4 +68,42 @@ printf("in fct - ft_strncmp(extension, .rt, 3): %d\n", ft_strncmp(extension, ".r
 		return (true);
 	else
 		return (false);
+}
+
+void	populate_objects_array(t_data *data, char **argv)
+{
+	int		filedes;
+	char	*line;
+	char	**line_array;
+	int		obj_name;
+
+	filedes = open("./scenes/simple_config.rt", O_RDONLY);
+	line = get_next_line(filedes);
+	while (line != NULL)
+	{
+		line_array = ft_split(line, ' ');
+		obj_name = get_obj_name(line_array[0]);
+		// obj_name = AMB_LIGHT;
+		get_parse_ft()[obj_name](line_array);
+		line = get_next_line(filedes);
+	}
+// printf("first line from file:\n%s", get_next_line(filedes));
+	close(filedes);
+}
+
+int	get_obj_name(char *identifier)
+{
+	if (ft_strcmp(identifier, "A") == 0)
+		return (AMB_LIGHT);
+	if (ft_strcmp(identifier, "C") == 0)
+		return (CAMERA);
+	if (ft_strcmp(identifier, "L") == 0)
+		return (LIGHT);
+	if (ft_strcmp(identifier, "sp") == 0)
+		return (SPHERE);
+	if (ft_strcmp(identifier, "pl") == 0)
+		return (PLANE);
+	if (ft_strcmp(identifier, "cy") == 0)
+		return (CYLINDER);
+	exit (-1); // proper error management missing!
 }

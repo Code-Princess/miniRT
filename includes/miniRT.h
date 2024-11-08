@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/08 12:52:04 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:20:39 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,5 @@ void		fill_canvas(size_t width, size_t height);
 
 void		print_tuple(t_tuple tuple);
 void		print_color(t_color color);
-
-
-
 
 #endif
