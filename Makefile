@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
+#    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/11/07 15:25:28 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/11/08 11:38:40 by daspring         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			:= miniRT
-CFLAGS			:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+# CFLAGS			:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 LIBMLXDOTA		:= ./MLX42/build/libmlx42.a
 
 # LIBMLX42		:= ./MLX42/build/libmlx42.a -ldl -lglfw -lm
@@ -30,6 +30,7 @@ DEPENDENCIES	:= 	./includes/color.h \
 
 LIBFTDOTA		:= libft/libft.a
 SRCS			:= 	miniRT.c \
+					sources/parser/parser.c \
 					sources/ray/ray.c \
 					sources/canvas/canvas.c \
 					sources/canvas/canvas_utils.c \

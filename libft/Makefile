@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
+#    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 10:54:01 by llacsivy          #+#    #+#              #
-#    Updated: 2024/05/26 19:21:12 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/11/08 11:00:52 by daspring         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS =	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 		ft_printf.c utils_ft_itoa_hexadecimal.c utils_ft_itoa_unsigned.c\
 		utils_ft_putchar.c utils_ft_putnbr.c utils_ft_putptr.c\
 		get_next_line.c get_next_line_utils.c
-		
+
 OBJS = ${SRCS:.c=.o}
 
 BONUS_SRCS = 	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \

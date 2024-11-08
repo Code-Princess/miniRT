@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/07 15:15:58 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/08 11:54:33 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,13 @@ typedef struct s_data
 	int			magic_number;
 }		t_data;
 
+typedef struct s_input
+{
+	int		line_count;
+}				t_input;
+
 t_data		*get_data(void);
+void		handle_input(t_data *data, int argc, char **argv);
 void		init_data(t_data *data);
 void		fill_canvas(size_t width, size_t height);
 

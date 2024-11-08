@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:15 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/07 14:29:31 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/08 11:44:00 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@
 #include "./MLX42/include/MLX42/MLX42.h"
 #include "./libft/libft.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_data		*data;
 
 	data = get_data();
 	init_data(data);
+
+handle_input(data, argc, argv);
+
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	data->mlx = mlx_init(WIDTH_IN_PIXEL, HEIGHT_IN_PIXEL, TITLE, true);
 	if (data->mlx == NULL)
