@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/08 11:54:33 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/08 12:52:04 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,19 @@
 typedef struct s_object	t_object;
 typedef struct s_ray	t_ray;
 
-typedef struct s_data
-{
-	mlx_t		*mlx;
-	mlx_image_t	*image;
-	t_object	**objects;
-	int			magic_number;
-}		t_data;
-
 typedef struct s_input
 {
 	int		line_count;
 }				t_input;
+
+typedef struct s_data
+{
+	mlx_t		*mlx;
+	mlx_image_t	*image;
+	t_input		input;
+	t_object	**objects;
+	int			magic_number;
+}		t_data;
 
 t_data		*get_data(void);
 void		handle_input(t_data *data, int argc, char **argv);
@@ -51,5 +52,8 @@ void		fill_canvas(size_t width, size_t height);
 
 void		print_tuple(t_tuple tuple);
 void		print_color(t_color color);
+
+
+
 
 #endif
