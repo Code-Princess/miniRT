@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/08 19:47:41 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:17:23 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,16 @@
 void	determine_line_count(t_data *data, char **argv);
 bool	is_correct_file_type(char *filename);
 int		get_obj_name(char *identifier);
+void	str_substitute(char *str, char from, char to);
 
 void	handle_input(t_data *data, int argc, char **argv)
 {
 // if wrong num of inputs or wrong file-ending -> fatal_input_termination
 	// filedes = open(argv[1]);
 	if (argc != 2)
-	{}
+	{
+printf("wrong nr of inputs\n");
+	}
 	if (is_correct_file_type(argv[1]) == false)
 	{
 printf("wrong file extension\n");
@@ -80,12 +83,29 @@ void	populate_objects_array(t_data *data, char **argv)
 	int		obj_name;
 	int		idx;
 
-	filedes = open("./scenes/simple_config.rt", O_RDONLY);
-	// filedes = open(argv[1], O_RDONLY);
+	// filedes = open("./scenes/simple_config.rt", O_RDONLY);
+	filedes = open(argv[1], O_RDONLY);
 	line = get_next_line(filedes);
+printf("line: %s\n", line);
 	idx = 0;
-	while (line != NULL)
+// 	while (line != NULL)
+// 	{
+// 		line_array = ft_split(line, ' ');
+// // check for NULL
+
+// 		obj_name = get_obj_name(line_array[0]);
+// 		get_parse_ft()[obj_name](line_array);
+// 		// data->objects[idx] = get_parse_ft()[obj_name](line_array);
+// 		free(line_array);
+// 		idx++;
+// 		line = get_next_line(filedes);
+// 	}
+// printf("first line from file:\n%s", get_next_line(filedes));
+
+while (line != NULL)
 	{
+		str_substitute(line, ',', ' ');
+		str_substitute(line, '\t', ' ');
 		line_array = ft_split(line, ' ');
 // check for NULL
 
@@ -96,23 +116,18 @@ void	populate_objects_array(t_data *data, char **argv)
 		idx++;
 		line = get_next_line(filedes);
 	}
-// printf("first line from file:\n%s", get_next_line(filedes));
 	close(filedes);
 }
 
-int	get_obj_name(char *identifier)
+void	str_substitute(char *str, char from, char to)
 {
-	if (ft_strcmp(identifier, "A") == 0)
-		return (AMB_LIGHT);
-	if (ft_strcmp(identifier, "C") == 0)
-		return (CAMERA);
-	if (ft_strcmp(identifier, "L") == 0)
-		return (LIGHT);
-	if (ft_strcmp(identifier, "sp") == 0)
-		return (SPHERE);
-	if (ft_strcmp(identifier, "pl") == 0)
-		return (PLANE);
-	if (ft_strcmp(identifier, "cy") == 0)
-		return (CYLINDER);
-	exit (-1); // proper error management missing!
+	while (str != '\0')
+	{
+		if (*str == from)
+		{
+			*str = to;
+		}
+		str++;
+	}
 }
+

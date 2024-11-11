@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/11/08 19:06:40 by daspring         ###   ########.fr        #
+#    Updated: 2024/11/11 16:04:43 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ DEPENDENCIES	:= 	./includes/color.h \
 LIBFTDOTA		:= libft/libft.a
 SRCS			:= 	miniRT.c \
 					sources/parser/parser.c \
+					sources/parser/parser_init_fcts_1.c \
 					sources/parser/parse_amb_light.c \
 					sources/parser/parse_camera.c \
 					sources/ray/ray.c \
