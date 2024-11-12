@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/11 16:17:23 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/12 15:12:42 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	handle_input(t_data *data, int argc, char **argv)
 	// filedes = open(argv[1]);
 	if (argc != 2)
 	{
-printf("wrong nr of inputs\n");
+printf("wrong number of inputs\n");
 	}
 	if (is_correct_file_type(argv[1]) == false)
 	{
@@ -121,7 +121,7 @@ while (line != NULL)
 
 void	str_substitute(char *str, char from, char to)
 {
-	while (str != '\0')
+	while (*str != '\0')
 	{
 		if (*str == from)
 		{

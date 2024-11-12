@@ -6,12 +6,14 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:41:11 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/29 20:52:47 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/12 14:50:43 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATHS_H
 # define MATHS_H
+
+# include <stdbool.h>
 
 typedef struct s_tuple
 {
@@ -41,5 +43,7 @@ float	distance(t_tuple *a, t_tuple *b);
 t_tuple	*direction(t_tuple *from, t_tuple *to);
 
 float	deg_to_rad(float angle_deg);
+
+bool	is_in_range(void *num, int min, int max);
 
 #endif

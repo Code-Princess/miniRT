@@ -6,21 +6,22 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:51:34 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/11 16:25:05 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/12 15:10:36 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft/libft.h"
 #include "../../includes/objects.h"
+#include "../../includes/parser.h"
+#include "../../libft/libft.h"
 
 t_object	*parse_amb_light_input(char **line_arr)
 {
 	t_object			*amb_light;
 	char				**input_color_array;
-	int					pos;
+	int					idx;
 	static int			ambient_counter;
-	static const char	pattern[] = "IBC";
-	static const char	pattern[] = "IBCCC";
+
+printf("parsing amb_light\n");
 
 	ambient_counter++;
 	if (ambient_counter > 1)
@@ -28,8 +29,9 @@ t_object	*parse_amb_light_input(char **line_arr)
 	amb_light = ft_calloc(1, sizeof(t_object));
 	amb_light->obj_name = AMB_LIGHT;
 	amb_light->identifier = A;
-init_brightness(amb_light, line_arr, 1);
-init_color(amb_light, line_arr, 2);
+	idx = 0;
+	init_brightness(amb_light, line_arr, ++idx);
+	init_color(amb_light, line_arr, ++idx);
 	return (amb_light);
 }
 
