@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/12 15:12:42 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:15:03 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	determine_line_count(t_data *data, char **argv)
 	char	*line;
 
 	data->input.line_count = 0;
-	filedes = open("./scenes/simple_config.rt", O_RDONLY);
-	// filedes = open(argv[1], O_RDONLY);
+	// filedes = open("./scenes/simple_config.rt", O_RDONLY);
+	filedes = open(argv[1], O_RDONLY);
 	line = get_next_line(filedes);
 	while (line != NULL)
 	{
@@ -110,8 +110,10 @@ while (line != NULL)
 // check for NULL
 
 		obj_name = get_obj_name(line_array[0]);
-		get_parse_ft()[obj_name](line_array);
-		// data->objects[idx] = get_parse_ft()[obj_name](line_array);
+		// get_parse_ft()[obj_name](line_array);
+		data->objects[idx] = get_parse_ft()[obj_name](line_array);
+printf("object positions directly after parsing:\n");
+print_tuple(data->objects[idx]->position);
 		free(line_array);
 		idx++;
 		line = get_next_line(filedes);

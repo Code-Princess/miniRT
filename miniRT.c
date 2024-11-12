@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:15 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/08 19:42:12 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:09:30 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,17 @@ handle_input(data, argc, argv);
 	return (0);
 }
 
-void	init_data(t_data *data)
-{
-printf("init_data: data->input.line_count: %d\n", data->input.line_count);
-	data->objects = ft_calloc(data->input.line_count, sizeof(t_object *));
-	// error handling for malloc!
-	init_camera(data);
-	init_plane(data);
-	init_sphere(data);
-	init_cylinder(data);
-	init_light(data);
-}
+// void	init_data(t_data *data)
+// {
+// printf("init_data: data->input.line_count: %d\n", data->input.line_count);
+// 	data->objects = ft_calloc(data->input.line_count, sizeof(t_object *));
+// 	// error handling for malloc!
+// 	// init_camera(data);
+// 	init_plane(data);
+// 	init_sphere(data);
+// 	init_cylinder(data);
+// 	init_light(data);
+// }
 // printf("still alive in init_data!\n");
 
 t_data	*get_data(void)

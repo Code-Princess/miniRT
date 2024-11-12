@@ -6,12 +6,12 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/11/11 16:04:43 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/11/12 18:19:04 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			:= miniRT
-# CFLAGS			:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+CFLAGS			:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 LIBMLXDOTA		:= ./MLX42/build/libmlx42.a
 
 # LIBMLX42		:= ./MLX42/build/libmlx42.a -ldl -lglfw -lm
@@ -32,6 +32,7 @@ LIBFTDOTA		:= libft/libft.a
 SRCS			:= 	miniRT.c \
 					sources/parser/parser.c \
 					sources/parser/parser_init_fcts_1.c \
+					sources/parser/parser_init_fcts_2.c \
 					sources/parser/parse_amb_light.c \
 					sources/parser/parse_camera.c \
 					sources/ray/ray.c \

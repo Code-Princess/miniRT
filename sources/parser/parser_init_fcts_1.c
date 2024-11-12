@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/12 15:11:42 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:16:42 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	init_brightness(t_object *obj, char **line_arr, int idx)
 }
 void	init_color(t_object *obj, char **line_arr, int idx)
 {
-	t_color	color;
 	int	red_col;
 	int	green_col;
 	int	blue_col;
@@ -64,6 +63,18 @@ void	init_color(t_object *obj, char **line_arr, int idx)
 		//error!
 }
 
+void	init_position(t_object *obj, char **line_arr, int idx)
+{
+	float	x_coord;
+	float	y_coord;
+	float	z_coord;
+
+	x_coord = ft_atof(line_arr[idx]);
+	y_coord = ft_atof(line_arr[idx + 1]);
+	z_coord = ft_atof(line_arr[idx + 2]);	
+	obj->position = set_tuple(x_coord, y_coord, z_coord, PT);
+}
+
 bool is_in_range(void *num, int min, int max)
 {
 	float	*number;
@@ -74,3 +85,5 @@ bool is_in_range(void *num, int min, int max)
 	else
 		return (false);
 }
+
+

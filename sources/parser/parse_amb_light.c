@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:51:34 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/12 15:10:36 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/12 17:49:01 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@
 t_object	*parse_amb_light_input(char **line_arr)
 {
 	t_object			*amb_light;
-	char				**input_color_array;
 	int					idx;
 	static int			ambient_counter;
 
-printf("parsing amb_light\n");
+// printf("parsing amb_light\n");
 
 	ambient_counter++;
 	if (ambient_counter > 1)

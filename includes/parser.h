@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:53:40 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/11 16:12:40 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:07:10 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,10 @@ void					populate_objects_array(t_data *data, char **argv);
 void					init_identifier(t_object *obj, char **line_arr, int idx);
 void					init_brightness(t_object *obj, char **line_arr, int idx);
 void					init_color(t_object *obj, char **line_arr, int idx);
+void					init_position(t_object *obj, char **line_arr, int idx);
+void					init_normal_vec(t_object *obj, char **line_arr, int idx);
+void					init_image_plane(t_object *camera);
+void					init_angle(t_object *obj, char **line_arr, int idx);
+
 
 #endif
