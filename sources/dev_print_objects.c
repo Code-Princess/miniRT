@@ -2,9 +2,19 @@
 
 #include "../includes/objects.h"
 
+void	print_camera(t_object *camera)
+{
+	printf("print camera:\n");
+	printf("position: ");
+	print_tuple(camera->position);
+	printf("normal_vec: ");
+	print_tuple(camera->s_camera.normal_vec);
+	printf("angle: %f\n", camera->s_camera.angle);
+}
+
 void	print_plane(t_object *plane)
 {
-	printf("print plane in find_plane_hitpt:\n");
+	printf("print plane:\n");
 	printf("position: ");
 	print_tuple(plane->position);
 	printf("normal_vec: ");

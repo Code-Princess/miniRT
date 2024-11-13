@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/13 14:00:07 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/13 17:20:16 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,5 +156,6 @@ t_tuple					*calc_cylinder_lateral_normal_vec(t_hit_obj *cy, \
 															t_ray *ray);
 
 int						get_light_index(t_data *data);
+int						get_object_index(t_data *data, t_identifier identifier);
 
 #endif

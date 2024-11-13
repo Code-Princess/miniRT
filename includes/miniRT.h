@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/13 15:37:48 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/13 17:37:43 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "color.h"
 # include "ray.h"
 
-# define WIDTH_IN_PIXEL 60
-# define HEIGHT_IN_PIXEL 60
+# define WIDTH_IN_PIXEL 600
+# define HEIGHT_IN_PIXEL 600
 # define TITLE "miniRT"
 
 # define CANVAS_WIDTH 10.0
@@ -52,6 +52,7 @@ void		fill_canvas(size_t width, size_t height);
 
 void		print_tuple(t_tuple tuple);
 void		print_color(t_color color);
+void		print_camera(t_object *camera);
 void		print_plane(t_object *plane);
 
 #endif

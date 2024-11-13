@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/13 15:42:32 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/13 17:38:09 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	fill_canvas(size_t width, size_t height)
 		{
 			ray = create_ray(x_pixel, y_pixel);
 			hit_obj = find_hit_pt(data->objects, ray);
+// printf("fill_canvas: hit_obj->t: %f\n", hit_obj->t);
 // printf("alive in fill_canvas\n");
 			// mlx_put_pixel(data->image, x_pixel, y_pixel, \
 			// 				calc_normal_color(hit_obj, ray));
@@ -95,18 +96,18 @@ uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 	t_color		color;
 	int			light_idx;
 
-	light_idx = get_light_index(data);
+	// light_idx = get_light_index(data);
+	light_idx = get_object_index(data, L);
 	color = set_color(0, 0, 0, 1);
-	if (hit_obj == NULL)
+	if (hit_obj != NULL)
 	{
-	convert_pixel_colors(&color);
-		return (color.pixel_color);
-	}
-	else
-	{
+// print_color(color);
+// printf("\n\n");
 		is_in_shadow(data->objects[light_idx], hit_obj);
 		prepare_color_calc(hit_obj, ray);
 		color = calc_ambient_color(hit_obj, data->objects[light_idx]);
+// print_color(color);
+// printf("\n\n");
 		if (hit_obj->not_in_shadow)
 		{
 			color = color_add(color, calc_diffuse_color(hit_obj, \
@@ -128,6 +129,20 @@ int	get_light_index(t_data *data)
 	while (data->objects[idx] != NULL)
 	{
 		if (data->objects[idx]->identifier == L)
+			break;
+		idx++;
+	}
+	return (idx);
+}
+
+int	get_object_index(t_data *data, t_identifier identifier)
+{
+	int	idx;
+
+	idx = 0;
+	while (data->objects[idx] != NULL)
+	{
+		if (data->objects[idx]->identifier == identifier)
 			break;
 		idx++;
 	}

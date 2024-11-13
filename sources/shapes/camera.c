@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:51:15 by linda             #+#    #+#             */
-/*   Updated: 2024/11/13 15:49:58 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/13 17:08:42 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,13 @@ t_tuple	calc_origin(t_object *camera)
 					camera->position.y - canvas_height / 2, \
 					camera->position.z + dist, \
 					1);
+
+print_camera(camera);
+
+printf("calc_origin: origin: \n");
+print_tuple(origin);
+// origin = set_tuple(-5, -5, 15, 1);
+// printf("calc_origin: origin: \n");
+// print_tuple(origin);
 	return (origin);
 }

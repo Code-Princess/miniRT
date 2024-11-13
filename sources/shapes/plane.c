@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:48:46 by linda             #+#    #+#             */
-/*   Updated: 2024/11/13 15:27:34 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/13 17:26:32 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,13 @@ float	find_plane_hitpt(t_object *plane, t_ray *ray)
 	t_enumerator = tuple_dot(&plane->s_plane.normal_vec, \
 							tuple_subtr(&plane->position, &ray->origin_pt));
 	t_denominator = tuple_dot(&plane->s_plane.normal_vec, &ray->direction_vec);
+// printf("\n\n");
+// printf("find_plane_hitpt: t_enumerator: %f\n", t_enumerator);
+// printf("find_plane_hitpt: t_denominator: %f\n", t_denominator);
+// printf("find_plane_hitpt: plane->s_plane.normal_vec: \n");
+// print_tuple(plane->s_plane.normal_vec);
+// printf("find_plane_hitpt: ray->direction_vec: \n");
+// print_tuple(ray->direction_vec);
 	return (t_enumerator / t_denominator);
 }
 
