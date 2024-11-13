@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:51:34 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/13 13:05:39 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/13 19:46:22 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ t_object	*parse_amb_light_input(char **line_arr)
 	int					idx;
 	static int			ambient_counter;
 
-// printf("parsing amb_light\n");
-
 	ambient_counter++;
 	if (ambient_counter > 1)
 		; // error! too many ambient lights
@@ -34,14 +32,3 @@ t_object	*parse_amb_light_input(char **line_arr)
 	init_color(amb_light, line_arr, idx);
 	return (amb_light);
 }
-
-// printf("alive in parse_amb_light_input\n");
-// 	amb_light->s_amb_light.brightness = ft_atof(line_arr[1]);
-// 	input_color_array = ft_split(line_arr[2], ',');
-// // check for NULL
-
-// 	amb_light->color = set_color(ft_atof(input_color_array[0]) / 255, \
-// 									ft_atof(input_color_array[1]) / 255, \
-// 									ft_atof(input_color_array[2]) / 255, \
-// 									1);
-// 	free(input_color_array);

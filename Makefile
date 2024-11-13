@@ -6,7 +6,7 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/11/13 15:24:51 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/11/13 19:41:01 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,8 @@ SRCS			:= 	miniRT.c \
 					sources/parser/parse_camera.c \
 					sources/parser/parse_light.c \
 					sources/parser/parse_plane.c \
+					sources/parser/parse_sphere.c \
+					sources/parser/parse_cylinder.c \
 					sources/ray/ray.c \
 					sources/canvas/canvas.c \
 					sources/canvas/canvas_utils.c \
@@ -45,7 +47,6 @@ SRCS			:= 	miniRT.c \
 					sources/canvas/shadow.c \
 					sources/canvas/get_fcts.c \
 					sources/shapes/camera.c \
-					sources/shapes/light.c \
 					sources/shapes/plane.c \
 					sources/shapes/sphere.c \
 					sources/shapes/cylinder.c \

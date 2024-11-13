@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/13 17:20:16 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/13 19:51:59 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,27 +70,23 @@ typedef struct s_object
 		}		s_camera;
 		struct
 		{
-			// t_color	color;
 			float	brightness;
 		}		s_amb_light;
 		struct
 		{
 			float	brightness;
-			t_color intensity;
+			t_color	intensity;
 		}		s_light;
 		struct
 		{
-			// t_color	color;
 			float	radius;
 		}		s_sphere;
 		struct
 		{
-			// t_color	color;
 			t_tuple	normal_vec;
 		}		s_plane;
 		struct
 		{
-			// t_color	color;
 			t_tuple	axis_vec;
 			float	radius;
 			float	height;
@@ -133,7 +129,6 @@ t_object				*create_plane(t_tuple position, t_color color, \
 void					init_sphere(t_data *data);
 void					init_cylinder(t_data *data);
 void					init_light(t_data *data);
-
 
 t_hit_obj				*find_hit_pt(t_object **objects, t_ray *ray);
 t_hit_pt_ft_array		*get_hit_pt_ft(void);

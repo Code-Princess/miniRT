@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_light.c                                      :+:      :+:    :+:   */
+/*   parse_sphere.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:51:34 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/13 19:45:35 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/13 19:45:06 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,23 @@
 #include "../../includes/parser.h"
 #include "../../libft/libft.h"
 
-t_object	*parse_light_input(char **line_arr)
+t_object	*parse_sphere_input(char **line_arr)
 {
-	t_object			*light;
+	t_object			*sphere;
 	int					idx;
-	static int			light_counter;
+	static int			sphere_counter;
 
-	light_counter++;
-	if (light_counter > 1)
+	sphere_counter++;
+	if (sphere_counter > 1)
 		; // error!
-	light = ft_calloc(1, sizeof(t_object));
-	light->obj_name = LIGHT;
-	light->identifier = L;
+	sphere = ft_calloc(1, sizeof(t_object));
+	sphere->obj_name = SPHERE;
+	sphere->identifier = SP;
 	idx = 1;
-	init_position(light, line_arr, idx);
+	init_position(sphere, line_arr, idx);
 	idx += 3;
-	init_brightness(light, line_arr, idx);
-	// init_color(light, line_arr, ++idx); // only for bonus
-	light->color = set_color(1, 1, 1, 1);
-	light->s_light.intensity = color_scale(light->s_light.brightness, \
-											light->color);
-	return (light);
+	init_radius(sphere, line_arr, idx);
+	init_color(sphere, line_arr, ++idx);
+	sphere->material = set_material(AMBIENT, 0.7, 0.7, 100);
+	return (sphere);
 }

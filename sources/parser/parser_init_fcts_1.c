@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/12 18:16:42 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/13 19:38:20 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	get_obj_name(char *identifier)
 void	init_brightness(t_object *obj, char **line_arr, int idx)
 {
 	float	brightness;
+
 	brightness = ft_atof(line_arr[idx]);
 	if (is_in_range(&brightness, 0, 1))
 	{
@@ -42,6 +43,7 @@ void	init_brightness(t_object *obj, char **line_arr, int idx)
 	else ;
 		//error
 }
+
 void	init_color(t_object *obj, char **line_arr, int idx)
 {
 	int	red_col;
@@ -56,8 +58,8 @@ void	init_color(t_object *obj, char **line_arr, int idx)
 	if (is_in_range(&red_col, 0, 255) && is_in_range(&green_col, 0, 255) && \
 		is_in_range(&blue_col, 0, 255) && error == 0)
 	{
-		obj->color = set_color(red_col / 255, green_col / 255, \
-								blue_col / 255, 1);
+		obj->color = set_color(red_col / 255.0, green_col / 255.0, \
+								blue_col / 255.0, 1);
 	}
 	else ;
 		//error!
@@ -71,11 +73,11 @@ void	init_position(t_object *obj, char **line_arr, int idx)
 
 	x_coord = ft_atof(line_arr[idx]);
 	y_coord = ft_atof(line_arr[idx + 1]);
-	z_coord = ft_atof(line_arr[idx + 2]);	
+	z_coord = ft_atof(line_arr[idx + 2]);
 	obj->position = set_tuple(x_coord, y_coord, z_coord, PT);
 }
 
-bool is_in_range(void *num, int min, int max)
+bool	is_in_range(void *num, int min, int max)
 {
 	float	*number;
 
@@ -85,5 +87,3 @@ bool is_in_range(void *num, int min, int max)
 	else
 		return (false);
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 18:36:56 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/13 13:05:03 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/13 19:46:03 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_object	*parse_camera_input(char **line_arr)
 	if (camera_counter > 1)
 		; // error!
 	camera = ft_calloc(1, sizeof(t_object));
-printf("alive in parse_camera_input\n");
 	camera->obj_name = CAMERA;
 	camera->identifier = C;
 	idx = 1;
@@ -34,6 +33,5 @@ printf("alive in parse_camera_input\n");
 	idx += 3;
 	init_angle(camera, line_arr, idx);
 	init_image_plane(camera);
-	// calc_image_plane(camera);
 	return (camera);
 }

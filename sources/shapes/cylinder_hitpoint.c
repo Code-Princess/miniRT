@@ -6,16 +6,12 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 13:05:10 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/07 15:31:44 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/13 19:41:41 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-// #include <stdlib.h>
 
-// #include <stdio.h>
-
-// #include "../../includes/miniRT.h"
 #include "../../includes/objects.h"
 #include "../../includes/ray.h"
 

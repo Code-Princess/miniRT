@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:48:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/13 17:25:40 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/13 19:42:06 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,6 @@ t_ray	*create_ray(size_t x_pixel, size_t y_pixel)
 					&data->objects[idx]->s_camera.s_img_plane.delta_y_vec));
 	ray->origin_pt = data->objects[idx]->position;
 	ray->direction_vec = *direction(&ray->origin_pt, pixel_coords);
-// printf("ray->origin_pt: ");
-// print_tuple(ray->origin_pt);
-// printf("pixel_coords: ");
-// print_tuple(*pixel_coords);
-// printf("create_ray: direction_vec: \n");
-// print_tuple(ray->direction_vec);
-	// ray->direction_vec = *direction(pixel_coords, &ray->origin_pt);
 	return (ray);
 }
 

@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:04:01 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/07 15:28:49 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/13 19:51:29 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef enum e_colors
 	RED
 }	t_colors;
 
-typedef struct	s_color
+typedef struct s_color
 {
 	float	colors_float[4];
 	union

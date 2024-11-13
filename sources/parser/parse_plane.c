@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   parse_plane.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 12:59:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/13 17:35:38 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/13 19:45:13 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../includes/objects.h"
 #include "../../includes/parser.h"
@@ -33,6 +32,6 @@ t_object	*parse_plane_input(char **line_arr)
 	init_normal_vec(plane, line_arr, idx);
 	idx += 3;
 	init_color(plane, line_arr, idx);
-	plane->material = set_material(0.2, 0.7, 0.7, 50);
+	plane->material = set_material(AMBIENT, 0.7, 0.7, 50);
 	return (plane);
 }

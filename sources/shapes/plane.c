@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:48:46 by linda             #+#    #+#             */
-/*   Updated: 2024/11/13 17:26:32 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/13 19:39:51 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,55 +19,6 @@
 #include "../../includes/maths.h"
 #include "../../includes/color.h"
 
-
-void	init_plane(t_data *data)
-{
-	t_object	*plane;
-
-	plane = malloc(1 * sizeof(t_object));
-	plane->obj_name = PLANE;
-	plane->identifier = PL;
-	plane->position = set_tuple(10.0, 0.0, 50.0, PT);
-	plane->color = set_color(0, 0, 1, 1);
-	plane->s_plane.normal_vec = *tuple_normalize(&(t_tuple){0.0, 0.0, -1.0, \
-													VEC});
-	plane->material = set_material(0.2, 0.7, 0.7, 100);
-	data->objects[2] = plane;
-	
-	
-	plane = malloc(1 * sizeof(t_object));
-	plane->obj_name = PLANE;
-	plane->identifier = PL;
-	plane->position = set_tuple(10.0, 0.0, 50.0, PT);
-	plane->color = set_color(0, 1, 0, 1);
-	plane->s_plane.normal_vec = *tuple_normalize(&(t_tuple){-1.0, 2.0, -3.0, \
-													VEC});
-	plane->material = set_material(0.2, 0.7, 0.7, 200);
-	data->objects[3] = plane;
-	
-	
-	plane = malloc(1 * sizeof(t_object));
-	plane->obj_name = PLANE;
-	plane->identifier = PL;
-	plane->position = set_tuple(10.0, 0.0, 50.0, PT);
-	plane->color = set_color(1, 0, 0, 1);
-	plane->s_plane.normal_vec = *tuple_normalize(&(t_tuple){-1.0, 7.0, -3.0, \
-													VEC});
-	plane->material = set_material(0.2, 0.7, 0.7, 50);
-	data->objects[4] = plane;
-	
-
-	plane = malloc(1 * sizeof(t_object));
-	plane->obj_name = PLANE;
-	plane->identifier = PL;
-	plane->position = set_tuple(17.0, -7.0, 15.0, PT);
-	plane->color = set_color(1, 0.5, 0.5, 1);
-	plane->s_plane.normal_vec = *tuple_normalize(&(t_tuple){-1.0, 0, 0, \
-													VEC});
-	plane->material = set_material(0.2, 0.7, 0.7, 50);
-	data->objects[9] = plane;
-}
-
 float	find_plane_hitpt(t_object *plane, t_ray *ray)
 {
 	float	t_enumerator;
@@ -76,13 +27,6 @@ float	find_plane_hitpt(t_object *plane, t_ray *ray)
 	t_enumerator = tuple_dot(&plane->s_plane.normal_vec, \
 							tuple_subtr(&plane->position, &ray->origin_pt));
 	t_denominator = tuple_dot(&plane->s_plane.normal_vec, &ray->direction_vec);
-// printf("\n\n");
-// printf("find_plane_hitpt: t_enumerator: %f\n", t_enumerator);
-// printf("find_plane_hitpt: t_denominator: %f\n", t_denominator);
-// printf("find_plane_hitpt: plane->s_plane.normal_vec: \n");
-// print_tuple(plane->s_plane.normal_vec);
-// printf("find_plane_hitpt: ray->direction_vec: \n");
-// print_tuple(ray->direction_vec);
 	return (t_enumerator / t_denominator);
 }
 
