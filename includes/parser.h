@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:53:40 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/12 19:07:10 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/13 13:01:01 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 
 typedef t_object	*(*t_get_parse_ft_array)(char **line);
 
+t_get_parse_ft_array	*get_parse_ft(void);
 t_object				*parse_amb_light_input(char **line);
 t_object				*parse_camera_input(char **line);
-t_get_parse_ft_array	*get_parse_ft(void);
+t_object				*parse_light_input(char **line_arr);
+t_object				*parse_plane_input(char **line_arr);
 void					populate_objects_array(t_data *data, char **argv);
 void					init_identifier(t_object *obj, char **line_arr, int idx);
 void					init_brightness(t_object *obj, char **line_arr, int idx);

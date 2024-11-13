@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_camera.c                                     :+:      :+:    :+:   */
+/*   parse_plane.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 18:36:56 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/13 13:05:03 by llacsivy         ###   ########.fr       */
+/*   Created: 2024/11/13 12:59:40 by llacsivy          #+#    #+#             */
+/*   Updated: 2024/11/13 13:04:44 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft/libft.h"
+
 #include "../../includes/objects.h"
 #include "../../includes/parser.h"
+#include "../../libft/libft.h"
 
-t_object	*parse_camera_input(char **line_arr)
+t_object	*parse_plane_input(char **line_arr)
 {
-	t_object	*camera;
-	int			idx;
-	static int	camera_counter;
+	t_object			*plane;
+	int					idx;
+	static int			plane_counter;
 
-	camera_counter++;
-	if (camera_counter > 1)
+	plane_counter++;
+	if (plane_counter > 1)
 		; // error!
-	camera = ft_calloc(1, sizeof(t_object));
-printf("alive in parse_camera_input\n");
-	camera->obj_name = CAMERA;
-	camera->identifier = C;
+	plane = ft_calloc(1, sizeof(t_object));
+	plane->obj_name = PLANE;
+	plane->identifier = PL;
 	idx = 1;
-	init_position(camera, line_arr, idx);
+	init_position(plane, line_arr, idx);
 	idx += 3;
-	init_normal_vec(camera, line_arr, idx);
+	init_normal_vec(plane, line_arr, idx);
 	idx += 3;
-	init_angle(camera, line_arr, idx);
-	init_image_plane(camera);
-	// calc_image_plane(camera);
-	return (camera);
+	init_color(plane, line_arr, idx);
+	return (plane);
 }

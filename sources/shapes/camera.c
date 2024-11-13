@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:51:15 by linda             #+#    #+#             */
-/*   Updated: 2024/11/12 19:09:45 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:49:58 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 // 	camera->obj_name = CAMERA;
 // 	camera->identifier = C;
 // 	camera->position = set_tuple(0, 0, -20, 1);
-// 	camera->s_camera.angle = 90;
 // 	camera->s_camera.normal_vec = set_tuple(0, 0, 1, 0);
+// 	camera->s_camera.angle = 90;
 // 	calc_image_plane(camera);
 // 	data->objects[CAMERA] = camera;
 // 	data->objects[0] = camera;

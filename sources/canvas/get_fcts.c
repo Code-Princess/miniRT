@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:55:22 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/11 11:23:57 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/13 12:59:26 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ t_get_parse_ft_array	*get_parse_ft(void)
 	static const t_get_parse_ft_array	get_parse_ft_array[OBJECT_COUNT] = {\
 		[AMB_LIGHT]	= &parse_amb_light_input, \
 		[CAMERA]	= &parse_camera_input,
-		// [LIGHT] = &parse_light_input, \
-		// [PLANE] = &parse_plane_input, \
+		[LIGHT] = &parse_light_input, \
+		[PLANE] = &parse_plane_input, \
 		// [SPHERE] = &parse_sphere_input, \
 		// [CYLINDER] = &parse_cylinder_input,
 	};

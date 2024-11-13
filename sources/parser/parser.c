@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/12 19:15:03 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:51:20 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ printf("wrong file extension\n");
 	}
 	determine_line_count(data, argv);
 printf("line_count: %d\n", data->input.line_count);
-	data->objects = ft_calloc(data->input.line_count, sizeof(t_object *));
+	data->objects = ft_calloc(data->input.line_count + 1, sizeof(t_object *));
 	// init_data(data);
 	populate_objects_array(data, argv);
 }
@@ -110,7 +110,6 @@ while (line != NULL)
 // check for NULL
 
 		obj_name = get_obj_name(line_array[0]);
-		// get_parse_ft()[obj_name](line_array);
 		data->objects[idx] = get_parse_ft()[obj_name](line_array);
 printf("object positions directly after parsing:\n");
 print_tuple(data->objects[idx]->position);

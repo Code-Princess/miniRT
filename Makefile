@@ -6,7 +6,7 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/11/12 18:19:04 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/11/13 15:24:51 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,8 @@ SRCS			:= 	miniRT.c \
 					sources/parser/parser_init_fcts_2.c \
 					sources/parser/parse_amb_light.c \
 					sources/parser/parse_camera.c \
+					sources/parser/parse_light.c \
+					sources/parser/parse_plane.c \
 					sources/ray/ray.c \
 					sources/canvas/canvas.c \
 					sources/canvas/canvas_utils.c \
@@ -54,21 +56,22 @@ SRCS			:= 	miniRT.c \
 					sources/maths/tuple_2.c \
 					sources/maths/tuple_3.c \
 					sources/dev_print_tuple.c \
-					sources/dev_print_color.c
+					sources/dev_print_color.c \
+					sources/dev_print_objects.c
 
 OBJS			:=	${SRCS:.c=.o}
 
 $(NAME): $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
 	@echo "Compiling miniRT ..."
-	cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
+	cc $(CFLAGS) $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
 	# cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /users/llacsivy/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
 	
 debug: $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
 	@echo "Compiling miniRT ..."
-	cc -g $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o debug
+	cc -g $(SRCS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o debug
 	
 %.o: %.c $(DEPENDENCIES)
-	cc -g $(CFLAGS) -c $< -o $@
+	cc $(CFLAGS) -c $< -o $@
 
 all: $(LIBMLXDOTA) $(NAME)
 
@@ -93,5 +96,8 @@ fclean : clean
 	rm -f $(NAME)
 
 re: fclean all
+
+flo: CFLAGS += -g -fsanitize=address
+flo: re
 
 .PHONY: all clean fclean re debug

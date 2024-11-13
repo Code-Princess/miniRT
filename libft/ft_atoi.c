@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:19:43 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/12 15:11:06 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/13 13:26:55 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_atoi_mod(const char *str, int *error)
 		number += *str - 48;
 		str++;
 	}
-	if (!ft_isdigit_help(*str) && *str != '\0')
+	if (!ft_isdigit_help(*str) && *str != '\0' && *str != '\n')
 		*error = 1;
 	number *= sign;
 	return (number);

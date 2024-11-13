@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/08 14:20:06 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/13 14:00:07 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,8 @@ typedef struct s_hit_obj
 typedef float		(*t_hit_pt_ft_array)(t_object *object, t_ray *ray);
 typedef t_tuple		*(*t_get_normal_ft_array)(t_hit_obj *hit_obj, t_ray *ray);
 
-void					init_camera(t_data *data);
-void					calc_image_plane(t_object *camera);
+// void					init_camera(t_data *data);
+// void					calc_image_plane(t_object *camera);
 t_tuple					calc_origin(t_object *camera);
 void					init_plane(t_data *data);
 t_object				*create_plane(t_tuple position, t_color color, \
@@ -154,5 +154,7 @@ t_tuple					*calc_cylinder_normal_vec(t_hit_obj *hit_obj, \
 													t_ray *ray);
 t_tuple					*calc_cylinder_lateral_normal_vec(t_hit_obj *cy, \
 															t_ray *ray);
+
+int						get_light_index(t_data *data);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_amb_light.c                                  :+:      :+:    :+:   */
+/*   parse_light.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:51:34 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/13 13:05:39 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/13 13:05:17 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,27 @@
 #include "../../includes/parser.h"
 #include "../../libft/libft.h"
 
-t_object	*parse_amb_light_input(char **line_arr)
+t_object	*parse_light_input(char **line_arr)
 {
-	t_object			*amb_light;
+	t_object			*light;
 	int					idx;
-	static int			ambient_counter;
+	static int			light_counter;
 
-// printf("parsing amb_light\n");
-
-	ambient_counter++;
-	if (ambient_counter > 1)
-		; // error! too many ambient lights
-	amb_light = ft_calloc(1, sizeof(t_object));
-	amb_light->obj_name = AMB_LIGHT;
-	amb_light->identifier = A;
+	light_counter++;
+	if (light_counter > 1)
+		; // error!
+	light = ft_calloc(1, sizeof(t_object));
+	light->obj_name = LIGHT;
+	light->identifier = L;
 	idx = 1;
-	init_brightness(amb_light, line_arr, idx);
-	idx += 1;
-	init_color(amb_light, line_arr, idx);
-	return (amb_light);
+	init_position(light, line_arr, idx);
+	idx += 3;
+	init_brightness(light, line_arr, idx);
+	// init_color(light, line_arr, ++idx); // only for bonus
+	light->color = set_color(1, 1, 1, 1);
+	light->s_light.intensity = color_scale(light->s_light.brightness, \
+											light->color);
+	return (light);
 }
 
 // printf("alive in parse_amb_light_input\n");
