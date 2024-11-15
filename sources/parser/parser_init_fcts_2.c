@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_init_fcts_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/13 19:44:22 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/15 14:15:25 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	init_normal_vec(t_object *obj, char **line_arr, int idx)
 	z_normal_vec = ft_atof(line_arr[idx + 2]);
 	vec = set_tuple(x_normal_vec, y_normal_vec, z_normal_vec, VEC);
 	vec = *tuple_normalize(&vec);
-	if (is_normalized(&vec) && is_in_range(&x_normal_vec, -1, 1) && \
-		is_in_range(&y_normal_vec, -1, 1) && is_in_range(&z_normal_vec, -1, 1))
+	if (is_normalized(&vec) && is_in_range(&vec.x, -1, 1) && \
+		is_in_range(&vec.y, -1, 1) && is_in_range(&vec.z, -1, 1))
 		obj->s_camera.normal_vec = vec;
 	else ;
 		//error!
@@ -77,7 +77,7 @@ void	init_radius(t_object *obj, char **line_arr, int idx)
 {
 	float	radius;
 
-	radius = ft_atof(line_arr[idx]);
+	radius = ft_atof(line_arr[idx]) / 2;
 	if (obj->identifier == SP)
 		obj->s_sphere.radius = radius;
 	if (obj->identifier == CY)

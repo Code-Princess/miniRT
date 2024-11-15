@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/13 19:19:37 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/15 14:05:08 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@
 # include "color.h"
 # include "ray.h"
 
-# define WIDTH_IN_PIXEL 600
-# define HEIGHT_IN_PIXEL 600
+# define WIDTH_IN_PIXEL 700
+# define HEIGHT_IN_PIXEL 700
 # define TITLE "miniRT"
 
 # define CANVAS_WIDTH 10.0
 
 # define INFINI_FLOAT 1E-05
-# define AMBIENT 1.0
+# define AMBIENT 0.2
 
 typedef struct s_object	t_object;
 typedef struct s_ray	t_ray;

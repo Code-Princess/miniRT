@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/13 19:43:35 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/15 14:01:40 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,14 @@ void	populate_objects_array(t_data *data, char **argv)
 		str_substitute(line, ',', ' ');
 		str_substitute(line, '\t', ' ');
 		line_array = ft_split(line, ' ');
+		if (line_array[0][0] != '\n' && line_array[0][0] != '#')
+		{
 // check for NULL
-		obj_name = get_obj_name(line_array[0]);
-		data->objects[idx] = get_parse_ft()[obj_name](line_array);
-		free(line_array);
-		idx++;
+			obj_name = get_obj_name(line_array[0]);
+			data->objects[idx] = get_parse_ft()[obj_name](line_array);
+			free(line_array);
+			idx++;
+			}
 		line = get_next_line(filedes);
 	}
 	close(filedes);
