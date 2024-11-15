@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lighting.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:17:20 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/07 15:27:58 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/15 14:31:36 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,15 @@ t_color	calc_ambient_color(t_hit_obj *hit_obj, t_object *light)
 {
 	t_color	ambient_comp;
 	t_color	effective_color;
+	int		idx_ambient_light;
+	t_data	*data;
 
-	effective_color = color_mult(hit_obj->obj->color, light->s_light.intensity);
-	ambient_comp = color_scale(hit_obj->obj->material.ambient, effective_color);
+(void)light;
+	data = get_data();
+	idx_ambient_light = get_object_index(data, A);
+	// effective_color = color_mult(hit_obj->obj->color, light->s_light.intensity);
+	effective_color = color_mult(hit_obj->obj->color, data->objects[idx_ambient_light]->color);
+	ambient_comp = color_scale(data->objects[idx_ambient_light]->s_amb_light.brightness, effective_color);
 	return (ambient_comp);
 }
 
