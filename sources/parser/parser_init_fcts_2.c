@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/15 14:15:25 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/15 17:13:34 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	init_normal_vec(t_object *obj, char **line_arr, int idx)
 	float	z_normal_vec;
 	t_tuple	vec;
 
+	if (line_arr[idx] == NULL)
+		print_error_and_exit("normal_vec: not enough arguments", line_arr[0]);
 	x_normal_vec = ft_atof(line_arr[idx]);
 	y_normal_vec = ft_atof(line_arr[idx + 1]);
 	z_normal_vec = ft_atof(line_arr[idx + 2]);

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser_init_fcts_1.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/13 19:38:20 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:52:01 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/objects.h"
 #include "../../includes/parser.h"
+#include "../../includes/utilities.h"
 #include "../../libft/libft.h"
 
 int	get_obj_name(char *identifier)
@@ -70,9 +71,17 @@ void	init_position(t_object *obj, char **line_arr, int idx)
 	float	x_coord;
 	float	y_coord;
 	float	z_coord;
+	int		error;
 
+	error = 0;
+	if (line_arr[idx] == NULL)
+		print_error_and_exit("position: not enough arguments", line_arr[0]);
 	x_coord = ft_atof(line_arr[idx]);
+	if (line_arr[idx + 1] == NULL)
+		print_error_and_exit("position: not enough arguments", line_arr[0]);
 	y_coord = ft_atof(line_arr[idx + 1]);
+	if (line_arr[idx + 2] == NULL)
+		print_error_and_exit("position: not enough arguments", line_arr[0]);
 	z_coord = ft_atof(line_arr[idx + 2]);
 	obj->position = set_tuple(x_coord, y_coord, z_coord, PT);
 }
@@ -86,4 +95,11 @@ bool	is_in_range(void *num, int min, int max)
 		return (true);
 	else
 		return (false);
+}
+
+void	print_error_and_exit(char *message, char *identifier)
+{
+	ft_printf_error("Error\n");
+	ft_printf_error("%s %s\n", identifier, message);
+	exit(1);
 }

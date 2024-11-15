@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:51:15 by linda             #+#    #+#             */
-/*   Updated: 2024/11/15 13:47:15 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:12:08 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,6 @@ print_tuple(*orthonormal_vec_y);
 													orthonormal_vec_x);
 	camera->s_camera.s_img_plane.delta_y_vec = *tuple_scale(pixel_len, \
 													orthonormal_vec_y);
-	// camera->s_camera.s_img_plane.delta_x_vec = *tuple_scale(pixel_len, \
-	// 												&(t_tuple){1, 0, 0, 0,});
-	// camera->s_camera.s_img_plane.delta_y_vec = *tuple_scale(pixel_len, \
-	// 												&(t_tuple){0, 1, 0, 0,});
 	camera->s_camera.s_img_plane.origin = calc_origin(camera);
 }
 

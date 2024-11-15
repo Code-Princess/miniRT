@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
+#    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/11/13 19:41:01 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/11/15 16:30:25 by daspring         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ SRCS			:= 	miniRT.c \
 					sources/maths/tuple_1.c \
 					sources/maths/tuple_2.c \
 					sources/maths/tuple_3.c \
+					sources/utilities/ft_printf_error.c \
 					sources/dev_print_tuple.c \
 					sources/dev_print_color.c \
 					sources/dev_print_objects.c
