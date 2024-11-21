@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/21 13:39:54 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/21 19:21:53 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ void	populate_objects_array(t_data *data, char **argv)
 		str_substitute(line, ',', ' ');
 		str_substitute(line, '\t', ' ');
 		line_array = ft_split(line, ' ');
+// check for NULL
 		if (line_array[0][0] != '\n' && line_array[0][0] != '#')
 		{
-// check for NULL
 			obj_name = get_obj_name(line_array[0]);
 			data->objects[idx] = get_parse_ft()[obj_name](line_array);
 			free(line_array);

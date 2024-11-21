@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/21 17:05:04 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/21 19:24:03 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	get_obj_name(char *identifier)
 		return (PLANE);
 	if (ft_strcmp(identifier, "cy") == 0)
 		return (CYLINDER);
-	exit (-1); // proper error management missing!
+	print_error_and_exit("identifier unknown", "object");
+	return (-1);
 }
 
 void	init_brightness(t_object *obj, char **line_arr, int idx)
