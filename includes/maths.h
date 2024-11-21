@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:41:11 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/13 19:51:38 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/21 14:14:19 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ t_tuple	*direction(t_tuple *from, t_tuple *to);
 
 float	deg_to_rad(float angle_deg);
 
-bool	is_in_range(void *num, int min, int max);
+bool	is_in_range_float(float *num, int min, int max);
+bool	is_in_range_int(int *num, int min, int max);
 bool	is_normalized(t_tuple *vec);
 
 #endif

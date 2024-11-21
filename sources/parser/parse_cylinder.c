@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 12:59:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/13 19:45:48 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:34:56 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ t_object	*parse_cylinder_input(char **line_arr)
 {
 	t_object			*cylinder;
 	int					idx;
-	static int			cylinder_counter;
+	// static int			cylinder_counter;
 
-	cylinder_counter++;
-	if (cylinder_counter > 1)
-		; // error!
+	// cylinder_counter++;
 	cylinder = ft_calloc(1, sizeof(t_object));
 	cylinder->obj_name = CYLINDER;
 	cylinder->identifier = CY;

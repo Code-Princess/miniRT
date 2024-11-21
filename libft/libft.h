@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 14:19:44 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/15 16:56:18 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:56:43 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@
 # include <stdio.h>
 # include <limits.h>
 
-#define STRING_TERMINATOR -1
+# define STRING_TERMINATOR -1
+# ifndef OPEN_MAX
+#  define OPEN_MAX 40
+# endif
 
 typedef struct s_list
 {

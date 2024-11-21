@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/15 14:01:40 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:39:54 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "../../libft/libft.h"
 #include "../../includes/miniRT.h"
 #include "../../includes/parser.h"
+#include "../../includes/utilities.h"
 
 void	determine_line_count(t_data *data, char **argv);
 bool	is_correct_file_type(char *filename);
@@ -25,15 +26,13 @@ void	str_substitute(char *str, char from, char to);
 
 void	handle_input(t_data *data, int argc, char **argv)
 {
-// if wrong num of inputs or wrong file-ending -> fatal_input_termination
-	// filedes = open(argv[1]);
 	if (argc != 2)
 	{
-printf("wrong number of inputs\n");
+		print_error_and_exit("Wrong number of parameters.\n", "Program input");
 	}
 	if (is_correct_file_type(argv[1]) == false)
 	{
-printf("wrong file extension\n");
+		print_error_and_exit("Wrong file extension.\n", "input: ");
 	}
 	determine_line_count(data, argv);
 	data->objects = ft_calloc(data->input.line_count + 1, sizeof(t_object *));

@@ -6,12 +6,13 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:51:34 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/13 19:45:35 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:15:00 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/objects.h"
 #include "../../includes/parser.h"
+#include "../../includes/utilities.h"
 #include "../../libft/libft.h"
 
 t_object	*parse_light_input(char **line_arr)
@@ -22,7 +23,9 @@ t_object	*parse_light_input(char **line_arr)
 
 	light_counter++;
 	if (light_counter > 1)
-		; // error!
+	{
+		print_error_and_exit("Too many lights.", "L");
+	}
 	light = ft_calloc(1, sizeof(t_object));
 	light->obj_name = LIGHT;
 	light->identifier = L;

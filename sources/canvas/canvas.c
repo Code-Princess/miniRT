@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/13 19:50:51 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:35:11 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	fill_canvas(size_t width, size_t height)
 		{
 			ray = create_ray(x_pixel, y_pixel);
 			hit_obj = find_hit_pt(data->objects, ray);
-			// mlx_put_pixel(data->image, x_pixel, y_pixel, \
+			// mlx_put_pixel(data->image, x_pixel, y_pixel,
 			// 				calc_normal_color(hit_obj, ray));
 			mlx_put_pixel(data->image, x_pixel, y_pixel, \
 							calc_pixel_color(hit_obj, ray, data));

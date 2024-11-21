@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:51:34 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/13 19:45:06 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:34:47 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ t_object	*parse_sphere_input(char **line_arr)
 {
 	t_object			*sphere;
 	int					idx;
-	static int			sphere_counter;
+	// static int			sphere_counter;
 
-	sphere_counter++;
-	if (sphere_counter > 1)
-		; // error!
+	// sphere_counter++;
 	sphere = ft_calloc(1, sizeof(t_object));
 	sphere->obj_name = SPHERE;
 	sphere->identifier = SP;
