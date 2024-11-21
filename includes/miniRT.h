@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/15 16:03:55 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/21 17:27:56 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 
 # define INFINI_FLOAT 1E-05
 # define AMBIENT 0.2
+# define MAX_RADIUS 2000
+# define MAX_CY_HEIGHT 2000
 
 typedef struct s_object	t_object;
 typedef struct s_ray	t_ray;
