@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:55:05 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/07 15:16:27 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/22 13:33:23 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,33 @@
 #include "../../includes/ray.h"
 #include "../../includes/color.h"
 
-void	init_cylinder(t_data *data)
-{
-	t_object	*cylinder;
+// void	init_cylinder(t_data *data)
+// {
+// 	t_object	*cylinder;
 
-	cylinder = malloc(1 * sizeof(t_object));
-	cylinder->obj_name = CYLINDER;
-	cylinder->identifier = CY;
-	cylinder->position = set_tuple(-7, -3, 15, PT);
-	cylinder->color = set_color(0, 1, 0.2, 1);
-	cylinder->s_cy.axis_vec = set_tuple(0.0, 1.0, 0.0, VEC);
-	cylinder->s_cy.axis_vec = *tuple_normalize(&cylinder->s_cy.axis_vec);
-	cylinder->s_cy.radius = 2.0;
-	cylinder->s_cy.height = 5.0;
-	cylinder->material = set_material(0.2, 0.7, 0.7, 150);
-	data->objects[6] = cylinder;
-	cylinder = malloc(1 * sizeof(t_object));
-	cylinder->obj_name = CYLINDER;
-	cylinder->identifier = CY;
-	cylinder->position = set_tuple(6, -4, 15, PT);
-	cylinder->color = set_color(0.1, 0.4, 0.9, 1);
-	cylinder->s_cy.axis_vec = set_tuple(1.0, 0, 0.0, VEC);
-	cylinder->s_cy.axis_vec = *tuple_normalize(&cylinder->s_cy.axis_vec);
-	cylinder->s_cy.radius = 2.0;
-	cylinder->s_cy.height = 5.0;
-	cylinder->material = set_material(0.2, 0.7, 0.7, 150);
-	data->objects[7] = cylinder;
-}
+// 	cylinder = malloc(1 * sizeof(t_object));
+// 	cylinder->obj_name = CYLINDER;
+// 	cylinder->identifier = CY;
+// 	cylinder->position = set_tuple(-7, -3, 15, PT);
+// 	cylinder->color = set_color(0, 1, 0.2, 1);
+// 	cylinder->s_cy.axis_vec = set_tuple(0.0, 1.0, 0.0, VEC);
+// 	cylinder->s_cy.axis_vec = *tuple_normalize(&cylinder->s_cy.axis_vec);
+// 	cylinder->s_cy.radius = 2.0;
+// 	cylinder->s_cy.height = 5.0;
+// 	cylinder->material = set_material(0.2, 0.7, 0.7, 150);
+// 	data->objects[6] = cylinder;
+// 	cylinder = malloc(1 * sizeof(t_object));
+// 	cylinder->obj_name = CYLINDER;
+// 	cylinder->identifier = CY;
+// 	cylinder->position = set_tuple(6, -4, 15, PT);
+// 	cylinder->color = set_color(0.1, 0.4, 0.9, 1);
+// 	cylinder->s_cy.axis_vec = set_tuple(1.0, 0, 0.0, VEC);
+// 	cylinder->s_cy.axis_vec = *tuple_normalize(&cylinder->s_cy.axis_vec);
+// 	cylinder->s_cy.radius = 2.0;
+// 	cylinder->s_cy.height = 5.0;
+// 	cylinder->material = set_material(0.2, 0.7, 0.7, 150);
+// 	data->objects[7] = cylinder;
+// }
 
 t_tuple	*calc_cylinder_normal_vec(t_hit_obj *cy, t_ray *ray)
 {

@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/21 19:21:53 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/22 13:27:33 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "../../includes/miniRT.h"
 #include "../../includes/parser.h"
 #include "../../includes/utilities.h"
+#include "../../includes/free.h"
 
 void	determine_line_count(t_data *data, char **argv);
 bool	is_correct_file_type(char *filename);
@@ -49,9 +50,11 @@ void	determine_line_count(t_data *data, char **argv)
 	line = get_next_line(filedes);
 	while (line != NULL)
 	{
+		free(line);
 		data->input.line_count++;
 		line = get_next_line(filedes);
 	}
+	free(line); // potential double free!
 	close(filedes);
 }
 
@@ -89,11 +92,14 @@ void	populate_objects_array(t_data *data, char **argv)
 		{
 			obj_name = get_obj_name(line_array[0]);
 			data->objects[idx] = get_parse_ft()[obj_name](line_array);
-			free(line_array);
+			free_char_ptr_array(line_array);
+			// free(line_array);
 			idx++;
-			}
+		}
+		free(line);
 		line = get_next_line(filedes);
 	}
+	free(line); // potential double free
 	close(filedes);
 }
 
