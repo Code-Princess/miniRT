@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/22 13:27:33 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/22 14:07:47 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	handle_input(t_data *data, int argc, char **argv)
 	}
 	determine_line_count(data, argv);
 	data->objects = ft_calloc(data->input.line_count + 1, sizeof(t_object *));
+	// check for NULL
 	populate_objects_array(data, argv);
 }
 
@@ -93,7 +94,6 @@ void	populate_objects_array(t_data *data, char **argv)
 			obj_name = get_obj_name(line_array[0]);
 			data->objects[idx] = get_parse_ft()[obj_name](line_array);
 			free_char_ptr_array(line_array);
-			// free(line_array);
 			idx++;
 		}
 		free(line);

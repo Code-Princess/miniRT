@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/21 17:47:53 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/22 14:17:33 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_normal_vec(t_object *obj, char **line_arr, int idx)
 	float	y_normal_vec;
 	float	z_normal_vec;
 	t_tuple	vec;
+	t_tuple	*temp; // only as long as tuple_normalize is used above!
 
 	exit_if_args_incomplete(line_arr, idx, "normal_vec: not enough arguments");
 	x_normal_vec = ft_atof(line_arr[idx]);
@@ -32,13 +33,15 @@ void	init_normal_vec(t_object *obj, char **line_arr, int idx)
 							"normal_vec: not enough arguments");
 	z_normal_vec = ft_atof(line_arr[idx + 2]);
 	vec = set_tuple(x_normal_vec, y_normal_vec, z_normal_vec, VEC);
-	vec = *tuple_normalize(&vec);
+	temp = tuple_normalize(&vec); // only as long as tuple_normalize is used above!
+	vec = *temp; // only as long as tuple_normalize is used above!
 	if (is_normalized(&vec))
 		obj->s_camera.normal_vec = vec;
 	else
 	{
 		print_error_and_exit("normal_vec: vector not normalized", line_arr[0]);
 	}
+	free(temp); // only as long as tuple_normalize is used above!
 }
 
 void	init_axis_vec(t_object *obj, char **line_arr, int idx)

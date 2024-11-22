@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/21 13:35:11 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/22 14:20:16 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "../../MLX42/include/MLX42/MLX42.h"
 #include "../../includes/miniRT.h"
+#include "../../includes/free.h"
 
 void	fill_canvas(size_t width, size_t height)
 {
@@ -41,6 +42,7 @@ void	fill_canvas(size_t width, size_t height)
 		}
 		y_pixel++;
 	}
+	free_obj_ptr_array(data->objects);
 }
 
 t_hit_obj	*find_hit_pt(t_object **objects, t_ray *ray)

@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/13 19:51:59 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/22 13:57:21 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,23 +90,24 @@ typedef struct s_object
 			t_tuple	axis_vec;
 			float	radius;
 			float	height;
-			struct
-			{
-				float	discr;
-				float	a;
-				float	b;
-				float	c;
-				float	t_1;
-				float	t_2;
-				t_tuple	*v;
-				t_tuple	*v_a;
-				t_tuple	*delta_p;
-				t_tuple	*temp1;
-				t_tuple	*temp2;
-			};
 		}		s_cy;
 	};
 }	t_object;
+
+typedef struct s_cy_helper
+{
+	float	discr;
+	float	a;
+	float	b;
+	float	c;
+	float	t_1;
+	float	t_2;
+	t_tuple	*v;
+	t_tuple	*v_a;
+	t_tuple	*delta_p;
+	t_tuple	*temp1;
+	t_tuple	*temp2;
+}			t_cy_helper;
 
 typedef struct s_hit_obj
 {
@@ -136,7 +137,8 @@ t_get_normal_ft_array	*get_normal_vec_ft(void);
 float					find_sphere_hitpt(t_object *sphere, t_ray *ray);
 float					find_plane_hitpt(t_object *plane, t_ray *ray);
 float					find_cylinder_hitpt(t_object *cylinder, t_ray *ray);
-float					find_cylinder_lateral_hitpt(t_object *cy, t_ray *ray);
+float					find_cylinder_lateral_hitpt(t_object *cy, t_cy_helper *cy_helper, t_ray *ray);
+// float					find_cylinder_lateral_hitpt(t_object *cy, t_ray *ray);
 float					find_cylinder_base_hitpt(t_object *cy, t_ray *ray);
 int						pt_is_between_slabs(float t, t_ray *ray, \
 											t_object *cylinder);

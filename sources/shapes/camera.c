@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:51:15 by linda             #+#    #+#             */
-/*   Updated: 2024/11/15 16:12:08 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/22 14:23:07 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,7 @@ void	init_image_plane(t_object *camera)
 	t_tuple	*orthonormal_vec_y;
 
 	orthonormal_vec_x = tuple_normalize(tuple_cross(&camera->s_camera.normal_vec, &(t_tuple){0, -1, 0, 0}));
-print_tuple(*orthonormal_vec_x);
-orthonormal_vec_y = tuple_normalize(tuple_cross(&camera->s_camera.normal_vec, orthonormal_vec_x));
-print_tuple(*orthonormal_vec_y);
+	orthonormal_vec_y = tuple_normalize(tuple_cross(&camera->s_camera.normal_vec, orthonormal_vec_x));
 	pixel_len = CANVAS_WIDTH / WIDTH_IN_PIXEL;
 	camera->s_camera.s_img_plane.delta_x_vec = *tuple_scale(pixel_len, \
 													orthonormal_vec_x);
@@ -64,6 +62,8 @@ print_tuple(*orthonormal_vec_y);
 													orthonormal_vec_y);
 	camera->s_camera.s_img_plane.origin = calc_origin(camera);
 }
+// print_tuple(*orthonormal_vec_x);
+// print_tuple(*orthonormal_vec_y);
 
 t_tuple	calc_origin(t_object *camera)
 {
