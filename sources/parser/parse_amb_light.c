@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_amb_light.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:51:34 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/21 13:10:30 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/25 13:41:54 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_object	*parse_amb_light_input(char **line_arr)
 	ambient_counter++;
 	if (ambient_counter > 1)
 	{
-		print_error_and_exit("Too many ambient lights.", "A");
+		print_error_and_exit2("Too many ambient lights.", "A");
 	}
 	amb_light = ft_calloc(1, sizeof(t_object));
 	amb_light->obj_name = AMB_LIGHT;

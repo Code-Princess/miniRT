@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 18:36:56 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/21 13:33:48 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/25 13:42:03 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_object	*parse_camera_input(char **line_arr)
 	camera_counter++;
 	if (camera_counter > 1)
 	{
-		print_error_and_exit("Too many cameras.", "C");
+		print_error_and_exit2("Too many cameras.", "C");
 	}
 	camera = ft_calloc(1, sizeof(t_object));
 	camera->obj_name = CAMERA;
