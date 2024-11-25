@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_init_fcts_1.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/21 19:24:03 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/25 13:12:08 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ void	init_color(t_object *obj, char **line_arr, int idx)
 	int	error;
 
 	error = 0;
-	exit_if_args_incomplete(line_arr, idx, "color: not enough arguments");
+	exit_if_args_incomplete2(line_arr, idx, "color: not enough arguments", obj);
 	red = ft_atoi_mod(line_arr[idx], &error);
-	exit_if_args_incomplete(line_arr, idx + 1, "color: not enough arguments");
+	exit_if_args_incomplete2(line_arr, idx + 1, "color: not enough arguments", obj);
 	green = ft_atoi_mod(line_arr[idx + 1], &error);
-	exit_if_args_incomplete(line_arr, idx + 2, "color: not enough arguments");
+	exit_if_args_incomplete2(line_arr, idx + 2, "color: not enough arguments", obj);
 	blue = ft_atoi_mod(line_arr[idx + 2], &error);
 	if (is_in_range_int(&red, 0, 255) && is_in_range_int(&green, 0, 255) && \
 		is_in_range_int(&blue, 0, 255) && error == 0)
@@ -74,7 +74,7 @@ void	init_color(t_object *obj, char **line_arr, int idx)
 	}
 	else
 	{
-		print_error_and_exit("color: value not in range [0,255]", line_arr[0]);
+		print_error_and_exit2("color: value not in range [0,255]", line_arr[0], obj);
 	}
 }
 
@@ -117,4 +117,12 @@ void	exit_if_args_incomplete(char **line_arr, int idx, char *message)
 		print_error_and_exit(message, line_arr[0]);
 	if (line_arr[idx][0] == '\n')
 		print_error_and_exit(message, line_arr[0]);
+}
+
+void	exit_if_args_incomplete2(char **line_arr, int idx, char *message, t_object *obj)
+{
+	if (line_arr[idx] == NULL)
+		print_error_and_exit2(message, line_arr[0], obj);
+	if (line_arr[idx][0] == '\n')
+		print_error_and_exit2(message, line_arr[0], obj);
 }

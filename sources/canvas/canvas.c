@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/22 14:20:16 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/25 12:36:50 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	fill_canvas(size_t width, size_t height)
 		}
 		y_pixel++;
 	}
-	free_obj_ptr_array(data->objects);
 }
 
 t_hit_obj	*find_hit_pt(t_object **objects, t_ray *ray)

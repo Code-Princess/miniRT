@@ -3,20 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   exit_fcts.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 13:04:48 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/22 13:26:37 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/25 13:26:41 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
+#include "../../includes/miniRT.h"
+#include "../../includes/free.h"
 #include "../../includes/utilities.h"
 
 void	print_error_and_exit(char *message, char *identifier)
 {
+	t_data	*data;
+
+	data = get_data();
 	ft_printf_error("Error\n");
 	ft_printf_error("%s: %s\n", identifier, message);
+	free_obj_ptr_array(data->objects);
+	exit(1);
+}
+
+void	print_error_and_exit2(char *message, char *identifier, t_object *obj)
+{
+	t_data	*data;
+
+	data = get_data();
+	ft_printf_error("Error\n");
+	ft_printf_error("%s: %s\n", identifier, message);
+	free_obj_ptr_array(data->objects);
+	free(obj);
+	free_char_ptr_array(data->line_array);
+	free(data->line);
 	exit(1);
 }

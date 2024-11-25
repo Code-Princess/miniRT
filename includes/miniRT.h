@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/21 17:27:56 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/25 13:20:36 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct s_data
 	t_input		input;
 	t_object	**objects;
 	int			magic_number;
+	char		*line;
+	char		**line_array;
 }		t_data;
 
 t_data		*get_data(void);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/22 14:07:47 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/25 13:27:30 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,22 +82,25 @@ void	populate_objects_array(t_data *data, char **argv)
 
 	filedes = open(argv[1], O_RDONLY);
 	line = get_next_line(filedes);
+	data->line = line;
 	idx = 0;
 	while (line != NULL)
 	{
 		str_substitute(line, ',', ' ');
 		str_substitute(line, '\t', ' ');
 		line_array = ft_split(line, ' ');
+		data->line_array = line_array;
 // check for NULL
 		if (line_array[0][0] != '\n' && line_array[0][0] != '#')
 		{
 			obj_name = get_obj_name(line_array[0]);
 			data->objects[idx] = get_parse_ft()[obj_name](line_array);
-			free_char_ptr_array(line_array);
 			idx++;
 		}
+		free_char_ptr_array(line_array);
 		free(line);
 		line = get_next_line(filedes);
+		data->line = line;
 	}
 	free(line); // potential double free
 	close(filedes);
