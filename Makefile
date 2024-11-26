@@ -5,12 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/11/26 19:33:38 by daspring         ###   ########.fr        #
+#    Created: Invalid date        by                   #+#    #+#              #
+#    Updated: 2024/11/26 20:18:01 by daspring         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+
 NAME			:= miniRT
+CFLAGS			:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 CFLAGS			:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 LIBMLXDOTA		:= ./MLX42/build/libmlx42.a
 
@@ -68,12 +70,15 @@ OBJS			:=	${SRCS:.c=.o}
 $(NAME): $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
 	@echo "Compiling miniRT ..."
 	# cc $(CFLAGS) $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
+	# cc $(CFLAGS) $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
 	# cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /users/llacsivy/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
+	cc -g $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /Users/daspring/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
 	cc -g $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /Users/daspring/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
 	
 debug: $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
 	@echo "Compiling miniRT ..."
 	cc -g $(SRCS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o debug
+
 
 %.o: %.c $(DEPENDENCIES)
 	cc $(CFLAGS) -c $< -o $@

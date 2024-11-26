@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 18:40:45 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/26 19:10:08 by daspring         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2024/11/26 20:15:52 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include <stdlib.h>
 
@@ -23,6 +24,17 @@ t_tuple	*tuple_add(t_tuple *a, t_tuple *b)
 	c->y = a->y + b->y;
 	c->z = a->z + b->z;
 	c->w = a->w + b->w;
+	return (c);
+}
+
+t_tuple	tuple_add2(t_tuple *a, t_tuple *b)
+{
+	t_tuple	c;
+
+	c.x = a->x + b->x;
+	c.y = a->y + b->y;
+	c.z = a->z + b->z;
+	c.w = a->w + b->w;
 	return (c);
 }
 

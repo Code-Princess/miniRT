@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 18:41:11 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/26 19:16:00 by daspring         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2024/11/26 20:12:43 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef MATHS_H
 # define MATHS_H
@@ -31,6 +32,7 @@ typedef enum e_tuple_type
 
 t_tuple	set_tuple(float x, float y, float z, int w);
 t_tuple	*tuple_add(t_tuple *a, t_tuple *b);
+t_tuple	tuple_add2(t_tuple *a, t_tuple *b);
 t_tuple	tuple_add2(t_tuple *a, t_tuple *b);
 t_tuple	*tuple_subtr(t_tuple *minuend, t_tuple *subtrahend);
 t_tuple	tuple_subtr2(t_tuple *minuend, t_tuple *subtrahend);

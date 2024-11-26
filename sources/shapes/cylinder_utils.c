@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 11:25:29 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/26 19:46:39 by daspring         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2024/11/26 20:17:09 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include <math.h>
 
@@ -18,14 +19,17 @@
 int	pt_is_between_slabs(float t, t_ray *ray, t_object *cylinder)
 {
 	t_tuple	q;
+	t_tuple	q;
 
 	q = ray_at_t(ray, t);
 	if (tuple_dot(&cylinder->s_cy.axis_vec, \
+			direction(&cylinder->position, &q)) > 0 \
 			direction(&cylinder->position, &q)) > 0 \
 		&& \
 		tuple_dot(&cylinder->s_cy.axis_vec, \
 					direction(tuple_add(&cylinder->position, \
 								tuple_scale(cylinder->s_cy.height, \
+									&cylinder->s_cy.axis_vec)), &q)) < 0)
 									&cylinder->s_cy.axis_vec)), &q)) < 0)
 		return (1);
 	else

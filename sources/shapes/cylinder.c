@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 15:55:05 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/26 19:51:55 by daspring         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2024/11/26 20:17:21 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include <math.h>
 #include <stdlib.h>

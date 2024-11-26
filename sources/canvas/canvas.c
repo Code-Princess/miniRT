@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/26 19:32:18 by daspring         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2024/11/26 20:14:18 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,6 +23,7 @@ void	fill_canvas(size_t width, size_t height)
 	size_t			y_pixel;
 	size_t			x_pixel;
 	t_ray			ray;
+	t_ray			ray;
 	t_data			*data;
 	t_hit_obj		hit_obj;
 
@@ -33,6 +35,7 @@ void	fill_canvas(size_t width, size_t height)
 		while (x_pixel < width)
 		{
 			ray = create_ray(x_pixel, y_pixel);
+			hit_obj = find_hit_pt(data->objects, &ray);
 			hit_obj = find_hit_pt(data->objects, &ray);
 			// mlx_put_pixel(data->image, x_pixel, y_pixel,
 			// 				calc_normal_color(hit_obj, ray));
