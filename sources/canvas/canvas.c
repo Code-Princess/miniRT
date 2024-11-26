@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:31:47 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/25 12:36:50 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/26 13:45:15 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	fill_canvas(size_t width, size_t height)
 {
 	size_t			y_pixel;
 	size_t			x_pixel;
-	t_ray			*ray;
+	t_ray			ray;
 	t_data			*data;
 	t_hit_obj		*hit_obj;
 
@@ -33,11 +33,11 @@ void	fill_canvas(size_t width, size_t height)
 		while (x_pixel < width)
 		{
 			ray = create_ray(x_pixel, y_pixel);
-			hit_obj = find_hit_pt(data->objects, ray);
+			hit_obj = find_hit_pt(data->objects, &ray);
 			// mlx_put_pixel(data->image, x_pixel, y_pixel,
 			// 				calc_normal_color(hit_obj, ray));
 			mlx_put_pixel(data->image, x_pixel, y_pixel, \
-							calc_pixel_color(hit_obj, ray, data));
+							calc_pixel_color(hit_obj, &ray, data));
 			x_pixel++;
 		}
 		y_pixel++;
@@ -63,7 +63,7 @@ t_hit_obj	*find_hit_pt(t_object **objects, t_ray *ray)
 		{
 			hit_obj->t = hit_t;
 			hit_obj->obj = objects[object_idx - 1];
-			hit_obj->hit_pt = *ray_at_t(ray, hit_obj->t);
+			hit_obj->hit_pt = ray_at_t(ray, hit_obj->t);
 		}
 	}
 	if (hit_obj->t >= 1 && hit_obj->t != INT8_MAX)

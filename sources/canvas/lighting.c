@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:17:20 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/15 14:31:36 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/26 13:51:31 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_color	calc_specular_color(t_hit_obj *hit_obj, t_object *light, t_ray *ray)
 	t_tuple	*dir_pt_light;
 	t_tuple	*reflect_vec;
 	float	reflect_dot_eye;
+	t_tuple	pt;
 
 	light_vec = tuple_normalize(direction(&hit_obj->hit_pt, &light->position));
 	light_dot_normal = tuple_dot(light_vec, &hit_obj->normal_vec);
@@ -66,7 +67,8 @@ t_color	calc_specular_color(t_hit_obj *hit_obj, t_object *light, t_ray *ray)
 		return (set_color(0, 0, 0, 1));
 	else
 	{
-		dir_pt_light = direction(ray_at_t(ray, hit_obj->t), &light->position);
+		pt = ray_at_t(ray, hit_obj->t);
+		dir_pt_light = direction(&pt, &light->position);
 		reflect_vec = calc_reflect_vec(dir_pt_light, &hit_obj->normal_vec);
 		reflect_dot_eye = tuple_dot(tuple_normalize(reflect_vec), \
 									tuple_normalize(&ray->direction_vec));
@@ -83,7 +85,7 @@ t_color	calc_specular_color(t_hit_obj *hit_obj, t_object *light, t_ray *ray)
 
 void	prepare_color_calc(t_hit_obj *hit_obj, t_ray *ray)
 {
-	hit_obj->hit_pt = *ray_at_t(ray, hit_obj->t);
+	hit_obj->hit_pt = ray_at_t(ray, hit_obj->t);
 	hit_obj->normal_vec = *get_normal_vec_ft()[hit_obj->obj->obj_name] \
 											(hit_obj, ray);
 }

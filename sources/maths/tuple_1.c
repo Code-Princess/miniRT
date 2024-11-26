@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tuple_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:40:45 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/25 12:55:28 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/26 13:54:19 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@ t_tuple	*tuple_add(t_tuple *a, t_tuple *b)
 	c->y = a->y + b->y;
 	c->z = a->z + b->z;
 	c->w = a->w + b->w;
+	return (c);
+}
+
+t_tuple	tuple_add2(t_tuple *a, t_tuple *b)
+{
+	t_tuple	c;
+
+	c.x = a->x + b->x;
+	c.y = a->y + b->y;
+	c.z = a->z + b->z;
+	c.w = a->w + b->w;
 	return (c);
 }
 

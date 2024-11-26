@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/08 10:52:22 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/26 13:50:56 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,10 @@ t_tuple	*calc_sphere_normal_vec(t_hit_obj *hit_obj, t_ray *ray)
 {
 	t_tuple	*dir_vec;
 	t_tuple	*normal_vec;
+	t_tuple	pt;
 
-	dir_vec = direction(&hit_obj->obj->position, ray_at_t(ray, hit_obj->t));
+	pt = ray_at_t(ray, hit_obj->t);
+	dir_vec = direction(&hit_obj->obj->position, &pt);
 	normal_vec = tuple_scale(1 / hit_obj->obj->s_sphere.radius, dir_vec);
 	return (normal_vec);
 }
