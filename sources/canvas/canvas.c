@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/11/26 20:32:47 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:41:11 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	fill_canvas(size_t width, size_t height)
 		while (x_pixel < width)
 		{
 			ray = create_ray(x_pixel, y_pixel);
-			hit_obj = find_hit_pt(data->objects, &ray);
 			hit_obj = find_hit_pt(data->objects, &ray);
 			// mlx_put_pixel(data->image, x_pixel, y_pixel,
 			// 				calc_normal_color(hit_obj, ray));

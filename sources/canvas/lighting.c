@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:17:20 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/26 20:14:47 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/26 21:14:00 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,14 @@ t_color	calc_diffuse_color(t_hit_obj *hit_obj, t_object *light)
 {
 	t_color	diffuse_color;
 	t_color	effective_color;
-	t_tuple	*light_vec;
+	t_tuple	light_vec;
 	float	light_dot_normal;
+	t_tuple	temp;
 
 	effective_color = color_mult(hit_obj->obj->color, light->s_light.intensity);
-	light_vec = tuple_normalize(direction(&hit_obj->hit_pt, &light->position));
-	light_dot_normal = tuple_dot(light_vec, &hit_obj->normal_vec);
+	temp = direction2(&hit_obj->hit_pt, &light->position);
+	light_vec = tuple_normalize2(&temp);
+	light_dot_normal = tuple_dot(&light_vec, &hit_obj->normal_vec);
 	if (light_dot_normal < 0)
 		diffuse_color = set_color(0, 0, 0, 1);
 	else
@@ -54,24 +56,28 @@ t_color	calc_diffuse_color(t_hit_obj *hit_obj, t_object *light)
 
 t_color	calc_specular_color(t_hit_obj *hit_obj, t_object *light, t_ray *ray)
 {
-	t_tuple	*light_vec;
+	t_tuple	light_vec;
 	float	light_dot_normal;
-	t_tuple	*dir_pt_light;
-	t_tuple	*reflect_vec;
+	t_tuple	dir_pt_light;
+	t_tuple	reflect_vec;
 	float	reflect_dot_eye;
 	t_tuple	pt;
+	t_tuple	temp;
+	t_tuple	temp2;
 
-	light_vec = tuple_normalize(direction(&hit_obj->hit_pt, &light->position));
-	light_dot_normal = tuple_dot(light_vec, &hit_obj->normal_vec);
+	temp = direction2(&hit_obj->hit_pt, &light->position);
+	light_vec = tuple_normalize2(&temp);
+	light_dot_normal = tuple_dot(&light_vec, &hit_obj->normal_vec);
 	if (light_dot_normal < 0)
 		return (set_color(0, 0, 0, 1));
 	else
 	{
 		pt = ray_at_t(ray, hit_obj->t);
-		dir_pt_light = direction(&pt, &light->position);
-		reflect_vec = calc_reflect_vec(dir_pt_light, &hit_obj->normal_vec);
-		reflect_dot_eye = tuple_dot(tuple_normalize(reflect_vec), \
-									tuple_normalize(&ray->direction_vec));
+		dir_pt_light = direction2(&pt, &light->position);
+		reflect_vec = calc_reflect_vec(&dir_pt_light, &hit_obj->normal_vec);
+		temp = tuple_normalize2(&reflect_vec);
+		temp2 = tuple_normalize2(&ray->direction_vec);
+		reflect_dot_eye = tuple_dot(&temp, &temp2);
 		if (reflect_dot_eye <= 0)
 			return (set_color(0, 0, 0, 1));
 		else
@@ -91,14 +97,14 @@ void	prepare_color_calc(t_hit_obj *hit_obj, t_ray *ray)
 }
 // printf("still alive in prepare_color_calc!\n");
 
-t_tuple	*calc_reflect_vec(t_tuple *incomming, t_tuple *normal_vec)
+t_tuple	calc_reflect_vec(t_tuple *incomming, t_tuple *normal_vec)
 {
-	t_tuple	*reflect_vec;
-	t_tuple	*subtrahend;
+	t_tuple	reflect_vec;
+	t_tuple	subtrahend;
 	float	ray_dot_normal;
 
 	ray_dot_normal = tuple_dot(incomming, normal_vec);
-	subtrahend = tuple_scale(2 * ray_dot_normal, normal_vec);
-	reflect_vec = tuple_subtr(incomming, subtrahend);
+	subtrahend = tuple_scale2(2 * ray_dot_normal, normal_vec);
+	reflect_vec = tuple_subtr2(incomming, &subtrahend);
 	return (reflect_vec);
 }

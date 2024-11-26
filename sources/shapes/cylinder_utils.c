@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/11/26 20:33:15 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/26 21:17:08 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@
 int	pt_is_between_slabs(float t, t_ray *ray, t_object *cylinder)
 {
 	t_tuple	q;
+	t_tuple	temp1;
+	t_tuple	temp2;
+	t_tuple	temp3;
 
 	q = ray_at_t(ray, t);
-	if (tuple_dot(&cylinder->s_cy.axis_vec, \
-			direction(&cylinder->position, &q)) > 0 \
-		&& \
-		tuple_dot(&cylinder->s_cy.axis_vec, \
-					direction(tuple_add(&cylinder->position, \
-								tuple_scale(cylinder->s_cy.height, \
-									&cylinder->s_cy.axis_vec)), &q)) < 0)
+	temp3 = tuple_scale2(cylinder->s_cy.height, &cylinder->s_cy.axis_vec);
+	temp1 = tuple_add2(&cylinder->position, &temp3);
+	temp2 = direction2(&temp1, &q);
+	temp1 = direction2(&cylinder->position, &q);
+	if (tuple_dot(&cylinder->s_cy.axis_vec, &temp1) > 0 \
+		&& tuple_dot(&cylinder->s_cy.axis_vec, &temp2) < 0)
 		return (1);
 	else
 		return (0);

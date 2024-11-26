@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/26 20:29:39 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:47:29 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,11 @@ typedef struct s_cy_helper
 	float	c;
 	float	t_1;
 	float	t_2;
-	t_tuple	*v;
-	t_tuple	*v_a;
-	t_tuple	*delta_p;
-	t_tuple	*temp1;
-	t_tuple	*temp2;
+	t_tuple	v;
+	t_tuple	v_a;
+	t_tuple	delta_p;
+	t_tuple	temp1;
+	t_tuple	temp2;
 }			t_cy_helper;
 
 typedef struct s_hit_obj

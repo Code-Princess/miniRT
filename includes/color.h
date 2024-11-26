@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:04:01 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/26 18:39:46 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/26 21:11:02 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_color		calc_specular_color(t_hit_obj *hit_obj, t_object *light, \
 uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data);
 t_material	set_material(float ambient, float diffuse, float specular, \
 						int shininess);
-t_tuple		*calc_reflect_vec(t_tuple *incomming, t_tuple *normal_vec);
+t_tuple		calc_reflect_vec(t_tuple *incomming, t_tuple *normal_vec);
 bool		pt_is_in_shadow(t_object **objects, t_ray *ray);
 // t_hit_obj	*pt_is_in_shadow(t_object **objects, t_ray *ray);
 void		is_in_shadow(t_object *light, t_hit_obj *hit_obj);

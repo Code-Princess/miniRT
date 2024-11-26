@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/11/26 20:12:43 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:42:16 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef enum e_tuple_type
 
 t_tuple	set_tuple(float x, float y, float z, int w);
 t_tuple	*tuple_add(t_tuple *a, t_tuple *b);
-t_tuple	tuple_add2(t_tuple *a, t_tuple *b);
 t_tuple	tuple_add2(t_tuple *a, t_tuple *b);
 t_tuple	*tuple_subtr(t_tuple *minuend, t_tuple *subtrahend);
 t_tuple	tuple_subtr2(t_tuple *minuend, t_tuple *subtrahend);
