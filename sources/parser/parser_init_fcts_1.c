@@ -6,7 +6,7 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/25 13:12:08 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/25 13:37:14 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	get_obj_name(char *identifier)
 		return (PLANE);
 	if (ft_strcmp(identifier, "cy") == 0)
 		return (CYLINDER);
-	print_error_and_exit("identifier unknown", "object");
+	print_error_and_exit2("identifier unknown", "object");
 	return (-1);
 }
 
@@ -38,9 +38,9 @@ void	init_brightness(t_object *obj, char **line_arr, int idx)
 	float	brightness;
 
 	if (line_arr[idx] == NULL)
-		print_error_and_exit("brightness: missing argument", line_arr[0]);
+		print_error_and_exit("brightness: missing argument", line_arr[0], obj);
 	if (line_arr[idx][0] == '\n')
-		print_error_and_exit("brightness: missing argument", line_arr[0]);
+		print_error_and_exit("brightness: missing argument", line_arr[0], obj);
 	brightness = ft_atof(line_arr[idx]);
 	if (is_in_range_float(&brightness, 0, 1))
 	{
@@ -48,7 +48,7 @@ void	init_brightness(t_object *obj, char **line_arr, int idx)
 	}
 	else
 	{
-		print_error_and_exit("brightness: value not in range [0,1]", line_arr[0]);
+		print_error_and_exit("brightness: value not in range [0,1]", line_arr[0], obj);
 	}
 }
 
@@ -60,11 +60,11 @@ void	init_color(t_object *obj, char **line_arr, int idx)
 	int	error;
 
 	error = 0;
-	exit_if_args_incomplete2(line_arr, idx, "color: not enough arguments", obj);
+	exit_if_args_incomplete(line_arr, idx, "color: not enough arguments", obj);
 	red = ft_atoi_mod(line_arr[idx], &error);
-	exit_if_args_incomplete2(line_arr, idx + 1, "color: not enough arguments", obj);
+	exit_if_args_incomplete(line_arr, idx + 1, "color: not enough arguments", obj);
 	green = ft_atoi_mod(line_arr[idx + 1], &error);
-	exit_if_args_incomplete2(line_arr, idx + 2, "color: not enough arguments", obj);
+	exit_if_args_incomplete(line_arr, idx + 2, "color: not enough arguments", obj);
 	blue = ft_atoi_mod(line_arr[idx + 2], &error);
 	if (is_in_range_int(&red, 0, 255) && is_in_range_int(&green, 0, 255) && \
 		is_in_range_int(&blue, 0, 255) && error == 0)
@@ -74,7 +74,7 @@ void	init_color(t_object *obj, char **line_arr, int idx)
 	}
 	else
 	{
-		print_error_and_exit2("color: value not in range [0,255]", line_arr[0], obj);
+		print_error_and_exit("color: value not in range [0,255]", line_arr[0], obj);
 	}
 }
 
@@ -84,13 +84,13 @@ void	init_position(t_object *obj, char **line_arr, int idx)
 	float	y_coord;
 	float	z_coord;
 
-	exit_if_args_incomplete(line_arr, idx, "position: not enough arguments");
+	exit_if_args_incomplete(line_arr, idx, "position: not enough arguments", obj);
 	x_coord = ft_atof(line_arr[idx]);
 	exit_if_args_incomplete(line_arr, idx + 1, \
-							"position: not enough arguments");
+							"position: not enough arguments", obj);
 	y_coord = ft_atof(line_arr[idx + 1]);
 	exit_if_args_incomplete(line_arr, idx + 2, \
-							"position: not enough arguments");
+							"position: not enough arguments", obj);
 	z_coord = ft_atof(line_arr[idx + 2]);
 	obj->position = set_tuple(x_coord, y_coord, z_coord, PT);
 }
@@ -111,18 +111,18 @@ bool	is_in_range_int(int *num, int min, int max)
 		return (false);
 }
 
-void	exit_if_args_incomplete(char **line_arr, int idx, char *message)
-{
-	if (line_arr[idx] == NULL)
-		print_error_and_exit(message, line_arr[0]);
-	if (line_arr[idx][0] == '\n')
-		print_error_and_exit(message, line_arr[0]);
-}
+// void	exit_if_args_incomplete(char **line_arr, int idx, char *message)
+// {
+// 	if (line_arr[idx] == NULL)
+// 		print_error_and_exit(message, line_arr[0]);
+// 	if (line_arr[idx][0] == '\n')
+// 		print_error_and_exit(message, line_arr[0]);
+// }
 
-void	exit_if_args_incomplete2(char **line_arr, int idx, char *message, t_object *obj)
+void	exit_if_args_incomplete(char **line_arr, int idx, char *message, t_object *obj)
 {
 	if (line_arr[idx] == NULL)
-		print_error_and_exit2(message, line_arr[0], obj);
+		print_error_and_exit(message, line_arr[0], obj);
 	if (line_arr[idx][0] == '\n')
-		print_error_and_exit2(message, line_arr[0], obj);
+		print_error_and_exit(message, line_arr[0], obj);
 }

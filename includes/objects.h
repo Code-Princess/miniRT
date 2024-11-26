@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/22 13:57:21 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/26 19:47:58 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,10 +116,11 @@ typedef struct s_hit_obj
 	t_tuple		hit_pt;
 	t_tuple		normal_vec;
 	bool		not_in_shadow;
+	bool		obj_found;
 }				t_hit_obj;
 
 typedef float		(*t_hit_pt_ft_array)(t_object *object, t_ray *ray);
-typedef t_tuple		*(*t_get_normal_ft_array)(t_hit_obj *hit_obj, t_ray *ray);
+typedef t_tuple		(*t_get_normal_ft_array)(t_hit_obj *hit_obj, t_ray *ray);
 
 // void					init_camera(t_data *data);
 // void					calc_image_plane(t_object *camera);
@@ -127,11 +128,12 @@ t_tuple					calc_origin(t_object *camera);
 void					init_plane(t_data *data);
 t_object				*create_plane(t_tuple position, t_color color, \
 										t_tuple normal_vec);
+t_object				create_plane2(t_tuple position, t_color color, t_tuple normal_vec);
 void					init_sphere(t_data *data);
 void					init_cylinder(t_data *data);
 void					init_light(t_data *data);
 
-t_hit_obj				*find_hit_pt(t_object **objects, t_ray *ray);
+t_hit_obj				find_hit_pt(t_object **objects, t_ray *ray);
 t_hit_pt_ft_array		*get_hit_pt_ft(void);
 t_get_normal_ft_array	*get_normal_vec_ft(void);
 float					find_sphere_hitpt(t_object *sphere, t_ray *ray);
@@ -145,11 +147,11 @@ int						pt_is_between_slabs(float t, t_ray *ray, \
 float					pt_is_on_top(t_ray *ray, t_object *cylinder);
 float					pt_is_on_bottom(t_ray *ray, t_object *cylinder);
 
-t_tuple					*calc_sphere_normal_vec(t_hit_obj *hit_obj, t_ray *ray);
-t_tuple					*calc_plane_normal_vec(t_hit_obj *hit_obj, t_ray *ray);
-t_tuple					*calc_cylinder_normal_vec(t_hit_obj *hit_obj, \
+t_tuple					calc_sphere_normal_vec(t_hit_obj *hit_obj, t_ray *ray);
+t_tuple					calc_plane_normal_vec(t_hit_obj *hit_obj, t_ray *ray);
+t_tuple					calc_cylinder_normal_vec(t_hit_obj *hit_obj, \
 													t_ray *ray);
-t_tuple					*calc_cylinder_lateral_normal_vec(t_hit_obj *cy, \
+t_tuple					calc_cylinder_lateral_normal_vec(t_hit_obj *cy, \
 															t_ray *ray);
 
 int						get_light_index(t_data *data);

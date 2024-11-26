@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tuple_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:40:45 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/25 12:55:28 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/26 19:10:08 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,17 @@ t_tuple	*tuple_add(t_tuple *a, t_tuple *b)
 	return (c);
 }
 
+t_tuple	tuple_add2(t_tuple *a, t_tuple *b)
+{
+	t_tuple	c;
+
+	c.x = a->x + b->x;
+	c.y = a->y + b->y;
+	c.z = a->z + b->z;
+	c.w = a->w + b->w;
+	return (c);
+}
+
 t_tuple	*tuple_neg(t_tuple *a)
 {
 	t_tuple	*c;
@@ -38,6 +49,17 @@ t_tuple	*tuple_neg(t_tuple *a)
 	return (c);
 }
 
+t_tuple	tuple_neg2(t_tuple *a)
+{
+	t_tuple	c;
+
+	c.x = -(a->x);
+	c.y = -(a->y);
+	c.z = -(a->z);
+	c.w = a->w;
+	return (c);
+}
+
 t_tuple	*tuple_subtr(t_tuple *minuend, t_tuple *subtrahend)
 {
 	t_tuple	*c;
@@ -47,6 +69,17 @@ t_tuple	*tuple_subtr(t_tuple *minuend, t_tuple *subtrahend)
 	c->y = minuend->y - subtrahend->y;
 	c->z = minuend->z - subtrahend->z;
 	c->w = minuend->w - subtrahend->w;
+	return (c);
+}
+
+t_tuple	tuple_subtr2(t_tuple *minuend, t_tuple *subtrahend)
+{
+	t_tuple	c;
+
+	c.x = minuend->x - subtrahend->x;
+	c.y = minuend->y - subtrahend->y;
+	c.z = minuend->z - subtrahend->z;
+	c.w = minuend->w - subtrahend->w;
 	return (c);
 }
 

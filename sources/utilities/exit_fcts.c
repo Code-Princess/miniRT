@@ -6,7 +6,7 @@
 /*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 13:04:48 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/25 13:26:41 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/25 13:37:39 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../../includes/free.h"
 #include "../../includes/utilities.h"
 
-void	print_error_and_exit(char *message, char *identifier)
+void	print_error_and_exit2(char *message, char *identifier)
 {
 	t_data	*data;
 
@@ -27,7 +27,7 @@ void	print_error_and_exit(char *message, char *identifier)
 	exit(1);
 }
 
-void	print_error_and_exit2(char *message, char *identifier, t_object *obj)
+void	print_error_and_exit(char *message, char *identifier, t_object *obj)
 {
 	t_data	*data;
 

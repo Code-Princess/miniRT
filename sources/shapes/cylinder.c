@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:55:05 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/22 13:33:23 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/26 19:51:55 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 // 	data->objects[7] = cylinder;
 // }
 
-t_tuple	*calc_cylinder_normal_vec(t_hit_obj *cy, t_ray *ray)
+t_tuple	calc_cylinder_normal_vec(t_hit_obj *cy, t_ray *ray)
 {
 	float	top_t;
 	float	bottom_t;
@@ -57,26 +57,28 @@ t_tuple	*calc_cylinder_normal_vec(t_hit_obj *cy, t_ray *ray)
 	bottom_t = pt_is_on_bottom(ray, cy->obj);
 	if ((top_t - cy->t) < INFINI_FLOAT && top_t != -1)
 	{
-		return (&cy->obj->s_cy.axis_vec);
+		return (cy->obj->s_cy.axis_vec);
 	}
 	else if ((bottom_t - cy->t) < INFINI_FLOAT && bottom_t != -1)
 	{
-		return (tuple_neg(&cy->obj->s_cy.axis_vec));
+		return (tuple_neg2(&cy->obj->s_cy.axis_vec));
 	}
 	return (calc_cylinder_lateral_normal_vec(cy, ray));
 }
 // printf("alive in calc_cylinder_normal_vec\n");
 
-t_tuple	*calc_cylinder_lateral_normal_vec(t_hit_obj *cy, t_ray *ray)
+t_tuple	calc_cylinder_lateral_normal_vec(t_hit_obj *cy, t_ray *ray)
 {
-	t_tuple	*long_normal_vec;
-	t_tuple	*pos_q_dir_vec;
-	t_tuple	*subtrahend;
+	t_tuple	long_normal_vec;
+	t_tuple	pos_q_dir_vec;
+	t_tuple	subtrahend;
 	float	scale_dir;
+	t_tuple	pt;
 
-	pos_q_dir_vec = direction(&cy->obj->position, ray_at_t(ray, cy->t));
-	scale_dir = tuple_dot(&cy->obj->s_cy.axis_vec, pos_q_dir_vec);
-	subtrahend = tuple_scale(scale_dir, &cy->obj->s_cy.axis_vec);
-	long_normal_vec = tuple_subtr(pos_q_dir_vec, subtrahend);
-	return (tuple_scale(1 / cy->obj->s_cy.radius, long_normal_vec));
+	pt = ray_at_t(ray, cy->t);
+	pos_q_dir_vec = direction2(&cy->obj->position, &pt);
+	scale_dir = tuple_dot(&cy->obj->s_cy.axis_vec, &pos_q_dir_vec);
+	subtrahend = tuple_scale2(scale_dir, &cy->obj->s_cy.axis_vec);
+	long_normal_vec = tuple_subtr2(&pos_q_dir_vec, &subtrahend);
+	return (tuple_scale2(1 / cy->obj->s_cy.radius, &long_normal_vec));
 }
