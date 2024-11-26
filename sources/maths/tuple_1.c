@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/11/26 20:15:52 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:33:38 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,6 @@ t_tuple	*tuple_add(t_tuple *a, t_tuple *b)
 	c->y = a->y + b->y;
 	c->z = a->z + b->z;
 	c->w = a->w + b->w;
-	return (c);
-}
-
-t_tuple	tuple_add2(t_tuple *a, t_tuple *b)
-{
-	t_tuple	c;
-
-	c.x = a->x + b->x;
-	c.y = a->y + b->y;
-	c.z = a->z + b->z;
-	c.w = a->w + b->w;
 	return (c);
 }
 

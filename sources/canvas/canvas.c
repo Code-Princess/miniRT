@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/11/26 20:14:18 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:32:47 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	fill_canvas(size_t width, size_t height)
 {
 	size_t			y_pixel;
 	size_t			x_pixel;
-	t_ray			ray;
 	t_ray			ray;
 	t_data			*data;
 	t_hit_obj		hit_obj;

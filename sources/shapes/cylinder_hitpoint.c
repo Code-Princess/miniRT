@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder_hitpoint.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 13:05:10 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/22 13:55:30 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:29:33 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
