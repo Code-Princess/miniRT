@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:51:15 by linda             #+#    #+#             */
-/*   Updated: 2024/11/07 12:41:57 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/25 12:56:14 by linda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,28 @@
 #include "../../includes/objects.h"
 #include "../../includes/miniRT.h"
 
-void	init_camera(t_data *data)
-{
-	t_object	*camera;
-
-	camera = malloc(1 * sizeof(t_object));
-	camera->obj_name = CAMERA;
-	camera->identifier = C;
-	camera->position = set_tuple(0, 0, -20, 1);
-	camera->s_camera.angle = 90;
-	camera->s_camera.normal_vec = set_tuple(0, 0, 1, 0);
-	calc_image_plane(camera);
-	data->objects[CAMERA] = camera;
-	data->objects[0] = camera;
-}
-
-void	calc_image_plane(t_object *camera)
+void	init_image_plane(t_object *camera)
 {
 	float	pixel_len;
+	t_tuple	*orthonormal_vec_x;
+	t_tuple	*orthonormal_vec_y;
+	t_tuple	temp;
 
+	temp = tuple_cross2(&camera->s_camera.normal_vec, &(t_tuple){0, -1, 0, 0});
+	orthonormal_vec_x = tuple_normalize(&temp);
+	temp = tuple_cross2(&camera->s_camera.normal_vec, orthonormal_vec_x);
+	orthonormal_vec_y = tuple_normalize(&temp);
 	pixel_len = CANVAS_WIDTH / WIDTH_IN_PIXEL;
+	camera->s_camera.s_img_plane.delta_x_vec = tuple_scale2(pixel_len, \
+													orthonormal_vec_x);
+	camera->s_camera.s_img_plane.delta_y_vec = tuple_scale2(pixel_len, \
+													orthonormal_vec_y);
 	camera->s_camera.s_img_plane.origin = calc_origin(camera);
-	camera->s_camera.s_img_plane.delta_x_vec = *tuple_scale(pixel_len, \
-													&(t_tuple){1, 0, 0, 0,});
-	camera->s_camera.s_img_plane.delta_y_vec = *tuple_scale(pixel_len, \
-													&(t_tuple){0, 1, 0, 0,});
+	free(orthonormal_vec_x);
+	free(orthonormal_vec_y);
 }
+// print_tuple(*orthonormal_vec_x);
+// print_tuple(*orthonormal_vec_y);
 
 t_tuple	calc_origin(t_object *camera)
 {

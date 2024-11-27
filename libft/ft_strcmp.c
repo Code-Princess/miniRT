@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 15:16:05 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/26 13:44:22 by daspring         ###   ########.fr       */
+/*   Created: 2024/03/13 15:56:03 by llacsivy          #+#    #+#             */
+/*   Updated: 2024/11/08 12:53:18 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-# define RAY_H
+#include "libft.h"
 
-# include <stddef.h>
 
-# include "miniRT.h"
-# include "maths.h"
-
-typedef struct s_data	t_data;
-
-typedef struct s_ray
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	t_tuple	origin_pt;
-	t_tuple	direction_vec;
-}		t_ray;
+	unsigned char	*cast_s1;
+	unsigned char	*cast_s2;
 
-// t_ray	create_ray(t_tuple E, t_tuple P);
-t_ray	create_ray(size_t x_pixel, size_t y_pixel);
-t_tuple	ray_at_t(t_ray *ray, float t);
-
-#endif
+	cast_s1 = (unsigned char *)s1;
+	cast_s2 = (unsigned char *)s2;
+	while ((*cast_s1 != '\0' || *cast_s2 != '\0'))
+	{
+		if (*cast_s1 != *cast_s2)
+		{
+			return (*cast_s1 - *cast_s2);
+		}
+		cast_s1++;
+		cast_s2++;
+	}
+	return (0);
+}

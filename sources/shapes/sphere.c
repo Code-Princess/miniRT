@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/07 14:49:15 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:17:39 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@ float	find_sphere_hitpt(t_object *sphere, t_ray *ray)
 	float	b;
 	float	t_1;
 	float	t_2;
+	t_tuple	temp;
 
+	temp = direction2(&ray->origin_pt, &sphere->position);
 	a = tuple_dot(&ray->direction_vec, &ray->direction_vec);
-	b = -2 * tuple_dot(&ray->direction_vec, \
-					direction(&ray->origin_pt, &sphere->position));
+	b = -2 * tuple_dot(&ray->direction_vec, &temp);
 	discriminant = calc_discriminant(sphere, ray, a, b);
 	if (discriminant < 0)
 		return (-1);
@@ -66,22 +67,24 @@ static float	calc_discriminant(t_object *sphere, t_ray *ray, \
 									float a, float b)
 {
 	float	discriminant;
-	t_tuple	*c_q_vec;
+	t_tuple	c_q_vec;
 	float	c;
 
-	c_q_vec = direction(&ray->origin_pt, &sphere->position);
-	c = tuple_dot(c_q_vec, c_q_vec) - pow(sphere->s_sphere.radius, 2);
+	c_q_vec = direction2(&ray->origin_pt, &sphere->position);
+	c = tuple_dot_self(&c_q_vec) - pow(sphere->s_sphere.radius, 2);
 	discriminant = b * b - 4 * a * c;
 	return (discriminant);
 }
 
-t_tuple	*calc_sphere_normal_vec(t_hit_obj *hit_obj, t_ray *ray)
+t_tuple	calc_sphere_normal_vec(t_hit_obj *hit_obj, t_ray *ray)
 {
-	t_tuple	*dir_vec;
-	t_tuple	*normal_vec;
+	t_tuple	dir_vec;
+	t_tuple	normal_vec;
+	t_tuple	pt;
 
-	dir_vec = direction(&hit_obj->obj->position, ray_at_t(ray, hit_obj->t));
-	normal_vec = tuple_scale(1 / hit_obj->obj->s_sphere.radius, dir_vec);
+	pt = ray_at_t(ray, hit_obj->t);
+	dir_vec = direction2(&hit_obj->obj->position, &pt);
+	normal_vec = tuple_scale2(1 / hit_obj->obj->s_sphere.radius, &dir_vec);
 	return (normal_vec);
 }
 // printf("still alive!\n");

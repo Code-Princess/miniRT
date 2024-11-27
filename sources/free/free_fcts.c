@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   light.c                                            :+:      :+:    :+:   */
+/*   free_fcts.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/31 16:51:48 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/07 13:37:07 by llacsivy         ###   ########.fr       */
+/*   Created: 2024/11/22 13:24:15 by llacsivy          #+#    #+#             */
+/*   Updated: 2024/11/22 14:03:15 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,36 @@
 
 #include "../../includes/objects.h"
 
-void	init_light(t_data *data)
+void	free_char_ptr_array(char **ptr_array)
 {
-	t_object	*light;
+	int	pos;
 
-	light = malloc(1 * sizeof(t_object));
-	light->obj_name = LIGHT;
-	light->identifier = L;
-	light->position = set_tuple(-50, -10, 15, PT);
-	light->color = set_color(1, 1, 1, 1);
-	light->s_light.brightness = 0.5;
-	light->s_light.intensity = color_scale(light->s_light.brightness, \
-											light->color);
-	data->objects[8] = light;
+	pos = 0;
+	if (ptr_array != NULL)
+	{
+		while (ptr_array[pos] != NULL)
+		{
+			free(ptr_array[pos]);
+			pos++;
+		}
+	}
+	free(ptr_array);
+	ptr_array = NULL;
+}
+
+void	free_obj_ptr_array(t_object **objs_array)
+{
+	int	pos;
+
+	pos = 0;
+	if (objs_array != NULL)
+	{
+		while (objs_array[pos] != NULL)
+		{
+			free(objs_array[pos]);
+			pos++;
+		}
+	}
+	free(objs_array);
+	objs_array = NULL;
 }

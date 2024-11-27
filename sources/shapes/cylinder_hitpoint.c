@@ -3,31 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder_hitpoint.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 13:05:10 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/07 15:31:44 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:52:36 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-// #include <stdlib.h>
 
-// #include <stdio.h>
-
-// #include "../../includes/miniRT.h"
 #include "../../includes/objects.h"
 #include "../../includes/ray.h"
 
-static void		calc_temp1(t_object *cy);
-static void		calc_temp2(t_object *cy, t_ray *ray);
+static void		calc_temp1(t_cy_helper *cy_helper);
+static void		calc_temp2(t_object *cy, t_cy_helper *cy_helper, t_ray *ray);
 
 float	find_cylinder_hitpt(t_object *cy, t_ray *ray)
 {
 	float		lateral_t;
 	float		base_t;
+	t_cy_helper	cy_helper;
 
-	lateral_t = find_cylinder_lateral_hitpt(cy, ray);
+	lateral_t = find_cylinder_lateral_hitpt(cy, &cy_helper, ray);
 	base_t = find_cylinder_base_hitpt(cy, ray);
 	if (lateral_t < 0 && base_t < 0)
 		return (-1);
@@ -41,45 +38,49 @@ float	find_cylinder_hitpt(t_object *cy, t_ray *ray)
 		return (base_t);
 }
 
-float	find_cylinder_lateral_hitpt(t_object *cy, t_ray *ray)
+float	find_cylinder_lateral_hitpt(t_object *cy, t_cy_helper *cy_helper, t_ray *ray)
 {
-	cy->s_cy.v = &ray->direction_vec;
-	cy->s_cy.v_a = &cy->s_cy.axis_vec;
-	cy->s_cy.delta_p = direction(&cy->position, &ray->origin_pt);
-	calc_temp1(cy);
-	calc_temp2(cy, ray);
-	cy->s_cy.a = tuple_dot_self(cy->s_cy.temp1);
-	cy->s_cy.b = 2 * tuple_dot(cy->s_cy.temp1, cy->s_cy.temp2);
-	cy->s_cy.c = tuple_dot_self(cy->s_cy.temp2) - pow(cy->s_cy.radius, 2);
-	cy->s_cy.discr = pow(cy->s_cy.b, 2) - 4 * cy->s_cy.a * cy->s_cy.c;
-	if (cy->s_cy.discr < 0)
+	cy_helper->v = ray->direction_vec;
+	cy_helper->v_a = cy->s_cy.axis_vec;
+	cy_helper->delta_p = direction2(&cy->position, &ray->origin_pt);
+	calc_temp1(cy_helper);
+	calc_temp2(cy, cy_helper, ray);
+	cy_helper->a = tuple_dot_self(&cy_helper->temp1);
+	cy_helper->b = 2 * tuple_dot(&cy_helper->temp1, &cy_helper->temp2);
+	cy_helper->c = tuple_dot_self(&cy_helper->temp2) - pow(cy->s_cy.radius, 2);
+	cy_helper->discr = pow(cy_helper->b, 2) - 4 * cy_helper->a * cy_helper->c;
+	if (cy_helper->discr < 0)
 		return (-1);
-	else if (cy->s_cy.discr < 1E-9 && \
-			pt_is_between_slabs(-cy->s_cy.b / 2 / cy->s_cy.a, ray, cy))
-		return (-cy->s_cy.b / 2 / cy->s_cy.a);
+	else if (cy_helper->discr < 1E-9 && \
+			pt_is_between_slabs(-cy_helper->b / 2 / cy_helper->a, ray, cy))
+		return (-cy_helper->b / 2 / cy_helper->a);
 	else
 	{
-		cy->s_cy.t_1 = (-cy->s_cy.b + sqrt(cy->s_cy.discr)) / 2 / cy->s_cy.a;
-		cy->s_cy.t_2 = (-cy->s_cy.b - sqrt(cy->s_cy.discr)) / 2 / cy->s_cy.a;
-		if (cy->s_cy.t_2 > 1 && pt_is_between_slabs(cy->s_cy.t_2, ray, cy))
-			return (cy->s_cy.t_2);
-		else if (pt_is_between_slabs(cy->s_cy.t_1, ray, cy))
-			return (cy->s_cy.t_1);
+		cy_helper->t_1 = (-cy_helper->b + sqrt(cy_helper->discr)) / 2 / cy_helper->a;
+		cy_helper->t_2 = (-cy_helper->b - sqrt(cy_helper->discr)) / 2 / cy_helper->a;
+		if (cy_helper->t_2 > 1 && pt_is_between_slabs(cy_helper->t_2, ray, cy))
+			return (cy_helper->t_2);
+		else if (pt_is_between_slabs(cy_helper->t_1, ray, cy))
+			return (cy_helper->t_1);
 	}
 	return (-1);
 }
 
-static void	calc_temp1(t_object *cy)
+static void	calc_temp1(t_cy_helper *cy_helper)
 {
-	cy->s_cy.temp1 = tuple_subtr(cy->s_cy.v, \
-		tuple_scale(tuple_dot(cy->s_cy.v, cy->s_cy.v_a), cy->s_cy.v_a));
+	t_tuple	temp;
+
+	temp = tuple_scale2(tuple_dot(&cy_helper->v, &cy_helper->v_a), &cy_helper->v_a);
+	cy_helper->temp1 = tuple_subtr2(&cy_helper->v, &temp);
 }
 
-static void	calc_temp2(t_object *cy, t_ray *ray)
+static void	calc_temp2(t_object *cy, t_cy_helper *cy_helper, t_ray *ray)
 {
-	cy->s_cy.delta_p = direction(&cy->position, &ray->origin_pt);
-	cy->s_cy.temp2 = tuple_subtr(cy->s_cy.delta_p, \
-		tuple_scale(tuple_dot(cy->s_cy.delta_p, cy->s_cy.v_a), cy->s_cy.v_a));
+	t_tuple	temp;
+
+	temp = tuple_scale2(tuple_dot(&cy_helper->delta_p, &cy_helper->v_a), &cy_helper->v_a);
+	cy_helper->delta_p = direction2(&cy->position, &ray->origin_pt);
+	cy_helper->temp2 = tuple_subtr2(&cy_helper->delta_p, &temp);
 }
 
 float	find_cylinder_base_hitpt(t_object *cy, t_ray *ray)

@@ -3,98 +3,100 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 14:40:55 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/05/26 19:36:48 by llacsivy         ###   ########.fr       */
+/*   Created: 2024/04/05 17:47:04 by daspring          #+#    #+#             */
+/*   Updated: 2024/11/08 11:41:40 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
+#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*string_append(char *leading_str, char *trailing_str, \
+					size_t len_of_trailing_str)
 {
-	char	cast_c;
+	char	*return_str;
+	size_t	pos;
+	size_t	leader_len;
 
-	cast_c = (char)c;
-	while (*s != '\0')
+	leader_len = string_length(leading_str);
+	return_str = malloc((leader_len + len_of_trailing_str + 1) * sizeof(char));
+	if (return_str == NULL)
+		return (free(leading_str), NULL);
+	pos = 0;
+	while (leading_str[pos] != STRING_TERMINATOR)
 	{
-		if (*s == cast_c)
-			return ((char *)s);
-		s++;
+		return_str[pos] = leading_str[pos];
+		pos++;
 	}
-	if (cast_c == '\0')
-		return ((char *)s);
-	return (NULL);
+	while (len_of_trailing_str-- > 0)
+		return_str[pos++] = *trailing_str++;
+	return_str[pos] = STRING_TERMINATOR;
+	return (free(leading_str), return_str);
 }
 
-char	*ft_calloc_modified(size_t count, size_t size)
+size_t	string_length(char string[])
 {
-	char	*tmp;
+	size_t	pos;
 
-	tmp = (char *)malloc(count * size);
-	if (!tmp)
-	{
-		return (free(tmp), tmp = NULL, NULL);
-	}
-	ft_bzero(tmp, count * size);
-	return (tmp);
+	pos = 0;
+	while (string[pos] != STRING_TERMINATOR)
+		pos++;
+	return (pos);
 }
 
-void	ft_bzero(void *s, size_t n)
-{
-	char	*cast_s;
+// static void	*ft_memcpy(void *dst, const void *src, size_t n)
+// {
+// 	unsigned char	*to;
+// 	unsigned char	*from;
+// 	unsigned int	pos;
 
-	cast_s = (char *)s;
-	while (n > 0)
-	{
-		cast_s[n - 1] = 0;
-		n--;
-	}
-	s = cast_s;
-}
+// 	if (dst == 0 && src == 0)
+// 	{
+// 		return (dst);
+// 	}
+// 	to = (unsigned char *)dst;
+// 	from = (unsigned char *)src;
+// 	pos = 0;
+// 	while (n > pos)
+// 	{
+// 		*(to + pos) = *(from + pos);
+// 		pos++;
+// 	}
+// 	return (dst);
+// }
 
-int	ft_strlen_modified(const char *s)
-{
-	int	len;
+// static void	*ft_memcpy_reverse(void *dst, const void *src, size_t n)
+// {
+// 	unsigned char	*to;
+// 	unsigned char	*from;
+// 	size_t			steps;
 
-	len = 0;
-	if (!s)
-	{
-		return (len);
-	}
-	while (s[len] != '\0')
-	{
-		len++;
-	}
-	return (len);
-}
+// 	if (dst == 0 && src == 0)
+// 	{
+// 		return (dst);
+// 	}
+// 	to = (unsigned char *)dst;
+// 	from = (unsigned char *)src;
+// 	steps = 1;
+// 	while (!(steps > n))
+// 	{
+// 		to[n - steps] = from[n - steps];
+// 		steps++;
+// 	}
+// 	return (dst);
+// }
 
-char	*ft_strjoin_modified(char *s1, char *s2, int s2_len)
-{
-	unsigned int	len;
-	char			*joinedstr;
-	unsigned int	str_idx;
-	int				s2_idx;
-
-	len = ft_strlen(s1) + s2_len;
-	str_idx = 0;
-	s2_idx = 0;
-	joinedstr = (char *)ft_calloc_modified(len + 1, sizeof(char));
-	if (!joinedstr)
-		return (NULL);
-	while (s1 && s1[str_idx] != '\0')
-	{
-		joinedstr[str_idx] = s1[str_idx];
-		str_idx++;
-	}
-	while (s2_idx < s2_len)
-	{
-		joinedstr[str_idx] = *s2;
-		s2++;
-		str_idx++;
-		s2_idx++;
-	}
-	joinedstr[str_idx] = '\0';
-	return (free(s1), s1 = NULL, joinedstr);
-}
+// void	*ft_memmove(void *dst, const void *src, size_t n)
+// {
+// 	if (dst > src)
+// 	{
+// 		return (ft_memcpy_reverse(dst, src, n));
+// 	}
+// 	else
+// 	{
+// 		return (ft_memcpy(dst, src, n));
+// 	}
+// }

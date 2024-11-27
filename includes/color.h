@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:04:01 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/07 15:28:49 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/26 21:11:02 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define COLOR_H
 
 # include <stdint.h>
+# include <stdbool.h>
 
 typedef struct s_hit_obj	t_hit_obj;
 typedef struct s_ray		t_ray;
@@ -30,7 +31,7 @@ typedef enum e_colors
 	RED
 }	t_colors;
 
-typedef struct	s_color
+typedef struct s_color
 {
 	float	colors_float[4];
 	union
@@ -62,8 +63,9 @@ t_color		calc_specular_color(t_hit_obj *hit_obj, t_object *light, \
 uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data);
 t_material	set_material(float ambient, float diffuse, float specular, \
 						int shininess);
-t_tuple		*calc_reflect_vec(t_tuple *incomming, t_tuple *normal_vec);
-t_hit_obj	*find_shadow_pt(t_object **objects, t_ray *ray);
+t_tuple		calc_reflect_vec(t_tuple *incomming, t_tuple *normal_vec);
+bool		pt_is_in_shadow(t_object **objects, t_ray *ray);
+// t_hit_obj	*pt_is_in_shadow(t_object **objects, t_ray *ray);
 void		is_in_shadow(t_object *light, t_hit_obj *hit_obj);
 // t_color		lighting(t_hit_obj *hit_obj, t_object *light, t_ray *ray);
 

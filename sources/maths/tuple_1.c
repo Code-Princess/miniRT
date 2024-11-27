@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 18:40:45 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/29 20:52:23 by daspring         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2024/11/26 20:33:38 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include <stdlib.h>
 
@@ -26,6 +27,17 @@ t_tuple	*tuple_add(t_tuple *a, t_tuple *b)
 	return (c);
 }
 
+t_tuple	tuple_add2(t_tuple *a, t_tuple *b)
+{
+	t_tuple	c;
+
+	c.x = a->x + b->x;
+	c.y = a->y + b->y;
+	c.z = a->z + b->z;
+	c.w = a->w + b->w;
+	return (c);
+}
+
 t_tuple	*tuple_neg(t_tuple *a)
 {
 	t_tuple	*c;
@@ -35,6 +47,17 @@ t_tuple	*tuple_neg(t_tuple *a)
 	c->y = -(a->y);
 	c->z = -(a->z);
 	c->w = a->w;
+	return (c);
+}
+
+t_tuple	tuple_neg2(t_tuple *a)
+{
+	t_tuple	c;
+
+	c.x = -(a->x);
+	c.y = -(a->y);
+	c.z = -(a->z);
+	c.w = a->w;
 	return (c);
 }
 
@@ -50,6 +73,17 @@ t_tuple	*tuple_subtr(t_tuple *minuend, t_tuple *subtrahend)
 	return (c);
 }
 
+t_tuple	tuple_subtr2(t_tuple *minuend, t_tuple *subtrahend)
+{
+	t_tuple	c;
+
+	c.x = minuend->x - subtrahend->x;
+	c.y = minuend->y - subtrahend->y;
+	c.z = minuend->z - subtrahend->z;
+	c.w = minuend->w - subtrahend->w;
+	return (c);
+}
+
 t_tuple	*tuple_scale(float k, t_tuple *a)
 {
 	t_tuple	*c;
@@ -59,6 +93,17 @@ t_tuple	*tuple_scale(float k, t_tuple *a)
 	c->y = k * a->y;
 	c->z = k * a->z;
 	c->w = a->w;
+	return (c);
+}
+
+t_tuple	tuple_scale2(float k, t_tuple *a)
+{
+	t_tuple	c;
+
+	c.x = k * a->x;
+	c.y = k * a->y;
+	c.z = k * a->z;
+	c.w = a->w;
 	return (c);
 }
 

@@ -3,15 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
+#    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/10/07 21:57:05 by llacsivy          #+#    #+#              #
-#    Updated: 2024/11/07 15:25:28 by llacsivy         ###   ########.fr        #
+#    Created: Invalid date        by                   #+#    #+#              #
+#    Updated: 2024/11/26 20:30:13 by daspring         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+
 NAME			:= miniRT
-CFLAGS			:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+CFLAGS			:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 LIBMLXDOTA		:= ./MLX42/build/libmlx42.a
 
 # LIBMLX42		:= ./MLX42/build/libmlx42.a -ldl -lglfw -lm
@@ -30,6 +31,15 @@ DEPENDENCIES	:= 	./includes/color.h \
 
 LIBFTDOTA		:= libft/libft.a
 SRCS			:= 	miniRT.c \
+					sources/parser/parser.c \
+					sources/parser/parser_init_fcts_1.c \
+					sources/parser/parser_init_fcts_2.c \
+					sources/parser/parse_amb_light.c \
+					sources/parser/parse_camera.c \
+					sources/parser/parse_light.c \
+					sources/parser/parse_plane.c \
+					sources/parser/parse_sphere.c \
+					sources/parser/parse_cylinder.c \
 					sources/ray/ray.c \
 					sources/canvas/canvas.c \
 					sources/canvas/canvas_utils.c \
@@ -38,7 +48,6 @@ SRCS			:= 	miniRT.c \
 					sources/canvas/shadow.c \
 					sources/canvas/get_fcts.c \
 					sources/shapes/camera.c \
-					sources/shapes/light.c \
 					sources/shapes/plane.c \
 					sources/shapes/sphere.c \
 					sources/shapes/cylinder.c \
@@ -48,22 +57,28 @@ SRCS			:= 	miniRT.c \
 					sources/maths/tuple_1.c \
 					sources/maths/tuple_2.c \
 					sources/maths/tuple_3.c \
+					sources/utilities/ft_printf_error.c \
+					sources/utilities/exit_fcts.c \
+					sources/free/free_fcts.c \
 					sources/dev_print_tuple.c \
-					sources/dev_print_color.c
+					sources/dev_print_color.c \
+					sources/dev_print_objects.c
 
 OBJS			:=	${SRCS:.c=.o}
 
 $(NAME): $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
 	@echo "Compiling miniRT ..."
-	cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
+	# cc $(CFLAGS) $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
 	# cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /users/llacsivy/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
+	cc -g $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /Users/daspring/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
 	
 debug: $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
 	@echo "Compiling miniRT ..."
-	cc -g $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o debug
-	
+	cc -g $(SRCS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o debug
+
+
 %.o: %.c $(DEPENDENCIES)
-	cc -g $(CFLAGS) -c $< -o $@
+	cc $(CFLAGS) -c $< -o $@
 
 all: $(LIBMLXDOTA) $(NAME)
 
@@ -88,5 +103,8 @@ fclean : clean
 	rm -f $(NAME)
 
 re: fclean all
+
+flo: CFLAGS += -g -fsanitize=address
+flo: re
 
 .PHONY: all clean fclean re debug
