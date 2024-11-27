@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/26 21:14:56 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:52:07 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@
 # include "color.h"
 # include "ray.h"
 
-# define WIDTH_IN_PIXEL 400
-# define HEIGHT_IN_PIXEL 400
+# define WIDTH_IN_PIXEL 100
+# define HEIGHT_IN_PIXEL 100
 # define TITLE "miniRT"
 
+// # define CANVAS_WIDTH 10.0
+// # define CANVAS_WIDTH 35.0
 # define CANVAS_WIDTH 10.0
 
-# define INFINI_FLOAT 1E-05
+# define INFINI_FLOAT 1E-13
 # define AMBIENT 0.2
 # define MAX_RADIUS 2000
 # define MAX_CY_HEIGHT 2000

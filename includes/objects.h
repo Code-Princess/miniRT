@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/26 20:47:29 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ typedef enum e_obj_name
 
 typedef struct s_material
 {
-	float	ambient;
-	float	diffuse;
-	float	specular;
+	double	ambient;
+	double	diffuse;
+	double	specular;
 	int		shininess;
 }				t_material;
 
@@ -60,7 +60,7 @@ typedef struct s_object
 		struct
 		{
 			t_tuple		normal_vec;
-			float		angle;
+			double		angle;
 			struct
 			{
 				t_tuple	origin;
@@ -70,16 +70,16 @@ typedef struct s_object
 		}		s_camera;
 		struct
 		{
-			float	brightness;
+			double	brightness;
 		}		s_amb_light;
 		struct
 		{
-			float	brightness;
+			double	brightness;
 			t_color	intensity;
 		}		s_light;
 		struct
 		{
-			float	radius;
+			double	radius;
 		}		s_sphere;
 		struct
 		{
@@ -88,20 +88,20 @@ typedef struct s_object
 		struct
 		{
 			t_tuple	axis_vec;
-			float	radius;
-			float	height;
+			double	radius;
+			double	height;
 		}		s_cy;
 	};
 }	t_object;
 
 typedef struct s_cy_helper
 {
-	float	discr;
-	float	a;
-	float	b;
-	float	c;
-	float	t_1;
-	float	t_2;
+	double	discr;
+	double	a;
+	double	b;
+	double	c;
+	double	t_1;
+	double	t_2;
 	t_tuple	v;
 	t_tuple	v_a;
 	t_tuple	delta_p;
@@ -112,14 +112,14 @@ typedef struct s_cy_helper
 typedef struct s_hit_obj
 {
 	t_object	*obj;
-	float		t;
+	double		t;
 	t_tuple		hit_pt;
 	t_tuple		normal_vec;
 	bool		not_in_shadow;
 	bool		obj_found;
 }				t_hit_obj;
 
-typedef float		(*t_hit_pt_ft_array)(t_object *object, t_ray *ray);
+typedef double		(*t_hit_pt_ft_array)(t_object *object, t_ray *ray);
 typedef t_tuple		(*t_get_normal_ft_array)(t_hit_obj *hit_obj, t_ray *ray);
 
 // void					init_camera(t_data *data);
@@ -136,16 +136,16 @@ void					init_light(t_data *data);
 t_hit_obj				find_hit_pt(t_object **objects, t_ray *ray);
 t_hit_pt_ft_array		*get_hit_pt_ft(void);
 t_get_normal_ft_array	*get_normal_vec_ft(void);
-float					find_sphere_hitpt(t_object *sphere, t_ray *ray);
-float					find_plane_hitpt(t_object *plane, t_ray *ray);
-float					find_cylinder_hitpt(t_object *cylinder, t_ray *ray);
-float					find_cylinder_lateral_hitpt(t_object *cy, t_cy_helper *cy_helper, t_ray *ray);
-// float					find_cylinder_lateral_hitpt(t_object *cy, t_ray *ray);
-float					find_cylinder_base_hitpt(t_object *cy, t_ray *ray);
-int						pt_is_between_slabs(float t, t_ray *ray, \
+double					find_sphere_hitpt(t_object *sphere, t_ray *ray);
+double					find_plane_hitpt(t_object *plane, t_ray *ray);
+double					find_cylinder_hitpt(t_object *cylinder, t_ray *ray);
+double					find_cylinder_lateral_hitpt(t_object *cy, t_cy_helper *cy_helper, t_ray *ray);
+// double					find_cylinder_lateral_hitpt(t_object *cy, t_ray *ray);
+double					find_cylinder_base_hitpt(t_object *cy, t_ray *ray);
+int						pt_is_between_slabs(double t, t_ray *ray, \
 											t_object *cylinder);
-float					pt_is_on_top(t_ray *ray, t_object *cylinder);
-float					pt_is_on_bottom(t_ray *ray, t_object *cylinder);
+double					pt_is_on_top(t_ray *ray, t_object *cylinder);
+double					pt_is_on_bottom(t_ray *ray, t_object *cylinder);
 
 t_tuple					calc_sphere_normal_vec(t_hit_obj *hit_obj, t_ray *ray);
 t_tuple					calc_plane_normal_vec(t_hit_obj *hit_obj, t_ray *ray);

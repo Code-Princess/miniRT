@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/11/26 21:17:08 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../../includes/objects.h"
 #include "../../includes/ray.h"
 
-int	pt_is_between_slabs(float t, t_ray *ray, t_object *cylinder)
+int	pt_is_between_slabs(double t, t_ray *ray, t_object *cylinder)
 {
 	t_tuple	q;
 	t_tuple	temp1;
@@ -35,12 +35,12 @@ int	pt_is_between_slabs(float t, t_ray *ray, t_object *cylinder)
 		return (0);
 }
 
-float	pt_is_on_bottom(t_ray *ray, t_object *cylinder)
+double	pt_is_on_bottom(t_ray *ray, t_object *cylinder)
 {
 	t_tuple		pos_q_dir;
-	float		dist_pos_q_squared;
-	float		va_dot_pos_q_dir;
-	float		t;
+	double		dist_pos_q_squared;
+	double		va_dot_pos_q_dir;
+	double		t;
 	t_object	bottom_plane;
 	t_tuple		pt;
 	t_tuple		temp;
@@ -59,13 +59,13 @@ float	pt_is_on_bottom(t_ray *ray, t_object *cylinder)
 		return (-1);
 }
 
-float	pt_is_on_top(t_ray *ray, t_object *cylinder)
+double	pt_is_on_top(t_ray *ray, t_object *cylinder)
 {
 	t_tuple		p_top;
 	t_tuple		p_top_q_dir;
-	float		va_dot_p_top_q_dir;
+	double		va_dot_p_top_q_dir;
 	t_object	top_plane;
-	float		t;
+	double		t;
 	t_tuple		pt;
 	t_tuple		temp;
 

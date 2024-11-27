@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 18:36:56 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/25 13:42:03 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/27 18:20:02 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ t_object	*parse_camera_input(char **line_arr)
 	idx += 3;
 	init_angle(camera, line_arr, idx);
 	init_image_plane(camera);
+print_camera(camera);
 	return (camera);
 }

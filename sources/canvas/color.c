@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 14:42:09 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/07 14:53:06 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/color.h"
 #include "../../includes/objects.h"
 
-t_color	set_color(float r, float g, float b, float opac)
+t_color	set_color(double r, double g, double b, double opac)
 {
 	t_color	color;
 
@@ -61,7 +61,7 @@ t_color	color_subtr(t_color minuend, t_color subtrahend)
 	return (result);
 }
 
-t_color	color_scale(float k, t_color a)
+t_color	color_scale(double k, t_color a)
 {
 	t_color	result;
 

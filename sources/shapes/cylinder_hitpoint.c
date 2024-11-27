@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 13:05:10 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/26 20:52:36 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 static void		calc_temp1(t_cy_helper *cy_helper);
 static void		calc_temp2(t_object *cy, t_cy_helper *cy_helper, t_ray *ray);
 
-float	find_cylinder_hitpt(t_object *cy, t_ray *ray)
+double	find_cylinder_hitpt(t_object *cy, t_ray *ray)
 {
-	float		lateral_t;
-	float		base_t;
+	double		lateral_t;
+	double		base_t;
 	t_cy_helper	cy_helper;
 
 	lateral_t = find_cylinder_lateral_hitpt(cy, &cy_helper, ray);
@@ -38,7 +38,7 @@ float	find_cylinder_hitpt(t_object *cy, t_ray *ray)
 		return (base_t);
 }
 
-float	find_cylinder_lateral_hitpt(t_object *cy, t_cy_helper *cy_helper, t_ray *ray)
+double	find_cylinder_lateral_hitpt(t_object *cy, t_cy_helper *cy_helper, t_ray *ray)
 {
 	cy_helper->v = ray->direction_vec;
 	cy_helper->v_a = cy->s_cy.axis_vec;
@@ -83,10 +83,10 @@ static void	calc_temp2(t_object *cy, t_cy_helper *cy_helper, t_ray *ray)
 	cy_helper->temp2 = tuple_subtr2(&cy_helper->delta_p, &temp);
 }
 
-float	find_cylinder_base_hitpt(t_object *cy, t_ray *ray)
+double	find_cylinder_base_hitpt(t_object *cy, t_ray *ray)
 {
-	float	top_t;
-	float	bottom_t;
+	double	top_t;
+	double	bottom_t;
 
 	top_t = pt_is_on_top(ray, cy);
 	bottom_t = pt_is_on_bottom(ray, cy);

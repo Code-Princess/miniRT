@@ -6,13 +6,14 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/11/26 20:41:11 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:48:15 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "../../MLX42/include/MLX42/MLX42.h"
 #include "../../includes/miniRT.h"
@@ -48,10 +49,12 @@ void	fill_canvas(size_t width, size_t height)
 t_hit_obj	find_hit_pt(t_object **objects, t_ray *ray)
 {
 	t_hit_obj	hit_obj;
-	float		hit_t;
+	double		hit_t;
 	int			object_idx;
 
-	hit_obj.t = INT8_MAX;
+hit_t = 0.0;
+	// hit_obj.t = INT8_MAX;
+	hit_obj.t = INT32_MAX;
 	object_idx = 0;
 	while (objects[object_idx++] != NULL)
 	{
@@ -59,6 +62,14 @@ t_hit_obj	find_hit_pt(t_object **objects, t_ray *ray)
 			continue ;
 		hit_t = get_hit_pt_ft()[objects[object_idx - 1]->obj_name] \
 								(objects[object_idx - 1], ray);
+// if (ray->direction_vec.x == 0 && ray->direction_vec.y == 0)
+// {
+// 	printf("hitpoints for ray_dir(x = 0, y = 0): %f\n", hit_t);
+// }
+// if (fabs(ray->direction_vec.y) < 1E-2)
+// {
+// 	printf("hitpoints for ray_dir(y = 0): %f\n", hit_t);
+// }
 		if (hit_t < hit_obj.t && hit_t >= 1)
 		{
 			hit_obj.t = hit_t;
@@ -66,7 +77,8 @@ t_hit_obj	find_hit_pt(t_object **objects, t_ray *ray)
 			hit_obj.hit_pt = ray_at_t(ray, hit_obj.t);
 		}
 	}
-	if (hit_obj.t >= 1 && hit_obj.t != INT8_MAX)
+	// if (hit_obj.t >= 1 && hit_obj.t != INT8_MAX)
+	if (hit_obj.t >= 1 && hit_obj.t != INT32_MAX)
 		hit_obj.obj_found = true;
 	else
 		hit_obj.obj_found = false;

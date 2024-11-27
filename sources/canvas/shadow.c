@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:58:38 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/26 19:02:43 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	is_in_shadow(t_object *light, t_hit_obj *hit_obj)
 
 bool	pt_is_in_shadow(t_object **objects, t_ray *ray)
 {
-	float		hit_t;
+	double		hit_t;
 	int			object_idx;
 
 	object_idx = 0;

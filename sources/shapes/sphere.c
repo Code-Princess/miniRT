@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/26 20:17:39 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 #include "../../includes/objects.h"
 #include "../../includes/color.h"
 
-static float	calc_discriminant(t_object *sphere, t_ray *ray, \
-									float a, float b);
+static double	calc_discriminant(t_object *sphere, t_ray *ray, \
+									double a, double b);
 
 void	init_sphere(t_data *data)
 {
@@ -35,13 +35,13 @@ void	init_sphere(t_data *data)
 	data->objects[5] = sphere;
 }
 
-float	find_sphere_hitpt(t_object *sphere, t_ray *ray)
+double	find_sphere_hitpt(t_object *sphere, t_ray *ray)
 {
-	float	discriminant;
-	float	a;
-	float	b;
-	float	t_1;
-	float	t_2;
+	double	discriminant;
+	double	a;
+	double	b;
+	double	t_1;
+	double	t_2;
 	t_tuple	temp;
 
 	temp = direction2(&ray->origin_pt, &sphere->position);
@@ -63,12 +63,12 @@ float	find_sphere_hitpt(t_object *sphere, t_ray *ray)
 	}
 }
 
-static float	calc_discriminant(t_object *sphere, t_ray *ray, \
-									float a, float b)
+static double	calc_discriminant(t_object *sphere, t_ray *ray, \
+									double a, double b)
 {
-	float	discriminant;
+	double	discriminant;
 	t_tuple	c_q_vec;
-	float	c;
+	double	c;
 
 	c_q_vec = direction2(&ray->origin_pt, &sphere->position);
 	c = tuple_dot_self(&c_q_vec) - pow(sphere->s_sphere.radius, 2);

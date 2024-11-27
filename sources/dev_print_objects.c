@@ -10,6 +10,12 @@ void	print_camera(t_object *camera)
 	printf("normal_vec: ");
 	print_tuple(camera->s_camera.normal_vec);
 	printf("angle: %f\n", camera->s_camera.angle);
+	printf("origin: ");
+	print_tuple(camera->s_camera.s_img_plane.origin);
+	printf("delta_x_vec");
+	print_tuple(camera->s_camera.s_img_plane.delta_x_vec);
+	printf("delta_y_vec");
+	print_tuple(camera->s_camera.s_img_plane.delta_y_vec);
 }
 
 void	print_plane(t_object *plane)

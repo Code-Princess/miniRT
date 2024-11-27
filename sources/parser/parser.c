@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/25 13:41:16 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/27 17:57:27 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	handle_input(t_data *data, int argc, char **argv)
 	data->objects = ft_calloc(data->input.line_count + 1, sizeof(t_object *));
 	// check for NULL
 	populate_objects_array(data, argv);
+	check_plane_normal_vec_dir(data);
+	check_completeness(data);
 }
 
 void	determine_line_count(t_data *data, char **argv)

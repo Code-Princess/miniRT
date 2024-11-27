@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:48:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/26 21:12:42 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_ray	create_ray(size_t x_pixel, size_t y_pixel)
 }
 
 // E + t * d
-t_tuple	ray_at_t(t_ray *ray, float t)
+t_tuple	ray_at_t(t_ray *ray, double t)
 {
 	t_tuple	pt;
 	t_tuple	temp;

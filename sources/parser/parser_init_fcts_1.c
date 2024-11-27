@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_init_fcts_1.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/25 13:37:14 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	get_obj_name(char *identifier)
 
 void	init_brightness(t_object *obj, char **line_arr, int idx)
 {
-	float	brightness;
+	double	brightness;
 
 	if (line_arr[idx] == NULL)
 		print_error_and_exit("brightness: missing argument", line_arr[0], obj);
@@ -80,9 +80,9 @@ void	init_color(t_object *obj, char **line_arr, int idx)
 
 void	init_position(t_object *obj, char **line_arr, int idx)
 {
-	float	x_coord;
-	float	y_coord;
-	float	z_coord;
+	double	x_coord;
+	double	y_coord;
+	double	z_coord;
 
 	exit_if_args_incomplete(line_arr, idx, "position: not enough arguments", obj);
 	x_coord = ft_atof(line_arr[idx]);
@@ -95,9 +95,9 @@ void	init_position(t_object *obj, char **line_arr, int idx)
 	obj->position = set_tuple(x_coord, y_coord, z_coord, PT);
 }
 
-bool	is_in_range_float(float *num, int min, int max)
+bool	is_in_range_float(double *num, int min, int max)
 {
-	if (*num <= (float)max && *num >= (float)min)
+	if (*num <= (double)max && *num >= (double)min)
 		return (true);
 	else
 		return (false);

@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/11/26 20:17:21 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@
 
 t_tuple	calc_cylinder_normal_vec(t_hit_obj *cy, t_ray *ray)
 {
-	float	top_t;
-	float	bottom_t;
+	double	top_t;
+	double	bottom_t;
 
 	top_t = pt_is_on_top(ray, cy->obj);
 	bottom_t = pt_is_on_bottom(ray, cy->obj);
@@ -73,7 +73,7 @@ t_tuple	calc_cylinder_lateral_normal_vec(t_hit_obj *cy, t_ray *ray)
 	t_tuple	long_normal_vec;
 	t_tuple	pos_q_dir_vec;
 	t_tuple	subtrahend;
-	float	scale_dir;
+	double	scale_dir;
 	t_tuple	pt;
 
 	pt = ray_at_t(ray, cy->t);
