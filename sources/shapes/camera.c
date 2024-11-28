@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:51:15 by linda             #+#    #+#             */
-/*   Updated: 2024/11/27 18:15:22 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:51:54 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_tuple	calc_origin(t_object *camera)
 	canvas_height = (CANVAS_WIDTH / WIDTH_IN_PIXEL) * HEIGHT_IN_PIXEL;
 	angle_rad = deg_to_rad(camera->s_camera.angle / 2);
 	dist = CANVAS_WIDTH / 2 / tan(angle_rad);
-	origin = set_tuple(camera->position.x - CANVAS_WIDTH / 2, \
+	origin = set_tuple(camera->position.x - CANVAS_WIDTH / 2, \		//  THE ERROR LIES HEREIN. THE ORIGIN IS SET WITH NO REGARD TO THE CAMERAS NORMAL_VEC. USE THE NEWLY CALCULATED ORTHONORMAL_VECS, MY CHILD.
 					camera->position.y - canvas_height / 2, \
 					camera->position.z + dist, \
 					1);
