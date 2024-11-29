@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: Invalid date        by                   #+#    #+#              #
-#    Updated: 2024/11/27 18:25:24 by daspring         ###   ########.fr        #
+#    Updated: 2024/11/29 17:30:05 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

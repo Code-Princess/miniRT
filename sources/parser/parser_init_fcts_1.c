@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_init_fcts_1.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:34:50 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,15 @@ int	get_obj_name(char *identifier)
 void	init_brightness(t_object *obj, char **line_arr, int idx)
 {
 	double	brightness;
+	int		error;
 
+	error = 0;
 	if (line_arr[idx] == NULL)
 		print_error_and_exit("brightness: missing argument", line_arr[0], obj);
 	if (line_arr[idx][0] == '\n')
 		print_error_and_exit("brightness: missing argument", line_arr[0], obj);
-	brightness = ft_atof(line_arr[idx]);
-	if (is_in_range_float(&brightness, 0, 1))
+	brightness = ft_atof_mod(line_arr[idx], &error);
+	if (is_in_range_float(&brightness, 0, 1) && error == 0)
 	{
 		obj->s_amb_light.brightness = brightness;
 	}
@@ -83,16 +85,26 @@ void	init_position(t_object *obj, char **line_arr, int idx)
 	double	x_coord;
 	double	y_coord;
 	double	z_coord;
+	int		error;
 
+	error = 0;
 	exit_if_args_incomplete(line_arr, idx, "position: not enough arguments", obj);
-	x_coord = ft_atof(line_arr[idx]);
+	x_coord = ft_atof_mod(line_arr[idx], &error);
 	exit_if_args_incomplete(line_arr, idx + 1, \
 							"position: not enough arguments", obj);
-	y_coord = ft_atof(line_arr[idx + 1]);
+	y_coord = ft_atof_mod(line_arr[idx + 1], &error);
 	exit_if_args_incomplete(line_arr, idx + 2, \
 							"position: not enough arguments", obj);
-	z_coord = ft_atof(line_arr[idx + 2]);
-	obj->position = set_tuple(x_coord, y_coord, z_coord, PT);
+	z_coord = ft_atof_mod(line_arr[idx + 2], &error);
+	if (is_in_range_float(&x_coord, -500, 500) && is_in_range_float(&y_coord, -500, 500) && \
+		is_in_range_float(&z_coord, -500, 500) && error == 0)
+	{
+		obj->position = set_tuple(x_coord, y_coord, z_coord, PT);
+	}
+	else
+	{
+		print_error_and_exit("position: value not in range [-500,500]", line_arr[0], obj);
+	}
 }
 
 bool	is_in_range_float(double *num, int min, int max)
