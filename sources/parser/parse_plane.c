@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_plane.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 12:59:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/27 17:28:57 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:43:02 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ t_object	*parse_plane_input(char **line_arr)
 {
 	t_object			*plane;
 	int					idx;
-	// static int			plane_counter;
 
-	// plane_counter++;
 	plane = ft_calloc(1, sizeof(t_object));
+	if (plane == NULL)
+		print_error_and_exit2("Malloc failed.\n", "input: ");
 	plane->obj_name = PLANE;
 	plane->identifier = PL;
 	idx = 1;

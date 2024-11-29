@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/29 17:34:50 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:36:13 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,9 @@ void	init_brightness(t_object *obj, char **line_arr, int idx)
 		print_error_and_exit("brightness: missing argument", line_arr[0], obj);
 	brightness = ft_atof_mod(line_arr[idx], &error);
 	if (is_in_range_float(&brightness, 0, 1) && error == 0)
-	{
 		obj->s_amb_light.brightness = brightness;
-	}
 	else
-	{
 		print_error_and_exit("brightness: value not in range [0,1]", line_arr[0], obj);
-	}
 }
 
 void	init_color(t_object *obj, char **line_arr, int idx)
@@ -70,14 +66,10 @@ void	init_color(t_object *obj, char **line_arr, int idx)
 	blue = ft_atoi_mod(line_arr[idx + 2], &error);
 	if (is_in_range_int(&red, 0, 255) && is_in_range_int(&green, 0, 255) && \
 		is_in_range_int(&blue, 0, 255) && error == 0)
-	{
 		obj->color = set_color(red / 255.0, green / 255.0, \
 								blue / 255.0, 1);
-	}
 	else
-	{
 		print_error_and_exit("color: value not in range [0,255]", line_arr[0], obj);
-	}
 }
 
 void	init_position(t_object *obj, char **line_arr, int idx)
@@ -98,13 +90,9 @@ void	init_position(t_object *obj, char **line_arr, int idx)
 	z_coord = ft_atof_mod(line_arr[idx + 2], &error);
 	if (is_in_range_float(&x_coord, -500, 500) && is_in_range_float(&y_coord, -500, 500) && \
 		is_in_range_float(&z_coord, -500, 500) && error == 0)
-	{
 		obj->position = set_tuple(x_coord, y_coord, z_coord, PT);
-	}
 	else
-	{
 		print_error_and_exit("position: value not in range [-500,500]", line_arr[0], obj);
-	}
 }
 
 bool	is_in_range_float(double *num, int min, int max)
@@ -122,14 +110,6 @@ bool	is_in_range_int(int *num, int min, int max)
 	else
 		return (false);
 }
-
-// void	exit_if_args_incomplete(char **line_arr, int idx, char *message)
-// {
-// 	if (line_arr[idx] == NULL)
-// 		print_error_and_exit(message, line_arr[0]);
-// 	if (line_arr[idx][0] == '\n')
-// 		print_error_and_exit(message, line_arr[0]);
-// }
 
 void	exit_if_args_incomplete(char **line_arr, int idx, char *message, t_object *obj)
 {

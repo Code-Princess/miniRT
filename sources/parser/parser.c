@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/29 15:20:28 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:41:39 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,13 @@ void	str_substitute(char *str, char from, char to);
 void	handle_input(t_data *data, int argc, char **argv)
 {
 	if (argc != 2)
-	{
 		print_error_and_exit2("Wrong number of parameters.\n", "Program input");
-	}
 	if (is_correct_file_type(argv[1]) == false)
-	{
 		print_error_and_exit2("Wrong file extension.\n", "input: ");
-	}
 	determine_line_count(data, argv);
 	data->objects = ft_calloc(data->input.line_count + 1, sizeof(t_object *));
-	// check for NULL
+	if (data->objects == NULL)
+		print_error_and_exit2("Malloc failed.\n", "input: ");
 	populate_objects_array(data, argv);
 	check_plane_normal_vec_dir(data);
 	check_completeness(data);
@@ -113,9 +110,7 @@ void	str_substitute(char *str, char from, char to)
 	while (*str != '\0')
 	{
 		if (*str == from)
-		{
 			*str = to;
-		}
 		str++;
 	}
 }

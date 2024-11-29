@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_light.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:51:34 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/25 13:42:11 by linda            ###   ########.fr       */
+/*   Updated: 2024/11/29 17:43:16 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ t_object	*parse_light_input(char **line_arr)
 
 	light_counter++;
 	if (light_counter > 1)
-	{
 		print_error_and_exit2("Too many lights.", "L");
-	}
 	light = ft_calloc(1, sizeof(t_object));
+	if (light == NULL)
+		print_error_and_exit2("Malloc failed.\n", "input: ");
 	light->obj_name = LIGHT;
 	light->identifier = L;
 	idx = 1;

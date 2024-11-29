@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/29 17:19:54 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:48:50 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	check_plane_normal_vec_dir(t_data *data)
 		if (data->objects[pos]->identifier == PL)
 		{
 			dir = direction2(&data->objects[pos]->position, &data->objects[idx_camera]->position);
-			dot_prod = tuple_dot2(&data->objects[pos]->s_plane.normal_vec, &dir);
+			dot_prod = tuple_dot(&data->objects[pos]->s_plane.normal_vec, &dir);
 			if (dot_prod < 0)
 			{
 				data->objects[pos]->s_plane.normal_vec = tuple_neg2(&data->objects[pos]->s_plane.normal_vec);

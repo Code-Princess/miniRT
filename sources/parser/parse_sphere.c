@@ -6,22 +6,23 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:51:34 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/21 13:34:47 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:46:42 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/objects.h"
 #include "../../includes/parser.h"
+#include "../../includes/utilities.h"
 #include "../../libft/libft.h"
 
 t_object	*parse_sphere_input(char **line_arr)
 {
 	t_object			*sphere;
 	int					idx;
-	// static int			sphere_counter;
 
-	// sphere_counter++;
 	sphere = ft_calloc(1, sizeof(t_object));
+	if (sphere == NULL)
+		print_error_and_exit2("Malloc failed.\n", "input: ");
 	sphere->obj_name = SPHERE;
 	sphere->identifier = SP;
 	idx = 1;

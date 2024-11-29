@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:48:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:52:31 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ t_ray	create_ray(size_t x_pixel, size_t y_pixel)
 
 	data = get_data();
 	idx = get_object_index(data, C);
-	// ray = malloc(1 * sizeof(t_ray));
 	temp = tuple_scale2(x_pixel, &data->objects[idx]->s_camera.s_img_plane.delta_x_vec);
 	pixel_coords = tuple_add2(&data->objects[idx]->s_camera.s_img_plane.origin, &temp);
 	temp = tuple_scale2(y_pixel, &data->objects[idx]->s_camera.s_img_plane.delta_y_vec);

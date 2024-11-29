@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 18:36:56 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/29 17:29:47 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:44:00 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ t_object	*parse_camera_input(char **line_arr)
 
 	camera_counter++;
 	if (camera_counter > 1)
-	{
 		print_error_and_exit2("Too many cameras.", "C");
-	}
 	camera = ft_calloc(1, sizeof(t_object));
+	if (camera == NULL)
+		print_error_and_exit2("Malloc failed.\n", "input: ");
 	camera->obj_name = CAMERA;
 	camera->identifier = C;
 	idx = 1;

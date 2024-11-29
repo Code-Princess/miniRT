@@ -6,22 +6,23 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 12:59:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/21 13:34:56 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:46:54 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/objects.h"
 #include "../../includes/parser.h"
+#include "../../includes/utilities.h"
 #include "../../libft/libft.h"
 
 t_object	*parse_cylinder_input(char **line_arr)
 {
 	t_object			*cylinder;
 	int					idx;
-	// static int			cylinder_counter;
 
-	// cylinder_counter++;
 	cylinder = ft_calloc(1, sizeof(t_object));
+	if (cylinder == NULL)
+		print_error_and_exit2("Malloc failed.\n", "input: ");
 	cylinder->obj_name = CYLINDER;
 	cylinder->identifier = CY;
 	idx = 1;

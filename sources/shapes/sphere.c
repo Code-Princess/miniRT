@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:52:52 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,6 @@
 
 static double	calc_discriminant(t_object *sphere, t_ray *ray, \
 									double a, double b);
-
-void	init_sphere(t_data *data)
-{
-	t_object	*sphere;
-
-	sphere = malloc(1 * sizeof(t_object));
-	sphere->obj_name = SPHERE;
-	sphere->identifier = SP;
-	sphere->position = set_tuple(0, -10, 15, PT);
-	sphere->color = set_color(0.8, 0, 0.8, 1);
-	sphere->s_sphere.radius = 5.0;
-	sphere->material = set_material(0.2, 0.7, 0.7, 100);
-	data->objects[5] = sphere;
-}
 
 double	find_sphere_hitpt(t_object *sphere, t_ray *ray)
 {
