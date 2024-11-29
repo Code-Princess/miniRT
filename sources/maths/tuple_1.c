@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   tuple_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
+/*   Created: 2024/11/29 15:36:57 by llacsivy          #+#    #+#             */
+/*   Updated: 2024/11/29 15:37:01 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <stdlib.h>
 

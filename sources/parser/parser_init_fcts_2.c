@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_init_fcts_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/27 18:26:17 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:34:57 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

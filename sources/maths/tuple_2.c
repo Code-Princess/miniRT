@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tuple_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:53:23 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:26:53 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_tuple	tuple_normalize2(t_tuple *a)
 
 bool	is_normalized(t_tuple *vec)
 {
-	if (tuple_magni(vec) - 1 <= INFINI_FLOAT)
+	if (fabs(tuple_magni(vec) - 1) <= INFINI_FLOAT)
 		return (true);
 	else
 		return (false);

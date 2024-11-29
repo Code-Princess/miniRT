@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:51:15 by linda             #+#    #+#             */
-/*   Updated: 2024/11/28 16:51:54 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:08:32 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 #include "../../includes/objects.h"
 #include "../../includes/miniRT.h"
+
+t_tuple	calc_origin2(t_object *camera, t_tuple orthonormal_vec_x, t_tuple orthonormal_vec_y);
 
 void	init_image_plane(t_object *camera)
 {
@@ -47,6 +49,7 @@ void	init_image_plane(t_object *camera)
 													&orthonormal_vec_x);
 	camera->s_camera.s_img_plane.delta_y_vec = tuple_scale2(pixel_len, \
 													&orthonormal_vec_y);
+	camera->s_camera.s_img_plane.origin = calc_origin2(camera, orthonormal_vec_x, orthonormal_vec_y);
 	camera->s_camera.s_img_plane.origin = calc_origin(camera);
 }
 // print_tuple(*orthonormal_vec_x);
@@ -58,13 +61,36 @@ t_tuple	calc_origin(t_object *camera)
 	double		canvas_height;
 	double		dist;
 	double		angle_rad;
+	t_tuple		temp1;
+
+	canvas_height = (CANVAS_WIDTH / WIDTH_IN_PIXEL) * HEIGHT_IN_PIXEL;
+	angle_rad = deg_to_rad(camera->s_camera.angle / 2.0);
+	dist = CANVAS_WIDTH / 2.0 / tan(angle_rad);
+	temp1 = tuple_scale2(dist, &camera->s_camera.normal_vec);
+	origin = tuple_add2(&camera->position, &temp1);
+	temp1 = tuple_scale2(-WIDTH_IN_PIXEL / 2.0, &camera->s_camera.s_img_plane.delta_x_vec);
+	origin = tuple_add2(&origin, &temp1);
+	temp1 = tuple_scale2(-HEIGHT_IN_PIXEL / 2.0, &camera->s_camera.s_img_plane.delta_y_vec);
+	origin = tuple_add2(&origin, &temp1);
+	return (origin);
+}
+
+t_tuple	calc_origin2(t_object *camera, t_tuple orthonormal_vec_x, t_tuple orthonormal_vec_y)
+{
+	t_tuple		origin;
+	double		canvas_height;
+	double		dist;
+	double		angle_rad;
+	t_tuple		temp1;
 
 	canvas_height = (CANVAS_WIDTH / WIDTH_IN_PIXEL) * HEIGHT_IN_PIXEL;
 	angle_rad = deg_to_rad(camera->s_camera.angle / 2);
 	dist = CANVAS_WIDTH / 2 / tan(angle_rad);
-	origin = set_tuple(camera->position.x - CANVAS_WIDTH / 2, \		//  THE ERROR LIES HEREIN. THE ORIGIN IS SET WITH NO REGARD TO THE CAMERAS NORMAL_VEC. USE THE NEWLY CALCULATED ORTHONORMAL_VECS, MY CHILD.
-					camera->position.y - canvas_height / 2, \
-					camera->position.z + dist, \
-					1);
+	temp1 = tuple_scale2(dist, &camera->s_camera.normal_vec);
+	origin = tuple_add2(&camera->position, &temp1);
+	temp1 = tuple_scale2(-CANVAS_WIDTH / 2, &orthonormal_vec_x);
+	origin = tuple_add2(&origin, &temp1);
+	temp1 = tuple_scale2(-canvas_height / 2, &orthonormal_vec_y);
+	origin = tuple_add2(&origin, &temp1);
 	return (origin);
 }
