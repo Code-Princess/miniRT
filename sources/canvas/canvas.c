@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/11/29 15:05:28 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:05:01 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,22 @@
 
 void	fill_canvas(size_t width, size_t height)
 {
-	size_t			y_pixel;
-	size_t			x_pixel;
+	int32_t			y_pixel;
+	int32_t			x_pixel;
 	t_ray			ray;
 	t_data			*data;
 	t_hit_obj		hit_obj;
 
+	(void)height;
+	(void)width;
 	data = get_data();
 	y_pixel = 0;
-	while (y_pixel < height)
+	// while (y_pixel < height)
+	while (y_pixel < data->mlx->height)
 	{
 		x_pixel = 0;
-		while (x_pixel < width)
+		// while (x_pixel < width)
+		while (x_pixel < data->mlx->width)
 		{
 			ray = create_ray(x_pixel, y_pixel);
 			hit_obj = find_hit_pt(data->objects, &ray);

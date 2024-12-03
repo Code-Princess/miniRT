@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:15 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/03 13:37:35 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:59:45 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,6 @@
 #include "./includes/free.h"
 #include "./MLX42/include/MLX42/MLX42.h"
 #include "./libft/libft.h"
-
-void esc_hook(void *param)
-{
-	t_data	*data;
-
-	data = (t_data *)param;
-	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
-	{
-		mlx_close_window(data->mlx);
-	}
-}
 
 int	main(int argc, char **argv)
 {
@@ -48,6 +37,7 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	fill_canvas(WIDTH_IN_PIXEL, HEIGHT_IN_PIXEL);
 	mlx_loop_hook(data->mlx, esc_hook, data);
+	mlx_loop_hook(data->mlx, resize_hook, data);
 	mlx_loop(data->mlx);
 	mlx_terminate(data->mlx);
 	free_obj_ptr_array(data->objects);

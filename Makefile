@@ -6,7 +6,7 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: Invalid date        by                   #+#    #+#              #
-#    Updated: 2024/11/29 17:57:05 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/12/03 13:42:52 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ DEPENDENCIES	:= 	./includes/color.h \
 
 LIBFTDOTA		:= libft/libft.a
 SRCS			:= 	miniRT.c \
+					sources/hooks/hooks.c \
 					sources/parser/parser.c \
 					sources/parser/parser_init_fcts_1.c \
 					sources/parser/parser_init_fcts_2.c \

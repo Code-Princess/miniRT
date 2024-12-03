@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/03 13:37:56 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:52:20 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 // # define WIDTH_IN_PIXEL 1234
 // # define HEIGHT_IN_PIXEL 789
-# define WIDTH_IN_PIXEL 10
-# define HEIGHT_IN_PIXEL 6
+# define WIDTH_IN_PIXEL 1000
+# define HEIGHT_IN_PIXEL 700
 # define TITLE "miniRT"
 
 // # define CANVAS_WIDTH 10.0
@@ -63,5 +63,8 @@ void		print_tuple(t_tuple tuple);
 void		print_color(t_color color);
 void		print_camera(t_object *camera);
 void		print_plane(t_object *plane);
+
+void		esc_hook(void *param);
+void		resize_hook(void *param);
 
 #endif
