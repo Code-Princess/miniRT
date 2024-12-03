@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:51:15 by linda             #+#    #+#             */
-/*   Updated: 2024/11/29 15:08:32 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:07:48 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,14 @@ t_tuple	calc_origin(t_object *camera)
 	double		angle_rad;
 	t_tuple		temp1;
 
-	canvas_height = (CANVAS_WIDTH / WIDTH_IN_PIXEL) * HEIGHT_IN_PIXEL;
+	canvas_height = (CANVAS_WIDTH / WIDTH_IN_PIXEL) * (HEIGHT_IN_PIXEL + 1);
 	angle_rad = deg_to_rad(camera->s_camera.angle / 2.0);
 	dist = CANVAS_WIDTH / 2.0 / tan(angle_rad);
 	temp1 = tuple_scale2(dist, &camera->s_camera.normal_vec);
 	origin = tuple_add2(&camera->position, &temp1);
 	temp1 = tuple_scale2(-WIDTH_IN_PIXEL / 2.0, &camera->s_camera.s_img_plane.delta_x_vec);
 	origin = tuple_add2(&origin, &temp1);
-	temp1 = tuple_scale2(-HEIGHT_IN_PIXEL / 2.0, &camera->s_camera.s_img_plane.delta_y_vec);
+	temp1 = tuple_scale2(-(HEIGHT_IN_PIXEL + 1) / 2.0, &camera->s_camera.s_img_plane.delta_y_vec);
 	origin = tuple_add2(&origin, &temp1);
 	return (origin);
 }

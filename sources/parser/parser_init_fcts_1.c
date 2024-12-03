@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/29 17:36:13 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:01:49 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ void	init_position(t_object *obj, char **line_arr, int idx)
 	exit_if_args_incomplete(line_arr, idx + 2, \
 							"position: not enough arguments", obj);
 	z_coord = ft_atof_mod(line_arr[idx + 2], &error);
-	if (is_in_range_float(&x_coord, -500, 500) && is_in_range_float(&y_coord, -500, 500) && \
-		is_in_range_float(&z_coord, -500, 500) && error == 0)
+	if (is_in_range_float(&x_coord, -1000, 1000) && is_in_range_float(&y_coord, -1000, 1000) && \
+		is_in_range_float(&z_coord, -1000, 1000) && error == 0)
 		obj->position = set_tuple(x_coord, y_coord, z_coord, PT);
 	else
 		print_error_and_exit("position: value not in range [-500,500]", line_arr[0], obj);
