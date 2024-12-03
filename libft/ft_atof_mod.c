@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 23:25:33 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/29 17:23:31 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/03 20:05:15 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static double	get_number_part_greater_one(char *s, int *pos, double number, int 
 		number = number * 10.0 + (s[*pos] - '0');
 		(*pos)++;
 	}
-	if (*pos > 4)
+	if (*pos > 6)
 		*error = 1;
 	return (number);
 }
