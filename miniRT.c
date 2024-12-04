@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:15 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/04 15:26:06 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:17:11 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 
 	data = get_data();
 	handle_input(data, argc, argv);
-	// mlx_set_setting(MLX_STRETCH_IMAGE, true);
+	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	data->mlx = mlx_init(WIDTH_IN_PIXEL, HEIGHT_IN_PIXEL, TITLE, true);
 	if (data->mlx == NULL)
 		return (EXIT_FAILURE);

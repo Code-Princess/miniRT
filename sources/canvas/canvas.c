@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/12/04 17:04:45 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:26:17 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,12 +110,26 @@ uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 {
 	t_color		color;
 	int			light_idx;
+	t_tuple		temp1;
+	t_tuple		temp2;
 
 	light_idx = get_object_index(data, L);
 	color = set_color(0, 0, 0, 1);
-	
-	// if (tuple_dot(&ray->direction_vec, &hit_obj->normal_vec) <= 0 && hit_obj->obj_found == true)
-	if (hit_obj->obj_found == true)
+	// temp = tuple_scale2(1, &ray->direction_vec);
+	temp1 = tuple_normalize2(&ray->direction_vec);
+	temp2 = tuple_normalize2(&hit_obj->normal_vec);
+	if (tuple_dot(&temp1, &temp2) > 0 && hit_obj->obj_found == true)
+	{
+printf("hit_obj->normal_vec:\n");
+print_tuple(temp1);
+printf("temp:\n");
+print_tuple(temp2);
+printf("tuple_dot(&temp1, &temp2): %f\n", tuple_dot(&temp1, &temp2));
+printf("\n");
+	}
+	// if (tuple_dot(&temp, &hit_obj->normal_vec) < 0 && tuple_dot(&temp, &hit_obj->normal_vec) > -1 && hit_obj->obj_found == true)
+	if (tuple_dot(&temp1, &temp2) < 0 && hit_obj->obj_found == true)
+	// if (hit_obj->obj_found == true)
 	{
 		is_in_shadow(data->objects[light_idx], hit_obj);
 		prepare_color_calc(hit_obj, ray);

@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/04 15:24:10 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:16:53 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 // # define WIDTH_IN_PIXEL 1234
 // # define HEIGHT_IN_PIXEL 789
-# define WIDTH_IN_PIXEL 1000
-# define HEIGHT_IN_PIXEL 700
+# define WIDTH_IN_PIXEL 30
+# define HEIGHT_IN_PIXEL 30
 # define TITLE "miniRT"
 
 // # define CANVAS_WIDTH 10.0
