@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/04 12:22:48 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:43:13 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	init_axis_vec(t_object *obj, char **line_arr, int idx)
 	double	y_normal_vec;
 	double	z_normal_vec;
 	t_tuple	vec;
-	t_tuple	temp;
 	int		error;
 
 	error = 0;
@@ -86,8 +85,7 @@ void	init_axis_vec(t_object *obj, char **line_arr, int idx)
 	if (error == 1)
 		print_error_and_exit("axis_vec: number has wrong format", line_arr[0], obj);
 	vec = set_tuple(x_normal_vec, y_normal_vec, z_normal_vec, VEC);
-	temp = tuple_normalize2(&vec); // only as long as tuple_normalize is used above!
-	vec = temp; // only as long as tuple_normalize is used above!;
+	vec = tuple_normalize2(&vec); // only as long as tuple_normalize is used above!
 	if (is_normalized(&vec))
 		obj->s_cy.axis_vec = vec;
 	else

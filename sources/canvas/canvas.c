@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/12/03 14:05:01 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:04:45 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 
 	light_idx = get_object_index(data, L);
 	color = set_color(0, 0, 0, 1);
+	
+	// if (tuple_dot(&ray->direction_vec, &hit_obj->normal_vec) <= 0 && hit_obj->obj_found == true)
 	if (hit_obj->obj_found == true)
 	{
 		is_in_shadow(data->objects[light_idx], hit_obj);
