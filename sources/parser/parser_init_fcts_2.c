@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/29 17:48:50 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/04 12:22:48 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	init_normal_vec(t_object *obj, char **line_arr, int idx)
 	double	z_normal_vec;
 	int		error;
 	t_tuple	vec;
-	t_tuple	temp; // only as long as tuple_normalize is used above!
 
 	error = 0;
 	exit_if_args_incomplete(line_arr, idx, "normal_vec: not enough arguments", obj);
@@ -37,8 +36,7 @@ void	init_normal_vec(t_object *obj, char **line_arr, int idx)
 	if (error == 1)
 		print_error_and_exit("normal_vec: number has wrong format", line_arr[0], obj);
 	vec = set_tuple(x_normal_vec, y_normal_vec, z_normal_vec, VEC);
-	temp = tuple_normalize2(&vec); // only as long as tuple_normalize is used above!
-	vec = temp; // only as long as tuple_normalize is used above!
+	// vec = tuple_normalize2(&vec); // only as long as tuple_normalize is used above!
 	if (is_normalized(&vec))
 		obj->s_camera.normal_vec = vec;
 	else
