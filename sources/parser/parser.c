@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/12/04 14:41:01 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:46:03 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,34 +74,30 @@ bool	is_correct_file_type(char *filename)
 void	populate_objects_array(t_data *data, char **argv)
 {
 	int		filedes;
-	char	*line;
-	char	**line_array;
+	// char	**line_array;
 	int		obj_name;
 	int		idx;
 
 	filedes = open(argv[1], O_RDONLY);
-	line = get_next_line(filedes);
-	data->line = line;
+	data->line = get_next_line(filedes);
 	idx = 0;
-	while (line != NULL)
+	while (data->line != NULL)
 	{
-		str_substitute(line, ',', ' ');
-		str_substitute(line, '\t', ' ');
-		line_array = ft_split(line, ' ');
-		data->line_array = line_array;
+		str_substitute(data->line, ',', ' ');
+		str_substitute(data->line, '\t', ' ');
+		data->line_array = ft_split(data->line, ' ');
+		// data->line_array = line_array;
 // check for NULL
-		if (line_array[0][0] != '\n' && line_array[0][0] != '#')
+		if (data->line_array[0][0] != '\n' && data->line_array[0][0] != '#')
 		{
-			obj_name = get_obj_name(line_array[0]);
-			data->objects[idx] = get_parse_ft()[obj_name](line_array);
+			obj_name = get_obj_name(data->line_array[0]);
+			data->objects[idx] = get_parse_ft()[obj_name](data->line_array);
 			idx++;
 		}
-		free_char_ptr_array(line_array);
-		free(line);
-		line = get_next_line(filedes);
-		data->line = line;
+		free_char_ptr_array(data->line_array);
+		free(data->line);
+		data->line = get_next_line(filedes);
 	}
-	free(line); // potential double free
 	close(filedes);
 }
 

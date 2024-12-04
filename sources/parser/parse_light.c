@@ -6,13 +6,14 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:51:34 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/29 17:43:16 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:38:26 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/objects.h"
 #include "../../includes/parser.h"
 #include "../../includes/utilities.h"
+#include "../../includes/free.h"
 #include "../../libft/libft.h"
 
 t_object	*parse_light_input(char **line_arr)
@@ -20,10 +21,16 @@ t_object	*parse_light_input(char **line_arr)
 	t_object			*light;
 	int					idx;
 	static int			light_counter;
+	t_data				*data;
 
+	data = get_data();
 	light_counter++;
 	if (light_counter > 1)
+	{
+		free_char_ptr_array(line_arr);
+		free (data->line);
 		print_error_and_exit2("Too many lights.", "L");
+	}
 	light = ft_calloc(1, sizeof(t_object));
 	if (light == NULL)
 		print_error_and_exit2("Malloc failed.\n", "input: ");

@@ -6,17 +6,21 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/03 20:02:37 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:49:30 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/objects.h"
 #include "../../includes/parser.h"
+#include "../../includes/free.h"
 #include "../../includes/utilities.h"
 #include "../../libft/libft.h"
 
 int	get_obj_name(char *identifier)
 {
+	t_data				*data;
+
+	data = get_data();
 	if (ft_strcmp(identifier, "A") == 0)
 		return (AMB_LIGHT);
 	if (ft_strcmp(identifier, "C") == 0)
@@ -29,8 +33,13 @@ int	get_obj_name(char *identifier)
 		return (PLANE);
 	if (ft_strcmp(identifier, "cy") == 0)
 		return (CYLINDER);
-	print_error_and_exit2("identifier unknown", "object");
-	return (-1);
+	else
+	{
+		free_char_ptr_array(data->line_array);
+		free (data->line);
+		print_error_and_exit2("identifier unknown", "object");
+		return (-1);
+	}
 }
 
 void	init_brightness(t_object *obj, char **line_arr, int idx)
