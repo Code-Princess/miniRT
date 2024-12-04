@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/12/04 17:26:17 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/04 19:52:01 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,14 @@ void	fill_canvas(size_t width, size_t height)
 		{
 			ray = create_ray(x_pixel, y_pixel);
 			hit_obj = find_hit_pt(data->objects, &ray);
-			// mlx_put_pixel(data->image, x_pixel, y_pixel,
-			// 				calc_normal_color(hit_obj, ray));
-			mlx_put_pixel(data->image, x_pixel, y_pixel, \
-							calc_pixel_color(&hit_obj, &ray, data));
+if (hit_obj.obj_found == true)
+{
+	prepare_color_calc(&hit_obj, &ray);
+}
+			mlx_put_pixel(data->image, x_pixel, y_pixel,
+							calc_normal_color(&hit_obj, &ray));
+			// mlx_put_pixel(data->image, x_pixel, y_pixel, \
+			// 				calc_pixel_color(&hit_obj, &ray, data));
 			x_pixel++;
 		}
 		y_pixel++;
@@ -91,16 +95,16 @@ hit_t = 0.0;
 
 uint32_t	calc_normal_color(t_hit_obj *hit_obj, t_ray *ray)
 {
-	t_tuple	normal_vec;
+	// t_tuple	normal_vec;
 	t_color	color;
 
-	if (hit_obj == NULL)
-		color = set_color(0, 0, 0, 1);
-	else
+	(void)ray;
+	color = set_color(0, 0, 0, 1);
+	if (hit_obj->obj_found == true)
 	{
-		normal_vec = get_normal_vec_ft()[hit_obj->obj->obj_name](hit_obj, ray);
-		color = set_color((normal_vec.x + 1) / 2, \
-			(normal_vec.y + 1) / 2, (normal_vec.z + 1) / 2, 1);
+		// normal_vec = get_normal_vec_ft()[hit_obj->obj->obj_name](hit_obj, ray);
+		color = set_color((hit_obj->normal_vec.x + 1) / 2, \
+			(hit_obj->normal_vec.y + 1) / 2, (hit_obj->normal_vec.z + 1) / 2, 1);
 	}
 	convert_pixel_colors(&color);
 	return (color.pixel_color);
@@ -116,23 +120,27 @@ uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 	light_idx = get_object_index(data, L);
 	color = set_color(0, 0, 0, 1);
 	// temp = tuple_scale2(1, &ray->direction_vec);
-	temp1 = tuple_normalize2(&ray->direction_vec);
-	temp2 = tuple_normalize2(&hit_obj->normal_vec);
-	if (tuple_dot(&temp1, &temp2) > 0 && hit_obj->obj_found == true)
-	{
-printf("hit_obj->normal_vec:\n");
-print_tuple(temp1);
-printf("temp:\n");
-print_tuple(temp2);
-printf("tuple_dot(&temp1, &temp2): %f\n", tuple_dot(&temp1, &temp2));
-printf("\n");
-	}
+	// temp1 = tuple_normalize2(&ray->direction_vec)
+	// temp1 = set_tuple(1,0,0,0);
+	temp1 = ray->direction_vec;
+	// temp1 = tuple_normalize2(&temp1);
+	temp2 = hit_obj->normal_vec;
+	// temp2 = tuple_normalize2(&hit_obj->normal_vec);
+// 	if (tuple_dot(&temp1, &temp2) > 0 && hit_obj->obj_found == true)
+// 	{
+// printf("tuple_normalize2(&ray->direction_vec):\n");
+// print_tuple(temp1);
+// printf("tuple_normalize2(&hit_obj->normal_vec):\n");
+// print_tuple(temp2);
+// printf("tuple_dot(&temp1, &temp2): %f\n", tuple_dot(&temp1, &temp2));
+// printf("\n");
+// 	}
 	// if (tuple_dot(&temp, &hit_obj->normal_vec) < 0 && tuple_dot(&temp, &hit_obj->normal_vec) > -1 && hit_obj->obj_found == true)
 	if (tuple_dot(&temp1, &temp2) < 0 && hit_obj->obj_found == true)
 	// if (hit_obj->obj_found == true)
 	{
 		is_in_shadow(data->objects[light_idx], hit_obj);
-		prepare_color_calc(hit_obj, ray);
+		// prepare_color_calc(hit_obj, ray);
 		color = calc_ambient_color(hit_obj, data->objects[light_idx]);
 		if (hit_obj->not_in_shadow)
 		{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/11/29 17:52:41 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/04 19:50:47 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,21 @@ t_tuple	calc_cylinder_normal_vec(t_hit_obj *cy, t_ray *ray)
 {
 	double	top_t;
 	double	bottom_t;
+	t_tuple	temp;
 
 	top_t = pt_is_on_top(ray, cy->obj);
 	bottom_t = pt_is_on_bottom(ray, cy->obj);
 	if ((top_t - cy->t) < INFINI_FLOAT && top_t != -1)
 	{
 		return (cy->obj->s_cy.axis_vec);
+		// return (tuple_neg2(&cy->obj->s_cy.axis_vec));
+		// temp = tuple_neg2(cy->obj->s_cy.axis_vec);
+		// return (cy->obj->s_cy.axis_vec);
 	}
 	else if ((bottom_t - cy->t) < INFINI_FLOAT && bottom_t != -1)
 	{
 		return (tuple_neg2(&cy->obj->s_cy.axis_vec));
+		// return (cy->obj->s_cy.axis_vec);
 	}
 	return (calc_cylinder_lateral_normal_vec(cy, ray));
 }

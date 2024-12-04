@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_init_fcts_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/04 16:43:13 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:40:37 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	init_normal_vec(t_object *obj, char **line_arr, int idx)
 	if (error == 1)
 		print_error_and_exit("normal_vec: number has wrong format", line_arr[0], obj);
 	vec = set_tuple(x_normal_vec, y_normal_vec, z_normal_vec, VEC);
-	// vec = tuple_normalize2(&vec); // only as long as tuple_normalize is used above!
+	vec = tuple_normalize2(&vec); // only as long as tuple_normalize is used above!
 	if (is_normalized(&vec))
 		obj->s_camera.normal_vec = vec;
 	else

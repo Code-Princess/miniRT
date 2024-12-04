@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
+#    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: Invalid date        by                   #+#    #+#              #
-#    Updated: 2024/12/04 16:38:31 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/12/04 18:44:46 by daspring         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME			:= miniRT
-CFLAGS			:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
+# CFLAGS			:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 LIBMLXDOTA		:= ./MLX42/build/libmlx42.a
 
 # LIBMLX42		:= ./MLX42/build/libmlx42.a -ldl -lglfw -lm
