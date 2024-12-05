@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/29 17:52:52 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:51:14 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ double	find_sphere_hitpt(t_object *sphere, t_ray *ray)
 	double	discriminant;
 	double	a;
 	double	b;
-	double	t_1;
 	double	t_2;
 	t_tuple	temp;
 
@@ -40,12 +39,11 @@ double	find_sphere_hitpt(t_object *sphere, t_ray *ray)
 		return (-b / 2 / a);
 	else
 	{
-		t_1 = (-b + sqrt(discriminant)) / 2 / a;
 		t_2 = (-b - sqrt(discriminant)) / 2 / a;
 		if (t_2 > 0)
 			return (t_2);
 		else
-			return (t_1);
+			return ((-b + sqrt(discriminant)) / 2 / a);
 	}
 }
 
@@ -73,4 +71,3 @@ t_tuple	calc_sphere_normal_vec(t_hit_obj *hit_obj, t_ray *ray)
 	normal_vec = tuple_scale2(1 / hit_obj->obj->s_sphere.radius, &dir_vec);
 	return (normal_vec);
 }
-// printf("still alive!\n");

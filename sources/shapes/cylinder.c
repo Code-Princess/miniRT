@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/12/04 19:50:47 by daspring         ###   ########.fr       */
+/*   Created: 2024/07/05 15:54:04 by llacsivy          #+#    #+#             */
+/*   Updated: 2024/12/05 15:54:33 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <math.h>
 #include <stdlib.h>
@@ -32,18 +31,13 @@ t_tuple	calc_cylinder_normal_vec(t_hit_obj *cy, t_ray *ray)
 	if ((top_t - cy->t) < INFINI_FLOAT && top_t != -1)
 	{
 		return (cy->obj->s_cy.axis_vec);
-		// return (tuple_neg2(&cy->obj->s_cy.axis_vec));
-		// temp = tuple_neg2(cy->obj->s_cy.axis_vec);
-		// return (cy->obj->s_cy.axis_vec);
 	}
 	else if ((bottom_t - cy->t) < INFINI_FLOAT && bottom_t != -1)
 	{
 		return (tuple_neg2(&cy->obj->s_cy.axis_vec));
-		// return (cy->obj->s_cy.axis_vec);
 	}
 	return (calc_cylinder_lateral_normal_vec(cy, ray));
 }
-// printf("alive in calc_cylinder_normal_vec\n");
 
 t_tuple	calc_cylinder_lateral_normal_vec(t_hit_obj *cy, t_ray *ray)
 {

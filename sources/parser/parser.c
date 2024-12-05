@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/12/04 15:46:03 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:44:21 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,21 @@ void	handle_input(t_data *data, int argc, char **argv)
 void	determine_line_count(t_data *data, char **argv)
 {
 	int		filedes;
-	char	*line;
 
 	data->input.line_count = 0;
 	filedes = open(argv[1], O_RDONLY);
-	line = get_next_line(filedes);
-	while (line != NULL)
+	data->line = get_next_line(filedes);
+	if (data->line == NULL)
 	{
-		free(line);
-		data->input.line_count++;
-		line = get_next_line(filedes);
+		ft_printf_error("get_next_line failed\n");
+		exit(1);
 	}
-	free(line); // potential double free!
+	while (data->line != NULL)
+	{
+		free(data->line);
+		data->input.line_count++;
+		data->line = get_next_line(filedes);
+	}
 	close(filedes);
 }
 
@@ -74,20 +77,26 @@ bool	is_correct_file_type(char *filename)
 void	populate_objects_array(t_data *data, char **argv)
 {
 	int		filedes;
-	// char	**line_array;
 	int		obj_name;
 	int		idx;
 
 	filedes = open(argv[1], O_RDONLY);
 	data->line = get_next_line(filedes);
+	if (data->line == NULL)
+	{
+		ft_printf_error("get_next_line failed\n");
+		exit(1);
+	}
 	idx = 0;
 	while (data->line != NULL)
 	{
 		str_substitute(data->line, ',', ' ');
 		str_substitute(data->line, '\t', ' ');
 		data->line_array = ft_split(data->line, ' ');
-		// data->line_array = line_array;
-// check for NULL
+		if (data->line_array == NULL)
+		{
+			;
+		}
 		if (data->line_array[0][0] != '\n' && data->line_array[0][0] != '#')
 		{
 			obj_name = get_obj_name(data->line_array[0]);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/04 18:19:55 by daspring         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:47:40 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 // # define CANVAS_WIDTH 35.0
 # define CANVAS_WIDTH 10.0
 
-# define INFINI_FLOAT 1E-13
+# define INFINI_FLOAT 1E-12
 # define AMBIENT 0.2
 # define MAX_RADIUS 2000
 # define MAX_CY_HEIGHT 2000

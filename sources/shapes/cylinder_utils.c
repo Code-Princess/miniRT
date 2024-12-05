@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
+/*   Created: 2024/07/05 15:54:48 by daspring          #+#    #+#             */
+/*   Updated: 2024/12/05 16:21:13 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <math.h>
 
 #include "../../includes/objects.h"
 #include "../../includes/ray.h"
 
-int	pt_is_between_slabs(double t, t_ray *ray, t_object *cylinder)
+static bool	pt_is_on_disk(t_tuple disk_center, t_object cylinder, \
+							t_tuple hit_pt);
+
+bool	pt_is_between_slabs(double t, t_ray *ray, t_object *cylinder)
 {
 	t_tuple	q;
 	t_tuple	temp1;
@@ -38,22 +40,18 @@ int	pt_is_between_slabs(double t, t_ray *ray, t_object *cylinder)
 double	pt_is_on_bottom(t_ray *ray, t_object *cylinder)
 {
 	t_tuple		pos_q_dir;
-	double		dist_pos_q_squared;
-	double		va_dot_pos_q_dir;
 	double		t;
 	t_object	bottom_plane;
-	t_tuple		pt;
+	t_tuple		hit_pt;
 	t_tuple		temp;
 
 	temp = tuple_neg2(&cylinder->s_cy.axis_vec);
-	bottom_plane = create_plane2(cylinder->position, set_color(0, 0, 0, 0), temp);
+	bottom_plane = create_plane2(cylinder->position, \
+								set_color(0, 0, 0, 0), temp);
 	t = find_plane_hitpt(&bottom_plane, ray);
-	pt = ray_at_t(ray, t);
-	pos_q_dir = direction2(&cylinder->position, &pt);
-	va_dot_pos_q_dir = tuple_dot(&cylinder->s_cy.axis_vec, &pos_q_dir);
-	dist_pos_q_squared = tuple_dot_self(&pos_q_dir);
-	if (dist_pos_q_squared < pow(cylinder->s_cy.radius, 2) && \
-			va_dot_pos_q_dir < INFINI_FLOAT)
+	hit_pt = ray_at_t(ray, t);
+	pos_q_dir = direction2(&cylinder->position, &hit_pt);
+	if (pt_is_on_disk(cylinder->position, *cylinder, hit_pt))
 		return (t);
 	else
 		return (-1);
@@ -62,11 +60,9 @@ double	pt_is_on_bottom(t_ray *ray, t_object *cylinder)
 double	pt_is_on_top(t_ray *ray, t_object *cylinder)
 {
 	t_tuple		p_top;
-	t_tuple		p_top_q_dir;
-	double		va_dot_p_top_q_dir;
 	t_object	top_plane;
 	double		t;
-	t_tuple		pt;
+	t_tuple		hit_pt;
 	t_tuple		temp;
 
 	temp = tuple_scale2(cylinder->s_cy.height, &cylinder->s_cy.axis_vec);
@@ -74,12 +70,21 @@ double	pt_is_on_top(t_ray *ray, t_object *cylinder)
 	top_plane = create_plane2(p_top, set_color(0, 0, 0, 0), \
 								cylinder->s_cy.axis_vec);
 	t = find_plane_hitpt(&top_plane, ray);
-	pt = ray_at_t(ray, t);
-	p_top_q_dir = direction2(&p_top, &pt);
-	va_dot_p_top_q_dir = tuple_dot(&cylinder->s_cy.axis_vec, &p_top_q_dir);
-	if (tuple_dot_self(&p_top_q_dir) < pow(cylinder->s_cy.radius, 2) && \
-		va_dot_p_top_q_dir < INFINI_FLOAT)
+	hit_pt = ray_at_t(ray, t);
+	if (pt_is_on_disk(p_top, *cylinder, hit_pt))
 		return (t);
 	else
 		return (-1);
+}
+
+static bool	pt_is_on_disk(t_tuple disk_center, t_object cylinder, \
+							t_tuple hit_pt)
+{
+	t_tuple		p_top_q_dir;
+	double		va_dot_p_top_q_dir;
+
+	p_top_q_dir = direction2(&disk_center, &hit_pt);
+	va_dot_p_top_q_dir = tuple_dot(&cylinder.s_cy.axis_vec, &p_top_q_dir);
+	return (tuple_dot_self(&p_top_q_dir) < pow(cylinder.s_cy.radius, 2) && \
+		va_dot_p_top_q_dir < INFINI_FLOAT);
 }
