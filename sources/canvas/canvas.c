@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/12/04 19:52:01 by daspring         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:40:35 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ if (hit_obj.obj_found == true)
 			mlx_put_pixel(data->image, x_pixel, y_pixel,
 							calc_normal_color(&hit_obj, &ray));
 			// mlx_put_pixel(data->image, x_pixel, y_pixel, \
-			// 				calc_pixel_color(&hit_obj, &ray, data));
+							// calc_pixel_color(&hit_obj, &ray, data));
 			x_pixel++;
 		}
 		y_pixel++;
