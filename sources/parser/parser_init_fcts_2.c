@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_init_fcts_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/04 18:40:37 by daspring         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:24:02 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,24 @@ void	init_normal_vec(t_object *obj, char **line_arr, int idx)
 	t_tuple	vec;
 
 	error = 0;
-	exit_if_args_incomplete(line_arr, idx, "normal_vec: not enough arguments", obj);
+	exit_if_args_incompl(line_arr, idx, "normal_vec: not enough arguments", \
+							obj);
 	x_normal_vec = ft_atof_mod(line_arr[idx], &error);
-	exit_if_args_incomplete(line_arr, idx + 1, \
+	exit_if_args_incompl(line_arr, idx + 1, \
 							"normal_vec: not enough arguments", obj);
 	y_normal_vec = ft_atof_mod(line_arr[idx + 1], &error);
-	exit_if_args_incomplete(line_arr, idx + 2, \
+	exit_if_args_incompl(line_arr, idx + 2, \
 							"normal_vec: not enough arguments", obj);
 	z_normal_vec = ft_atof_mod(line_arr[idx + 2], &error);
 	if (error == 1)
-		print_error_and_exit("normal_vec: number has wrong format", line_arr[0], obj);
+		error_and_exit("normal_vec: number has wrong format", line_arr[0], obj);
 	vec = set_tuple(x_normal_vec, y_normal_vec, z_normal_vec, VEC);
-	vec = tuple_normalize2(&vec); // only as long as tuple_normalize is used above!
 	if (is_normalized(&vec))
 		obj->s_camera.normal_vec = vec;
 	else
-		print_error_and_exit("normal_vec: vector not normalized", line_arr[0], obj);
+		error_and_exit("normal_vec: vector not normalized", line_arr[0], obj);
 }
+	// vec = tuple_normalize2(&vec);
 
 void	check_plane_normal_vec_dir(t_data *data)
 {
@@ -56,11 +57,13 @@ void	check_plane_normal_vec_dir(t_data *data)
 	{
 		if (data->objects[pos]->identifier == PL)
 		{
-			dir = direction2(&data->objects[pos]->position, &data->objects[idx_camera]->position);
+			dir = direction2(&data->objects[pos]->position, \
+								&data->objects[idx_camera]->position);
 			dot_prod = tuple_dot(&data->objects[pos]->s_plane.normal_vec, &dir);
 			if (dot_prod < 0)
 			{
-				data->objects[pos]->s_plane.normal_vec = tuple_neg2(&data->objects[pos]->s_plane.normal_vec);
+				data->objects[pos]->s_plane.normal_vec = tuple_neg2(&data->\
+											objects[pos]->s_plane.normal_vec);
 			}
 		}
 		pos++;
@@ -76,23 +79,21 @@ void	init_axis_vec(t_object *obj, char **line_arr, int idx)
 	int		error;
 
 	error = 0;
-	exit_if_args_incomplete(line_arr, idx, "axis_vec: not enough arguments", obj);
+	exit_if_args_incompl(line_arr, idx, "axis_vec: not enough args", obj);
 	x_normal_vec = ft_atof_mod(line_arr[idx], &error);
-	exit_if_args_incomplete(line_arr, idx + 1, "axis_vec: not enough arguments", obj);
+	exit_if_args_incompl(line_arr, idx + 1, "axis_vec: not enough args", obj);
 	y_normal_vec = ft_atof_mod(line_arr[idx + 1], &error);
-	exit_if_args_incomplete(line_arr, idx + 2, "axis_vec: not enough arguments", obj);
+	exit_if_args_incompl(line_arr, idx + 2, "axis_vec: not enough args", obj);
 	z_normal_vec = ft_atof_mod(line_arr[idx + 2], &error);
 	if (error == 1)
-		print_error_and_exit("axis_vec: number has wrong format", line_arr[0], obj);
+		error_and_exit("axis_vec: number has wrong format", line_arr[0], obj);
 	vec = set_tuple(x_normal_vec, y_normal_vec, z_normal_vec, VEC);
-	vec = tuple_normalize2(&vec); // only as long as tuple_normalize is used above!
 	if (is_normalized(&vec))
 		obj->s_cy.axis_vec = vec;
 	else
-	{
-		print_error_and_exit("axis_vec: vector not normalized", line_arr[0], obj);
-	}
+		error_and_exit("axis_vec: vector not normalized", line_arr[0], obj);
 }
+	// vec = tuple_normalize2(&vec);
 
 void	init_angle(t_object *obj, char **line_arr, int idx)
 {
@@ -100,17 +101,12 @@ void	init_angle(t_object *obj, char **line_arr, int idx)
 	int		error;
 
 	error = 0;
-	exit_if_args_incomplete(line_arr, idx, "angle: not enough arguments", obj);
+	exit_if_args_incompl(line_arr, idx, "angle: not enough arguments", obj);
 	angle = ft_atof_mod(line_arr[idx], &error);
 	if (is_in_range_float(&angle, 0, 180) && error == 0)
-	{
 		obj->s_camera.angle = angle;
-	}
 	else
-	{
-printf("error: %d\n", error);
-		print_error_and_exit("angle: value not in range [0,180]", line_arr[0], obj);
-	}
+		error_and_exit("angle: value not in range [0,180]", line_arr[0], obj);
 }
 
 void	init_radius(t_object *obj, char **line_arr, int idx)
@@ -120,7 +116,7 @@ void	init_radius(t_object *obj, char **line_arr, int idx)
 	int		error;
 
 	error = 0;
-	exit_if_args_incomplete(line_arr, idx, "radius: missing argument", obj);
+	exit_if_args_incompl(line_arr, idx, "radius: missing argument", obj);
 	radius = ft_atof_mod(line_arr[idx], &error) / 2;
 	if (is_in_range_float(&radius, 0, MAX_RADIUS) && error == 0)
 	{
@@ -135,7 +131,7 @@ void	init_radius(t_object *obj, char **line_arr, int idx)
 		ft_strlcat(message, "radius: value not in range [0,", 100);
 		ft_strlcat(message, ft_itoa(MAX_RADIUS), 100);
 		ft_strlcat(message, "]", 100);
-		print_error_and_exit(message, line_arr[0], obj);
+		error_and_exit(message, line_arr[0], obj);
 	}
 }
 
@@ -146,7 +142,7 @@ void	init_height(t_object *obj, char **line_arr, int idx)
 	int		error;
 
 	error = 0;
-	exit_if_args_incomplete(line_arr, idx, "height: missing argument", obj);
+	exit_if_args_incompl(line_arr, idx, "height: missing argument", obj);
 	height = ft_atof_mod(line_arr[idx], &error);
 	if (is_in_range_float(&height, 0, MAX_CY_HEIGHT) && error == 0)
 	{
@@ -158,7 +154,7 @@ void	init_height(t_object *obj, char **line_arr, int idx)
 		ft_strlcat(message, "height: value not in range [0,", 100);
 		ft_strlcat(message, ft_itoa(MAX_CY_HEIGHT), 100);
 		ft_strlcat(message, "]", 100);
-		print_error_and_exit(message, line_arr[0], obj);
+		error_and_exit(message, line_arr[0], obj);
 	}
 }
 
@@ -167,7 +163,6 @@ void	check_completeness(t_data *data)
 	char	completeness_str[4];
 	int		pos;
 
-	// completeness_str = "XXX";
 	pos = 0;
 	while (data->objects[pos] != NULL)
 	{
@@ -186,7 +181,5 @@ void	check_completeness(t_data *data)
 		pos++;
 	}
 	if (ft_strcmp(completeness_str, "CAL") != 0)
-	{
 		print_error_and_exit2("C, A or L missing", "objects");
-	}
 }

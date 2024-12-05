@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 14:19:44 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/29 16:52:32 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:01:55 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin_modified(char *s1, char *s2, int s2_len);
 char	*read_from_fd_into_buffer(int fd, char *buffer);
 char	*adjust_buffer(char *old_buffer);
-char	*get_next_line(int fd);
+char	*get_next_line_mod(int fd);
 size_t	string_length(char string[]);
 char	*string_append(char *leading_str, char *trailing_str, \
 					size_t len_of_trailing_str);

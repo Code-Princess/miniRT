@@ -6,7 +6,7 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 10:54:01 by llacsivy          #+#    #+#              #
-#    Updated: 2024/11/29 16:53:35 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/12/05 19:02:45 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS =	ft_atoi.c ft_atof.c ft_atof_mod.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_
 		ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 		ft_printf.c utils_ft_itoa_hexadecimal.c utils_ft_itoa_unsigned.c\
 		utils_ft_putchar.c utils_ft_putnbr.c utils_ft_putptr.c\
-		get_next_line.c get_next_line_utils.c
+		get_next_line_mod.c get_next_line_utils.c
 
 OBJS = ${SRCS:.c=.o}
 

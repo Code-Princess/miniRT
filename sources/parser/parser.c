@@ -6,13 +6,11 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/12/05 16:44:21 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:18:59 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
-
-// #include <string.h>
 
 #include "../../libft/libft.h"
 #include "../../includes/miniRT.h"
@@ -34,7 +32,7 @@ void	handle_input(t_data *data, int argc, char **argv)
 	determine_line_count(data, argv);
 	data->objects = ft_calloc(data->input.line_count + 1, sizeof(t_object *));
 	if (data->objects == NULL)
-		print_error_and_exit2("Malloc failed.\n", "input: ");
+		print_error_and_exit2("Malloc failed.\n", "input");
 	populate_objects_array(data, argv);
 	check_plane_normal_vec_dir(data);
 	check_completeness(data);
@@ -46,17 +44,12 @@ void	determine_line_count(t_data *data, char **argv)
 
 	data->input.line_count = 0;
 	filedes = open(argv[1], O_RDONLY);
-	data->line = get_next_line(filedes);
-	if (data->line == NULL)
-	{
-		ft_printf_error("get_next_line failed\n");
-		exit(1);
-	}
+	data->line = get_next_line_mod(filedes);
 	while (data->line != NULL)
 	{
 		free(data->line);
 		data->input.line_count++;
-		data->line = get_next_line(filedes);
+		data->line = get_next_line_mod(filedes);
 	}
 	close(filedes);
 }
@@ -81,12 +74,7 @@ void	populate_objects_array(t_data *data, char **argv)
 	int		idx;
 
 	filedes = open(argv[1], O_RDONLY);
-	data->line = get_next_line(filedes);
-	if (data->line == NULL)
-	{
-		ft_printf_error("get_next_line failed\n");
-		exit(1);
-	}
+	data->line = get_next_line_mod(filedes);
 	idx = 0;
 	while (data->line != NULL)
 	{
@@ -94,9 +82,7 @@ void	populate_objects_array(t_data *data, char **argv)
 		str_substitute(data->line, '\t', ' ');
 		data->line_array = ft_split(data->line, ' ');
 		if (data->line_array == NULL)
-		{
-			;
-		}
+			error_and_exit("ft_split failed", "input", NULL);
 		if (data->line_array[0][0] != '\n' && data->line_array[0][0] != '#')
 		{
 			obj_name = get_obj_name(data->line_array[0]);
@@ -105,7 +91,7 @@ void	populate_objects_array(t_data *data, char **argv)
 		}
 		free_char_ptr_array(data->line_array);
 		free(data->line);
-		data->line = get_next_line(filedes);
+		data->line = get_next_line_mod(filedes);
 	}
 	close(filedes);
 }

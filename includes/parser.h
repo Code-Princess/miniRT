@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:53:40 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/27 17:57:56 by daspring         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:19:49 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void					init_angle(t_object *obj, char **line_arr, int idx);
 void					init_radius(t_object *obj, char **line_arr, int idx);
 void					init_height(t_object *obj, char **line_arr, int idx);
 void					init_axis_vec(t_object *obj, char **line_arr, int idx);
-// void					exit_if_args_incomplete(char **line_arr, int idx, char *message);
-void					exit_if_args_incomplete(char **line_arr, int idx, char *message, t_object *obj);
+// void					exit_if_args_incompl(char **line_arr, int idx, char *message);
+void					exit_if_args_incompl(char **line_arr, int idx, char *message, t_object *obj);
 
 #endif

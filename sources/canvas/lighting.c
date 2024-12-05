@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lighting.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:17:20 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:29:32 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ t_color	calc_ambient_color(t_hit_obj *hit_obj, t_object *light)
 	int		idx_ambient_light;
 	t_data	*data;
 
-(void)light;
+	(void)light;
 	data = get_data();
 	idx_ambient_light = get_object_index(data, A);
-	// effective_color = color_mult(hit_obj->obj->color, light->s_light.intensity);
-	effective_color = color_mult(hit_obj->obj->color, data->objects[idx_ambient_light]->color);
-	ambient_comp = color_scale(data->objects[idx_ambient_light]->s_amb_light.brightness, effective_color);
+	effective_color = color_mult(hit_obj->obj->color, data->objects \
+									[idx_ambient_light]->color);
+	ambient_comp = color_scale(data->objects[idx_ambient_light]->\
+									s_amb_light.brightness, effective_color);
 	return (ambient_comp);
 }
 
@@ -95,7 +96,6 @@ void	prepare_color_calc(t_hit_obj *hit_obj, t_ray *ray)
 	hit_obj->normal_vec = get_normal_vec_ft()[hit_obj->obj->obj_name] \
 											(hit_obj, ray);
 }
-// printf("still alive in prepare_color_calc!\n");
 
 t_tuple	calc_reflect_vec(t_tuple *incomming, t_tuple *normal_vec)
 {
