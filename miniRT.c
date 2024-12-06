@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:15 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/05 15:37:34 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 12:57:46 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (mlx_image_to_window(data->mlx, data->image, 0, 0) == -1)
 		return (EXIT_FAILURE);
-	fill_canvas(WIDTH_IN_PIXEL, HEIGHT_IN_PIXEL);
+	fill_canvas();
 	mlx_loop_hook(data->mlx, esc_hook, data);
 	mlx_loop(data->mlx);
 	mlx_terminate(data->mlx);
