@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:51:34 by daspring          #+#    #+#             */
-/*   Updated: 2024/12/05 19:18:59 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:42:14 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_object	*parse_sphere_input(char **line_arr)
 
 	sphere = ft_calloc(1, sizeof(t_object));
 	if (sphere == NULL)
-		error_and_exit("Malloc failed.\n", "input", NULL);
+		error_and_exit2("Malloc failed.\n", "input", NULL);
 	sphere->obj_name = SPHERE;
 	sphere->identifier = SP;
 	idx = 1;

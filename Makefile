@@ -6,7 +6,7 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: Invalid date        by                   #+#    #+#              #
-#    Updated: 2024/12/06 13:23:39 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/12/06 13:44:53 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,10 +58,7 @@ SRCS			:= 	miniRT.c \
 					sources/maths/tuple_3.c \
 					sources/utilities/ft_printf_error.c \
 					sources/utilities/exit_fcts.c \
-					sources/free/free_fcts.c \
-					sources/dev_print_tuple.c \
-					sources/dev_print_color.c \
-					sources/dev_print_objects.c
+					sources/free/free_fcts.c
 
 OBJS			:=	${SRCS:.c=.o}
 

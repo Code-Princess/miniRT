@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:21:04 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/06 13:28:53 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:42:22 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	init_height(t_object *obj, char **line_arr, int idx)
 		ft_strlcat(message, "height: value not in range [0,", 100);
 		ft_strlcat(message, ft_itoa(MAX_CY_HEIGHT), 100);
 		ft_strlcat(message, "]", 100);
-		error_and_exit(message, line_arr[0], obj);
+		error_and_exit2(message, line_arr[0], obj);
 	}
 }
 
@@ -62,7 +62,7 @@ void	check_completeness(t_data *data)
 		pos++;
 	}
 	if (ft_strcmp(completeness_str, "CAL") != 0)
-		print_error_and_exit2("C, A or L missing", "objects");
+		error_and_exit("C, A or L missing", "objects");
 }
 
 bool	is_in_range_int(int *num, int min, int max)
@@ -77,7 +77,7 @@ void	exit_if_args_incompl(char **line_arr, int idx, char *message, \
 								t_object *obj)
 {
 	if (line_arr[idx] == NULL)
-		error_and_exit(message, line_arr[0], obj);
+		error_and_exit2(message, line_arr[0], obj);
 	if (line_arr[idx][0] == '\n')
-		error_and_exit(message, line_arr[0], obj);
+		error_and_exit2(message, line_arr[0], obj);
 }

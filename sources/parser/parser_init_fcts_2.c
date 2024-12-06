@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/06 13:21:59 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:42:14 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ void	init_normal_vec(t_object *obj, char **line_arr, int idx)
 							"normal_vec: not enough arguments", obj);
 	z_normal_vec = ft_atof_mod(line_arr[idx + 2], &error);
 	if (error == 1)
-		error_and_exit("normal_vec: number has wrong format", line_arr[0], obj);
+		error_and_exit2("normal_vec: number has wrong format", line_arr[0], obj);
 	vec = set_tuple(x_normal_vec, y_normal_vec, z_normal_vec, VEC);
 	if (is_normalized(&vec))
 		obj->s_camera.normal_vec = vec;
 	else
-		error_and_exit("normal_vec: vector not normalized", line_arr[0], obj);
+		error_and_exit2("normal_vec: vector not normalized", line_arr[0], obj);
 }
-	// vec = tuple_normalize2(&vec);
+	// vec = tuple_normalize(&vec);
 
 void	check_plane_normal_vec_dir(t_data *data)
 {
@@ -57,12 +57,12 @@ void	check_plane_normal_vec_dir(t_data *data)
 	{
 		if (data->objects[pos]->identifier == PL)
 		{
-			dir = direction2(&data->objects[pos]->position, \
+			dir = direction(&data->objects[pos]->position, \
 								&data->objects[idx_camera]->position);
 			dot_prod = tuple_dot(&data->objects[pos]->s_plane.normal_vec, &dir);
 			if (dot_prod < 0)
 			{
-				data->objects[pos]->s_plane.normal_vec = tuple_neg2(&data->\
+				data->objects[pos]->s_plane.normal_vec = tuple_neg(&data->\
 											objects[pos]->s_plane.normal_vec);
 			}
 		}
@@ -86,14 +86,14 @@ void	init_axis_vec(t_object *obj, char **line_arr, int idx)
 	exit_if_args_incompl(line_arr, idx + 2, "axis_vec: not enough args", obj);
 	z_normal_vec = ft_atof_mod(line_arr[idx + 2], &error);
 	if (error == 1)
-		error_and_exit("axis_vec: number has wrong format", line_arr[0], obj);
+		error_and_exit2("axis_vec: number has wrong format", line_arr[0], obj);
 	vec = set_tuple(x_normal_vec, y_normal_vec, z_normal_vec, VEC);
 	if (is_normalized(&vec))
 		obj->s_cy.axis_vec = vec;
 	else
-		error_and_exit("axis_vec: vector not normalized", line_arr[0], obj);
+		error_and_exit2("axis_vec: vector not normalized", line_arr[0], obj);
 }
-	// vec = tuple_normalize2(&vec);
+	// vec = tuple_normalize(&vec);
 
 void	init_angle(t_object *obj, char **line_arr, int idx)
 {
@@ -106,7 +106,7 @@ void	init_angle(t_object *obj, char **line_arr, int idx)
 	if (is_in_range_float(&angle, 0, 180) && error == 0)
 		obj->s_camera.angle = angle;
 	else
-		error_and_exit("angle: value not in range [0,180]", line_arr[0], obj);
+		error_and_exit2("angle: value not in range [0,180]", line_arr[0], obj);
 }
 
 void	init_radius(t_object *obj, char **line_arr, int idx)
@@ -131,6 +131,6 @@ void	init_radius(t_object *obj, char **line_arr, int idx)
 		ft_strlcat(message, "radius: value not in range [0,", 100);
 		ft_strlcat(message, ft_itoa(MAX_RADIUS), 100);
 		ft_strlcat(message, "]", 100);
-		error_and_exit(message, line_arr[0], obj);
+		error_and_exit2(message, line_arr[0], obj);
 	}
 }

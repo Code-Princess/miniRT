@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 12:59:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/05 19:18:59 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:42:14 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_object	*parse_plane_input(char **line_arr)
 
 	plane = ft_calloc(1, sizeof(t_object));
 	if (plane == NULL)
-		error_and_exit("Malloc failed.\n", "input", NULL);
+		error_and_exit2("Malloc failed.\n", "input", NULL);
 	plane->obj_name = PLANE;
 	plane->identifier = PL;
 	idx = 1;

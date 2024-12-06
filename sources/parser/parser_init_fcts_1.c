@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/06 13:28:48 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:45:48 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	get_obj_name(char *identifier)
 	if (ft_strcmp(identifier, "cy") == 0)
 		return (CYLINDER);
 	else
-		error_and_exit("identifier unknown", "object", NULL);
+		error_and_exit2("identifier unknown", "object", NULL);
 	return (-1);
 }
 
@@ -45,14 +45,14 @@ void	init_brightness(t_object *obj, char **line_arr, int idx)
 
 	error = 0;
 	if (line_arr[idx] == NULL)
-		error_and_exit("brightness: missing argument", line_arr[0], obj);
+		error_and_exit2("brightness: missing argument", line_arr[0], obj);
 	if (line_arr[idx][0] == '\n')
-		error_and_exit("brightness: missing argument", line_arr[0], obj);
+		error_and_exit2("brightness: missing argument", line_arr[0], obj);
 	brightness = ft_atof_mod(line_arr[idx], &error);
 	if (is_in_range_float(&brightness, 0, 1) && error == 0)
 		obj->s_amb_light.brightness = brightness;
 	else
-		error_and_exit("brightness: value not in range [0,1]", \
+		error_and_exit2("brightness: value not in range [0,1]", \
 							line_arr[0], obj);
 }
 
@@ -75,7 +75,7 @@ void	init_color(t_object *obj, char **line_arr, int idx)
 		obj->color = set_color(red / 255.0, green / 255.0, \
 								blue / 255.0, 1);
 	else
-		error_and_exit("color: value not in range [0,255]", line_arr[0], obj);
+		error_and_exit2("color: value not in range [0,255]", line_arr[0], obj);
 }
 
 void	init_position(t_object *obj, char **line_arr, int idx)
@@ -100,9 +100,7 @@ void	init_position(t_object *obj, char **line_arr, int idx)
 		obj->position = set_tuple(x_coord, y_coord, z_coord, PT);
 	else
 	{
-		printf("position: ");
-		print_tuple(obj->position);
-		error_and_exit("position: value not in range [-10000,10000]", \
+		error_and_exit2("position: value not in range [-10000,10000]", \
 						line_arr[0], obj);
 	}
 }

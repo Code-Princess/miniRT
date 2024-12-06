@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shadow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:58:38 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:41:23 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	is_in_shadow(t_object *light, t_hit_obj *hit_obj)
 	t_ray		light_ray;
 
 	data = get_data();
-	light_ray.direction_vec = direction2(&hit_obj->hit_pt, &light->position);
+	light_ray.direction_vec = direction(&hit_obj->hit_pt, &light->position);
 	light_ray.origin_pt = hit_obj->hit_pt;
 	if (pt_is_in_shadow(data->objects, &light_ray))
 		hit_obj->not_in_shadow = false;

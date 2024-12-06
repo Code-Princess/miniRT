@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 13:05:10 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/05 16:23:34 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:41:23 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ double	find_cylinder_lateral_hitpt(t_object *cy, t_cy_help *cy_help, \
 {
 	cy_help->v = ray->direction_vec;
 	cy_help->v_a = cy->s_cy.axis_vec;
-	cy_help->delta_p = direction2(&cy->position, &ray->origin_pt);
+	cy_help->delta_p = direction(&cy->position, &ray->origin_pt);
 	calc_temp1(cy_help);
 	calc_temp2(cy, cy_help, ray);
 	cy_help->a = tuple_dot_self(&cy_help->temp1);
@@ -71,18 +71,18 @@ static void	calc_temp1(t_cy_help *cy_help)
 {
 	t_tuple	temp;
 
-	temp = tuple_scale2(tuple_dot(&cy_help->v, &cy_help->v_a), &cy_help->v_a);
-	cy_help->temp1 = tuple_subtr2(&cy_help->v, &temp);
+	temp = tuple_scale(tuple_dot(&cy_help->v, &cy_help->v_a), &cy_help->v_a);
+	cy_help->temp1 = tuple_subtr(&cy_help->v, &temp);
 }
 
 static void	calc_temp2(t_object *cy, t_cy_help *cy_help, t_ray *ray)
 {
 	t_tuple	temp;
 
-	temp = tuple_scale2(tuple_dot(&cy_help->delta_p, &cy_help->v_a), \
+	temp = tuple_scale(tuple_dot(&cy_help->delta_p, &cy_help->v_a), \
 									&cy_help->v_a);
-	cy_help->delta_p = direction2(&cy->position, &ray->origin_pt);
-	cy_help->temp2 = tuple_subtr2(&cy_help->delta_p, &temp);
+	cy_help->delta_p = direction(&cy->position, &ray->origin_pt);
+	cy_help->temp2 = tuple_subtr(&cy_help->delta_p, &temp);
 }
 
 double	find_cylinder_base_hitpt(t_object *cy, t_ray *ray)

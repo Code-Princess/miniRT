@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 15:36:57 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/29 17:51:30 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:40:57 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "../../includes/maths.h"
 
-t_tuple	tuple_add2(t_tuple *a, t_tuple *b)
+t_tuple	tuple_add(t_tuple *a, t_tuple *b)
 {
 	t_tuple	c;
 
@@ -25,7 +25,7 @@ t_tuple	tuple_add2(t_tuple *a, t_tuple *b)
 	return (c);
 }
 
-t_tuple	tuple_neg2(t_tuple *a)
+t_tuple	tuple_neg(t_tuple *a)
 {
 	t_tuple	c;
 
@@ -36,7 +36,7 @@ t_tuple	tuple_neg2(t_tuple *a)
 	return (c);
 }
 
-t_tuple	tuple_subtr2(t_tuple *minuend, t_tuple *subtrahend)
+t_tuple	tuple_subtr(t_tuple *minuend, t_tuple *subtrahend)
 {
 	t_tuple	c;
 
@@ -47,7 +47,7 @@ t_tuple	tuple_subtr2(t_tuple *minuend, t_tuple *subtrahend)
 	return (c);
 }
 
-t_tuple	tuple_scale2(double k, t_tuple *a)
+t_tuple	tuple_scale(double k, t_tuple *a)
 {
 	t_tuple	c;
 

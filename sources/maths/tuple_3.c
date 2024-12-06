@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 20:07:41 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/29 17:50:44 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:41:16 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ double	tuple_dot_self(t_tuple *a)
 /*
 	using the right hand rule
 */
-t_tuple	tuple_cross2(t_tuple *a, t_tuple *b)
+t_tuple	tuple_cross(t_tuple *a, t_tuple *b)
 {
 	t_tuple	c;
 

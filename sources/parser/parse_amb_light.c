@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:51:34 by daspring          #+#    #+#             */
-/*   Updated: 2024/12/05 19:18:59 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:42:14 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ t_object	*parse_amb_light_input(char **line_arr)
 	data = get_data();
 	ambient_counter++;
 	if (ambient_counter > 1)
-		error_and_exit("Too many ambient lights.", "A", NULL);
+		error_and_exit2("Too many ambient lights.", "A", NULL);
 	amb_light = ft_calloc(1, sizeof(t_object));
 	if (amb_light == NULL)
-		error_and_exit("Malloc failed.\n", "input", NULL);
+		error_and_exit2("Malloc failed.\n", "input", NULL);
 	amb_light->obj_name = AMB_LIGHT;
 	amb_light->identifier = A;
 	idx = 1;

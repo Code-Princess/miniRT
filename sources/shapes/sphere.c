@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:45:40 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/05 15:51:14 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:41:23 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ double	find_sphere_hitpt(t_object *sphere, t_ray *ray)
 	double	t_2;
 	t_tuple	temp;
 
-	temp = direction2(&ray->origin_pt, &sphere->position);
+	temp = direction(&ray->origin_pt, &sphere->position);
 	a = tuple_dot(&ray->direction_vec, &ray->direction_vec);
 	b = -2 * tuple_dot(&ray->direction_vec, &temp);
 	discriminant = calc_discriminant(sphere, ray, a, b);
@@ -54,7 +54,7 @@ static double	calc_discriminant(t_object *sphere, t_ray *ray, \
 	t_tuple	c_q_vec;
 	double	c;
 
-	c_q_vec = direction2(&ray->origin_pt, &sphere->position);
+	c_q_vec = direction(&ray->origin_pt, &sphere->position);
 	c = tuple_dot_self(&c_q_vec) - pow(sphere->s_sphere.radius, 2);
 	discriminant = b * b - 4 * a * c;
 	return (discriminant);
@@ -67,7 +67,7 @@ t_tuple	calc_sphere_normal_vec(t_hit_obj *hit_obj, t_ray *ray)
 	t_tuple	pt;
 
 	pt = ray_at_t(ray, hit_obj->t);
-	dir_vec = direction2(&hit_obj->obj->position, &pt);
-	normal_vec = tuple_scale2(1 / hit_obj->obj->s_sphere.radius, &dir_vec);
+	dir_vec = direction(&hit_obj->obj->position, &pt);
+	normal_vec = tuple_scale(1 / hit_obj->obj->s_sphere.radius, &dir_vec);
 	return (normal_vec);
 }

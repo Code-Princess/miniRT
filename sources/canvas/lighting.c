@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:17:20 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/06 13:15:32 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:41:23 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ t_color	calc_diffuse_color(t_hit_obj *hit_obj, t_object *light)
 	t_tuple	temp;
 
 	effective_color = color_mult(hit_obj->obj->color, light->s_light.intensity);
-	temp = direction2(&hit_obj->hit_pt, &light->position);
-	light_vec = tuple_normalize2(&temp);
+	temp = direction(&hit_obj->hit_pt, &light->position);
+	light_vec = tuple_normalize(&temp);
 	light_dot_normal = tuple_dot(&light_vec, &hit_obj->normal_vec);
 	if (light_dot_normal < 0)
 		diffuse_color = set_color(0, 0, 0, 1);
@@ -70,10 +70,10 @@ t_color	calc_specular_color(t_hit_obj *hit_obj, t_object *light, t_ray *ray)
 	else
 	{
 		temp = ray_at_t(ray, hit_obj->t);
-		dir_pt_light = direction2(&temp, &light->position);
+		dir_pt_light = direction(&temp, &light->position);
 		reflect_vec = calc_reflect_vec(&dir_pt_light, &hit_obj->normal_vec);
-		temp = tuple_normalize2(&reflect_vec);
-		temp2 = tuple_normalize2(&ray->direction_vec);
+		temp = tuple_normalize(&reflect_vec);
+		temp2 = tuple_normalize(&ray->direction_vec);
 		reflect_dot_eye = tuple_dot(&temp, &temp2);
 		if (reflect_dot_eye <= 0)
 			return (set_color(0, 0, 0, 1));
@@ -92,8 +92,8 @@ bool	pt_is_on_far_side(t_hit_obj *hit_obj, t_object *light)
 	double	light_dot_normal;
 	t_tuple	temp;
 
-	temp = direction2(&hit_obj->hit_pt, &light->position);
-	light_vec = tuple_normalize2(&temp);
+	temp = direction(&hit_obj->hit_pt, &light->position);
+	light_vec = tuple_normalize(&temp);
 	light_dot_normal = tuple_dot(&light_vec, &hit_obj->normal_vec);
 	return (light_dot_normal < 0);
 }
@@ -105,7 +105,7 @@ t_tuple	calc_reflect_vec(t_tuple *incomming, t_tuple *normal_vec)
 	double	ray_dot_normal;
 
 	ray_dot_normal = tuple_dot(incomming, normal_vec);
-	subtrahend = tuple_scale2(2 * ray_dot_normal, normal_vec);
-	reflect_vec = tuple_subtr2(incomming, &subtrahend);
+	subtrahend = tuple_scale(2 * ray_dot_normal, normal_vec);
+	reflect_vec = tuple_subtr(incomming, &subtrahend);
 	return (reflect_vec);
 }

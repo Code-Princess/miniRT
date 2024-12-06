@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/06 13:20:23 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:41:36 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ typedef struct s_hit_obj
 typedef double		(*t_hit_pt_ft_array)(t_object *object, t_ray *ray);
 typedef t_tuple		(*t_get_normal_ft_array)(t_hit_obj *hit_obj, t_ray *ray);
 
-t_object				create_plane2(t_tuple position, t_color color, \
+t_object				create_plane(t_tuple position, t_color color, \
 										t_tuple normal_vec);
 
 t_hit_obj				find_hit_pt(t_object **objects, t_ray *ray);

@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 15:54:04 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/06 13:23:19 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:41:23 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_tuple	calc_cylinder_normal_vec(t_hit_obj *cy, t_ray *ray)
 	}
 	else if ((bottom_t - cy->t) < INFINI_FLOAT && bottom_t != -1)
 	{
-		return (tuple_neg2(&cy->obj->s_cy.axis_vec));
+		return (tuple_neg(&cy->obj->s_cy.axis_vec));
 	}
 	return (calc_cylinder_lateral_normal_vec(cy, ray));
 }
@@ -47,9 +47,9 @@ t_tuple	calc_cylinder_lateral_normal_vec(t_hit_obj *cy, t_ray *ray)
 	t_tuple	pt;
 
 	pt = ray_at_t(ray, cy->t);
-	pos_q_dir_vec = direction2(&cy->obj->position, &pt);
+	pos_q_dir_vec = direction(&cy->obj->position, &pt);
 	scale_dir = tuple_dot(&cy->obj->s_cy.axis_vec, &pos_q_dir_vec);
-	subtrahend = tuple_scale2(scale_dir, &cy->obj->s_cy.axis_vec);
-	long_normal_vec = tuple_subtr2(&pos_q_dir_vec, &subtrahend);
-	return (tuple_scale2(1 / cy->obj->s_cy.radius, &long_normal_vec));
+	subtrahend = tuple_scale(scale_dir, &cy->obj->s_cy.axis_vec);
+	long_normal_vec = tuple_subtr(&pos_q_dir_vec, &subtrahend);
+	return (tuple_scale(1 / cy->obj->s_cy.radius, &long_normal_vec));
 }

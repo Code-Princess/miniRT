@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/06 12:59:14 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:46:06 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,6 @@ typedef struct s_data
 t_data		*get_data(void);
 void		handle_input(t_data *data, int argc, char **argv);
 void		fill_canvas(void);
-
-void		print_tuple(t_tuple tuple);
-void		print_color(t_color color);
-void		print_camera(t_object *camera);
-void		print_plane(t_object *plane);
-
 void		esc_hook(void *param);
 
 #endif
