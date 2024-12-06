@@ -3,23 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: Invalid date        by                   #+#    #+#              #
-#    Updated: 2024/12/04 18:44:46 by daspring         ###   ########.fr        #
+#    Updated: 2024/12/06 13:23:39 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME			:= miniRT
-# CFLAGS			:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
+CFLAGS			:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 LIBMLXDOTA		:= ./MLX42/build/libmlx42.a
 
-# LIBMLX42		:= ./MLX42/build/libmlx42.a -ldl -lglfw -lm
 LIBMLX42		:= ./MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
 MLX42_URL		:= https://github.com/codam-coding-college/MLX42.git
-# MLX42_VERSION	:= v2.4.0
-# MLX42_VERSION	:= v2.3.4
 MLX42_VERSION	:= v2.3.3
 
 INCL			:= -I ./MLX42/include
@@ -35,6 +32,7 @@ SRCS			:= 	miniRT.c \
 					sources/parser/parser.c \
 					sources/parser/parser_init_fcts_1.c \
 					sources/parser/parser_init_fcts_2.c \
+					sources/parser/parser_init_fcts_3.c \
 					sources/parser/parse_amb_light.c \
 					sources/parser/parse_camera.c \
 					sources/parser/parse_light.c \

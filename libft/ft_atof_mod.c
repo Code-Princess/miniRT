@@ -6,15 +6,15 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 23:25:33 by daspring          #+#    #+#             */
-/*   Updated: 2024/12/03 20:05:15 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:27:11 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft.h"
-// #include "../include/fractol.h"
 
 static int		find_signum(char *s, int *signum);
-static double	get_number_part_greater_one(char *s, int *pos, double number, int *error);
+static double	get_number_part_greater_one(char *s, int *pos, double number, \
+											int *error);
 static double	get_number_part_smaller_one(char *s, int *pos, double number);
 static int		is_whitespace(char c);
 
@@ -30,8 +30,6 @@ double	ft_atof_mod(char *s, int *error)
 	if (!ft_isdigit(s[pos]))
 		*error = 1;
 	number = get_number_part_greater_one(s, &pos, number, error);
-	// if (number < 0)
-	// 	*error = 1;
 	if (s[pos] == '.')
 		pos++;
 	number = get_number_part_smaller_one(s, &pos, number);
@@ -39,8 +37,6 @@ double	ft_atof_mod(char *s, int *error)
 		pos++;
 	if (s[pos] != '\0' && s[pos] != '\n')
 		*error = 1;
-// printf("bad input via atof\n");
-		// bad_input_termination();
 	return (number * signum);
 }
 
@@ -59,7 +55,8 @@ static int	find_signum(char *s, int *signum)
 	return (pos);
 }
 
-static double	get_number_part_greater_one(char *s, int *pos, double number, int *error)
+static double	get_number_part_greater_one(char *s, int *pos, double number, \
+											int *error)
 {
 	while (s[*pos] && ft_isdigit(s[*pos]))
 	{

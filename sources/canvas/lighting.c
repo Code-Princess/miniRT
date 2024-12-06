@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:17:20 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/05 19:29:32 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:15:32 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 #include "../../includes/objects.h"
 #include "../../includes/color.h"
+
+bool	pt_is_on_far_side(t_hit_obj *hit_obj, t_object *light);
 
 t_color	calc_ambient_color(t_hit_obj *hit_obj, t_object *light)
 {
@@ -57,24 +59,18 @@ t_color	calc_diffuse_color(t_hit_obj *hit_obj, t_object *light)
 
 t_color	calc_specular_color(t_hit_obj *hit_obj, t_object *light, t_ray *ray)
 {
-	t_tuple	light_vec;
-	double	light_dot_normal;
 	t_tuple	dir_pt_light;
 	t_tuple	reflect_vec;
 	double	reflect_dot_eye;
-	t_tuple	pt;
 	t_tuple	temp;
 	t_tuple	temp2;
 
-	temp = direction2(&hit_obj->hit_pt, &light->position);
-	light_vec = tuple_normalize2(&temp);
-	light_dot_normal = tuple_dot(&light_vec, &hit_obj->normal_vec);
-	if (light_dot_normal < 0)
+	if (pt_is_on_far_side(hit_obj, light))
 		return (set_color(0, 0, 0, 1));
 	else
 	{
-		pt = ray_at_t(ray, hit_obj->t);
-		dir_pt_light = direction2(&pt, &light->position);
+		temp = ray_at_t(ray, hit_obj->t);
+		dir_pt_light = direction2(&temp, &light->position);
 		reflect_vec = calc_reflect_vec(&dir_pt_light, &hit_obj->normal_vec);
 		temp = tuple_normalize2(&reflect_vec);
 		temp2 = tuple_normalize2(&ray->direction_vec);
@@ -90,11 +86,16 @@ t_color	calc_specular_color(t_hit_obj *hit_obj, t_object *light, t_ray *ray)
 	}
 }
 
-void	prepare_color_calc(t_hit_obj *hit_obj, t_ray *ray)
+bool	pt_is_on_far_side(t_hit_obj *hit_obj, t_object *light)
 {
-	hit_obj->hit_pt = ray_at_t(ray, hit_obj->t);
-	hit_obj->normal_vec = get_normal_vec_ft()[hit_obj->obj->obj_name] \
-											(hit_obj, ray);
+	t_tuple	light_vec;
+	double	light_dot_normal;
+	t_tuple	temp;
+
+	temp = direction2(&hit_obj->hit_pt, &light->position);
+	light_vec = tuple_normalize2(&temp);
+	light_dot_normal = tuple_dot(&light_vec, &hit_obj->normal_vec);
+	return (light_dot_normal < 0);
 }
 
 t_tuple	calc_reflect_vec(t_tuple *incomming, t_tuple *normal_vec)

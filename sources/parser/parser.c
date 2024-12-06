@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/12/05 19:18:59 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:35:38 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	determine_line_count(t_data *data, char **argv)
 
 	data->input.line_count = 0;
 	filedes = open(argv[1], O_RDONLY);
+	if (filedes == -1)
+		print_error_and_exit2("could not open file", "input");
 	data->line = get_next_line_mod(filedes);
 	while (data->line != NULL)
 	{

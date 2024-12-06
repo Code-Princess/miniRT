@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/05 19:21:06 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:28:48 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,21 +113,4 @@ bool	is_in_range_float(double *num, int min, int max)
 		return (true);
 	else
 		return (false);
-}
-
-bool	is_in_range_int(int *num, int min, int max)
-{
-	if (*num <= max && *num >= min)
-		return (true);
-	else
-		return (false);
-}
-
-void	exit_if_args_incompl(char **line_arr, int idx, char *message, \
-								t_object *obj)
-{
-	if (line_arr[idx] == NULL)
-		error_and_exit(message, line_arr[0], obj);
-	if (line_arr[idx][0] == '\n')
-		error_and_exit(message, line_arr[0], obj);
 }

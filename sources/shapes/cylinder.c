@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 15:54:04 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/05 15:54:33 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:23:19 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_tuple	calc_cylinder_normal_vec(t_hit_obj *cy, t_ray *ray)
 {
 	double	top_t;
 	double	bottom_t;
-	t_tuple	temp;
 
 	top_t = pt_is_on_top(ray, cy->obj);
 	bottom_t = pt_is_on_bottom(ray, cy->obj);

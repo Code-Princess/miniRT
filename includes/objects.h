@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/06 12:56:57 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:20:23 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include "./maths.h"
 # include "./ray.h"
 # include "./color.h"
-
-// typedef union u_color	t_color;
 
 typedef enum e_identifier
 {
@@ -122,17 +120,8 @@ typedef struct s_hit_obj
 typedef double		(*t_hit_pt_ft_array)(t_object *object, t_ray *ray);
 typedef t_tuple		(*t_get_normal_ft_array)(t_hit_obj *hit_obj, t_ray *ray);
 
-// void					init_camera(t_data *data);
-// void					calc_image_plane(t_object *camera);
-t_tuple					calc_origin(t_object *camera);
-void					init_plane(t_data *data);
-t_object				*create_plane(t_tuple position, t_color color, \
-										t_tuple normal_vec);
 t_object				create_plane2(t_tuple position, t_color color, \
 										t_tuple normal_vec);
-void					init_sphere(t_data *data);
-void					init_cylinder(t_data *data);
-void					init_light(t_data *data);
 
 t_hit_obj				find_hit_pt(t_object **objects, t_ray *ray);
 t_hit_pt_ft_array		*get_hit_pt_ft(void);
@@ -155,7 +144,6 @@ t_tuple					calc_cylinder_normal_vec(t_hit_obj *hit_obj, \
 t_tuple					calc_cylinder_lateral_normal_vec(t_hit_obj *cy, \
 															t_ray *ray);
 
-// int						get_light_index(t_data *data);
 int						get_object_index(t_data *data, t_identifier identifier);
 
 #endif

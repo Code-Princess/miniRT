@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:04:01 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:16:54 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,8 @@ typedef struct s_color
 	};
 }	t_color;
 
-// typedef union u_color
-// {
-// 	uint32_t	pixel_color;
-// 	uint8_t		colors[4];
-// }	t_color;
-
 t_color		set_color(double r, double g, double b, double opac);
-// t_color		set_color(int r, int g, int b, int opac);
 t_color		color_scale(double k, t_color a);
-t_color		color_subtr(t_color minuend, t_color subtrahend);
 t_color		color_add(t_color a, t_color b);
 t_color		color_mult(t_color a, t_color b);
 void		convert_pixel_colors(t_color *color);
@@ -65,8 +57,6 @@ t_material	set_material(double ambient, double diffuse, double specular, \
 						int shininess);
 t_tuple		calc_reflect_vec(t_tuple *incomming, t_tuple *normal_vec);
 bool		pt_is_in_shadow(t_object **objects, t_ray *ray);
-// t_hit_obj	*pt_is_in_shadow(t_object **objects, t_ray *ray);
 void		is_in_shadow(t_object *light, t_hit_obj *hit_obj);
-// t_color		lighting(t_hit_obj *hit_obj, t_object *light, t_ray *ray);
 
 #endif

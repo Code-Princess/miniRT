@@ -6,15 +6,15 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/05 19:24:02 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:21:59 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/objects.h"
 #include "../../includes/parser.h"
 #include "../../includes/maths.h"
-#include "../../libft/libft.h"
 #include "../../includes/utilities.h"
+#include "../../libft/libft.h"
 
 void	init_normal_vec(t_object *obj, char **line_arr, int idx)
 {
@@ -133,53 +133,4 @@ void	init_radius(t_object *obj, char **line_arr, int idx)
 		ft_strlcat(message, "]", 100);
 		error_and_exit(message, line_arr[0], obj);
 	}
-}
-
-void	init_height(t_object *obj, char **line_arr, int idx)
-{
-	double	height;
-	char	message[100];
-	int		error;
-
-	error = 0;
-	exit_if_args_incompl(line_arr, idx, "height: missing argument", obj);
-	height = ft_atof_mod(line_arr[idx], &error);
-	if (is_in_range_float(&height, 0, MAX_CY_HEIGHT) && error == 0)
-	{
-		obj->s_cy.height = height;
-	}
-	else
-	{
-		ft_bzero(message, 100);
-		ft_strlcat(message, "height: value not in range [0,", 100);
-		ft_strlcat(message, ft_itoa(MAX_CY_HEIGHT), 100);
-		ft_strlcat(message, "]", 100);
-		error_and_exit(message, line_arr[0], obj);
-	}
-}
-
-void	check_completeness(t_data *data)
-{
-	char	completeness_str[4];
-	int		pos;
-
-	pos = 0;
-	while (data->objects[pos] != NULL)
-	{
-		if (data->objects[pos]->identifier == C)
-		{
-			completeness_str[0] = 'C';
-		}
-		else if (data->objects[pos]->identifier == A)
-		{
-			completeness_str[1] = 'A';
-		}
-		else if (data->objects[pos]->identifier == L)
-		{
-			completeness_str[2] = 'L';
-		}
-		pos++;
-	}
-	if (ft_strcmp(completeness_str, "CAL") != 0)
-		print_error_and_exit2("C, A or L missing", "objects");
 }
