@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 10:54:01 by llacsivy          #+#    #+#              #
-#    Updated: 2024/11/08 18:19:58 by daspring         ###   ########.fr        #
+#    Updated: 2024/12/05 19:02:45 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CFLAGS = -g -Wall -Wextra -Werror
-SRCS =	ft_atoi.c ft_atof.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
+SRCS =	ft_atoi.c ft_atof.c ft_atof_mod.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 		ft_isdigit.c ft_isprint.c ft_memchr.c ft_memcmp.c ft_memcpy.c \
 		ft_memmove.c ft_memset.c ft_strchr.c ft_strdup.c ft_strlcat.c \
 		ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strcmp.c ft_strnstr.c ft_strrchr.c \
@@ -21,7 +21,7 @@ SRCS =	ft_atoi.c ft_atof.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_i
 		ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 		ft_printf.c utils_ft_itoa_hexadecimal.c utils_ft_itoa_unsigned.c\
 		utils_ft_putchar.c utils_ft_putnbr.c utils_ft_putptr.c\
-		get_next_line.c get_next_line_utils.c
+		get_next_line_mod.c get_next_line_utils.c
 
 OBJS = ${SRCS:.c=.o}
 

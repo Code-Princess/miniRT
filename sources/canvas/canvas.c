@@ -3,40 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/11/26 20:41:11 by daspring         ###   ########.fr       */
+/*   Created: 2024/10/06 12:52:50 by llacsivy          #+#    #+#             */
+/*   Updated: 2024/12/06 12:58:52 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "../../MLX42/include/MLX42/MLX42.h"
 #include "../../includes/miniRT.h"
 #include "../../includes/free.h"
 
-void	fill_canvas(size_t width, size_t height)
+void	fill_canvas(void)
 {
-	size_t			y_pixel;
-	size_t			x_pixel;
+	int32_t			y_pixel;
+	int32_t			x_pixel;
 	t_ray			ray;
 	t_data			*data;
 	t_hit_obj		hit_obj;
 
 	data = get_data();
 	y_pixel = 0;
-	while (y_pixel < height)
+	while (y_pixel < data->mlx->height)
 	{
 		x_pixel = 0;
-		while (x_pixel < width)
+		while (x_pixel < data->mlx->width)
 		{
 			ray = create_ray(x_pixel, y_pixel);
 			hit_obj = find_hit_pt(data->objects, &ray);
-			// mlx_put_pixel(data->image, x_pixel, y_pixel,
-			// 				calc_normal_color(hit_obj, ray));
+			if (hit_obj.obj_found == true)
+				prepare_color_calc(&hit_obj, &ray);
 			mlx_put_pixel(data->image, x_pixel, y_pixel, \
 							calc_pixel_color(&hit_obj, &ray, data));
 			x_pixel++;
@@ -44,14 +44,17 @@ void	fill_canvas(size_t width, size_t height)
 		y_pixel++;
 	}
 }
+			// mlx_put_pixel(data->image, x_pixel, y_pixel,
+			// 				calc_normal_color(&hit_obj, &ray));
 
 t_hit_obj	find_hit_pt(t_object **objects, t_ray *ray)
 {
 	t_hit_obj	hit_obj;
-	float		hit_t;
+	double		hit_t;
 	int			object_idx;
 
-	hit_obj.t = INT8_MAX;
+	hit_t = 0.0;
+	hit_obj.t = INT32_MAX;
 	object_idx = 0;
 	while (objects[object_idx++] != NULL)
 	{
@@ -66,7 +69,7 @@ t_hit_obj	find_hit_pt(t_object **objects, t_ray *ray)
 			hit_obj.hit_pt = ray_at_t(ray, hit_obj.t);
 		}
 	}
-	if (hit_obj.t >= 1 && hit_obj.t != INT8_MAX)
+	if (hit_obj.t >= 1 && hit_obj.t != INT32_MAX)
 		hit_obj.obj_found = true;
 	else
 		hit_obj.obj_found = false;
@@ -75,16 +78,15 @@ t_hit_obj	find_hit_pt(t_object **objects, t_ray *ray)
 
 uint32_t	calc_normal_color(t_hit_obj *hit_obj, t_ray *ray)
 {
-	t_tuple	normal_vec;
 	t_color	color;
 
-	if (hit_obj == NULL)
-		color = set_color(0, 0, 0, 1);
-	else
+	(void)ray;
+	color = set_color(0, 0, 0, 1);
+	if (hit_obj->obj_found == true)
 	{
-		normal_vec = get_normal_vec_ft()[hit_obj->obj->obj_name](hit_obj, ray);
-		color = set_color((normal_vec.x + 1) / 2, \
-			(normal_vec.y + 1) / 2, (normal_vec.z + 1) / 2, 1);
+		color = set_color((hit_obj->normal_vec.x + 1) / 2, \
+			(hit_obj->normal_vec.y + 1) / 2, \
+			(hit_obj->normal_vec.z + 1) / 2, 1);
 	}
 	convert_pixel_colors(&color);
 	return (color.pixel_color);
@@ -94,13 +96,16 @@ uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 {
 	t_color		color;
 	int			light_idx;
+	t_tuple		temp1;
+	t_tuple		temp2;
 
 	light_idx = get_object_index(data, L);
 	color = set_color(0, 0, 0, 1);
-	if (hit_obj->obj_found == true)
+	temp1 = ray->direction_vec;
+	temp2 = hit_obj->normal_vec;
+	if (tuple_dot(&temp1, &temp2) < 0 && hit_obj->obj_found == true)
 	{
 		is_in_shadow(data->objects[light_idx], hit_obj);
-		prepare_color_calc(hit_obj, ray);
 		color = calc_ambient_color(hit_obj, data->objects[light_idx]);
 		if (hit_obj->not_in_shadow)
 		{
@@ -112,21 +117,6 @@ uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 	}
 	convert_pixel_colors(&color);
 	return (color.pixel_color);
-}
-// printf("didn't hit object\n");
-
-int	get_light_index(t_data *data)
-{
-	int	idx;
-
-	idx = 0;
-	while (data->objects[idx] != NULL)
-	{
-		if (data->objects[idx]->identifier == L)
-			break ;
-		idx++;
-	}
-	return (idx);
 }
 
 int	get_object_index(t_data *data, t_identifier identifier)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_error.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 21:42:59 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/15 16:26:39 by daspring         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:38:08 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

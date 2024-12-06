@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof_mod.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 23:25:33 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/15 17:13:34 by daspring         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:27:11 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft.h"
-// #include "../include/fractol.h"
 
 static int		find_signum(char *s, int *signum);
-static float	get_number_part_greater_one(char *s, int *pos, float number);
-static float	get_number_part_smaller_one(char *s, int *pos, float number);
+static double	get_number_part_greater_one(char *s, int *pos, double number, \
+											int *error);
+static double	get_number_part_smaller_one(char *s, int *pos, double number);
 static int		is_whitespace(char c);
 
-float	ft_atof_mod(char *s, int *error)
+double	ft_atof_mod(char *s, int *error)
 {
-	float	number;
+	double	number;
 	int		signum;
 	int		pos;
 
@@ -28,18 +28,15 @@ float	ft_atof_mod(char *s, int *error)
 	signum = 1;
 	pos = find_signum(s, &signum);
 	if (!ft_isdigit(s[pos]))
-		error = 1;
-	number = get_number_part_greater_one(s, &pos, number);
-	if (number < 0)
-		error = 1;
+		*error = 1;
+	number = get_number_part_greater_one(s, &pos, number, error);
 	if (s[pos] == '.')
 		pos++;
 	number = get_number_part_smaller_one(s, &pos, number);
 	while (is_whitespace(s[pos]))
 		pos++;
-	if (s[pos] != '\0')
-printf("bad input via atof\n");
-		// bad_input_termination();
+	if (s[pos] != '\0' && s[pos] != '\n')
+		*error = 1;
 	return (number * signum);
 }
 
@@ -58,21 +55,22 @@ static int	find_signum(char *s, int *signum)
 	return (pos);
 }
 
-static float	get_number_part_greater_one(char *s, int *pos, float number)
+static double	get_number_part_greater_one(char *s, int *pos, double number, \
+											int *error)
 {
 	while (s[*pos] && ft_isdigit(s[*pos]))
 	{
 		number = number * 10.0 + (s[*pos] - '0');
 		(*pos)++;
 	}
-	if (*pos > 4)
-		return (-1.0);
+	if (*pos > 6)
+		*error = 1;
 	return (number);
 }
 
-static float	get_number_part_smaller_one(char *s, int *pos, float number)
+static double	get_number_part_smaller_one(char *s, int *pos, double number)
 {
-	float	decimal_place;
+	double	decimal_place;
 
 	decimal_place = 0.1;
 	while (s[*pos] && ft_isdigit(s[*pos]))

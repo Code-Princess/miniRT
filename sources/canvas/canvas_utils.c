@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   canvas_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:52:39 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/07 14:53:46 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/color.h"
 #include "../../includes/objects.h"
 
-t_material	set_material(float ambient, float diffuse, float specular, \
+t_material	set_material(double ambient, double diffuse, double specular, \
 							int shininess)
 {
 	t_material	material;

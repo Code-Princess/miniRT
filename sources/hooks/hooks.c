@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dev_print_tuple.c                                  :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 13:21:10 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/30 13:21:11 by llacsivy         ###   ########.fr       */
+/*   Created: 2024/12/03 13:41:04 by llacsivy          #+#    #+#             */
+/*   Updated: 2024/12/05 19:27:50 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "../../includes/miniRT.h"
 
-#include "../includes/maths.h"
-
-void	print_tuple(t_tuple tuple)
+void	esc_hook(void *param)
 {
-	printf("tuple (%f, %f, %f, %d)\n", tuple.x, tuple.y, tuple.z, tuple.w);
+	t_data	*data;
+
+	data = (t_data *)param;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
+	{
+		mlx_close_window(data->mlx);
+	}
 }

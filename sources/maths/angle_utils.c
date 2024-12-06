@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   angle_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 12:24:24 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/10/29 21:06:42 by daspring         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 
-float	deg_to_rad(float angle_deg)
+double	deg_to_rad(double angle_deg)
 {
 	return (angle_deg * M_PI / 180);
 }

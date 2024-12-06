@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: Invalid date        by                   #+#    #+#              #
-#    Updated: 2024/11/26 20:30:13 by daspring         ###   ########.fr        #
+#    Updated: 2024/12/06 13:44:53 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,8 @@ NAME			:= miniRT
 CFLAGS			:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 LIBMLXDOTA		:= ./MLX42/build/libmlx42.a
 
-# LIBMLX42		:= ./MLX42/build/libmlx42.a -ldl -lglfw -lm
 LIBMLX42		:= ./MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
 MLX42_URL		:= https://github.com/codam-coding-college/MLX42.git
-# MLX42_VERSION	:= v2.4.0
-# MLX42_VERSION	:= v2.3.4
 MLX42_VERSION	:= v2.3.3
 
 INCL			:= -I ./MLX42/include
@@ -31,9 +28,11 @@ DEPENDENCIES	:= 	./includes/color.h \
 
 LIBFTDOTA		:= libft/libft.a
 SRCS			:= 	miniRT.c \
+					sources/hooks/hooks.c \
 					sources/parser/parser.c \
 					sources/parser/parser_init_fcts_1.c \
 					sources/parser/parser_init_fcts_2.c \
+					sources/parser/parser_init_fcts_3.c \
 					sources/parser/parse_amb_light.c \
 					sources/parser/parse_camera.c \
 					sources/parser/parse_light.c \
@@ -59,18 +58,15 @@ SRCS			:= 	miniRT.c \
 					sources/maths/tuple_3.c \
 					sources/utilities/ft_printf_error.c \
 					sources/utilities/exit_fcts.c \
-					sources/free/free_fcts.c \
-					sources/dev_print_tuple.c \
-					sources/dev_print_color.c \
-					sources/dev_print_objects.c
+					sources/free/free_fcts.c
 
 OBJS			:=	${SRCS:.c=.o}
 
 $(NAME): $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
 	@echo "Compiling miniRT ..."
-	# cc $(CFLAGS) $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
+	cc $(CFLAGS) $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
 	# cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /users/llacsivy/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
-	cc -g $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /Users/daspring/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
+	# cc -g $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /Users/daspring/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
 	
 debug: $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
 	@echo "Compiling miniRT ..."

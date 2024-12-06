@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_mod.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 12:53:48 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/25 13:24:39 by linda            ###   ########.fr       */
+/*   Updated: 2024/12/05 19:04:13 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <limits.h>
+
 #include "libft.h"
+#include "../includes/miniRT.h"
+#include "../includes/free.h"
 
 static char	*create_ret_str(char buffer[], int fd, char *ret_str);
 static char	*search_and_update_buffer(char *buffer, char *ret_str, \
@@ -36,20 +39,23 @@ static int	buffer_is_empty(char *buffer);
  *					return ret_str
  */
 
-char	*get_next_line(int fd)
+char	*get_next_line_mod(int fd)
 {
 	static char		buffer[OPEN_MAX][BUFFER_SIZE + 1];
 	char			*ret_str;
 	unsigned int	pos;
+	t_data			*data;
 
+	data = get_data();
 	pos = 0;
 	while (pos < OPEN_MAX)
 		buffer[pos++][BUFFER_SIZE] = STRING_TERMINATOR;
-	if (fd < 0 || BUFFER_SIZE < 1)
-		return (NULL);
 	ret_str = malloc(1 * sizeof(char));
-	if (ret_str == NULL)
-		return (NULL);
+	if (fd < 0 || BUFFER_SIZE < 1 || ret_str == NULL)
+	{
+		free_obj_ptr_array(data->objects);
+		exit (1);
+	}
 	ret_str[0] = STRING_TERMINATOR;
 	ret_str = create_ret_str(buffer[fd], fd, ret_str);
 	return (ret_str);

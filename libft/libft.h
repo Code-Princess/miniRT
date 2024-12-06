@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 14:19:44 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/21 13:56:43 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:01:55 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *str);
 int		ft_atoi_mod(const char *str, int *error);
 double	ft_atof(char *s);
-float	ft_atof_mod(char *s, int *error);
+// double	ft_atof_mod(char *s, int *error);
+double	ft_atof_mod(char *s, int *error);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
@@ -102,7 +103,7 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin_modified(char *s1, char *s2, int s2_len);
 char	*read_from_fd_into_buffer(int fd, char *buffer);
 char	*adjust_buffer(char *old_buffer);
-char	*get_next_line(int fd);
+char	*get_next_line_mod(int fd);
 size_t	string_length(char string[]);
 char	*string_append(char *leading_str, char *trailing_str, \
 					size_t len_of_trailing_str);

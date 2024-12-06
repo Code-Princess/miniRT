@@ -6,14 +6,14 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 14:42:09 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/07 14:53:06 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:17:05 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/color.h"
 #include "../../includes/objects.h"
 
-t_color	set_color(float r, float g, float b, float opac)
+t_color	set_color(double r, double g, double b, double opac)
 {
 	t_color	color;
 
@@ -46,22 +46,7 @@ t_color	color_add(t_color a, t_color b)
 	return (result);
 }
 
-t_color	color_subtr(t_color minuend, t_color subtrahend)
-{
-	t_color	result;
-
-	result.colors_float[RED] = minuend.colors_float[RED] - \
-								subtrahend.colors_float[RED];
-	result.colors_float[GREEN] = minuend.colors_float[GREEN] - \
-								subtrahend.colors_float[GREEN];
-	result.colors_float[BLUE] = minuend.colors_float[BLUE] - \
-								subtrahend.colors_float[BLUE];
-	result.colors_float[OPAC] = minuend.colors_float[OPAC] - \
-								subtrahend.colors_float[OPAC];
-	return (result);
-}
-
-t_color	color_scale(float k, t_color a)
+t_color	color_scale(double k, t_color a)
 {
 	t_color	result;
 
@@ -70,4 +55,11 @@ t_color	color_scale(float k, t_color a)
 	result.colors_float[BLUE] = a.colors_float[BLUE] * k;
 	result.colors_float[OPAC] = a.colors_float[OPAC] * k;
 	return (result);
+}
+
+void	prepare_color_calc(t_hit_obj *hit_obj, t_ray *ray)
+{
+	hit_obj->hit_pt = ray_at_t(ray, hit_obj->t);
+	hit_obj->normal_vec = get_normal_vec_ft()[hit_obj->obj->obj_name] \
+											(hit_obj, ray);
 }

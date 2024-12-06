@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linda <linda@student.42.fr>                +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 18:36:56 by daspring          #+#    #+#             */
-/*   Updated: 2024/11/25 13:42:03 by linda            ###   ########.fr       */
+/*   Updated: 2024/12/06 13:42:14 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/libft.h"
 #include "../../includes/objects.h"
 #include "../../includes/parser.h"
+#include "../../includes/free.h"
 #include "../../includes/utilities.h"
 
 t_object	*parse_camera_input(char **line_arr)
@@ -20,13 +21,15 @@ t_object	*parse_camera_input(char **line_arr)
 	t_object	*camera;
 	int			idx;
 	static int	camera_counter;
+	t_data		*data;
 
+	data = get_data();
 	camera_counter++;
 	if (camera_counter > 1)
-	{
-		print_error_and_exit2("Too many cameras.", "C");
-	}
+		error_and_exit2("Too many cameras.", "C", NULL);
 	camera = ft_calloc(1, sizeof(t_object));
+	if (camera == NULL)
+		error_and_exit2("Malloc failed.\n", "input", NULL);
 	camera->obj_name = CAMERA;
 	camera->identifier = C;
 	idx = 1;
