@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:52:39 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/11/27 13:51:01 by daspring         ###   ########.fr       */
+/*   Updated: 2024/12/12 00:18:01 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,18 @@ void	convert_pixel_colors(t_color *color)
 	color->colors_int[GREEN] = color->colors_float[GREEN] * 255;
 	color->colors_int[BLUE] = color->colors_float[BLUE] * 255;
 	color->colors_int[OPAC] = 255;
+}
+
+int	get_object_index(t_data *data, t_identifier identifier)
+{
+	int	idx;
+
+	idx = 0;
+	while (data->objects[idx] != NULL)
+	{
+		if (data->objects[idx]->identifier == identifier)
+			break ;
+		idx++;
+	}
+	return (idx);
 }

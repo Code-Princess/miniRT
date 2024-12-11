@@ -6,7 +6,7 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: Invalid date        by                   #+#    #+#              #
-#    Updated: 2024/12/11 21:51:04 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/12/12 00:32:49 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS			:= 	miniRT.c \
 					sources/parser/parser_init_fcts_2.c \
 					sources/parser/parser_init_fcts_3.c \
 					sources/parser/parser_init_fcts_4.c \
+					sources/parser/parser_init_fcts_5.c \
 					sources/parser/parse_amb_light.c \
 					sources/parser/parse_camera.c \
 					sources/parser/parse_light.c \
@@ -66,8 +67,8 @@ OBJS			:=	${SRCS:.c=.o}
 
 $(NAME): $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
 	@echo "Compiling miniRT ..."
-	cc $(CFLAGS) $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
-	# cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /users/llacsivy/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
+	# cc $(CFLAGS) $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
+	cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /users/llacsivy/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
 	# cc -g $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /Users/daspring/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
 	
 debug: $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)

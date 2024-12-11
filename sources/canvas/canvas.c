@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:52:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/11 23:19:50 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/12 00:18:06 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void	fill_canvas(t_data *data)
 			{
 				ray = create_ray(x_pixel, y_pixel);
 				hit_obj = find_hit_pt(data->objects, &ray);
-				if (hit_obj.obj_found == true)
-					prepare_color_calc(&hit_obj, &ray);
 				mlx_put_pixel(data->image, x_pixel, y_pixel, \
 						calc_pixel_color(&hit_obj, &ray, data));
 			}
@@ -47,8 +45,6 @@ void	fill_canvas(t_data *data)
 		y_pixel++;
 	}
 }
-			// mlx_put_pixel(data->image, x_pixel, y_pixel,
-			// 				calc_normal_color(&hit_obj, &ray));
 
 bool	cam_not_inside(t_data *data)
 {
@@ -59,7 +55,6 @@ bool	cam_not_inside(t_data *data)
 	cam = data->objects[cam_idx];
 	return (!cam->s_camera.is_inside_obj);
 }
-
 
 t_hit_obj	find_hit_pt(t_object **objects, t_ray *ray)
 {
@@ -85,8 +80,6 @@ t_hit_obj	find_hit_pt(t_object **objects, t_ray *ray)
 	}
 	if (hit_obj.t >= 1 && hit_obj.t != INT32_MAX)
 		hit_obj.obj_found = true;
-	// else
-	// 	hit_obj.obj_found = false;
 	return (hit_obj);
 }
 
@@ -113,6 +106,8 @@ uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 	t_tuple		temp1;
 	t_tuple		temp2;
 
+	if (hit_obj->obj_found == true)
+		prepare_color_calc(hit_obj, ray);
 	light_idx = get_object_index(data, L);
 	color = set_color(0, 0, 0, 1);
 	temp1 = ray->direction_vec;
@@ -129,26 +124,11 @@ uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 										data->objects[light_idx], ray));
 		}
 	}
-	// if (hit_obj->obj_found == true)
+	convert_pixel_colors(&color);
+	return (color.pixel_color);
+}
 	// {
 	// 	color = set_color((hit_obj->normal_vec.x + 1) / 2, 
 	// 		(hit_obj->normal_vec.y + 1) / 2, 
 	// 		(hit_obj->normal_vec.z + 1) / 2, 1);
 	// }
-	convert_pixel_colors(&color);
-	return (color.pixel_color);
-}
-
-int	get_object_index(t_data *data, t_identifier identifier)
-{
-	int	idx;
-
-	idx = 0;
-	while (data->objects[idx] != NULL)
-	{
-		if (data->objects[idx]->identifier == identifier)
-			break ;
-		idx++;
-	}
-	return (idx);
-}

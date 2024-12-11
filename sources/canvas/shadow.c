@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shadow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:58:38 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/11 16:09:18 by daspring         ###   ########.fr       */
+/*   Updated: 2024/12/12 00:18:34 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	is_in_shadow(t_object *light, t_hit_obj *hit_obj)
 		hit_obj->not_in_shadow = true;
 }
 
-#include <stdio.h>
-// get_hit_pt_fcts do work for rays cast from the eye-point. lets look at this ray here again ...
 bool	pt_is_in_shadow(t_object **objects, t_ray *ray)
 {
 	double		hit_t;
@@ -42,10 +40,8 @@ bool	pt_is_in_shadow(t_object **objects, t_ray *ray)
 			continue ;
 		hit_t = get_hit_pt_ft()[objects[object_idx - 1]->obj_name] \
 								(objects[object_idx - 1], ray);
-		// if (hit_t > 0 + INFINI_FLOAT && hit_t < 1 - INFINI_FLOAT)
 		if (hit_t > 0 + INFINI_FLOAT && hit_t < 1 - INFINI_FLOAT)
 		{
-// printf("pt_is_in_shadow - hit_t: %f\n", hit_t);
 			return (true);
 		}
 	}

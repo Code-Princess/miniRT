@@ -6,56 +6,80 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:21:04 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/11 22:46:24 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/12 00:26:54 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/objects.h"
 #include "../../includes/utilities.h"
+#include "../../includes/parser.h"
+#include "../../libft/libft.h"
 
 #include <math.h>
 
-bool	is_in_range_int(int *num, int min, int max)
+void	check_cylinder(t_data *data)
 {
-	if (*num <= max && *num >= min)
-		return (true);
-	else
-		return (false);
-}
+	int			pos;
+	t_object	*rev_cy;
+	t_tuple		temp;
 
-void	exit_if_args_incompl(char **line_arr, int idx, char *message, \
-								t_object *obj)
-{
-	if (line_arr[idx] == NULL)
-		error_and_exit2(message, line_arr[0], obj);
-	if (line_arr[idx][0] == '\n')
-		error_and_exit2(message, line_arr[0], obj);
-}
-
-// bool	cam_inside_radius(t_object *cam, t_object *cy)
-// {
-// 	double		dist_to_axis;
-// 	double		numerator;
-
-// }
-
-void	cam_inside_sphere(t_object *cam, t_object *sphere)
-{
-	double	squ_dist_to_center;
-	t_tuple	pos_sp;
-	t_tuple	pos_cam;
-
-	pos_sp = sphere->position;
-	pos_cam = cam->position;
-	squ_dist_to_center = pow(pos_sp.x - pos_cam.x, 2) + \
-						pow(pos_sp.y - pos_cam.y, 2) + \
-						pow(pos_sp.z - pos_cam.z, 2);
-	if (squ_dist_to_center <= pow(sphere->s_sphere.radius, 2))
+	pos = 0;
+	while (data->objects[pos] != NULL)
 	{
-		cam->s_camera.is_inside_obj = true;
+		if (data->objects[pos]->identifier == CY)
+		{
+			if (data->objects[pos]->s_cy.top)
+			{
+				pos++;
+				continue ;
+			}
+			rev_cy = ft_calloc(1, sizeof(t_object));
+			*rev_cy = *data->objects[pos];
+			temp = tuple_scale(rev_cy->s_cy.height, &rev_cy->s_cy.axis_vec);
+			rev_cy->position = tuple_add(&rev_cy->position, &temp);
+			rev_cy->s_cy.axis_vec = tuple_neg(&rev_cy->s_cy.axis_vec);
+			rev_cy->s_cy.top = true;
+			data->objects[get_last_index(data->objects)] = rev_cy;
+		}
+		pos++;
 	}
 }
-#include <stdio.h>
+
+void	cam_inside_cyl(t_object *cam, t_object *cy)
+{
+	if (cam_inside_radius(cam, cy) && cam_inside_height(cam, cy))
+		cam->s_camera.is_inside_obj = true;
+}
+
+bool	cam_inside_height(t_object *cam, t_object *cy)
+{
+	t_tuple		temp1;
+	double		numerator;
+	double		denominator;
+	double		t;
+
+	temp1 = direction(&cam->position, &cy->position);
+	numerator = tuple_dot(&temp1, &cy->s_cy.axis_vec);
+	denominator = tuple_dot_self(&cy->s_cy.axis_vec);
+	t = numerator / denominator;
+	return (0 <= t && t <= cy->s_cy.height);
+}
+
+bool	cam_inside_radius(t_object *cam, t_object *cy)
+{
+	double		dist_to_axis;
+	double		numerator;
+	double		denominator;
+	t_tuple		temp1;
+
+	temp1 = direction(&cam->position, &cy->position);
+	temp1 = tuple_cross(&cy->s_cy.axis_vec, &temp1);
+	numerator = tuple_magni(&temp1);
+	denominator = tuple_magni(&cy->s_cy.axis_vec);
+	dist_to_axis = numerator / denominator;
+	return (dist_to_axis <= cy->s_cy.radius);
+}
+
 void	check_camera(t_data *data)
 {
 	int			cam_idx;
@@ -67,16 +91,10 @@ void	check_camera(t_data *data)
 	pos = 0;
 	while (data->objects[pos] != NULL)
 	{
-		// if (data->objects[pos]->identifier == CY)
-		// {
-		// 	cam_inside_radius(cam, data->objects[pos]);
-		// 	cam_inside_height(cam, data->objects[pos]);
-		// }
-		if (data->objects[pos]->identifier == SP)
-		{
+		if (data->objects[pos]->identifier == CY)
+			cam_inside_cyl(cam, data->objects[pos]);
+		else if (data->objects[pos]->identifier == SP)
 			cam_inside_sphere(cam, data->objects[pos]);
-		}
 		pos++;
 	}
-printf("cam_inside? %d\n", cam->s_camera.is_inside_obj);
 }

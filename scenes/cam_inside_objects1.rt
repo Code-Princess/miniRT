@@ -5,5 +5,5 @@ L	-20,0,0				0.5			255,255,255	# light outside sphere
 sp	0,0,0			12				255,0, 0
 
 C	0,0,0	1,0,0		90		# C1 light left from sphere, camera inside sphere => black image
-# C	-10,0,0	1,0,0		90		# C2 intersecting the sphere => red ring
+# C	-5,0,0	1,0,0		90		# C2 intersecting the sphere => red ring
 # C	-20,0,0	1,0,0		90		# C3 camera left from sphere => sphere visible
