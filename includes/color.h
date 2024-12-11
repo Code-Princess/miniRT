@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:04:01 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/06 13:16:54 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/11 22:58:38 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ t_material	set_material(double ambient, double diffuse, double specular, \
 t_tuple		calc_reflect_vec(t_tuple *incomming, t_tuple *normal_vec);
 bool		pt_is_in_shadow(t_object **objects, t_ray *ray);
 void		is_in_shadow(t_object *light, t_hit_obj *hit_obj);
+bool		cam_not_inside(t_data *data);
 
 #endif

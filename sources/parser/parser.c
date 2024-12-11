@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 11:18:24 by daspring          #+#    #+#             */
-/*   Updated: 2024/12/06 13:42:22 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/11 22:44:35 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,15 @@ void	handle_input(t_data *data, int argc, char **argv)
 	if (is_correct_file_type(argv[1]) == false)
 		error_and_exit("Wrong file extension.\n", "input");
 	determine_line_count(data, argv);
-	data->objects = ft_calloc(data->input.line_count + 1, sizeof(t_object *));
+	data->objects = ft_calloc((data->input.line_count * 2) + 1, \
+								sizeof(t_object *));
 	if (data->objects == NULL)
 		error_and_exit("Malloc failed.\n", "input");
 	populate_objects_array(data, argv);
 	check_plane_normal_vec_dir(data);
 	check_completeness(data);
+	check_cylinder(data);
+	check_camera(data);
 }
 
 void	determine_line_count(t_data *data, char **argv)

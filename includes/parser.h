@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:53:40 by daspring          #+#    #+#             */
-/*   Updated: 2024/12/06 13:20:14 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/12 00:27:44 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ void					init_normal_vec(t_object *obj, char **line_arr, \
 										int idx);
 void					check_plane_normal_vec_dir(t_data *data);
 void					check_completeness(t_data *data);
+void					check_cylinder(t_data *data);
+void					check_camera(t_data *data);
+int						get_last_index(t_object **objects_array);
+void					cam_inside_sphere(t_object *cam, t_object *sphere);
+void					cam_inside_cyl(t_object *cam, t_object *cy);
+bool					cam_inside_radius(t_object *cam, t_object *cy);
+bool					cam_inside_height(t_object *cam, t_object *cy);
 void					init_image_plane(t_object *camera);
 void					init_angle(t_object *obj, char **line_arr, int idx);
 void					init_radius(t_object *obj, char **line_arr, int idx);

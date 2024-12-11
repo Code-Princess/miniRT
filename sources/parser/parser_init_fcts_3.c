@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:21:04 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/06 13:42:22 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/12 00:25:02 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,16 @@ void	check_completeness(t_data *data)
 	}
 	if (ft_strcmp(completeness_str, "CAL") != 0)
 		error_and_exit("C, A or L missing", "objects");
+}
+
+int	get_last_index(t_object **objects_array)
+{
+	int	pos;
+
+	pos = 0;
+	while (objects_array[pos] != NULL)
+		pos++;
+	return (pos);
 }
 
 bool	is_in_range_int(int *num, int min, int max)

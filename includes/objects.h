@@ -6,7 +6,7 @@
 /*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:13:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/06 13:41:36 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/12 00:30:26 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_object
 		{
 			t_tuple		normal_vec;
 			double		angle;
+			bool		is_inside_obj;
 			struct
 			{
 				t_tuple	origin;
@@ -88,6 +89,7 @@ typedef struct s_object
 			t_tuple	axis_vec;
 			double	radius;
 			double	height;
+			bool	top;
 		}		s_cy;
 	};
 }	t_object;
