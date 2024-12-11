@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:52:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/06 12:58:52 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:11:48 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ void	fill_canvas(void)
 				prepare_color_calc(&hit_obj, &ray);
 			mlx_put_pixel(data->image, x_pixel, y_pixel, \
 							calc_pixel_color(&hit_obj, &ray, data));
+			// mlx_put_pixel(data->image, x_pixel, y_pixel,
+			// 				calc_normal_color(&hit_obj, &ray));
 			x_pixel++;
 		}
 		y_pixel++;
 	}
 }
-			// mlx_put_pixel(data->image, x_pixel, y_pixel,
-			// 				calc_normal_color(&hit_obj, &ray));
 
 t_hit_obj	find_hit_pt(t_object **objects, t_ray *ray)
 {
@@ -54,7 +54,7 @@ t_hit_obj	find_hit_pt(t_object **objects, t_ray *ray)
 	int			object_idx;
 
 	hit_t = 0.0;
-	hit_obj.t = INT32_MAX;
+	hit_obj = (t_hit_obj){.t = INT32_MAX};
 	object_idx = 0;
 	while (objects[object_idx++] != NULL)
 	{
@@ -71,8 +71,8 @@ t_hit_obj	find_hit_pt(t_object **objects, t_ray *ray)
 	}
 	if (hit_obj.t >= 1 && hit_obj.t != INT32_MAX)
 		hit_obj.obj_found = true;
-	else
-		hit_obj.obj_found = false;
+	// else
+	// 	hit_obj.obj_found = false;
 	return (hit_obj);
 }
 
@@ -115,6 +115,12 @@ uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 										data->objects[light_idx], ray));
 		}
 	}
+	// if (hit_obj->obj_found == true)
+	// {
+	// 	color = set_color((hit_obj->normal_vec.x + 1) / 2, \
+	// 		(hit_obj->normal_vec.y + 1) / 2, \
+	// 		(hit_obj->normal_vec.z + 1) / 2, 1);
+	// }
 	convert_pixel_colors(&color);
 	return (color.pixel_color);
 }

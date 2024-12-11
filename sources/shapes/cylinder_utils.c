@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 15:54:48 by daspring          #+#    #+#             */
-/*   Updated: 2024/12/06 13:41:36 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:09:34 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ bool	pt_is_between_slabs(double t, t_ray *ray, t_object *cylinder)
 		return (0);
 }
 
+
+#include <stdio.h>
+
 double	pt_is_on_bottom(t_ray *ray, t_object *cylinder)
 {
 	t_tuple		pos_q_dir;
@@ -52,7 +55,10 @@ double	pt_is_on_bottom(t_ray *ray, t_object *cylinder)
 	hit_pt = ray_at_t(ray, t);
 	pos_q_dir = direction(&cylinder->position, &hit_pt);
 	if (pt_is_on_disk(cylinder->position, *cylinder, hit_pt))
+	{
+printf("pt_is_on_bottom\n");
 		return (t);
+	}
 	else
 		return (-1);
 }
@@ -72,7 +78,10 @@ double	pt_is_on_top(t_ray *ray, t_object *cylinder)
 	t = find_plane_hitpt(&top_plane, ray);
 	hit_pt = ray_at_t(ray, t);
 	if (pt_is_on_disk(p_top, *cylinder, hit_pt))
+	{
+printf("pt_is_on_top\n");
 		return (t);
+	}
 	else
 		return (-1);
 }
