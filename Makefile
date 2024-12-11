@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: Invalid date        by                   #+#    #+#              #
-#    Updated: 2024/12/11 21:31:19 by daspring         ###   ########.fr        #
+#    Updated: 2024/12/11 21:51:04 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,8 +59,8 @@ SRCS			:= 	miniRT.c \
 					sources/maths/tuple_3.c \
 					sources/utilities/ft_printf_error.c \
 					sources/utilities/exit_fcts.c \
-					sources/free/free_fcts.c \
-					sources/dev_print_tuple.c
+					sources/free/free_fcts.c
+					# sources/dev_print_tuple.c
 
 OBJS			:=	${SRCS:.c=.o}
 

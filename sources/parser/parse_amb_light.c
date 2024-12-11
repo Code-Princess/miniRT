@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_amb_light.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:51:34 by daspring          #+#    #+#             */
-/*   Updated: 2024/12/11 20:37:11 by daspring         ###   ########.fr       */
+/*   Updated: 2024/12/11 22:28:11 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ t_object	*parse_amb_light_input(char **line_arr)
 	t_object			*amb_light;
 	int					idx;
 	static int			ambient_counter;
-	// t_data				*data;
 
-	// data = get_data();
 	ambient_counter++;
 	if (ambient_counter > 1)
 		error_and_exit2("Too many ambient lights.", "A", NULL);

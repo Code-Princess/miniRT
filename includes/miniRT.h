@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:45:25 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/11 21:36:10 by daspring         ###   ########.fr       */
+/*   Updated: 2024/12/11 22:51:35 by llacsivy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_data
 
 t_data		*get_data(void);
 void		handle_input(t_data *data, int argc, char **argv);
-void		fill_canvas(void);
+void		fill_canvas(t_data *data);
 void		esc_hook(void *param);
 
 void		print_tuple(t_tuple tuple);
