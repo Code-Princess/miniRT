@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 15:54:48 by daspring          #+#    #+#             */
-/*   Updated: 2024/12/11 20:38:54 by daspring         ###   ########.fr       */
+/*   Updated: 2024/12/11 21:13:44 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ double	pt_is_on_bottom(t_ray *ray, t_object *cylinder)
 	// pos_q_dir = direction(&cylinder->position, &hit_pt);
 	if (pt_is_on_disk(cylinder->position, *cylinder, hit_pt))
 	{
-printf("pt_is_on_bottom\n");
+// printf("pt_is_on_bottom\n");
 		return (t);
 	}
 	else
@@ -79,7 +79,7 @@ double	pt_is_on_top(t_ray *ray, t_object *cylinder)
 	hit_pt = ray_at_t(ray, t);
 	if (pt_is_on_disk(p_top, *cylinder, hit_pt))
 	{
-printf("pt_is_on_top\n");
+// printf("pt_is_on_top\n");
 		return (t);
 	}
 	else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_init_fcts_3.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:21:04 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/06 13:42:22 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/11 21:32:46 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,44 @@ void	check_completeness(t_data *data)
 		error_and_exit("C, A or L missing", "objects");
 }
 
-bool	is_in_range_int(int *num, int min, int max)
+static int	get_last_index(t_object **objects_array)
 {
-	if (*num <= max && *num >= min)
-		return (true);
-	else
-		return (false);
+	int	pos;
+
+	pos = 0;
+	while (objects_array[pos] != NULL)
+		pos++;
+	return (pos);
 }
 
-void	exit_if_args_incompl(char **line_arr, int idx, char *message, \
-								t_object *obj)
+void	check_cylinder(t_data *data)
 {
-	if (line_arr[idx] == NULL)
-		error_and_exit2(message, line_arr[0], obj);
-	if (line_arr[idx][0] == '\n')
-		error_and_exit2(message, line_arr[0], obj);
+	int			pos;
+	t_object	*rev_cy;
+	t_tuple		temp;
+
+	pos = 0;
+	while (data->objects[pos] != NULL)
+	{
+		if (data->objects[pos]->identifier == CY)
+		{
+			if (data->objects[pos]->s_cy.top)
+			{
+				pos++;
+				continue;
+			}
+		rev_cy = ft_calloc(1, sizeof(t_object));
+		*rev_cy = *data->objects[pos];
+// printf("rev_cy - position:\n");
+// print_tuple(rev_cy->position);
+		temp = tuple_scale(rev_cy->s_cy.height, &rev_cy->s_cy.axis_vec);
+		rev_cy->position = tuple_add(&rev_cy->position, &temp);
+		rev_cy->s_cy.axis_vec = tuple_neg(&rev_cy->s_cy.axis_vec);
+		rev_cy->s_cy.top = true;
+		// rev_cy = rev(old_cy);
+		data->objects[get_last_index(data->objects)] = rev_cy;
+		}
+		pos++;
+	}
 }
+
