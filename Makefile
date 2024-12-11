@@ -6,13 +6,13 @@
 #    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: Invalid date        by                   #+#    #+#              #
-#    Updated: 2024/12/12 00:32:49 by llacsivy         ###   ########.fr        #
+#    Updated: 2024/12/12 00:42:14 by llacsivy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME			:= miniRT
-CFLAGS			:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
+CFLAGS			:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 LIBMLXDOTA		:= ./MLX42/build/libmlx42.a
 
 LIBMLX42		:= ./MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
@@ -61,20 +61,12 @@ SRCS			:= 	miniRT.c \
 					sources/utilities/ft_printf_error.c \
 					sources/utilities/exit_fcts.c \
 					sources/free/free_fcts.c
-					# sources/dev_print_tuple.c
 
 OBJS			:=	${SRCS:.c=.o}
 
 $(NAME): $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
 	@echo "Compiling miniRT ..."
-	# cc $(CFLAGS) $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
-	cc $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /users/llacsivy/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
-	# cc -g $(OBJS) $(LIBMLX42) $(LIBFTDOTA) /Users/daspring/LeakSanitizer/liblsan.dylib $(INCL) -o $(NAME)
-	
-debug: $(LIBMLXDOTA) $(LIBFTDOTA) $(OBJS)
-	@echo "Compiling miniRT ..."
-	cc -g $(SRCS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o debug
-
+	cc $(CFLAGS) $(OBJS) $(LIBMLX42) $(LIBFTDOTA) $(INCL) -o $(NAME)
 
 %.o: %.c $(DEPENDENCIES)
 	cc $(CFLAGS) -c $< -o $@
@@ -103,7 +95,4 @@ fclean : clean
 
 re: fclean all
 
-flo: CFLAGS += -g -fsanitize=address
-flo: re
-
-.PHONY: all clean fclean re debug
+.PHONY: all clean fclean re
