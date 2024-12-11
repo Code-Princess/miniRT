@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 18:36:56 by daspring          #+#    #+#             */
-/*   Updated: 2024/12/06 13:42:14 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/11 20:37:21 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ t_object	*parse_camera_input(char **line_arr)
 	t_object	*camera;
 	int			idx;
 	static int	camera_counter;
-	t_data		*data;
+	// t_data		*data;
 
-	data = get_data();
+	// data = get_data();
 	camera_counter++;
 	if (camera_counter > 1)
 		error_and_exit2("Too many cameras.", "C", NULL);

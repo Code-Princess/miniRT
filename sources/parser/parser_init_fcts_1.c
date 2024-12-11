@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_init_fcts_1.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:30 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/06 13:45:48 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/11 20:36:57 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 
 int	get_obj_name(char *identifier)
 {
-	t_data				*data;
+	// t_data				*data;
 
-	data = get_data();
+	// data = get_data();
 	if (ft_strcmp(identifier, "A") == 0)
 		return (AMB_LIGHT);
 	if (ft_strcmp(identifier, "C") == 0)

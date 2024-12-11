@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_light.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:51:34 by daspring          #+#    #+#             */
-/*   Updated: 2024/12/06 13:42:14 by llacsivy         ###   ########.fr       */
+/*   Updated: 2024/12/11 20:37:31 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ t_object	*parse_light_input(char **line_arr)
 	t_object			*light;
 	int					idx;
 	static int			light_counter;
-	t_data				*data;
+	// t_data				*data;
 
-	data = get_data();
+	// data = get_data();
 	light_counter++;
 	if (light_counter > 1)
 		error_and_exit2("Too many lights.", "L", NULL);

@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 15:54:48 by daspring          #+#    #+#             */
-/*   Updated: 2024/12/11 16:09:34 by daspring         ###   ########.fr       */
+/*   Updated: 2024/12/11 20:38:54 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ bool	pt_is_between_slabs(double t, t_ray *ray, t_object *cylinder)
 
 double	pt_is_on_bottom(t_ray *ray, t_object *cylinder)
 {
-	t_tuple		pos_q_dir;
+	// t_tuple		pos_q_dir;
 	double		t;
 	t_object	bottom_plane;
 	t_tuple		hit_pt;
@@ -53,7 +53,7 @@ double	pt_is_on_bottom(t_ray *ray, t_object *cylinder)
 								set_color(0, 0, 0, 0), temp);
 	t = find_plane_hitpt(&bottom_plane, ray);
 	hit_pt = ray_at_t(ray, t);
-	pos_q_dir = direction(&cylinder->position, &hit_pt);
+	// pos_q_dir = direction(&cylinder->position, &hit_pt);
 	if (pt_is_on_disk(cylinder->position, *cylinder, hit_pt))
 	{
 printf("pt_is_on_bottom\n");

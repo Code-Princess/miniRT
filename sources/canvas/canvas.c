@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:52:50 by llacsivy          #+#    #+#             */
-/*   Updated: 2024/12/11 16:11:48 by daspring         ###   ########.fr       */
+/*   Updated: 2024/12/11 20:37:56 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,8 @@ uint32_t	calc_pixel_color(t_hit_obj *hit_obj, t_ray *ray, t_data *data)
 	}
 	// if (hit_obj->obj_found == true)
 	// {
-	// 	color = set_color((hit_obj->normal_vec.x + 1) / 2, \
-	// 		(hit_obj->normal_vec.y + 1) / 2, \
+	// 	color = set_color((hit_obj->normal_vec.x + 1) / 2, 
+	// 		(hit_obj->normal_vec.y + 1) / 2, 
 	// 		(hit_obj->normal_vec.z + 1) / 2, 1);
 	// }
 	convert_pixel_colors(&color);
