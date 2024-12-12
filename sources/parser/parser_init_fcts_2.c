@@ -38,12 +38,12 @@ void	init_normal_vec(t_object *obj, char **line_arr, int idx)
 		error_and_exit2("normal_vec: number has wrong format", line_arr[0], \
 																obj);
 	vec = set_tuple(x_normal_vec, y_normal_vec, z_normal_vec, VEC);
+	vec = tuple_normalize(&vec);
 	if (is_normalized(&vec))
 		obj->s_camera.normal_vec = vec;
 	else
 		error_and_exit2("normal_vec: vector not normalized", line_arr[0], obj);
 }
-	// vec = tuple_normalize(&vec);
 
 void	check_plane_normal_vec_dir(t_data *data)
 {
@@ -89,12 +89,12 @@ void	init_axis_vec(t_object *obj, char **line_arr, int idx)
 	if (error == 1)
 		error_and_exit2("axis_vec: number has wrong format", line_arr[0], obj);
 	vec = set_tuple(x_normal_vec, y_normal_vec, z_normal_vec, VEC);
+	vec = tuple_normalize(&vec);
 	if (is_normalized(&vec))
 		obj->s_cy.axis_vec = vec;
 	else
 		error_and_exit2("axis_vec: vector not normalized", line_arr[0], obj);
 }
-	// vec = tuple_normalize(&vec);
 
 void	init_angle(t_object *obj, char **line_arr, int idx)
 {
