@@ -21,6 +21,12 @@ To run the program, use this command in your terminal:
 ```
 ./miniRT scenes/05_multi-objects_snowman1.rt
 ```
+```
+./miniRT scenes/07_brightness4_cake.rt
+```
+```
+./miniRT scenes/06_camera_position_direction3.rt
+```
 You can replace *scenes/05_multi-objects_snowman1.rt* with the path to your desired config file.
 
 ## Ray tracing
