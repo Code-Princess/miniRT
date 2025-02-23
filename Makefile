@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: llacsivy <llacsivy@student.42.fr>          +#+  +:+       +#+         #
+#    By: linda <linda@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: Invalid date        by                   #+#    #+#              #
-#    Updated: 2024/12/12 00:42:14 by llacsivy         ###   ########.fr        #
+#    Updated: 2025/02/23 15:07:31 by linda            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIBMLXDOTA		:= ./MLX42/build/libmlx42.a
 
 LIBMLX42		:= ./MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
 MLX42_URL		:= https://github.com/codam-coding-college/MLX42.git
-MLX42_VERSION	:= v2.3.3
+Commit_Hash		:= 154e0c396d104b72582b7c6ea26b0fb777a0fc2f
 
 INCL			:= -I ./MLX42/include
 DEPENDENCIES	:= 	./includes/color.h \
@@ -75,7 +75,7 @@ all: $(LIBMLXDOTA) $(NAME)
 
 $(LIBMLXDOTA):
 	@echo "Making MLX42..."
-	git clone $(MLX42_URL) && cd ./MLX42 && git checkout tags/$(MLX42_VERSION)
+	git clone $(MLX42_URL) && cd ./MLX42 && git checkout $(Commit_Hash)
 	cmake ./MLX42 -B ./MLX42/build && make -C ./MLX42/build -j4
 
 $(LIBFTDOTA):
