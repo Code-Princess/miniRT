@@ -5,7 +5,7 @@ miniRT is a project coded in C language that utilizes ray tracing algorithms, bu
 <!-- YouTube video cards from https://github.com/DenverCoder1/github-readme-youtube-cards -->
 <!-- https://ytcards.demolab.com/?id=<video ID>&title=<video+title>&lang=en&timestamp=<video publish date in Unix time format>&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=250&border_radius=5&duration=<video duration in seconds> "<video title>") -->
 <!-- BEGIN YOUTUBE-CARDS -->
-[![Code-Princess/Mein selbst programmierter Ray Tracer miniRT in C mit MLX42/3D-Rendering](https://ytcards.demolab.com/?id=GsWEtGScru8&title=Code-Princess/Mein+selbst+programmierter+Ray+Tracer+miniRT+in+C+mit+MLX42/3D-Rendering&lang=en&timestamp=1709074800&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=850&border_radius=5&duration=331 "Code-Princess/Mein selbst programmierter Ray Tracer miniRT in C mit MLX42/3D-Rendering")](https://youtu.be/GsWEtGScru8?si=ZQqomfBc4khFFNkN)
+[![Code-Princess/Mein selbst programmierter Ray Tracer miniRT in C mit MLX42/3D-Rendering](https://ytcards.demolab.com/?id=GsWEtGScru8&title=Code-Princess/Mein+selbst+programmierter+Ray+Tracer+miniRT+in+C+mit+MLX42/3D-Rendering&lang=en&timestamp=1740700800&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=850&border_radius=5&duration=331 "Code-Princess/Mein selbst programmierter Ray Tracer miniRT in C mit MLX42/3D-Rendering")](https://youtu.be/GsWEtGScru8?si=ZQqomfBc4khFFNkN)
 <!-- END YOUTUBE-CARDS -->
 ## Prerequisites
 Please note that this program is only compatible with Linux or macOS. Ensure that you have a C-compiler e.g. cc installed on your operating system.
